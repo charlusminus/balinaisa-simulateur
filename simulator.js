@@ -96,6 +96,7 @@ function handleFileUpload(input) {
       preview.classList.remove('hidden');
       zone.classList.add('has-file');
       document.getElementById('btn-step1-next').disabled = false;
+      applyStickies();
     };
     img.src = e.target.result;
   };
@@ -163,6 +164,22 @@ function selectProduct(id) {
   document.getElementById('btn-step2-next').disabled = false;
   document.getElementById('qty-val').textContent = qty;
   document.getElementById('catalog-qty-row').classList.remove('hidden');
+  applyStickies();
+}
+
+/* =============================================
+   STICKY ACTIONS
+   ============================================= */
+function applyStickies() {
+  const setSticky = (stepId, active) => {
+    const panel   = document.getElementById(`step-${stepId}`);
+    const actions = panel?.querySelector('.step-actions');
+    if (!actions) return;
+    actions.classList.toggle('is-sticky', active);
+    panel.classList.toggle('has-sticky-bar', active);
+  };
+  setSticky(1, !!uploadedDataURL);
+  setSticky(2, !!selectedProduct);
 }
 
 /* =============================================
@@ -177,6 +194,7 @@ function goToStep(step) {
 
   if (step === 3) populateLeadForm();
 
+  applyStickies();
   window.scrollTo({ top: 60, behavior: 'smooth' });
 }
 

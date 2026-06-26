@@ -497,6 +497,28 @@ input, textarea, select { font-family: var(--font-sans); }
   border-top: 1px solid var(--border);
 }
 
+/* Step 1 has a single button — right-align it */
+#step-1 .step-actions { justify-content: flex-end; }
+
+/* Sticky bottom bar — activated by JS */
+.step-actions.is-sticky {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  margin-top: 0;
+  padding: 12px max(1rem, calc((100vw - 860px) / 2 + 2rem));
+  border-top: 1px solid var(--border);
+  background: rgba(249, 246, 241, 0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 -4px 28px rgba(0, 0, 0, 0.10);
+}
+
+/* Extra bottom padding so content isn't hidden behind sticky bar */
+.has-sticky-bar { padding-bottom: 88px !important; }
+
 /* =============================================
    UPLOAD ZONE
    ============================================= */
@@ -920,11 +942,11 @@ input, textarea, select { font-family: var(--font-sans); }
 }
 
 .qty-btn {
-  width: 28px; height: 28px;
+  width: 32px; height: 32px;
   border-radius: 50%;
   background: var(--bg-muted);
   border: 1px solid var(--border);
-  font-size: 16px;
+  font-size: 17px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -934,7 +956,13 @@ input, textarea, select { font-family: var(--font-sans); }
 
 .qty-btn:hover { background: var(--border); }
 
-.qty-val { font-size: 15px; font-weight: 500; min-width: 20px; text-align: center; }
+.qty-val {
+  font-size: 17px;
+  font-weight: 700;
+  min-width: 22px;
+  text-align: center;
+  color: var(--primary);
+}
 
 .quote-lines { display: flex; flex-direction: column; gap: 6px; }
 
@@ -1257,4 +1285,12 @@ input, textarea, select { font-family: var(--font-sans); }
   .step-panel { padding: 0 1rem 3rem; }
   .catalog-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
   .footer-inner { flex-direction: column; gap: 4px; text-align: center; }
+
+  /* Sticky bar on mobile: tighter padding, label hidden to save space */
+  .step-actions.is-sticky {
+    padding: 10px 1rem;
+    gap: 8px;
+  }
+  .qty-inline-label { display: none; }
+  .has-sticky-bar { padding-bottom: 76px !important; }
 }
