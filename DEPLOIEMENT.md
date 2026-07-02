@@ -53,5 +53,19 @@ Brief complet : `Agent-Decorateur-Balinaisa.md`.
 
 Modèle par défaut : `claude-opus-4-8` (input `model`, remplaçable par un Sonnet pour réduire le coût/lead).
 
-### Reste à faire — génération de l'image finale
-L'agent produit `image_prompt` mais **ne génère pas encore l'image** (col. P = placeholder). Prochaine couche : envoyer `image_prompt` + `photo_base64` à un modèle d'édition/inpainting (Vertex Imagen, ou autre), uploader le résultat (Cloudinary/GCS/ImgBB) et écrire l'URL publique dans `image_link`. Limite connue : placer un SKU exact dans la photo du client est au front de l'état de l'art — viser une intégration crédible (proportions/matières/couleurs) plutôt qu'un rendu pixel-perfect.
+## 5. Génération de l'image de simulation (step_9 + step_10)
+
+- **step_9** — édite la photo avec **Gemini 2.5 Flash Image** (« Nano Banana ») : ajoute uniquement le mobilier Balinaisa (via `image_prompt` de step_6), garde le reste intact.
+- **step_10** — héberge l'image générée (base64) sur **ImgBB** → URL publique, reprise en col. P du Sheet et dans le mail client.
+- Fallbacks : si une clé manque ou qu'un appel échoue, on retombe sur l'image placeholder et le flow continue (lead + devis déjà sauvés).
+
+### Pour activer (2 clés)
+1. **`gemini_api_key`** dans `step_9` — clé Google AI Studio (https://aistudio.google.com/apikey, simple clé API, **pas** de projet GCP/Vertex). Modèle par défaut `gemini-2.5-flash-image` (input `model`).
+2. **`imgbb_api_key`** dans `step_10` — clé gratuite sur https://api.imgbb.com/.
+
+### Améliorer la fidélité produit (v2)
+V1 est *prompt-only* : Gemini place du mobilier teck conforme à la description, pas les SKU exacts. Pour la fidélité de marque, passer aussi des **images de référence** des produits sélectionnés (Gemini 2.5 Flash Image accepte plusieurs images en entrée) → ajouter une URL photo par produit dans le `CATALOG` de step_6 et les joindre dans `contents.parts` de step_9. Limite connue : reproduire un SKU pixel-perfect reste au front de l'état de l'art ; viser une intégration crédible (proportions/matières/couleurs).
+
+### Alternatives modèle (si besoin)
+- **FLUX.1 Kontext** (via fal.ai / Replicate) : très bon en édition « garde le reste », sortie déjà hébergée (1 seule clé, remplace step_9 **et** step_10).
+- **Vertex AI Imagen 3** : nécessite un projet GCP + service account (plus lourd).
