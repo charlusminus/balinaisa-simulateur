@@ -2,7 +2,7 @@
    BALINAISA SIMULATOR — Logic
    ============================================= */
 
-const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/vBqWuW1eudqSQG4eFkacG';
+const WEBHOOK_URL = 'https://charlusminus.app.n8n.cloud/webhook/balinaisa-simulateur';
 
 // State
 let currentStep = 0;
@@ -11,7 +11,7 @@ let uploadedDataURL = null;
 let profile = null; // 'particulier' | 'pro'
 
 /* =============================================
-   HERO ↔ SIMULATOR
+   HERO → SIMULATOR
    ============================================= */
 function startSimulator() {
   document.getElementById('hero').classList.add('hidden');
@@ -222,7 +222,7 @@ async function submitLead(e) {
   const company   = document.getElementById('f-company').value.trim();
 
   // photo_base64 : image redimensionnée (~1200px, JPEG 0.85 → ~200-400 Ko), assez
-  // légère pour le body du webhook. Utilisée par l'agent déco IA (step_6) pour
+  // légère pour le body du webhook. Utilisée par l'agent décor IA (step_6) pour
   // analyser l'espace et sélectionner le mobilier Balinaisa.
   const payload = {
     first_name: firstName,
