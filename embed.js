@@ -3,17 +3,17 @@
    À coller avant </body> sur balinaisa.com
 
    Usage :
-     <script src="https://charlusminus.github.io/balinaisa-pz/embed.js" defer></script>
+     <script src="https://charlusminus.github.io/balinaisa-simulateur/embed.js" defer></script>
 
    Options (data-attributes sur le script tag) :
      data-position="bottom-right"  (défaut) | "bottom-left" | "inline"
-     data-label="Simuler avec l'IA"
+     data-label="Simuler avec Domia"
    ============================================= */
 (function () {
-  const script = document.currentScript || document.querySelector('script[src*="balinaisa-pz/embed.js"]');
+  const script = document.currentScript || document.querySelector('script[src*="balinaisa-simulateur/embed.js"]');
   const position  = (script && script.dataset.position)  || 'bottom-right';
-  const label     = (script && script.dataset.label)     || 'Simuler avec l\'IA ✦';
-  const targetUrl = 'https://charlusminus.github.io/balinaisa-pz/';
+  const label     = (script && script.dataset.label)     || 'Simuler avec Domia ✦';
+  const targetUrl = 'https://charlusminus.github.io/balinaisa-simulateur/';
 
   const STYLES = `
     #balinaisa-sim-btn {

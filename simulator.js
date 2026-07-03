@@ -202,7 +202,25 @@ function selectProfile(value) {
   if (!isPro) companyInput.value = '';
 
   document.getElementById('profile-error')?.classList.add('hidden');
+
+  // "Particulier" n'a besoin d'aucune autre info sur cette étape : on avance
+  // directement, sans bouton "Continuer" à cliquer. "Professionnel" révèle
+  // le champ entreprise et affiche le bouton (Entrée dans le champ fonctionne aussi).
+  const nextBtn = document.getElementById('btn-step2-next');
+  if (isPro) {
+    nextBtn?.classList.remove('hidden');
+    companyInput.focus();
+  } else {
+    nextBtn?.classList.add('hidden');
+    setTimeout(() => goToStep3(), 200);
+  }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('f-company')?.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); goToStep3(); }
+  });
+});
 
 /* =============================================
    STEP-BY-STEP VALIDATION (Continuer)
@@ -239,6 +257,14 @@ async function submitLead(e) {
   if (!profile) {
     goToStep(2);
     document.getElementById('profile-error')?.classList.remove('hidden');
+    return;
+  }
+
+  // "Je suis juste curieux(se)" : la génération IA a un coût réel, réservée
+  // aux intentions d'achat confirmées. On n'envoie rien au webhook.
+  const intent = document.getElementById('f-intent').value;
+  if (intent === 'curious') {
+    showCuriousScreen();
     return;
   }
 
@@ -280,6 +306,17 @@ async function submitLead(e) {
 }
 
 /* =============================================
+   RÉSULTAT ALTERNATIF — intention "curieux(se)"
+   ============================================= */
+function showCuriousScreen() {
+  document.querySelectorAll('.step-panel').forEach(p => p.classList.add('hidden'));
+  document.getElementById('step-curious').classList.remove('hidden');
+  document.getElementById('steps-nav')?.classList.add('hidden');
+  document.getElementById('progress-bar').style.width = '100%';
+  window.scrollTo({ top: 60, behavior: 'smooth' });
+}
+
+/* =============================================
    RESET
    ============================================= */
 function resetSimulator() {
@@ -314,6 +351,7 @@ function resetSimulator() {
   if (companyGroup) companyGroup.classList.add('hidden');
   if (companyInput) companyInput.required = false;
   document.getElementById('profile-error')?.classList.add('hidden');
+  document.getElementById('btn-step2-next')?.classList.add('hidden');
 
   const btn = document.getElementById('btn-submit-lead');
   if (btn) {

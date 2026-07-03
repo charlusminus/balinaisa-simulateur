@@ -57,10 +57,10 @@
            onerror="this.style.display='none'">
       <h1 class="hero-title">Votre extérieur,<br><em>sublimé par le teck</em></h1>
       <p class="hero-sub">Importez une photo de votre espace. Domia sélectionne le mobilier en teck Balinaisa adapté à votre espace et génère votre simulation en quelques secondes.</p>
-      <button class="hero-cta-pulse" onclick="startSimulator()" aria-label="Simuler avec l'IA">
+      <button class="hero-cta-pulse" onclick="startSimulator()" aria-label="Simuler avec Domia">
         <span class="cta-widget-shimmer"></span>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        <span>Simuler avec l'IA</span>
+        <span>Simuler avec Domia</span>
         <span class="cta-widget-star">✦</span>
       </button>
       <p class="hero-note">Gratuit · Sans inscription · Résultats en boite mail en quelques minutes</p>
@@ -142,7 +142,7 @@
     </div>
 
     <!-- STEP 2 — Profil -->
-    <div class="step-panel hidden" id="step-2">
+    <div class="step-panel step-panel--form hidden" id="step-2">
       <div class="step-header">
         <h2 class="step-title">Vous êtes...</h2>
         <p class="step-desc">Pour adapter votre simulation et votre devis</p>
@@ -171,7 +171,7 @@
 
       <div class="step-actions">
         <button class="btn-ghost" onclick="goToStep(1)">← Retour</button>
-        <button class="btn-primary" onclick="goToStep3()">
+        <button class="btn-primary hidden" id="btn-step2-next" onclick="goToStep3()">
           Continuer
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </button>
@@ -179,7 +179,7 @@
     </div>
 
     <!-- STEP 3 — Coordonnées -->
-    <div class="step-panel hidden" id="step-3">
+    <div class="step-panel step-panel--form hidden" id="step-3">
       <div class="step-header">
         <h2 class="step-title">Vos coordonnées</h2>
         <p class="step-desc">Pour vous envoyer votre simulation par email</p>
@@ -220,7 +220,7 @@
     </div>
 
     <!-- STEP 4 — Horizon d'achat + consentement -->
-    <div class="step-panel hidden" id="step-4">
+    <div class="step-panel step-panel--form hidden" id="step-4">
       <div class="step-header">
         <h2 class="step-title">Dernière étape</h2>
         <p class="step-desc">Votre horizon d'achat, et c'est parti</p>
@@ -288,14 +288,40 @@
       </div>
     </div>
 
+    <!-- STEP CURIOUS — intention "Je suis juste curieux(se)" -->
+    <div class="step-panel hidden" id="step-curious">
+      <div class="confirmation-wrap">
+        <div class="confirmation-icon confirmation-icon--info">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        </div>
+        <h2 class="confirmation-title">Merci pour votre intérêt !</h2>
+        <p class="confirmation-sub">La génération d'une simulation par IA a un coût réel. Pour cette raison, elle est aujourd'hui réservée aux personnes ayant une intention d'achat confirmée.</p>
+        <div class="confirmation-details">
+          <div class="confirmation-detail">
+            <div class="confirmation-detail-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div class="confirmation-detail-body">
+              <h4>Vous avez un projet en tête ?</h4>
+              <p>Revenez à l'étape précédente et indiquez votre horizon d'achat réel pour lancer votre simulation gratuite.</p>
+            </div>
+          </div>
+        </div>
+        <div class="confirmation-actions">
+          <button class="btn-primary" onclick="goToStep(4)">Modifier mon horizon d'achat</button>
+          <button class="btn-ghost" onclick="backToHome()">Retour à l'accueil</button>
+        </div>
+      </div>
+    </div>
+
   </section>
 
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-inner">
       <p>© 2026 Balinaisa · <a href="https://balinaisa.com" target="_blank" rel="noopener">balinaisa.com</a></p>
-      <p class="footer-sub">Simulation propulsée par <a href="https://paktiz.fr" target="_blank" rel="noopener">Paktiz</a></p>
       <p class="footer-sub"><a href="privacy-policy.html" target="_blank" rel="noopener">Politique de confidentialité &amp; Protection des données</a></p>
+      <p class="footer-sub">Simulation propulsée par <a href="https://paktiz.fr" target="_blank" rel="noopener">Paktiz</a></p>
     </div>
   </footer>
 
@@ -306,7 +332,7 @@
     <button class="cta-widget-btn" onclick="widgetClick()" aria-label="Lancer le simulateur">
       <span class="cta-widget-shimmer"></span>
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-      <span>Simuler avec l'IA</span>
+      <span>Simuler avec Domia</span>
       <span class="cta-widget-star">✦</span>
     </button>
   </div>
