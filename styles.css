@@ -79,30 +79,6 @@ input, textarea, select { font-family: var(--font-sans); }
   letter-spacing: -0.02em;
 }
 
-.header-badge {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  color: var(--text-sub);
-  background: var(--bg-muted);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 4px 12px;
-}
-
-.badge-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: #4CAF50;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
-
 /* =============================================
    HERO — video background, full-screen
    ============================================= */
@@ -154,18 +130,6 @@ input, textarea, select { font-family: var(--font-sans); }
   height: auto;
   filter: brightness(0) invert(1);
   margin-bottom: 0.25rem;
-}
-
-.hero-eyebrow {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--accent);
-  background: rgba(196,151,90,.15);
-  border: 1px solid rgba(196,151,90,.4);
-  padding: 5px 14px;
-  border-radius: 20px;
 }
 
 .hero-title {
@@ -413,72 +377,26 @@ input, textarea, select { font-family: var(--font-sans); }
   height: 100%;
   background: var(--primary);
   transition: width 0.4s ease;
-  width: 25%;
+  width: 20%;
 }
 
 /* =============================================
-   STEP NAVIGATION
+   STEP COUNTER
    ============================================= */
 .steps-nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem 2rem;
-  gap: 0;
-  max-width: 560px;
-  margin: 0 auto;
+  padding: 1.25rem 2rem 0.5rem;
   width: 100%;
 }
 
-.step-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  flex-shrink: 0;
-}
-
-.step-dot {
-  width: 32px; height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 13px;
+.steps-counter {
+  font-size: 12px;
   font-weight: 500;
-  background: var(--bg-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--text-muted);
-  border: 1.5px solid var(--border);
-  transition: all var(--transition);
-}
-
-.step-item.active .step-dot {
-  background: var(--primary);
-  color: #fff;
-  border-color: var(--primary);
-}
-
-.step-item.done .step-dot {
-  background: var(--success-bg);
-  color: var(--success);
-  border-color: var(--success);
-}
-
-.step-item span {
-  font-size: 11px;
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-.step-item.active span { color: var(--primary); }
-.step-item.done span { color: var(--success); }
-
-.step-connector {
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-  margin: 0 8px;
-  margin-bottom: 18px;
 }
 
 /* =============================================
@@ -1385,6 +1303,55 @@ input, textarea, select { font-family: var(--font-sans); }
 }
 
 .footer-sub { color: var(--text-muted); }
+
+/* =============================================
+   LEGAL PAGE (privacy policy)
+   ============================================= */
+.legal-page {
+  flex: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem;
+  width: 100%;
+}
+
+.legal-back {
+  display: inline-block;
+  font-size: 13px;
+  color: var(--text-sub);
+  margin-bottom: 1.5rem;
+}
+
+.legal-title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.legal-updated {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.legal-section { margin-bottom: 1.75rem; }
+
+.legal-section h2 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.legal-section p, .legal-section li {
+  font-size: 14px;
+  color: var(--text-sub);
+  line-height: 1.7;
+}
+
+.legal-section ul { padding-left: 1.25rem; margin-top: 0.4rem; }
+.legal-section li { margin-bottom: 0.3rem; }
 
 /* =============================================
    RESPONSIVE

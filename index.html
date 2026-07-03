@@ -42,7 +42,6 @@
            alt="Balinaisa" height="28"
            onerror="this.outerHTML='<svg width=&quot;28&quot; height=&quot;28&quot; viewBox=&quot;0 0 28 28&quot; fill=&quot;none&quot;><rect width=&quot;28&quot; height=&quot;28&quot; rx=&quot;6&quot; fill=&quot;#B87D4B&quot;/><text x=&quot;14&quot; y=&quot;20&quot; font-family=&quot;Georgia,serif&quot; font-size=&quot;16&quot; font-weight=&quot;bold&quot; text-anchor=&quot;middle&quot; fill=&quot;#fff&quot;>B</text></svg>'">
     </a>
-    <div class="header-badge">Simulateur IA <span class="badge-dot"></span> Beta</div>
   </header>
 
   <!-- HERO -->
@@ -56,9 +55,8 @@
       <img src="https://balinaisa.com/wp-content/uploads/2025/10/LOGO_BALINAISA-02.svg"
            class="hero-brand-logo" alt="Balinaisa"
            onerror="this.style.display='none'">
-      <p class="hero-eyebrow">Simulateur d'extérieur IA</p>
       <h1 class="hero-title">Votre extérieur,<br><em>sublimé par le teck</em></h1>
-      <p class="hero-sub">Importez une photo de votre terrasse ou jardin. L'IA sélectionne le mobilier d'extérieur en teck Balinaisa adapté à votre espace et génère votre simulation en quelques secondes.</p>
+      <p class="hero-sub">Importez une photo de votre espace. Domia sélectionne le mobilier en teck Balinaisa adapté à votre espace et génère votre simulation en quelques secondes.</p>
       <button class="hero-cta-pulse" onclick="startSimulator()" aria-label="Simuler avec l'IA">
         <span class="cta-widget-shimmer"></span>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
@@ -88,22 +86,9 @@
       </button>
     </div>
 
-    <!-- STEP INDICATORS -->
+    <!-- STEP COUNTER -->
     <div class="steps-nav" id="steps-nav">
-      <div class="step-item active" data-step="1">
-        <div class="step-dot">1</div>
-        <span>Photo</span>
-      </div>
-      <div class="step-connector"></div>
-      <div class="step-item" data-step="2">
-        <div class="step-dot">2</div>
-        <span>Coordonnées</span>
-      </div>
-      <div class="step-connector"></div>
-      <div class="step-item" data-step="3">
-        <div class="step-dot">3</div>
-        <span>Confirmation</span>
-      </div>
+      <span class="steps-counter" id="steps-counter">Étape 1 / 4</span>
     </div>
 
     <!-- STEP 1 — Upload photo -->
@@ -156,11 +141,11 @@
       </div>
     </div>
 
-    <!-- STEP 2 — Lead form -->
+    <!-- STEP 2 — Profil -->
     <div class="step-panel hidden" id="step-2">
       <div class="step-header">
-        <h2 class="step-title">Vos coordonnées</h2>
-        <p class="step-desc">Renseignez vos informations pour recevoir votre simulation par email</p>
+        <h2 class="step-title">Vous êtes...</h2>
+        <p class="step-desc">Pour adapter votre simulation et votre devis</p>
       </div>
 
       <div class="lead-form-wrap">
@@ -169,38 +154,81 @@
         </div>
 
         <div class="contact-card">
-          <form id="lead-form" onsubmit="submitLead(event)">
+          <div class="form-group">
+            <label>Vous êtes *</label>
+            <div class="profile-toggle" id="profile-toggle" role="radiogroup" aria-label="Vous êtes">
+              <button type="button" class="profile-btn" data-profile="particulier" onclick="selectProfile('particulier')" aria-pressed="false">Un particulier</button>
+              <button type="button" class="profile-btn" data-profile="pro" onclick="selectProfile('pro')" aria-pressed="false">Un professionnel</button>
+            </div>
+          </div>
+          <div class="form-group hidden" id="company-group">
+            <label for="f-company">Nom de l'entreprise *</label>
+            <input type="text" id="f-company" placeholder="Votre société">
+          </div>
+          <p class="profile-error hidden" id="profile-error">Indiquez si vous êtes un particulier ou un professionnel.</p>
+        </div>
+      </div>
+
+      <div class="step-actions">
+        <button class="btn-ghost" onclick="goToStep(1)">← Retour</button>
+        <button class="btn-primary" onclick="goToStep3()">
+          Continuer
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 3 — Coordonnées -->
+    <div class="step-panel hidden" id="step-3">
+      <div class="step-header">
+        <h2 class="step-title">Vos coordonnées</h2>
+        <p class="step-desc">Pour vous envoyer votre simulation par email</p>
+      </div>
+
+      <div class="lead-form-wrap">
+        <div class="contact-card">
+          <div class="form-row">
             <div class="form-group">
-              <label>Vous êtes *</label>
-              <div class="profile-toggle" id="profile-toggle" role="radiogroup" aria-label="Vous êtes">
-                <button type="button" class="profile-btn" data-profile="particulier" onclick="selectProfile('particulier')" aria-pressed="false">Un particulier</button>
-                <button type="button" class="profile-btn" data-profile="pro" onclick="selectProfile('pro')" aria-pressed="false">Un professionnel</button>
-              </div>
+              <label for="f-firstname">Prénom *</label>
+              <input type="text" id="f-firstname" placeholder="Marie" required>
             </div>
-            <div class="form-group hidden" id="company-group">
-              <label for="f-company">Nom de l'entreprise *</label>
-              <input type="text" id="f-company" placeholder="Votre société">
+            <div class="form-group">
+              <label for="f-lastname">Nom *</label>
+              <input type="text" id="f-lastname" placeholder="Dupont" required>
             </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="f-firstname">Prénom *</label>
-                <input type="text" id="f-firstname" placeholder="Marie" required>
-              </div>
-              <div class="form-group">
-                <label for="f-lastname">Nom *</label>
-                <input type="text" id="f-lastname" placeholder="Dupont" required>
-              </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-email">Email *</label>
+              <input type="email" id="f-email" placeholder="marie@exemple.fr" required>
             </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="f-email">Email *</label>
-                <input type="email" id="f-email" placeholder="marie@exemple.fr" required>
-              </div>
-              <div class="form-group">
-                <label for="f-phone">Téléphone</label>
-                <input type="tel" id="f-phone" placeholder="06 XX XX XX XX">
-              </div>
+            <div class="form-group">
+              <label for="f-phone">Téléphone</label>
+              <input type="tel" id="f-phone" placeholder="06 XX XX XX XX">
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-actions">
+        <button class="btn-ghost" onclick="goToStep(2)">← Retour</button>
+        <button class="btn-primary" onclick="goToStep4()">
+          Continuer
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 4 — Horizon d'achat + consentement -->
+    <div class="step-panel hidden" id="step-4">
+      <div class="step-header">
+        <h2 class="step-title">Dernière étape</h2>
+        <p class="step-desc">Votre horizon d'achat, et c'est parti</p>
+      </div>
+
+      <div class="lead-form-wrap">
+        <div class="contact-card">
+          <form id="lead-form" onsubmit="submitLead(event)">
             <div class="form-group">
               <label for="f-intent">Horizon d'achat *</label>
               <select id="f-intent" required>
@@ -211,7 +239,6 @@
                 <option value="curious">Je suis juste curieux(se)</option>
               </select>
             </div>
-            <p class="profile-error hidden" id="profile-error">Indiquez si vous êtes un particulier ou un professionnel.</p>
             <label class="checkbox-row">
               <input type="checkbox" id="f-consent" required>
               <span>J'accepte que Balinaisa me contacte au sujet de ma simulation</span>
@@ -225,12 +252,12 @@
       </div>
 
       <div class="step-actions">
-        <button class="btn-ghost" onclick="goToStep(1)">← Retour</button>
+        <button class="btn-ghost" onclick="goToStep(3)">← Retour</button>
       </div>
     </div>
 
-    <!-- STEP 3 — Confirmation -->
-    <div class="step-panel hidden" id="step-3">
+    <!-- STEP 5 — Confirmation -->
+    <div class="step-panel hidden" id="step-5">
       <div class="confirmation-wrap">
         <div class="confirmation-icon">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
@@ -268,6 +295,7 @@
     <div class="footer-inner">
       <p>© 2026 Balinaisa · <a href="https://balinaisa.com" target="_blank" rel="noopener">balinaisa.com</a></p>
       <p class="footer-sub">Simulation propulsée par <a href="https://paktiz.fr" target="_blank" rel="noopener">Paktiz</a></p>
+      <p class="footer-sub"><a href="privacy-policy.html" target="_blank" rel="noopener">Politique de confidentialité &amp; Protection des données</a></p>
     </div>
   </footer>
 

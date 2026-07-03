@@ -3,6 +3,7 @@
    ============================================= */
 
 const WEBHOOK_URL = 'https://charlusminus.app.n8n.cloud/webhook/balinaisa-simulateur';
+const TOTAL_FORM_STEPS = 4; // Photo, Profil, Coordonnées, Horizon+consent (5e = Confirmation)
 
 // State
 let currentStep = 0;
@@ -134,7 +135,7 @@ function applyStickies() {
 function goToStep(step) {
   document.querySelectorAll('.step-panel').forEach(p => p.classList.add('hidden'));
   document.getElementById(`step-${step}`).classList.remove('hidden');
-  updateStepNav(step);
+  updateStepsCounter(step);
   updateProgressBar(step);
   currentStep = step;
 
@@ -144,22 +145,25 @@ function goToStep(step) {
   window.scrollTo({ top: 60, behavior: 'smooth' });
 }
 
-function updateStepNav(step) {
-  document.querySelectorAll('.step-item').forEach(el => {
-    const s = parseInt(el.dataset.step);
-    el.classList.remove('active', 'done');
-    if (s === step) el.classList.add('active');
-    else if (s < step) el.classList.add('done');
-  });
+function updateStepsCounter(step) {
+  const wrap = document.getElementById('steps-nav');
+  const label = document.getElementById('steps-counter');
+  if (!wrap || !label) return;
+  if (step > TOTAL_FORM_STEPS) {
+    wrap.classList.add('hidden');
+    return;
+  }
+  wrap.classList.remove('hidden');
+  label.textContent = `Étape ${step} / ${TOTAL_FORM_STEPS}`;
 }
 
 function updateProgressBar(step) {
-  const pct = { 1: 33, 2: 66, 3: 100 }[step] || 33;
+  const pct = { 1: 20, 2: 40, 3: 60, 4: 80, 5: 100 }[step] || 20;
   document.getElementById('progress-bar').style.width = pct + '%';
 }
 
 /* =============================================
-   STEP 2 — LEAD FORM
+   STEP 2 — LEAD FORM (recap photo)
    ============================================= */
 function populateLeadForm() {
   const recap = document.getElementById('lead-product-recap');
@@ -169,7 +173,7 @@ function populateLeadForm() {
     <div class="lead-recap-card">
       <div class="lead-recap-info">
         <p class="lead-recap-name">Votre espace est prêt</p>
-        <p class="lead-recap-mat">L'IA sélectionne le mobilier en teck Balinaisa adapté et génère votre simulation.</p>
+        <p class="lead-recap-mat">Domia sélectionne le mobilier en teck Balinaisa adapté et génère votre simulation.</p>
       </div>
       <div class="lead-recap-photo">
         <img src="${uploadedDataURL}" alt="Votre espace">
@@ -201,15 +205,40 @@ function selectProfile(value) {
 }
 
 /* =============================================
-   STEP 2 — SUBMIT
+   STEP-BY-STEP VALIDATION (Continuer)
    ============================================= */
-async function submitLead(e) {
-  e.preventDefault();
-
+function goToStep3() {
   // Profil obligatoire (particulier / pro)
   if (!profile) {
     document.getElementById('profile-error')?.classList.remove('hidden');
     document.getElementById('profile-toggle')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+  const company = document.getElementById('f-company');
+  if (profile === 'pro' && company && !company.reportValidity()) return;
+  goToStep(3);
+}
+
+function goToStep4() {
+  const firstname = document.getElementById('f-firstname');
+  const lastname  = document.getElementById('f-lastname');
+  const email     = document.getElementById('f-email');
+  if (!firstname.reportValidity()) return;
+  if (!lastname.reportValidity()) return;
+  if (!email.reportValidity()) return;
+  goToStep(4);
+}
+
+/* =============================================
+   STEP 4 — SUBMIT
+   ============================================= */
+async function submitLead(e) {
+  e.preventDefault();
+
+  // Profil obligatoire (garde-fou : déjà validé à l'étape 2)
+  if (!profile) {
+    goToStep(2);
+    document.getElementById('profile-error')?.classList.remove('hidden');
     return;
   }
 
@@ -222,8 +251,8 @@ async function submitLead(e) {
   const company   = document.getElementById('f-company').value.trim();
 
   // photo_base64 : image redimensionnée (~1200px, JPEG 0.85 → ~200-400 Ko), assez
-  // légère pour le body du webhook. Utilisée par l'agent décor IA (step_6) pour
-  // analyser l'espace et sélectionner le mobilier Balinaisa.
+  // légère pour le body du webhook. Utilisée par l'agent décor IA pour analyser
+  // l'espace et sélectionner le mobilier Balinaisa.
   const payload = {
     first_name: firstName,
     last_name:  lastName,
@@ -247,7 +276,7 @@ async function submitLead(e) {
     });
   } catch (_) {}
 
-  goToStep(3);
+  goToStep(5);
 }
 
 /* =============================================
@@ -266,8 +295,16 @@ function resetSimulator() {
   const noteEl = document.getElementById('f-note');
   if (noteEl) noteEl.value = '';
 
+  // Coordonnées et entreprise ne sont plus dans le <form> (réparties sur
+  // plusieurs étapes) : on les vide explicitement.
+  ['f-firstname', 'f-lastname', 'f-email', 'f-phone', 'f-company'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+
   const form = document.getElementById('lead-form');
-  if (form) form.reset();
+  if (form) form.reset(); // vide horizon d'achat + consentement
+
   document.querySelectorAll('#profile-toggle .profile-btn').forEach(b => {
     b.classList.remove('active');
     b.setAttribute('aria-pressed', 'false');
