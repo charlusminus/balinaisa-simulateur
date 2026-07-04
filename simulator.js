@@ -385,6 +385,12 @@ function shareSimulator() {
 /* CTA "Simuler avec Domia" dans le header : apparaît dès que le CTA du hero
    sort de l'écran (et disparaît quand il revient). Toujours à portée de main. */
 document.addEventListener('DOMContentLoaded', () => {
+  // Accessibilite : si l'utilisateur prefere le mouvement reduit, on fige la video de fond (le poster reste affiche).
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const video = document.querySelector('.hero-bg-video');
+    if (video) { try { video.removeAttribute('autoplay'); video.pause(); } catch (e) {} }
+  }
+
   const heroCta = document.querySelector('.hero-cta-pulse');
   const headerCta = document.getElementById('header-cta');
   const hero = document.getElementById('hero');

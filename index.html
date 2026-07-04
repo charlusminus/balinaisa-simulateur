@@ -34,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://balinaisa.com">
-  <link rel="stylesheet" href="styles.css?v=20260704g">
+  <link rel="stylesheet" href="styles.css?v=20260704h">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <!-- Données structurées (SEO / GEO) -->
@@ -118,18 +118,18 @@
            onerror="this.outerHTML='<svg width=&quot;28&quot; height=&quot;28&quot; viewBox=&quot;0 0 28 28&quot; fill=&quot;none&quot;><rect width=&quot;28&quot; height=&quot;28&quot; rx=&quot;6&quot; fill=&quot;#B87D4B&quot;/><text x=&quot;14&quot; y=&quot;20&quot; font-family=&quot;Georgia,serif&quot; font-size=&quot;16&quot; font-weight=&quot;bold&quot; text-anchor=&quot;middle&quot; fill=&quot;#fff&quot;>B</text></svg>'">
     </a>
     <button class="header-cta" id="header-cta" onclick="startSimulator()" aria-label="Simuler avec Domia">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
       <span>Simuler avec Domia</span>
     </button>
   </header>
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <video class="hero-bg-video" autoplay muted loop playsinline
+    <video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"
            poster="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20251008_144205.jpg">
       <source src="https://balinaisa.com/wp-content/uploads/2025/11/New-Balinaisa-Hero-Header.mp4" type="video/mp4">
     </video>
-    <div class="hero-overlay"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
       <img src="https://balinaisa.com/wp-content/uploads/2025/10/LOGO_BALINAISA-02.svg"
            class="hero-brand-logo" alt="Balinaisa"
@@ -137,14 +137,14 @@
       <h1 class="hero-title">Votre extérieur,<br><em>sublimé par le teck</em></h1>
       <p class="hero-sub">Domia, c'est l'œil de Dominique Raynal : son savoir-faire du teck, rendu accessible. Photographiez votre espace : il compose votre aménagement d'extérieur et vous adresse un devis en quelques secondes.</p>
       <button class="hero-cta-pulse" onclick="startSimulator()" aria-label="Simuler avec Domia">
-        <span class="cta-widget-shimmer"></span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        <span class="cta-widget-shimmer" aria-hidden="true"></span>
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
         <span>Simuler avec Domia</span>
-        <span class="cta-widget-star">✦</span>
+        <span class="cta-widget-star" aria-hidden="true">✦</span>
       </button>
       <p class="hero-note">Gratuit · Sans inscription · Résultats en boite mail en quelques minutes</p>
     </div>
-    <div class="hero-scroll-hint">
+    <div class="hero-scroll-hint" aria-hidden="true">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
     </div>
   </section>
@@ -509,7 +509,7 @@
   </div>
   -->
 
-  <script src="simulator.js?v=20260704g"></script>
+  <script src="simulator.js?v=20260704h"></script>
   <script>
     function widgetClick() {
       const hero = document.getElementById('hero');

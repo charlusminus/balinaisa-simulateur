@@ -10,7 +10,7 @@
   --border-strong: #C2B6A8;
   --text:        #2A1F14;
   --text-sub:    #7A6A58;
-  --text-muted:  #A09080;
+  --text-muted:  #7C6A54;
   --primary:     #B87D4B;
   --primary-dark:#8B5C32;
   --primary-light:#F5EDE0;
@@ -1534,4 +1534,27 @@ input, textarea, select { font-family: var(--font-sans); }
   .faq-title { font-size: 27px; }
   .faq-item summary { font-size: 15px; padding: 16px 18px; }
   .faq-item p { padding: 0 18px 18px; }
+}
+
+/* ── Accessibilité : focus clavier visible + mouvement réduit ───── */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .hero-scroll-hint { display: none; }
 }
