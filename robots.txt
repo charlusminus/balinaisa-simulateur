@@ -1,4 +1,38 @@
+# Balinaisa · simulateur Domia
+# Moteurs de recherche et moteurs generatifs bienvenus (citation encouragee).
+
 User-agent: *
 Allow: /
 
+# Crawlers des moteurs generatifs (autorises explicitement)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Ne pas indexer la page de rendu individuelle (contenu ephemere par lead)
+Disallow: /result.html
+
 Sitemap: https://charlusminus.github.io/balinaisa-simulateur/sitemap.xml
+
+# Brief entite/marque pour moteurs generatifs
+# https://charlusminus.github.io/balinaisa-simulateur/llms.txt

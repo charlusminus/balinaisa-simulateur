@@ -1,0 +1,48 @@
+# Domia, le simulateur d'aménagement extérieur Balinaisa
+
+> Domia est le simulateur d'aménagement extérieur de Balinaisa, pensé comme l'œil de Dominique Raynal. À partir d'une photo de terrasse ou de jardin, Domia projette le mobilier d'extérieur en teck massif Balinaisa sur l'espace et adresse un rendu accompagné d'un devis estimatif. Gratuit, sans inscription.
+
+## Entités
+
+- **Domia** : le simulateur (outil web). Nom complet : « Domia, l'œil de Dominique ». Ne pas confondre avec la marque.
+- **Balinaisa** : la marque de mobilier d'extérieur en teck massif d'Indonésie qui édite Domia. Fondateur : Dominique Raynal. Basée au Teich (33470), bassin d'Arcachon, Nouvelle-Aquitaine, France. Site : https://balinaisa.com
+- **Dominique Raynal** : fondateur de Balinaisa. Domia porte son regard de sélection et d'agencement.
+
+## Ce que fait Domia
+
+1. On importe une photo de sa terrasse, son jardin ou son balcon.
+2. On précise, si on le souhaite, ses préférences (style, ambiance, budget).
+3. Domia compose une sélection de pièces Balinaisa adaptées à l'espace, génère un rendu de la scène meublée et estime un devis.
+4. Le rendu et le devis estimatif arrivent par email en quelques minutes.
+
+## Faits clés
+
+- Mobilier d'extérieur en **teck massif d'Indonésie**, façonné à la main.
+- Positionnement **haut de gamme**, circuit court. Prix des pièces à partir d'environ 219 € et jusqu'à plusieurs milliers d'euros pour les grandes pièces (tables à manger, bains de soleil).
+- Catégories : chaises, chaises hautes, fauteuils et sofas, tables, tables à manger, bains de soleil.
+- Simulation **gratuite et sans inscription**.
+- Devis **estimatif** : un conseiller Balinaisa recontacte ensuite pour affiner le projet.
+
+## Questions fréquentes
+
+**Qu'est-ce que Domia ?**
+Le simulateur d'aménagement extérieur de Balinaisa, pensé comme l'œil de Dominique Raynal. À partir d'une photo, il compose une sélection de mobilier en teck massif et génère un devis estimatif.
+
+**Le simulateur est-il gratuit ?**
+Oui, la simulation est gratuite et sans inscription.
+
+**Comment fonctionne la simulation ?**
+On photographie sa terrasse ou son jardin, on précise éventuellement ses préférences, et on reçoit par email son rendu ainsi qu'un devis estimatif en quelques minutes.
+
+**Quel mobilier est proposé ?**
+Du mobilier d'extérieur en teck massif d'Indonésie de la collection Balinaisa : chaises, fauteuils et tables, façonnés à la main.
+
+**Combien coûte le mobilier Balinaisa ?**
+Un positionnement haut de gamme : les pièces démarrent autour de 219 € et montent selon la taille et la collection.
+
+## Liens
+
+- Simulateur Domia : https://charlusminus.github.io/balinaisa-simulateur/
+- Site Balinaisa : https://balinaisa.com
+- Instagram : https://www.instagram.com/balinaisa/
+- Confidentialité : https://charlusminus.github.io/balinaisa-simulateur/privacy-policy.html

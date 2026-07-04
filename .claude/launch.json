@@ -4,7 +4,7 @@
     {
       "name": "balinaisa-sim",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "-p", "3456", "/tmp/balinaisa-pz"],
+      "runtimeArgs": ["serve", "-p", "3456", "/Users/charlesalzon/test/bali"],
       "port": 3456
     }
   ]
