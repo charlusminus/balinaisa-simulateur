@@ -1133,3 +1133,11 @@ select:focus-visible,
   .reviews-grid { grid-template-columns: 1fr; }
   .reviews-score { font-size: 38px; }
 }
+
+/* ── Bloc de confiance sur l'écran de fin ──────────────────────── */
+.confirmation-trust { text-align: center; margin: 26px auto 4px; padding: 18px 22px; max-width: 420px;
+  background: var(--bg-muted); border: 1px solid var(--border); border-radius: 14px; }
+.confirmation-trust-stars { color: #E3A008; font-size: 17px; letter-spacing: 2px; }
+.confirmation-trust-score { margin: 6px 0 8px; font-size: 13.5px; color: var(--text-sub); }
+.confirmation-trust-score strong { color: var(--text); font-weight: 600; }
+.confirmation-trust-quote { margin: 0; font-family: var(--font-serif); font-size: 15px; font-style: italic; line-height: 1.5; color: var(--text); }
