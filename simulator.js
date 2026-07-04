@@ -19,6 +19,7 @@ function startSimulator() {
   document.getElementById('domia')?.classList.add('hidden');
   document.getElementById('simulator').classList.remove('hidden');
   document.getElementById('cta-widget')?.classList.add('hidden');
+  document.getElementById('header-cta')?.classList.remove('is-visible');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -376,3 +377,17 @@ function shareSimulator() {
     window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener');
   }
 }
+
+/* CTA "Simuler avec Domia" dans le header : apparaît dès que le CTA du hero
+   sort de l'écran (et disparaît quand il revient). Toujours à portée de main. */
+document.addEventListener('DOMContentLoaded', () => {
+  const heroCta = document.querySelector('.hero-cta-pulse');
+  const headerCta = document.getElementById('header-cta');
+  const hero = document.getElementById('hero');
+  if (!heroCta || !headerCta || !('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver((entries) => {
+    const homeVisible = !hero.classList.contains('hidden');
+    headerCta.classList.toggle('is-visible', homeVisible && !entries[0].isIntersecting);
+  }, { rootMargin: '-64px 0px 0px 0px', threshold: 0 });
+  io.observe(heroCta);
+});

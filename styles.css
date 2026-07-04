@@ -1451,3 +1451,30 @@ input, textarea, select { font-family: var(--font-sans); }
   transition: background var(--transition), color var(--transition);
 }
 .btn-outline:hover { background: var(--primary-light); }
+
+/* ── CTA header : apparaît quand le CTA du hero sort de l'écran ── */
+.header-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 8px 15px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease, background .18s ease;
+}
+.header-cta.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+.header-cta:hover { background: var(--primary-dark); }
+.header-cta svg { flex-shrink: 0; }
+@media (max-width: 400px) {
+  .header-cta { font-size: 12px; padding: 7px 12px; gap: 5px; }
+}
