@@ -1405,3 +1405,32 @@ input, textarea, select { font-family: var(--font-sans); }
   .qty-inline-label { display: none; }
   .has-sticky-bar { padding-bottom: 76px !important; }
 }
+
+/* ── Domia — l'œil de Dominique (home) ── */
+.domia-intro { background: var(--bg-muted); padding: 68px 20px; }
+.domia-inner { max-width: 920px; margin: 0 auto; display: flex; gap: 44px; align-items: center; }
+.domia-portrait { margin: 0; flex: 0 0 240px; }
+.domia-portrait img { width: 240px; height: 300px; object-fit: cover; border-radius: 16px; display: block; }
+.domia-portrait figcaption { font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 12px; letter-spacing: .05em; }
+.domia-portrait.is-placeholder img { display: none; }
+.domia-portrait.is-placeholder::before { content: "DR"; display: flex; align-items: center; justify-content: center; width: 240px; height: 300px; border-radius: 16px; background: var(--primary); color: #fff; font-family: Georgia, serif; font-size: 52px; letter-spacing: .08em; }
+.domia-eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: .2em; color: var(--primary); font-weight: 600; margin: 0 0 18px; }
+.domia-quote { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 27px; line-height: 1.42; color: var(--text); font-style: italic; margin: 0 0 16px; }
+.domia-sign { font-size: 14px; color: var(--text-sub); margin: 0 0 22px; }
+.domia-explain { font-size: 15px; line-height: 1.75; color: var(--text-sub); margin: 0; }
+@media (max-width: 760px) {
+  .domia-intro { padding: 46px 18px; }
+  .domia-inner { flex-direction: column; gap: 26px; text-align: center; }
+  .domia-portrait { flex-basis: auto; }
+  .domia-quote { font-size: 23px; }
+}
+
+/* ── Upload mobile-first : 2 boutons (photo d'abord), dropzone = desktop uniquement ── */
+.upload-zone:not(.has-file) { display: none; }
+.upload-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 0; flex-wrap: nowrap; }
+.upload-actions .btn-camera, .upload-actions .btn-upload { width: 100%; justify-content: center; padding: 14px 18px; font-size: 15px; }
+@media (min-width: 768px) {
+  .upload-zone:not(.has-file) { display: flex; }
+  .upload-actions { flex-direction: row; justify-content: center; }
+  .upload-actions .btn-camera, .upload-actions .btn-upload { width: auto; }
+}
