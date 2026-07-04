@@ -1088,3 +1088,27 @@ select:focus-visible,
 .press-ref-cta { font-size: 13px; font-weight: 500; color: var(--primary); }
 .press-ref:hover .press-ref-cta { color: var(--primary-dark); }
 .press-ref:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 4px; }
+
+/* ── Avis clients (Google) ─────────────────────────────────────── */
+.reviews { background: var(--bg-muted); padding: 66px 0 72px; }
+.reviews-inner { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+.reviews-head { text-align: center; margin-bottom: 34px; }
+.reviews-eyebrow { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .22em; color: var(--primary); font-weight: 600; margin-bottom: 14px; }
+.reviews-rating { display: inline-flex; align-items: baseline; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.reviews-score { font-family: var(--font-serif); font-size: 44px; font-weight: 600; color: var(--text); line-height: 1; }
+.reviews-stars { color: #E3A008; font-size: 22px; letter-spacing: 2px; }
+.reviews-count { font-size: 14px; color: var(--text-sub); }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.review-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 22px 20px; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.review-stars { color: #E3A008; font-size: 15px; letter-spacing: 2px; }
+.review-card blockquote { margin: 0; font-family: var(--font-serif); font-size: 17px; line-height: 1.55; color: var(--text); font-style: italic; flex: 1 1 auto; }
+.review-card figcaption { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .1em; }
+.reviews-cta { display: block; text-align: center; margin-top: 28px; font-size: 14px; font-weight: 500; color: var(--primary); text-decoration: none; }
+.reviews-cta:hover { color: var(--primary-dark); }
+.reviews-cta:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 4px; }
+
+@media (max-width: 760px) {
+  .reviews { padding: 52px 0 56px; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .reviews-score { font-size: 38px; }
+}

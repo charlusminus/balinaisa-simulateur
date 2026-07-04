@@ -34,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://balinaisa.com">
-  <link rel="stylesheet" href="styles.css?v=20260704k">
+  <link rel="stylesheet" href="styles.css?v=20260704l">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <!-- Données structurées (SEO / GEO) -->
@@ -59,7 +59,13 @@
           "addressRegion": "Nouvelle-Aquitaine",
           "addressCountry": "FR"
         },
-        "sameAs": ["https://www.instagram.com/balinaisa/"]
+        "sameAs": ["https://www.instagram.com/balinaisa/"],
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "8", "bestRating": "5", "worstRating": "1" },
+        "review": [
+          { "@type": "Review", "author": { "@type": "Person", "name": "Denis P." }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Magnifique collection de meubles décoratifs intérieurs et extérieurs. Accueil très sympa et professionnel." },
+          { "@type": "Review", "author": { "@type": "Person", "name": "Francky T." }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "J'ai acheté une table en teck et des chaises. Une très belle qualité de fabrication à un prix plus que raisonnable." },
+          { "@type": "Review", "author": { "@type": "Person", "name": "Laure" }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "On ne peut qu'être séduit par la sélection de meubles. Très bons conseils." }
+        ]
       },
       {
         "@type": "WebApplication",
@@ -208,6 +214,38 @@
       <article class="prod-card"><div class="prod-media"><img src="https://balinaisa.com/wp-content/uploads/2025/11/Photoroom_20250926_142913.webp" alt="Fauteuil Nara en teck massif" loading="lazy" decoding="async"></div><span class="prod-cat">Fauteuil</span><h3 class="prod-name">Fauteuil Nara</h3><p class="prod-price">599 €</p></article>
       <article class="prod-card"><div class="prod-media"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20250926_203623.png" alt="Transat Satria en teck massif" loading="lazy" decoding="async"></div><span class="prod-cat">Bain de soleil</span><h3 class="prod-name">Satria</h3><p class="prod-price">999 €</p></article>
       <article class="prod-card"><div class="prod-media"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20250921_154851.png" alt="Daybed SBH en teck massif" loading="lazy" decoding="async"></div><span class="prod-cat">Bain de soleil</span><h3 class="prod-name">Daybed SBH</h3><p class="prod-price">5 289 €</p></article>
+    </div>
+  </section>
+
+  <!-- AVIS (home only) -->
+  <section class="reviews" id="avis">
+    <div class="reviews-inner">
+      <div class="reviews-head">
+        <span class="reviews-eyebrow">Ils nous font confiance</span>
+        <div class="reviews-rating">
+          <span class="reviews-score">5,0</span>
+          <span class="reviews-stars" aria-hidden="true">★★★★★</span>
+          <span class="reviews-count">8 avis Google</span>
+        </div>
+      </div>
+      <div class="reviews-grid">
+        <figure class="review-card">
+          <div class="review-stars" role="img" aria-label="Note : 5 sur 5">★★★★★</div>
+          <blockquote>Magnifique collection de meubles décoratifs intérieurs et extérieurs. Accueil très sympa et professionnel.</blockquote>
+          <figcaption>Denis P.</figcaption>
+        </figure>
+        <figure class="review-card">
+          <div class="review-stars" role="img" aria-label="Note : 5 sur 5">★★★★★</div>
+          <blockquote>J'ai acheté une table en teck et des chaises. Une très belle qualité de fabrication à un prix plus que raisonnable.</blockquote>
+          <figcaption>Francky T.</figcaption>
+        </figure>
+        <figure class="review-card">
+          <div class="review-stars" role="img" aria-label="Note : 5 sur 5">★★★★★</div>
+          <blockquote>On ne peut qu'être séduit par la sélection de meubles. Très bons conseils.</blockquote>
+          <figcaption>Laure</figcaption>
+        </figure>
+      </div>
+      <a class="reviews-cta" href="https://www.google.com/search?q=balinaisa&kgmid=/g/11ty24z4fn" target="_blank" rel="noopener">Voir les avis sur Google<span aria-hidden="true"> →</span></a>
     </div>
   </section>
 
@@ -514,7 +552,7 @@
   </div>
   -->
 
-  <script src="simulator.js?v=20260704k"></script>
+  <script src="simulator.js?v=20260704l"></script>
   <script>
     function widgetClick() {
       const hero = document.getElementById('hero');

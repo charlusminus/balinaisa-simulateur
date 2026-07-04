@@ -43,6 +43,7 @@ function startSimulator() {
   document.getElementById('domia')?.classList.add('hidden');
   document.getElementById('balinaisa')?.classList.add('hidden');
   document.getElementById('faq')?.classList.add('hidden');
+  document.getElementById('avis')?.classList.add('hidden');
   document.getElementById('simulator').classList.remove('hidden');
   document.getElementById('cta-widget')?.classList.add('hidden');
   document.getElementById('header-cta')?.classList.remove('is-visible');
@@ -55,6 +56,7 @@ function backToHome() {
   document.getElementById('domia')?.classList.remove('hidden');
   document.getElementById('balinaisa')?.classList.remove('hidden');
   document.getElementById('faq')?.classList.remove('hidden');
+  document.getElementById('avis')?.classList.remove('hidden');
   document.getElementById('cta-widget')?.classList.remove('hidden');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
