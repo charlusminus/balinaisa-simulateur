@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Intérêt confirmé · Balinaisa</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #EAE2D8; --bg-card: #FDFAF6; --primary: #B87D4B; --primary-dark: #8B5C32;
+      --text: #2A1F14; --text-sub: #7A6A58; --text-muted: #7C6A54; --border: #DDD5C8;
+      --font-serif: 'Cormorant Garamond', Georgia, serif; --font-sans: 'Inter', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-sans); background: var(--bg); color: var(--text); min-height: 100vh;
+      display: flex; align-items: center; justify-content: center; padding: 24px; line-height: 1.6; }
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+      max-width: 520px; width: 100%; padding: 44px 38px; text-align: center;
+      box-shadow: 0 8px 40px rgba(42,31,20,.08); }
+    .badge { width: 60px; height: 60px; border-radius: 50%; background: #EBF5EF; color: #3D7A5A;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 22px; }
+    h1 { font-family: var(--font-serif); font-size: 30px; font-weight: 600; margin-bottom: 12px; letter-spacing: -.01em; }
+    p { font-size: 15px; color: var(--text-sub); margin-bottom: 14px; }
+    .email { display: inline-block; background: #F5EDE0; color: var(--primary-dark); font-weight: 500;
+      padding: 6px 14px; border-radius: 8px; font-size: 14px; margin: 4px 0 22px; word-break: break-all; }
+    .actions { display: flex; flex-direction: column; gap: 10px; margin-top: 26px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 13px 24px; border-radius: 12px; font-size: 14.5px; font-weight: 500; text-decoration: none; transition: .18s; }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-ghost { background: transparent; color: var(--text-sub); border: 1px solid var(--border); }
+    .btn-ghost:hover { color: var(--text); border-color: var(--text-muted); }
+    .foot { font-size: 12px; color: var(--text-muted); margin-top: 26px; font-style: italic; }
+    a:focus-visible, .btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="badge" aria-hidden="true">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h1 id="title">Votre intérêt est confirmé</h1>
+    <p id="lead">Merci. Un conseiller Balinaisa va vous recontacter pour affiner votre projet et répondre à vos questions.</p>
+    <div class="email" id="email-box" hidden></div>
+    <div class="actions">
+      <a class="btn btn-primary" href="https://balinaisa.com" target="_blank" rel="noopener">Découvrir la collection Balinaisa</a>
+      <a class="btn btn-ghost" href="https://charlusminus.github.io/balinaisa-simulateur/">Refaire une simulation</a>
+    </div>
+    <p class="foot">Chaque pièce est façonnée à la main en teck massif, en Indonésie.</p>
+  </main>
+  <script>
+    (function () {
+      var q = new URLSearchParams(window.location.search);
+      var name = (q.get('name') || '').trim();
+      var email = (q.get('email') || '').trim();
+      if (name) {
+        var first = name.split(' ')[0];
+        document.getElementById('title').textContent = 'Merci ' + first + ', votre intérêt est confirmé';
+      }
+      if (email) {
+        var box = document.getElementById('email-box');
+        box.textContent = email;
+        box.hidden = false;
+        document.getElementById('lead').textContent = 'Merci. Un conseiller Balinaisa va vous recontacter à cette adresse pour affiner votre projet et répondre à vos questions.';
+      }
+    })();
+  </script>
+</body>
+</html>
