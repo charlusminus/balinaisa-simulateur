@@ -34,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://balinaisa.com">
-  <link rel="stylesheet" href="styles.css?v=20260704l">
+  <link rel="stylesheet" href="styles.css?v=20260704m">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <!-- Données structurées (SEO / GEO) -->
@@ -286,12 +286,16 @@
       <div class="progress-bar" id="progress-bar"></div>
     </div>
 
-    <!-- BACK TO HOME -->
+    <!-- BACK TO HOME + badge de confiance (non cliquable) -->
     <div class="sim-topbar">
       <button class="btn-back-home" onclick="backToHome()">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
         Retour
       </button>
+      <span class="sim-trust" role="img" aria-label="Note Google : 5 sur 5, 8 avis">
+        <span class="sim-trust-stars" aria-hidden="true">★★★★★</span>
+        <span class="sim-trust-text"><strong>5,0</strong><span class="sim-trust-full"> · 8 avis Google</span></span>
+      </span>
     </div>
 
     <!-- STEP COUNTER -->
@@ -552,7 +556,7 @@
   </div>
   -->
 
-  <script src="simulator.js?v=20260704l"></script>
+  <script src="simulator.js?v=20260704m"></script>
   <script>
     function widgetClick() {
       const hero = document.getElementById('hero');

@@ -343,6 +343,27 @@ input, textarea, select { font-family: var(--font-sans); }
   max-width: 860px;
   margin: 0 auto;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Badge de confiance (note Google) affiché à toutes les étapes, non cliquable */
+.sim-trust {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+.sim-trust-stars { color: #E3A008; font-size: 13px; letter-spacing: 1px; }
+.sim-trust-text { font-size: 12.5px; color: var(--text-sub); }
+.sim-trust-text strong { color: var(--text); font-weight: 600; }
+@media (max-width: 480px) {
+  .sim-topbar { padding-left: 1rem; padding-right: 1rem; }
+  .sim-trust-full { display: none; }
 }
 
 .btn-back-home {
