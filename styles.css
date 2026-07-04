@@ -1077,3 +1077,14 @@ select:focus-visible,
   }
   .hero-scroll-hint { display: none; }
 }
+
+/* ── Mention presse (Marie Claire) ─────────────────────────────── */
+.press-ref { display: inline-flex; flex-direction: column; gap: 5px; text-decoration: none;
+  border-left: 3px solid var(--primary); padding: 6px 0 6px 16px; margin: 2px 0 0; max-width: 44ch; transition: border-color .18s ease; }
+.press-ref:hover { border-left-color: var(--primary-dark); }
+.press-ref-label { font-size: 10px; text-transform: uppercase; letter-spacing: .18em; color: var(--primary); font-weight: 600; }
+.press-ref-pub { font-family: var(--font-serif); font-size: 21px; font-weight: 600; color: var(--text); line-height: 1.1; }
+.press-ref-quote { font-size: 14px; font-style: italic; color: var(--text-sub); line-height: 1.55; }
+.press-ref-cta { font-size: 13px; font-weight: 500; color: var(--primary); }
+.press-ref:hover .press-ref-cta { color: var(--primary-dark); }
+.press-ref:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 4px; }

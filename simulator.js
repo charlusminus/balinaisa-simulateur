@@ -291,7 +291,7 @@ async function submitLead(e) {
     return;
   }
 
-  // "Je suis juste curieux(se)" : la génération IA a un coût réel, réservée
+  // "Je suis juste curieux(se)" : la génération du rendu a un coût réel, réservée
   // aux intentions d'achat confirmées. On n'envoie rien au webhook.
   const intent = document.getElementById('f-intent').value;
   if (intent === 'curious') {
@@ -308,7 +308,7 @@ async function submitLead(e) {
   const company   = document.getElementById('f-company').value.trim();
 
   // photo_base64 : image redimensionnée (~1200px, JPEG 0.85 → ~200-400 Ko), assez
-  // légère pour le body du webhook. Utilisée par l'agent décor IA pour analyser
+  // légère pour le body du webhook. Utilisée par l'œil de Dominique pour analyser
   // l'espace et sélectionner le mobilier Balinaisa.
   const payload = {
     first_name: firstName,
