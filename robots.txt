@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://charlusminus.github.io/balinaisa-simulateur/sitemap.xml
