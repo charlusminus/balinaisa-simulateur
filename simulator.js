@@ -362,3 +362,15 @@ function resetSimulator() {
 
   goToStep(1);
 }
+
+/* Partage du simulateur — Web Share API (mobile : WhatsApp, réseaux, iMessage…),
+   repli WhatsApp Web sur desktop. */
+function shareSimulator() {
+  const url = 'https://charlusminus.github.io/balinaisa-simulateur/';
+  const text = "J'ai découvert Domia, l'œil de Dominique — le simulateur d'aménagement extérieur en teck Balinaisa. Une photo de votre espace suffit :";
+  if (navigator.share) {
+    navigator.share({ title: 'Domia · Balinaisa', text: text, url: url }).catch(() => {});
+  } else {
+    window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener');
+  }
+}

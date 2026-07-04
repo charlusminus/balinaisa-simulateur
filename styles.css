@@ -1434,3 +1434,17 @@ input, textarea, select { font-family: var(--font-sans); }
   .upload-actions { flex-direction: row; justify-content: center; }
   .upload-actions .btn-camera, .upload-actions .btn-upload { width: auto; }
 }
+
+/* ── Bouton outline (CTA secondaire, ex. écran de fin) ── */
+.btn-outline {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-md);
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+.btn-outline:hover { background: var(--primary-light); }
