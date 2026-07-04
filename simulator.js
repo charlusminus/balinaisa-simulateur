@@ -1,5 +1,5 @@
 /* =============================================
-   BALINAISA SIMULATOR — Logic
+   BALINAISA SIMULATOR - Logic
    ============================================= */
 
 const WEBHOOK_URL = 'https://charlusminus.app.n8n.cloud/webhook/balinaisa-simulateur';
@@ -47,7 +47,7 @@ function handleFileUpload(input) {
   const MAX_MB = 8;
   const errEl = document.getElementById('upload-error');
   if (file.size > MAX_MB * 1024 * 1024) {
-    errEl.textContent = `Image trop lourde (${(file.size / 1024 / 1024).toFixed(1)} Mo) — max ${MAX_MB} Mo`;
+    errEl.textContent = `Image trop lourde (${(file.size / 1024 / 1024).toFixed(1)} Mo · max ${MAX_MB} Mo)`;
     errEl.classList.remove('hidden');
     input.value = '';
     return;
@@ -86,7 +86,7 @@ function handleFileUpload(input) {
 }
 
 // Camera/gallery buttons only on mobile (tablet/phone). On desktop the
-// drop zone stays the single import CTA — no redundant button.
+// drop zone stays the single import CTA - no redundant button.
 document.addEventListener('DOMContentLoaded', () => {
   const actions = document.getElementById('upload-actions');
   if (!actions) return;
@@ -163,7 +163,7 @@ function updateProgressBar(step) {
 }
 
 /* =============================================
-   STEP 2 — LEAD FORM (recap photo)
+   STEP 2 - LEAD FORM (recap photo)
    ============================================= */
 function populateLeadForm() {
   const recap = document.getElementById('lead-product-recap');
@@ -184,7 +184,7 @@ function populateLeadForm() {
 }
 
 /* =============================================
-   PROFILE — particulier / pro
+   PROFILE - particulier / pro
    ============================================= */
 function selectProfile(value) {
   profile = value;
@@ -248,7 +248,7 @@ function goToStep4() {
 }
 
 /* =============================================
-   STEP 4 — SUBMIT
+   STEP 4 - SUBMIT
    ============================================= */
 async function submitLead(e) {
   e.preventDefault();
@@ -306,7 +306,7 @@ async function submitLead(e) {
 }
 
 /* =============================================
-   RÉSULTAT ALTERNATIF — intention "curieux(se)"
+   RÉSULTAT ALTERNATIF - intention "curieux(se)"
    ============================================= */
 function showCuriousScreen() {
   document.querySelectorAll('.step-panel').forEach(p => p.classList.add('hidden'));
@@ -363,11 +363,11 @@ function resetSimulator() {
   goToStep(1);
 }
 
-/* Partage du simulateur — Web Share API (mobile : WhatsApp, réseaux, iMessage…),
+/* Partage du simulateur - Web Share API (mobile : WhatsApp, réseaux, iMessage…),
    repli WhatsApp Web sur desktop. */
 function shareSimulator() {
   const url = 'https://charlusminus.github.io/balinaisa-simulateur/';
-  const text = "J'ai découvert Domia, l'œil de Dominique — le simulateur d'aménagement extérieur en teck Balinaisa. Une photo de votre espace suffit :";
+  const text = "J'ai découvert Domia, l'œil de Dominique : le simulateur d'aménagement extérieur en teck Balinaisa. Une photo de votre espace suffit :";
   if (navigator.share) {
     navigator.share({ title: 'Domia · Balinaisa', text: text, url: url }).catch(() => {});
   } else {

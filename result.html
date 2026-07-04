@@ -112,20 +112,20 @@
     <div class="devis-card">
       <div class="devis-head">
         <div class="devis-head-label">Votre devis</div>
-        <div class="devis-product-name" id="dv-product">—</div>
+        <div class="devis-product-name" id="dv-product">-</div>
         <div class="devis-product-sub">Teck massif artisanal · Finition huilée</div>
       </div>
       <div class="devis-body">
-        <div class="devis-row"><span class="devis-row-label">Quantité</span><span class="devis-row-val" id="dv-qty">—</span></div>
-        <div class="devis-row"><span class="devis-row-label">Total HT</span><span class="devis-row-val" id="dv-ht">—</span></div>
-        <div class="devis-row"><span class="devis-row-label">TVA 20%</span><span class="devis-row-val" id="dv-tva">—</span></div>
+        <div class="devis-row"><span class="devis-row-label">Quantité</span><span class="devis-row-val" id="dv-qty">-</span></div>
+        <div class="devis-row"><span class="devis-row-label">Total HT</span><span class="devis-row-val" id="dv-ht">-</span></div>
+        <div class="devis-row"><span class="devis-row-label">TVA 20%</span><span class="devis-row-val" id="dv-tva">-</span></div>
         <div class="devis-total-row">
           <span class="devis-total-label">Total TTC</span>
-          <span class="devis-total-price" id="dv-ttc">—</span>
+          <span class="devis-total-price" id="dv-ttc">-</span>
         </div>
         <div id="dv-discount" style="display:none" class="discount-tag">Remise pack ×4 appliquée (−10%)</div>
         <div class="devis-intent" id="dv-intent" style="display:none">
-          Horizon d'achat : <strong id="dv-intent-val">—</strong>
+          Horizon d'achat : <strong id="dv-intent-val">-</strong>
         </div>
       </div>
       <div class="devis-actions">
@@ -165,7 +165,7 @@ const eur = (n) => n.toLocaleString('fr-FR', {minimumFractionDigits:2,maximumFra
 // Greeting
 document.getElementById('greeting').textContent = firstName ? `Bonjour, ${firstName} !` : 'Votre simulation Balinaisa';
 if (firstName) {
-  document.getElementById('greeting-sub').textContent = `Voici votre simulation personnalisée${productName ? ' — ' + productName : ''} et votre devis estimatif.`;
+  document.getElementById('greeting-sub').textContent = `Voici votre simulation personnalisée${productName ? ' - ' + productName : ''} et votre devis estimatif.`;
 }
 
 // Devis
@@ -200,10 +200,10 @@ if (imgUrl) {
       <div class="sim-placeholder-text">Votre simulation IA<br>sera ajoutée ici par notre équipe</div>
     </div>`;
   document.getElementById('sim-badge-el').outerHTML = `<span class="sim-badge sim-badge-pending">En préparation</span>`;
-  document.getElementById('sim-foot-label').textContent = `${productName} — teck massif artisanal`;
+  document.getElementById('sim-foot-label').textContent = `${productName} - teck massif artisanal`;
 }
 
-document.title = `Simulation ${productName} — Balinaisa`;
+document.title = `Simulation ${productName} - Balinaisa`;
 </script>
 </body>
 </html>

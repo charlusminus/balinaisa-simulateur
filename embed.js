@@ -1,5 +1,5 @@
 /* =============================================
-   BALINAISA — Embed widget
+   BALINAISA - Embed widget
    À coller avant </body> sur balinaisa.com
 
    Usage :
