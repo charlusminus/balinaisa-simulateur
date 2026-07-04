@@ -384,13 +384,27 @@ function shareSimulator() {
 
 /* CTA "Simuler avec Domia" dans le header : apparaît dès que le CTA du hero
    sort de l'écran (et disparaît quand il revient). Toujours à portée de main. */
-document.addEventListener('DOMContentLoaded', () => {
-  // Accessibilite : si l'utilisateur prefere le mouvement reduit, on fige la video de fond (le poster reste affiche).
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const video = document.querySelector('.hero-bg-video');
-    if (video) { try { video.removeAttribute('autoplay'); video.pause(); } catch (e) {} }
-  }
+/* Video de fond du hero : le MP4 est lourd (~50 Mo). Par defaut on affiche le
+   poster (leger), et on ne charge/joue la video QUE si ca vaut le coup :
+   desktop, connexion correcte, sans Save-Data ni preference de mouvement reduit.
+   Chargement apres l'evenement load pour ne pas concurrencer le rendu initial. */
+function maybeLoadHeroVideo() {
+  const video = document.querySelector('.hero-bg-video');
+  if (!video) return;
+  const mm = window.matchMedia;
+  const reduced = mm && mm('(prefers-reduced-motion: reduce)').matches;
+  const small = mm && mm('(max-width: 760px)').matches;
+  const conn = navigator.connection || {};
+  const constrained = conn.saveData === true || /(^|-)2g$/.test(conn.effectiveType || '');
+  if (reduced || small || constrained) return; // on garde le poster
+  const source = video.querySelector('source[data-src]');
+  if (!source || source.src) return;
+  source.src = source.getAttribute('data-src');
+  try { video.load(); const p = video.play(); if (p) p.catch(() => {}); } catch (e) {}
+}
+window.addEventListener('load', maybeLoadHeroVideo);
 
+document.addEventListener('DOMContentLoaded', () => {
   const heroCta = document.querySelector('.hero-cta-pulse');
   const headerCta = document.getElementById('header-cta');
   const hero = document.getElementById('hero');
