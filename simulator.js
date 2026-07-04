@@ -17,6 +17,7 @@ let profile = null; // 'particulier' | 'pro'
 function startSimulator() {
   document.getElementById('hero').classList.add('hidden');
   document.getElementById('domia')?.classList.add('hidden');
+  document.getElementById('balinaisa')?.classList.add('hidden');
   document.getElementById('simulator').classList.remove('hidden');
   document.getElementById('cta-widget')?.classList.add('hidden');
   document.getElementById('header-cta')?.classList.remove('is-visible');
@@ -27,6 +28,7 @@ function backToHome() {
   document.getElementById('simulator').classList.add('hidden');
   document.getElementById('hero').classList.remove('hidden');
   document.getElementById('domia')?.classList.remove('hidden');
+  document.getElementById('balinaisa')?.classList.remove('hidden');
   document.getElementById('cta-widget')?.classList.remove('hidden');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
