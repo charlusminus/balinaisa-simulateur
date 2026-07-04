@@ -145,6 +145,7 @@
     <div class="domia-inner">
       <figure class="domia-portrait">
         <img src="dominique.jpg" alt="Dominique Raynal, fondateur de Balinaisa"
+             width="900" height="450" loading="lazy" decoding="async"
              onerror="this.closest('.domia-portrait').classList.add('is-placeholder')">
         <figcaption>Dominique Raynal · Balinaisa</figcaption>
       </figure>
@@ -184,7 +185,9 @@
         <h2 class="step-title">Importez une photo de votre espace</h2>
         <p class="step-desc">JPG ou PNG · max 10 Mo · terrasse, jardin, bord de piscine · vue d'ensemble recommandée</p>
       </div>
-      <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()">
+      <div class="upload-zone" id="upload-zone" role="button" tabindex="0" aria-label="Importer une photo de votre espace"
+           onclick="document.getElementById('file-input').click()"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();document.getElementById('file-input').click()}">
         <div class="upload-zone-inner" id="upload-zone-inner">
           <div class="upload-icon">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
