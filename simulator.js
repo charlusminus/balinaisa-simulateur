@@ -5,6 +5,30 @@
 const WEBHOOK_URL = 'https://charlusminus.app.n8n.cloud/webhook/balinaisa-simulateur';
 const TOTAL_FORM_STEPS = 4; // Photo, Profil, Coordonnées, Horizon+consent (5e = Confirmation)
 
+/* Tracking marketing : on capte les UTM (+ gclid/fbclid, referrer, landing) au
+   PREMIER hit et on les fige en sessionStorage (first-touch). L'URL ne change pas
+   quand on lance le simulateur, mais on securise ainsi reload/navigation interne.
+   Ces champs partent dans le payload du lead pour etre logges dans le Sheet. */
+const TRACKING_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid'];
+const TRACKING_STORE = 'balinaisa_tracking';
+
+function captureTracking() {
+  try {
+    const stored = JSON.parse(sessionStorage.getItem(TRACKING_STORE) || 'null');
+    if (stored) return stored; // first-touch deja fige
+    const q = new URLSearchParams(window.location.search);
+    const data = {};
+    TRACKING_KEYS.forEach(k => { data[k] = (q.get(k) || '').trim(); });
+    data.referrer = document.referrer || '';
+    data.landing_url = window.location.href;
+    sessionStorage.setItem(TRACKING_STORE, JSON.stringify(data));
+    return data;
+  } catch (_) {
+    return {};
+  }
+}
+const TRACKING = captureTracking();
+
 // State
 let currentStep = 0;
 let uploadedFile = null;
@@ -299,6 +323,7 @@ async function submitLead(e) {
     client_note: (document.getElementById('f-note')?.value || '').trim() || null,
     photo_base64: uploadedDataURL || null,
     source:     'simulateur-balinaisa',
+    ...TRACKING,
   };
 
   try {
