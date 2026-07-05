@@ -970,7 +970,8 @@ input, textarea, select { font-family: var(--font-sans); }
 
 /* ── Upload mobile-first : 2 boutons (photo d'abord), dropzone = desktop uniquement ── */
 .upload-zone:not(.has-file) { display: none; }
-.upload-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 0; flex-wrap: nowrap; }
+.upload-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; flex-wrap: nowrap; }
+.upload-zone.has-file { margin-bottom: 4px; }
 .upload-actions .btn-camera, .upload-actions .btn-upload { width: 100%; justify-content: center; padding: 14px 18px; font-size: 15px; }
 @media (min-width: 768px) {
   .upload-zone:not(.has-file) { display: flex; }
