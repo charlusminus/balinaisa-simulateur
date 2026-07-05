@@ -387,8 +387,8 @@ function showBlockedScreen(reason) {
   const sub   = document.querySelector('#step-5 .confirmation-sub');
   const icon  = document.querySelector('#step-5 .confirmation-icon');
   if (reason === 'limit') {
-    if (title) title.textContent = 'Limite de simulations atteinte';
-    if (sub) sub.textContent = "Vous avez déjà réalisé le nombre maximum de simulations pour cette adresse email. Pour aller plus loin, écrivez-nous à contact@balinaisa.com et nous poursuivrons ensemble.";
+    if (title) title.textContent = 'Votre intérêt nous honore';
+    if (sub) sub.textContent = "Vous avez déjà composé plusieurs ambiances avec Domia, et votre enthousiasme nous touche. Pour imaginer la suite sur mesure et donner vie à votre projet, notre équipe se fera une joie d'échanger avec vous : écrivez-nous à contact@balinaisa.com.";
   } else if (reason === 'daily') {
     if (title) title.textContent = 'Simulateur très sollicité';
     if (sub) sub.textContent = "Le simulateur reçoit un grand nombre de demandes en ce moment. Merci de réessayer un peu plus tard dans la journée.";
