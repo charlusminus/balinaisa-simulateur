@@ -1141,3 +1141,8 @@ select:focus-visible,
 .confirmation-trust-score { margin: 6px 0 8px; font-size: 13.5px; color: var(--text-sub); }
 .confirmation-trust-score strong { color: var(--text); font-weight: 600; }
 .confirmation-trust-quote { margin: 0; font-family: var(--font-serif); font-size: 15px; font-style: italic; line-height: 1.5; color: var(--text); }
+
+/* ── Anti-bot Turnstile ────────────────────────────────────────── */
+.turnstile-box { margin: 4px 0 14px; }
+.turnstile-box:empty { margin: 0; }
+.captcha-error { color: var(--danger, #C0392B); font-size: 13px; margin: 0 0 12px; }

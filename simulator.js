@@ -5,6 +5,23 @@
 const WEBHOOK_URL = 'https://charlusminus.app.n8n.cloud/webhook/balinaisa-simulateur';
 const TOTAL_FORM_STEPS = 4; // Photo, Profil, Coordonnées, Horizon+consent (5e = Confirmation)
 
+/* Anti-bot Cloudflare Turnstile (gratuit). Vide = désactivé (le front n'exige pas de token).
+   Pour activer : coller la Site Key ci-dessous, puis configurer la vérification du token côté n8n. */
+const TURNSTILE_SITEKEY = '';
+let _turnstileId = null;
+function renderTurnstile() {
+  if (!TURNSTILE_SITEKEY || !window.turnstile || _turnstileId !== null) return;
+  if (document.getElementById('turnstile-box')) {
+    try { _turnstileId = turnstile.render('#turnstile-box', { sitekey: TURNSTILE_SITEKEY, theme: 'light' }); } catch (e) {}
+  }
+}
+window.onTurnstileLoad = renderTurnstile;
+document.addEventListener('DOMContentLoaded', renderTurnstile);
+function getCaptchaToken() {
+  if (!TURNSTILE_SITEKEY || !window.turnstile || _turnstileId === null) return '';
+  try { return turnstile.getResponse(_turnstileId) || ''; } catch (e) { return ''; }
+}
+
 /* Tracking marketing : on capte les UTM (+ gclid/fbclid, referrer, landing) au
    PREMIER hit et on les fige en sessionStorage (first-touch). L'URL ne change pas
    quand on lance le simulateur, mais on securise ainsi reload/navigation interne.
@@ -301,6 +318,14 @@ async function submitLead(e) {
     return;
   }
 
+  // Anti-bot : exigé seulement si une Site Key Turnstile est configurée.
+  const captchaToken = getCaptchaToken();
+  if (TURNSTILE_SITEKEY && !captchaToken) {
+    document.getElementById('captcha-error')?.classList.remove('hidden');
+    return;
+  }
+  document.getElementById('captcha-error')?.classList.add('hidden');
+
   const btn = document.getElementById('btn-submit-lead');
   btn.disabled = true;
   btn.innerHTML = '<span>Envoi en cours…</span>';
@@ -325,6 +350,7 @@ async function submitLead(e) {
     client_note: (document.getElementById('f-note')?.value || '').trim() || null,
     photo_base64: uploadedDataURL || null,
     source:     'simulateur-balinaisa',
+    captcha_token: captchaToken,
     ...TRACKING,
   };
 
