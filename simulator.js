@@ -7,7 +7,7 @@ const TOTAL_FORM_STEPS = 4; // Photo, Profil, Coordonnées, Horizon+consent (5e 
 
 /* Anti-bot Cloudflare Turnstile (gratuit). Vide = désactivé (le front n'exige pas de token).
    Pour activer : coller la Site Key ci-dessous, puis configurer la vérification du token côté n8n. */
-const TURNSTILE_SITEKEY = '';
+const TURNSTILE_SITEKEY = '0x4AAAAAADwDzprfOCkDePsI';
 let _turnstileId = null;
 function renderTurnstile() {
   if (!TURNSTILE_SITEKEY || !window.turnstile || _turnstileId !== null) return;
