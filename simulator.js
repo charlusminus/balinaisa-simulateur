@@ -364,14 +364,41 @@ async function submitLead(e) {
     ...TRACKING,
   };
 
+  // Le webhook répond APRÈS le contrôle anti-abus (captcha + plafond). On lit le statut :
+  // ok:false + reason:'limit' => l'utilisateur a atteint le nombre max de simulations.
+  let blockedReason = null;
   try {
-    await fetch(WEBHOOK_URL, {
+    const res = await fetch(WEBHOOK_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
-  } catch (_) {}
+    const data = await res.json().catch(() => null);
+    if (data && data.ok === false) blockedReason = data.reason || 'limit';
+  } catch (_) { /* souci réseau : on reste optimiste et on affiche la confirmation */ }
 
+  if (blockedReason) { showBlockedScreen(blockedReason); return; }
+  goToStep(5);
+}
+
+// Écran de blocage (réutilise l'étape 5 en adaptant le message) quand la demande n'aboutit pas.
+function showBlockedScreen(reason) {
+  const title = document.querySelector('#step-5 .confirmation-title');
+  const sub   = document.querySelector('#step-5 .confirmation-sub');
+  const icon  = document.querySelector('#step-5 .confirmation-icon');
+  if (reason === 'limit') {
+    if (title) title.textContent = 'Limite de simulations atteinte';
+    if (sub) sub.textContent = "Vous avez déjà réalisé le nombre maximum de simulations pour cette adresse email. Pour aller plus loin, écrivez-nous à contact@balinaisa.com et nous poursuivrons ensemble.";
+  } else if (reason === 'daily') {
+    if (title) title.textContent = 'Simulateur très sollicité';
+    if (sub) sub.textContent = "Le simulateur reçoit un grand nombre de demandes en ce moment. Merci de réessayer un peu plus tard dans la journée.";
+  } else {
+    if (title) title.textContent = "Nous n'avons pas pu traiter votre demande";
+    if (sub) sub.textContent = "Un souci est survenu lors de la validation. Merci de réessayer, ou écrivez-nous à contact@balinaisa.com.";
+  }
+  if (icon) icon.classList.add('confirmation-icon--info');
+  document.querySelector('#step-5 .confirmation-details')?.classList.add('hidden');
+  document.querySelector('#step-5 .confirmation-trust')?.classList.add('hidden');
   goToStep(5);
 }
 
