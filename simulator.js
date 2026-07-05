@@ -291,9 +291,19 @@ function goToStep4() {
   const firstname = document.getElementById('f-firstname');
   const lastname  = document.getElementById('f-lastname');
   const email     = document.getElementById('f-email');
+  const phone     = document.getElementById('f-phone');
   if (!firstname.reportValidity()) return;
   if (!lastname.reportValidity()) return;
   if (!email.reportValidity()) return;
+  // Téléphone : requis + numéro plausible (international accepté). On compte les chiffres
+  // en ignorant espaces, +, tirets, points et parenthèses. E.164 : 8 à 15 chiffres.
+  const phoneDigits = (phone.value || '').replace(/\D/g, '');
+  phone.setCustomValidity(
+    phoneDigits.length >= 8 && phoneDigits.length <= 15
+      ? ''
+      : 'Indiquez un numéro de téléphone valide (8 à 15 chiffres, indicatif international accepté, ex. +33 6 12 34 56 78).'
+  );
+  if (!phone.reportValidity()) return;
   goToStep(4);
 }
 
