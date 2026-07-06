@@ -21,6 +21,12 @@ function getCaptchaToken() {
   if (!TURNSTILE_SITEKEY || !window.turnstile || _turnstileId === null) return '';
   try { return turnstile.getResponse(_turnstileId) || ''; } catch (e) { return ''; }
 }
+// Le token Turnstile est a usage unique : on reinitialise le widget apres un envoi ou
+// sur "Refaire une simulation" pour generer un token frais (evite l'erreur duplicate).
+function resetTurnstile() {
+  if (!TURNSTILE_SITEKEY || !window.turnstile || _turnstileId === null) return;
+  try { turnstile.reset(_turnstileId); } catch (e) {}
+}
 
 /* Tracking marketing : on capte les UTM (+ gclid/fbclid, referrer, landing) au
    PREMIER hit et on les fige en sessionStorage (first-touch). L'URL ne change pas
@@ -377,6 +383,9 @@ async function submitLead(e) {
     if (data && data.ok === false) blockedReason = data.reason || 'limit';
   } catch (_) { /* souci réseau : on reste optimiste et on affiche la confirmation */ }
 
+  // Token consommé : on régénère un token frais pour une éventuelle nouvelle simulation.
+  resetTurnstile();
+
   if (blockedReason) { showBlockedScreen(blockedReason); return; }
   goToStep(5);
 }
@@ -456,6 +465,8 @@ function resetSimulator() {
     btn.innerHTML = `Lancer ma simulation gratuite
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`;
   }
+  document.getElementById('captcha-error')?.classList.add('hidden');
+  resetTurnstile(); // garantit un token frais pour la nouvelle simulation
 
   goToStep(1);
 }
