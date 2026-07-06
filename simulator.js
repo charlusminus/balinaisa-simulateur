@@ -11,9 +11,12 @@ const TURNSTILE_SITEKEY = '0x4AAAAAADwDzprfOCkDePsI';
 let _turnstileId = null;
 function renderTurnstile() {
   if (!TURNSTILE_SITEKEY || !window.turnstile || _turnstileId !== null) return;
-  if (document.getElementById('turnstile-box')) {
-    try { _turnstileId = turnstile.render('#turnstile-box', { sitekey: TURNSTILE_SITEKEY, theme: 'light' }); } catch (e) {}
-  }
+  const box = document.getElementById('turnstile-box');
+  // iOS Safari : rendre le widget dans un conteneur encore masque (display:none)
+  // produit une iframe a dimensions nulles qui ne s'affiche jamais. On attend donc
+  // que la boite soit reellement visible (etape 4 affichee) avant de rendre.
+  if (!box || box.offsetParent === null) return;
+  try { _turnstileId = turnstile.render('#turnstile-box', { sitekey: TURNSTILE_SITEKEY, theme: 'light' }); } catch (e) {}
 }
 window.onTurnstileLoad = renderTurnstile;
 document.addEventListener('DOMContentLoaded', renderTurnstile);
@@ -196,6 +199,10 @@ function goToStep(step) {
   currentStep = step;
 
   if (step === 2) populateLeadForm();
+
+  // L'etape 4 porte le widget Turnstile : on le rend une fois la boite visible
+  // (rAF pour laisser le layout s'appliquer), sinon iOS Safari ne l'affiche pas.
+  if (step === TOTAL_FORM_STEPS) requestAnimationFrame(renderTurnstile);
 
   applyStickies();
   window.scrollTo({ top: 60, behavior: 'smooth' });
