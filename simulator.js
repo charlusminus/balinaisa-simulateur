@@ -397,7 +397,7 @@ function showBlockedScreen(reason) {
   const icon  = document.querySelector('#step-5 .confirmation-icon');
   if (reason === 'limit') {
     if (title) title.textContent = 'Votre intérêt nous honore';
-    if (sub) sub.textContent = "Vous avez déjà composé plusieurs ambiances avec Domia, et votre enthousiasme nous touche. Pour imaginer la suite sur mesure et donner vie à votre projet, notre équipe se fera une joie d'échanger avec vous : écrivez-nous à contact@balinaisa.com.";
+    if (sub) sub.textContent = "Vous avez déjà composé plusieurs ambiances avec Domia, et votre enthousiasme nous touche. Pour imaginer la suite sur mesure et donner vie à votre projet, l'équipe Balinaisa se fera une joie d'échanger avec vous :";
   } else if (reason === 'daily') {
     if (title) title.textContent = 'Simulateur très sollicité';
     if (sub) sub.textContent = "Le simulateur reçoit un grand nombre de demandes en ce moment. Merci de réessayer un peu plus tard dans la journée.";
@@ -405,6 +405,9 @@ function showBlockedScreen(reason) {
     if (title) title.textContent = "Nous n'avons pas pu traiter votre demande";
     if (sub) sub.textContent = "Un souci est survenu lors de la validation. Merci de réessayer, ou écrivez-nous à contact@balinaisa.com.";
   }
+  // Coordonnées complètes Balinaisa : affichées seulement sur l'écran de limite atteinte.
+  const contact = document.getElementById('limit-contact');
+  if (contact) contact.classList.toggle('hidden', reason !== 'limit');
   if (icon) icon.classList.add('confirmation-icon--info');
   document.querySelector('#step-5 .confirmation-details')?.classList.add('hidden');
   document.querySelector('#step-5 .confirmation-trust')?.classList.add('hidden');

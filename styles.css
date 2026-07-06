@@ -1147,3 +1147,11 @@ select:focus-visible,
 .turnstile-box { margin: 4px 0 14px; }
 .turnstile-box:empty { margin: 0; }
 .captcha-error { color: var(--danger, #C0392B); font-size: 13px; margin: 0 0 12px; }
+
+/* ── Coordonnées Balinaisa (écran limite de simulations) ───────── */
+.confirmation-contact { display: flex; flex-direction: column; gap: 10px; margin: 6px auto 26px; max-width: 430px; text-align: left; }
+.cc-item { display: flex; align-items: center; gap: 14px; padding: 13px 16px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--bg-card); color: var(--text); text-decoration: none; transition: border-color var(--transition), background var(--transition); }
+.cc-item:hover { border-color: var(--primary); background: var(--bg-muted); }
+.cc-item svg { color: var(--primary); flex: 0 0 auto; }
+.cc-item > span { display: flex; flex-direction: column; font-size: 15px; line-height: 1.3; }
+.cc-label { font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: var(--text-muted); margin-bottom: 2px; font-weight: 500; }
