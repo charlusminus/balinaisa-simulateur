@@ -380,6 +380,7 @@ async function submitLead(e) {
     is_pro:     profile === 'pro',
     company:    profile === 'pro' ? company : null,
     client_note: (document.getElementById('f-note')?.value || '').trim() || null,
+    budget:      document.getElementById('f-budget')?.value || null,
     photo_base64: uploadedDataURL || null,
     source:     'simulateur-balinaisa',
     captcha_token: captchaToken,

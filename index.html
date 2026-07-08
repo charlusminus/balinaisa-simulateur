@@ -34,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://balinaisa.com">
-  <link rel="stylesheet" href="styles.css?v=20260706e">
+  <link rel="stylesheet" href="styles.css?v=20260708b">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad" async defer></script>
 
@@ -346,6 +346,20 @@
         <div class="tip"><span class="tip-icon">✓</span> Bonne luminosité naturelle</div>
         <div class="tip"><span class="tip-icon">✓</span> Espace visible pour placer un meuble</div>
       </div>
+      <!-- Bande de prix : ancre la gamme dans la tête du visiteur avant de générer (self-qualification budget). -->
+      <div class="price-band" aria-label="Aperçu de la collection et des prix">
+        <p class="price-band-head">Gamme premium, façonnée à la main en teck massif · <strong>de 219 € à 5 289 €</strong></p>
+        <div class="price-band-scroll">
+          <div class="price-chip"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20250920_234118.png" alt="Chaise Andini" loading="lazy"><span class="pc-name">Andini</span><span class="pc-price">219 €</span></div>
+          <div class="price-chip"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20250918_174321.jpg" alt="Chaise Nara" loading="lazy"><span class="pc-name">Nara</span><span class="pc-price">319 €</span></div>
+          <div class="price-chip"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20250921_161427.jpg" alt="Chaise Aruna" loading="lazy"><span class="pc-name">Aruna</span><span class="pc-price">359 €</span></div>
+          <div class="price-chip"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20250920_235719.jpg" alt="Fauteuil Indra" loading="lazy"><span class="pc-name">Indra</span><span class="pc-price">389 €</span></div>
+          <div class="price-chip"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Luma1.jpg" alt="Fauteuil Luma" loading="lazy"><span class="pc-name">Luma</span><span class="pc-price">499 €</span></div>
+          <div class="price-chip"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20250921_151659.jpg" alt="Table basse Nara" loading="lazy"><span class="pc-name">Nara coffee</span><span class="pc-price">549 €</span></div>
+          <div class="price-chip"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20250926_203623.png" alt="Transat Satria" loading="lazy"><span class="pc-name">Satria</span><span class="pc-price">999 €</span></div>
+          <div class="price-chip"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20250921_154851.png" alt="Daybed SBH" loading="lazy"><span class="pc-name">Daybed SBH</span><span class="pc-price">5 289 €</span></div>
+        </div>
+      </div>
       <div class="client-note">
         <label class="client-note-label" for="f-note">Vos préférences <span>(optionnel)</span></label>
         <textarea id="f-note" class="client-note-input" rows="3" maxlength="500"
@@ -455,6 +469,16 @@
                 <option value="1-3months">D'ici 1 à 3 mois</option>
                 <option value="3months+">Dans 3 mois et plus</option>
                 <option value="curious">Je suis juste curieux(se)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="f-budget">Budget approximatif du projet <span class="label-opt">(optionnel)</span></label>
+              <select id="f-budget">
+                <option value="">Préfère ne pas préciser</option>
+                <option value="<1000">Moins de 1 000 €</option>
+                <option value="1000-3000">1 000 – 3 000 €</option>
+                <option value="3000-8000">3 000 – 8 000 €</option>
+                <option value="8000+">Plus de 8 000 €</option>
               </select>
             </div>
             <label class="checkbox-row">
@@ -581,7 +605,7 @@
   </div>
   -->
 
-  <script src="simulator.js?v=20260708a"></script>
+  <script src="simulator.js?v=20260708b"></script>
   <script>
     function widgetClick() {
       const hero = document.getElementById('hero');
