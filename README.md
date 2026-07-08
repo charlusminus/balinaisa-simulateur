@@ -22,15 +22,26 @@ result.html    — page de rendu
 2. Settings → Pages → Source : `main` / `/ (root)`
 3. URL publique : `https://charlusminus.github.io/balinaisa-pz/`
 
-## Intégration sur balinaisa.com
+## Intégration sur balinaisa.com (widget « Simuler avec Domia »)
+
+`embed.js` est un **composant autonome** (styles scopés, aucune dépendance au CSS du site) :
+bouton flottant qui ouvre le simulateur, avec UTM et tracking de clic. Prêt à déposer.
 
 Coller avant `</body>` :
 
 ```html
-<script src="https://charlusminus.github.io/balinaisa-pz/embed.js" defer></script>
+<script src="https://simulateur.balinaisa.com/embed.js" defer></script>
 ```
 
-Options : `data-position="bottom-right"` (défaut) / `"bottom-left"`, `data-label="…"`.
+Options (data-attributes sur la balise `<script>`) :
+- `data-position="bottom-right"` (défaut) / `"bottom-left"`
+- `data-label="Simuler avec Domia"`
+- `data-target="https://simulateur.balinaisa.com/"` (URL du simulateur)
+- `data-utm-source` / `data-utm-medium` / `data-utm-campaign` (défauts : `site-balinaisa` / `widget-sticky` / `domia`)
+
+**Tracking** : UTM ajoutés à l'URL + événement de clic poussé (si présents) à Google Analytics
+(`gtag` / `dataLayer`) et Plausible. Aperçu/essai : `widget-demo.html`.
+Testé aux breakpoints desktop / 375 / 320 px, `prefers-reduced-motion` et focus clavier.
 
 ## Fonctionnement
 

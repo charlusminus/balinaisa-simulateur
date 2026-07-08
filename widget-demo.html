@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Démo widget Balinaisa (page hôte simulée)</title>
+  <style>
+    body { margin: 0; font-family: system-ui, sans-serif; color: #2a2a2a; }
+    header { background: #1c1c1c; color: #fff; padding: 18px 24px; font-weight: 600; }
+    main { max-width: 780px; margin: 0 auto; padding: 40px 24px 120px; line-height: 1.6; }
+    h1 { font-weight: 600; }
+    .filler { height: 700px; background: linear-gradient(#faf7f2, #efe7db); border-radius: 12px; margin-top: 32px; display:flex; align-items:center; justify-content:center; color:#b9a684; }
+  </style>
+  <!-- Stub analytics pour vérifier le tracking du widget -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    var _push = window.dataLayer.push.bind(window.dataLayer);
+    window.dataLayer.push = function (o) { console.log('[dataLayer]', JSON.stringify(o)); return _push(o); };
+    window.gtag = function () { console.log('[gtag]', JSON.stringify([].slice.call(arguments))); };
+    window.plausible = function (n) { console.log('[plausible]', n); };
+  </script>
+</head>
+<body>
+  <header>balinaisa.com — page hôte simulée</header>
+  <main>
+    <h1>Mobilier teck massif d'Indonésie</h1>
+    <p>Cette page simule le site Balinaisa pour tester le widget flottant « Simuler avec Domia ». Le bouton doit rester visible en bas à droite, à tous les formats d'écran.</p>
+    <div class="filler">contenu de la page…</div>
+  </main>
+
+  <!-- Le widget, comme il sera déposé sur le site -->
+  <script src="embed.js" defer></script>
+</body>
+</html>
