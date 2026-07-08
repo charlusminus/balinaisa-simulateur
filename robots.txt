@@ -1,4 +1,4 @@
-# Balinaisa · simulateur Domia
+# Balinaisa · simulateur Balinaisa.ia
 # Moteurs de recherche et moteurs generatifs bienvenus (citation encouragee).
 
 User-agent: *

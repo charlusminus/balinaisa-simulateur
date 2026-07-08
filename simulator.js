@@ -66,7 +66,7 @@ let profile = null; // 'particulier' | 'pro'
    ============================================= */
 function startSimulator() {
   document.getElementById('hero').classList.add('hidden');
-  document.getElementById('domia')?.classList.add('hidden');
+  document.getElementById('balinaisa-ia')?.classList.add('hidden');
   document.getElementById('balinaisa')?.classList.add('hidden');
   document.getElementById('faq')?.classList.add('hidden');
   document.getElementById('avis')?.classList.add('hidden');
@@ -79,7 +79,7 @@ function startSimulator() {
 function backToHome() {
   document.getElementById('simulator').classList.add('hidden');
   document.getElementById('hero').classList.remove('hidden');
-  document.getElementById('domia')?.classList.remove('hidden');
+  document.getElementById('balinaisa-ia')?.classList.remove('hidden');
   document.getElementById('balinaisa')?.classList.remove('hidden');
   document.getElementById('faq')?.classList.remove('hidden');
   document.getElementById('avis')?.classList.remove('hidden');
@@ -245,7 +245,7 @@ function populateLeadForm() {
     <div class="lead-recap-card">
       <div class="lead-recap-info">
         <p class="lead-recap-name">Votre espace est prêt</p>
-        <p class="lead-recap-mat">Domia sélectionne le mobilier en teck Balinaisa adapté et génère votre simulation.</p>
+        <p class="lead-recap-mat">Balinaisa.ia sélectionne le mobilier en teck Balinaisa adapté et génère votre simulation.</p>
       </div>
       <div class="lead-recap-photo">
         <img src="${uploadedDataURL}" alt="Votre espace">
@@ -414,7 +414,7 @@ function showBlockedScreen(reason) {
   const icon  = document.querySelector('#step-5 .confirmation-icon');
   if (reason === 'limit') {
     if (title) title.textContent = 'Votre intérêt nous honore';
-    if (sub) sub.textContent = "Vous avez déjà composé plusieurs ambiances avec Domia, et votre enthousiasme nous touche. Pour imaginer la suite sur mesure et donner vie à votre projet, l'équipe Balinaisa se fera une joie d'échanger avec vous :";
+    if (sub) sub.textContent = "Vous avez déjà composé plusieurs ambiances avec Balinaisa.ia, et votre enthousiasme nous touche. Pour imaginer la suite sur mesure et donner vie à votre projet, l'équipe Balinaisa se fera une joie d'échanger avec vous :";
   } else if (reason === 'daily') {
     if (title) title.textContent = 'Simulateur très sollicité';
     if (sub) sub.textContent = "Le simulateur reçoit un grand nombre de demandes en ce moment. Merci de réessayer un peu plus tard dans la journée.";
@@ -494,16 +494,16 @@ function resetSimulator() {
 /* Partage du simulateur - Web Share API (mobile : WhatsApp, réseaux, iMessage…),
    repli WhatsApp Web sur desktop. */
 function shareSimulator() {
-  const url = 'https://charlusminus.github.io/balinaisa-simulateur/?utm_source=partage&utm_medium=share&utm_campaign=domia';
-  const text = "J'ai découvert Domia, l'œil de Dominique : le simulateur d'aménagement en teck Balinaisa, intérieur et extérieur. Une photo de votre espace suffit :";
+  const url = 'https://charlusminus.github.io/balinaisa-simulateur/?utm_source=partage&utm_medium=share&utm_campaign=balinaisa-ia';
+  const text = "J'ai découvert Balinaisa.ia, l'œil de Dominique : le simulateur d'aménagement en teck Balinaisa, intérieur et extérieur. Une photo de votre espace suffit :";
   if (navigator.share) {
-    navigator.share({ title: 'Domia · Balinaisa', text: text, url: url }).catch(() => {});
+    navigator.share({ title: 'Balinaisa.ia · Balinaisa', text: text, url: url }).catch(() => {});
   } else {
     window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener');
   }
 }
 
-/* CTA "Simuler avec Domia" dans le header : apparaît dès que le CTA du hero
+/* CTA "Simuler avec Balinaisa.ia" dans le header : apparaît dès que le CTA du hero
    sort de l'écran (et disparaît quand il revient). Toujours à portée de main. */
 /* Video de fond du hero : le MP4 est lourd (~50 Mo). Par defaut on affiche le
    poster (leger), et on ne charge/joue la video QUE si ca vaut le coup :

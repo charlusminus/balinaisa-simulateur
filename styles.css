@@ -946,26 +946,26 @@ input, textarea, select { font-family: var(--font-sans); }
   .has-sticky-bar { padding-bottom: 76px !important; }
 }
 
-/* ── Domia - l'œil de Dominique (home) ── */
-.domia-intro { background: var(--bg-muted); padding: 76px 24px; }
-.domia-inner { max-width: 940px; margin: 0 auto; display: flex; gap: 52px; align-items: center; }
-.domia-portrait { margin: 0; flex: 0 0 330px; }
-.domia-portrait img { width: 100%; max-width: 330px; height: auto; border-radius: 16px; display: block; box-shadow: 0 18px 44px rgba(60,42,24,.16); }
-.domia-portrait figcaption { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 16px; letter-spacing: .14em; text-transform: uppercase; }
-.domia-portrait.is-placeholder img { display: none; }
-.domia-portrait.is-placeholder::before { content: "DR"; display: flex; align-items: center; justify-content: center; width: 100%; max-width: 330px; height: 200px; border-radius: 16px; background: var(--primary); color: #fff; font-family: Georgia, serif; font-size: 46px; letter-spacing: .08em; }
-.domia-text { flex: 1; min-width: 0; }
-.domia-eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: .22em; color: var(--primary); font-weight: 600; margin: 0 0 22px; }
-.domia-quote { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 31px; line-height: 1.38; color: var(--text); font-style: italic; font-weight: 500; margin: 0 0 20px; }
-.domia-sign { font-size: 13px; color: var(--text-sub); letter-spacing: .04em; text-transform: uppercase; margin: 0 0 26px; }
-.domia-explain { font-size: 15px; line-height: 1.8; color: var(--text-sub); margin: 0; max-width: 48ch; }
+/* ── Balinaisa.ia - l'œil de Dominique (home) ── */
+.balinaisa-ia-intro { background: var(--bg-muted); padding: 76px 24px; }
+.balinaisa-ia-inner { max-width: 940px; margin: 0 auto; display: flex; gap: 52px; align-items: center; }
+.balinaisa-ia-portrait { margin: 0; flex: 0 0 330px; }
+.balinaisa-ia-portrait img { width: 100%; max-width: 330px; height: auto; border-radius: 16px; display: block; box-shadow: 0 18px 44px rgba(60,42,24,.16); }
+.balinaisa-ia-portrait figcaption { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 16px; letter-spacing: .14em; text-transform: uppercase; }
+.balinaisa-ia-portrait.is-placeholder img { display: none; }
+.balinaisa-ia-portrait.is-placeholder::before { content: "DR"; display: flex; align-items: center; justify-content: center; width: 100%; max-width: 330px; height: 200px; border-radius: 16px; background: var(--primary); color: #fff; font-family: Georgia, serif; font-size: 46px; letter-spacing: .08em; }
+.balinaisa-ia-text { flex: 1; min-width: 0; }
+.balinaisa-ia-eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: .22em; color: var(--primary); font-weight: 600; margin: 0 0 22px; }
+.balinaisa-ia-quote { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 31px; line-height: 1.38; color: var(--text); font-style: italic; font-weight: 500; margin: 0 0 20px; }
+.balinaisa-ia-sign { font-size: 13px; color: var(--text-sub); letter-spacing: .04em; text-transform: uppercase; margin: 0 0 26px; }
+.balinaisa-ia-explain { font-size: 15px; line-height: 1.8; color: var(--text-sub); margin: 0; max-width: 48ch; }
 @media (max-width: 760px) {
-  .domia-intro { padding: 52px 24px; }
-  .domia-inner { flex-direction: column; gap: 30px; text-align: center; }
-  .domia-portrait { flex-basis: auto; width: 100%; }
-  .domia-portrait img, .domia-portrait.is-placeholder::before { max-width: 460px; margin-left: auto; margin-right: auto; }
-  .domia-quote { font-size: 25px; }
-  .domia-explain { max-width: 42ch; margin-left: auto; margin-right: auto; }
+  .balinaisa-ia-intro { padding: 52px 24px; }
+  .balinaisa-ia-inner { flex-direction: column; gap: 30px; text-align: center; }
+  .balinaisa-ia-portrait { flex-basis: auto; width: 100%; }
+  .balinaisa-ia-portrait img, .balinaisa-ia-portrait.is-placeholder::before { max-width: 460px; margin-left: auto; margin-right: auto; }
+  .balinaisa-ia-quote { font-size: 25px; }
+  .balinaisa-ia-explain { max-width: 42ch; margin-left: auto; margin-right: auto; }
 }
 
 /* ── Upload mobile-first : 2 boutons (photo d'abord), dropzone = desktop uniquement ── */
