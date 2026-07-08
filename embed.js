@@ -13,6 +13,8 @@
      data-utm-medium="widget-sticky"      (défaut)
      data-utm-campaign="domia"            (défaut)
      data-target="https://simulateur.balinaisa.com/"  (défaut)
+     data-skip-intro="true"  (défaut) — arrive direct sur l'import photo (ajoute ?start=1),
+                              "false" pour ouvrir l'écran d'accueil du simulateur
 
    Tracking : UTM ajoutés à l'URL + événement de clic envoyé, si présents,
    à Google Analytics (gtag / dataLayer) et Plausible. Sans analytics, no-op.
@@ -28,6 +30,8 @@
   var position = ds.position === 'bottom-left' ? 'bottom-left' : 'bottom-right';
   var label    = ds.label || 'Simuler avec Domia';
   var base     = ds.target || 'https://simulateur.balinaisa.com/';
+  // Venant du site, on saute l'ecran d'accueil et on arrive direct sur l'import photo.
+  var skipIntro = ds.skipIntro !== 'false';
   var utm = {
     source:   ds.utmSource   || 'site-balinaisa',
     medium:   ds.utmMedium   || 'widget-sticky',
@@ -41,6 +45,7 @@
       u.searchParams.set('utm_source', utm.source);
       u.searchParams.set('utm_medium', utm.medium);
       u.searchParams.set('utm_campaign', utm.campaign);
+      if (skipIntro) u.searchParams.set('start', '1');   // deep-link direct sur l'import photo
       return u.toString();
     } catch (e) {
       return base;

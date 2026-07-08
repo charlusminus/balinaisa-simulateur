@@ -37,7 +37,10 @@ Options (data-attributes sur la balise `<script>`) :
 - `data-position="bottom-right"` (défaut) / `"bottom-left"`
 - `data-label="Simuler avec Domia"`
 - `data-target="https://simulateur.balinaisa.com/"` (URL du simulateur)
+- `data-skip-intro="true"` (défaut) : arrive **directement sur l'import photo** (ajoute `?start=1`, saute l'écran d'accueil pour éviter le doublon quand on vient du site) ; `"false"` pour ouvrir l'accueil
 - `data-utm-source` / `data-utm-medium` / `data-utm-campaign` (défauts : `site-balinaisa` / `widget-sticky` / `domia`)
+
+Le simulateur reconnaît `?start=1` (ou `#simuler`) et démarre alors sur l'import photo.
 
 **Tracking** : UTM ajoutés à l'URL + événement de clic poussé (si présents) à Google Analytics
 (`gtag` / `dataLayer`) et Plausible. Aperçu/essai : `widget-demo.html`.

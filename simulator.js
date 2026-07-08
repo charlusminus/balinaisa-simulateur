@@ -96,6 +96,15 @@ function widgetClick() {
   }
 }
 
+// Deep-link depuis le widget / le site : arriver directement sur l'import photo,
+// sans l'ecran d'accueil (evite le doublon d'accroche). Declenche par ?start=1 ou #simuler.
+document.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('start') === '1' || window.location.hash === '#simuler') {
+    startSimulator();
+  }
+});
+
 /* =============================================
    FILE UPLOAD
    ============================================= */
