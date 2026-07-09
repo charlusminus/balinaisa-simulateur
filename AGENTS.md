@@ -24,5 +24,5 @@ Push sur `main` = mise en ligne (Pages, source `main` / root). Les liens `styles
 ## Règles de marque & de code
 - **Aucune clé / secret** dans ce repo (public).
 - Pas de contexte business, tarifaire ou stratégique ici.
-- **Zéro tiret cadratin** dans les contenus ; **zéro mention « IA »** : on parle de « Balinaisa.ia, l'œil de Dominique ».
+- **Zéro tiret cadratin** dans les contenus ; **zéro mention « IA »** : on parle de « Balinaisa.ai, l'œil de Dominique ».
 - Changements **front** ici. Backend, docs, assets : repo privé `balinaisa-assets`.

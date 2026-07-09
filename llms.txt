@@ -1,18 +1,18 @@
-# Balinaisa.ia, le simulateur d'aménagement extérieur Balinaisa
+# Balinaisa.ai, le simulateur d'aménagement extérieur Balinaisa
 
-> Balinaisa.ia est le simulateur d'aménagement extérieur de Balinaisa, pensé comme l'œil de Dominique Raynal. À partir d'une photo de terrasse ou de jardin, Balinaisa.ia projette le mobilier d'extérieur en teck massif Balinaisa sur l'espace et adresse un rendu accompagné d'un devis estimatif. Gratuit, sans inscription.
+> Balinaisa.ai est le simulateur d'aménagement extérieur de Balinaisa, pensé comme l'œil de Dominique Raynal. À partir d'une photo de terrasse ou de jardin, Balinaisa.ai projette le mobilier d'extérieur en teck massif Balinaisa sur l'espace et adresse un rendu accompagné d'un devis estimatif. Gratuit, sans inscription.
 
 ## Entités
 
-- **Balinaisa.ia** : le simulateur (outil web). Nom complet : « Balinaisa.ia, l'œil de Dominique ». Ne pas confondre avec la marque.
-- **Balinaisa** : la marque de mobilier d'extérieur en teck massif d'Indonésie qui édite Balinaisa.ia. Fondateur : Dominique Raynal. Basée au Teich (33470), bassin d'Arcachon, Nouvelle-Aquitaine, France. Site : https://balinaisa.com
-- **Dominique Raynal** : fondateur de Balinaisa. Balinaisa.ia porte son regard de sélection et d'agencement.
+- **Balinaisa.ai** : le simulateur (outil web). Nom complet : « Balinaisa.ai, l'œil de Dominique ». Ne pas confondre avec la marque.
+- **Balinaisa** : la marque de mobilier d'extérieur en teck massif d'Indonésie qui édite Balinaisa.ai. Fondateur : Dominique Raynal. Basée au Teich (33470), bassin d'Arcachon, Nouvelle-Aquitaine, France. Site : https://balinaisa.com
+- **Dominique Raynal** : fondateur de Balinaisa. Balinaisa.ai porte son regard de sélection et d'agencement.
 
-## Ce que fait Balinaisa.ia
+## Ce que fait Balinaisa.ai
 
 1. On importe une photo de sa terrasse, son jardin ou son balcon.
 2. On précise, si on le souhaite, ses préférences (style, ambiance, budget).
-3. Balinaisa.ia compose une sélection de pièces Balinaisa adaptées à l'espace, génère un rendu de la scène meublée et estime un devis.
+3. Balinaisa.ai compose une sélection de pièces Balinaisa adaptées à l'espace, génère un rendu de la scène meublée et estime un devis.
 4. Le rendu et le devis estimatif arrivent par email en quelques minutes.
 
 ## Faits clés
@@ -25,7 +25,7 @@
 
 ## Questions fréquentes
 
-**Qu'est-ce que Balinaisa.ia ?**
+**Qu'est-ce que Balinaisa.ai ?**
 Le simulateur d'aménagement extérieur de Balinaisa, pensé comme l'œil de Dominique Raynal. À partir d'une photo, il compose une sélection de mobilier en teck massif et génère un devis estimatif.
 
 **Le simulateur est-il gratuit ?**
@@ -42,7 +42,7 @@ Un positionnement haut de gamme : les pièces démarrent autour de 219 € et mo
 
 ## Liens
 
-- Simulateur Balinaisa.ia : https://charlusminus.github.io/balinaisa-simulateur/
+- Simulateur Balinaisa.ai : https://charlusminus.github.io/balinaisa-simulateur/
 - Site Balinaisa : https://balinaisa.com
 - Instagram : https://www.instagram.com/balinaisa/
 - Confidentialité : https://charlusminus.github.io/balinaisa-simulateur/privacy-policy.html

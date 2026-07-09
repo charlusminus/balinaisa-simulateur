@@ -22,7 +22,7 @@ result.html    — page de rendu
 2. Settings → Pages → Source : `main` / `/ (root)`
 3. URL publique : `https://charlusminus.github.io/balinaisa-pz/`
 
-## Intégration sur balinaisa.com (widget « Simuler avec Balinaisa.ia »)
+## Intégration sur balinaisa.com (widget « Simuler avec Balinaisa.ai »)
 
 `embed.js` est un **composant autonome** (styles scopés, aucune dépendance au CSS du site) :
 bouton flottant qui ouvre le simulateur, avec UTM et tracking de clic. Prêt à déposer.
@@ -35,10 +35,10 @@ Coller avant `</body>` :
 
 Options (data-attributes sur la balise `<script>`) :
 - `data-position="bottom-right"` (défaut) / `"bottom-left"`
-- `data-label="Simuler avec Balinaisa.ia"`
+- `data-label="Simuler avec Balinaisa.ai"`
 - `data-target="https://simulateur.balinaisa.com/"` (URL du simulateur)
 - `data-skip-intro="true"` (défaut) : arrive **directement sur l'import photo** (ajoute `?start=1`, saute l'écran d'accueil pour éviter le doublon quand on vient du site) ; `"false"` pour ouvrir l'accueil
-- `data-utm-source` / `data-utm-medium` / `data-utm-campaign` (défauts : `site-balinaisa` / `widget-sticky` / `balinaisa-ia`)
+- `data-utm-source` / `data-utm-medium` / `data-utm-campaign` (défauts : `site-balinaisa` / `widget-sticky` / `balinaisa-ai`)
 
 Le simulateur reconnaît `?start=1` (ou `#simuler`) et démarre alors sur l'import photo.
 

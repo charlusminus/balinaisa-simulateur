@@ -1,4 +1,4 @@
-# Balinaisa · simulateur Balinaisa.ia
+# Balinaisa · simulateur Balinaisa.ai
 # Moteurs de recherche et moteurs generatifs bienvenus (citation encouragee).
 
 User-agent: *
