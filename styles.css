@@ -128,7 +128,7 @@ input, textarea, select { font-family: var(--font-sans); }
 .hero-brand-logo {
   width: 110px;
   height: auto;
-  filter: brightness(0) invert(1);
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.45));
   margin-bottom: 0.25rem;
 }
 
