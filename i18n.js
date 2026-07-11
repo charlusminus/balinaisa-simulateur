@@ -164,8 +164,39 @@
 
   function reveal() { document.documentElement.removeAttribute('data-i18n-pending'); }
 
+  function setLang(l) {
+    if (l !== 'fr' && l !== 'en') return;
+    try { localStorage.setItem('bal_lang', l); } catch (e) {}
+    var u = new URL(location.href);
+    u.searchParams.delete('lang'); // le choix explicite prime -> on retire l'override d'URL
+    location.replace(u.pathname + u.search + u.hash);
+  }
+
+  // Switch FR | EN injecte dans le header (present sur toutes les pages qui chargent i18n.js).
+  function buildSwitch() {
+    var header = document.querySelector('.header');
+    if (!header || document.getElementById('lang-switch')) return;
+    var wrap = document.createElement('div');
+    wrap.id = 'lang-switch';
+    wrap.setAttribute('role', 'group');
+    wrap.setAttribute('aria-label', 'Language / Langue');
+    wrap.style.cssText = 'display:inline-flex;gap:2px;align-items:center;margin-left:auto;margin-right:12px;font-family:Helvetica,Arial,sans-serif;font-size:12px;font-weight:600;letter-spacing:.04em';
+    ['fr', 'en'].forEach(function (l) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.textContent = l.toUpperCase();
+      var on = (LANG === l);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.style.cssText = 'cursor:pointer;border:none;background:' + (on ? '#B87D4B' : 'transparent') + ';color:' + (on ? '#fff' : '#8a7a66') + ';padding:4px 9px;border-radius:6px;line-height:1;transition:background .15s';
+      b.addEventListener('click', function () { if (!on) setLang(l); });
+      wrap.appendChild(b);
+    });
+    var cta = header.querySelector('#header-cta, .header-cta');
+    if (cta) header.insertBefore(wrap, cta); else header.appendChild(wrap);
+  }
+
   function applyDOM() {
     document.documentElement.setAttribute('lang', LANG);
+    buildSwitch();
     if (LANG !== 'en') { reveal(); return; }
     // textes
     var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
@@ -206,7 +237,7 @@
     reveal();
   }
 
-  window.i18n = { lang: LANG, t: tr };
+  window.i18n = { lang: LANG, t: tr, setLang: setLang };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', applyDOM);
   else applyDOM();
 })();
