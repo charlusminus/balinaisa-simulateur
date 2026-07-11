@@ -1172,4 +1172,4 @@ select:focus-visible,
 
 /* Disclaimer budget (simulation inspirationnelle, RDV3) */
 .field-hint { font-size: 12.5px; line-height: 1.5; color: var(--text-muted); margin: 6px 0 0; }
-.confirmation-note { font-size: 13.5px; line-height: 1.6; color: var(--text-sub); max-width: 46ch; margin: 10px auto 0; }
+.confirmation-note { font-size: 13.5px; line-height: 1.6; color: var(--text-sub); max-width: 46ch; margin: 20px auto 0; }
