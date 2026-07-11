@@ -5,6 +5,9 @@
 const WEBHOOK_URL = 'https://charlusminus.app.n8n.cloud/webhook/balinaisa-simulateur';
 const TOTAL_FORM_STEPS = 4; // Photo, Profil, Coordonnées, Horizon+consent (5e = Confirmation)
 
+// i18n : traduit une chaine generee en JS (FR->EN selon la langue detectee par i18n.js).
+const T = (s) => (window.i18n && window.i18n.t) ? window.i18n.t(s) : s;
+
 /* Anti-bot Cloudflare Turnstile (gratuit). Vide = désactivé (le front n'exige pas de token).
    Pour activer : coller la Site Key ci-dessous, puis configurer la vérification du token côté n8n. */
 const TURNSTILE_SITEKEY = '0x4AAAAAADwDzprfOCkDePsI';
@@ -115,7 +118,10 @@ function handleFileUpload(input) {
   const MAX_MB = 8;
   const errEl = document.getElementById('upload-error');
   if (file.size > MAX_MB * 1024 * 1024) {
-    errEl.textContent = `Image trop lourde (${(file.size / 1024 / 1024).toFixed(1)} Mo · max ${MAX_MB} Mo)`;
+    const _mb = (file.size / 1024 / 1024).toFixed(1);
+    errEl.textContent = ((window.i18n && window.i18n.lang) === 'en')
+      ? `Image too large (${_mb} MB · max ${MAX_MB} MB)`
+      : `Image trop lourde (${_mb} Mo · max ${MAX_MB} Mo)`;
     errEl.classList.remove('hidden');
     input.value = '';
     return;
@@ -226,7 +232,7 @@ function updateStepsCounter(step) {
     return;
   }
   wrap.classList.remove('hidden');
-  label.textContent = `Étape ${step} / ${TOTAL_FORM_STEPS}`;
+  label.textContent = `${T('Étape')} ${step} / ${TOTAL_FORM_STEPS}`;
 }
 
 function updateProgressBar(step) {
@@ -244,12 +250,12 @@ function populateLeadForm() {
   recap.innerHTML = `
     <div class="lead-recap-card">
       <div class="lead-recap-info">
-        <p class="lead-recap-name">Votre espace est prêt</p>
-        <p class="lead-recap-mat">Balinaisa.ai sélectionne le mobilier en teck Balinaisa adapté et génère votre simulation.</p>
+        <p class="lead-recap-name">${T('Votre espace est prêt')}</p>
+        <p class="lead-recap-mat">${T('Balinaisa.ai sélectionne le mobilier en teck Balinaisa adapté et génère votre simulation.')}</p>
       </div>
       <div class="lead-recap-photo">
-        <img src="${uploadedDataURL}" alt="Votre espace">
-        <span>Votre espace</span>
+        <img src="${uploadedDataURL}" alt="${T('Votre espace')}">
+        <span>${T('Votre espace')}</span>
       </div>
     </div>
   `;
@@ -323,7 +329,7 @@ function goToStep4() {
   phone.setCustomValidity(
     phoneDigits.length >= 8 && phoneDigits.length <= 15
       ? ''
-      : 'Indiquez un numéro de téléphone valide (8 à 15 chiffres, indicatif international accepté, ex. +33 6 12 34 56 78).'
+      : T('Indiquez un numéro de téléphone valide (8 à 15 chiffres, indicatif international accepté, ex. +33 6 12 34 56 78).')
   );
   if (!phone.reportValidity()) return;
   goToStep(4);
@@ -383,6 +389,7 @@ async function submitLead(e) {
     budget:      document.getElementById('f-budget')?.value || null,
     photo_base64: uploadedDataURL || null,
     source:     'simulateur-balinaisa',
+    lang:       (window.i18n && window.i18n.lang) || 'fr',
     captcha_token: captchaToken,
     ...TRACKING,
   };
@@ -417,10 +424,10 @@ function showBlockedScreen(reason) {
     if (sub) sub.textContent = "Vous avez déjà composé plusieurs ambiances avec Balinaisa.ai, et votre enthousiasme nous touche. Pour imaginer la suite sur mesure et donner vie à votre projet, l'équipe Balinaisa se fera une joie d'échanger avec vous :";
   } else if (reason === 'daily') {
     if (title) title.textContent = 'Simulateur très sollicité';
-    if (sub) sub.textContent = "Le simulateur reçoit un grand nombre de demandes en ce moment. Merci de réessayer un peu plus tard dans la journée.";
+    if (sub) sub.textContent = T("Le simulateur reçoit un grand nombre de demandes en ce moment. Merci de réessayer un peu plus tard dans la journée.");
   } else {
     if (title) title.textContent = "Nous n'avons pas pu traiter votre demande";
-    if (sub) sub.textContent = "Un souci est survenu lors de la validation. Merci de réessayer, ou écrivez-nous à contact@balinaisa.com.";
+    if (sub) sub.textContent = T("Un souci est survenu lors de la validation. Merci de réessayer, ou écrivez-nous à contact@balinaisa.com.");
   }
   // Coordonnées complètes Balinaisa : affichées seulement sur l'écran de limite atteinte.
   const contact = document.getElementById('limit-contact');
@@ -495,7 +502,7 @@ function resetSimulator() {
    repli WhatsApp Web sur desktop. */
 function shareSimulator() {
   const url = 'https://charlusminus.github.io/balinaisa-simulateur/?utm_source=partage&utm_medium=share&utm_campaign=balinaisa-ai';
-  const text = "J'ai découvert Balinaisa.ai, l'œil de Dominique : le simulateur d'aménagement en teck Balinaisa, intérieur et extérieur. Une photo de votre espace suffit :";
+  const text = T("J'ai découvert Balinaisa.ai, l'œil de Dominique : le simulateur d'aménagement en teck Balinaisa, intérieur et extérieur. Une photo de votre espace suffit :");
   if (navigator.share) {
     navigator.share({ title: 'Balinaisa.ai · Balinaisa', text: text, url: url }).catch(() => {});
   } else {
