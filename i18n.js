@@ -31,7 +31,7 @@
     "Importez une photo de votre espace": "Upload a photo of your space",
     "Glissez votre photo ici": "Drop your photo here",
     "ou cliquez pour importer": "or click to upload",
-    "JPG ou PNG · max 10 Mo · terrasse, jardin, bord de piscine · vue d'ensemble recommandée": "JPG or PNG · max 10 MB · terrace, garden, poolside · a wide shot works best",
+    "JPG ou PNG · max 10 Mo · salon, terrasse, jardin, véranda · vue d'ensemble recommandée": "JPG or PNG · max 10 MB · living room, terrace, garden, veranda · a wide shot works best",
     "JPG, PNG, WEBP · max 8 Mo": "JPG, PNG, WEBP · max 8 MB",
     "Façonnées à la main, à partir de 219 €": "Handcrafted, from €219",
     "à partir de 219 €": "from €219",
@@ -86,7 +86,7 @@
     "Un conseiller vous contacte": "An advisor reaches out",
     "L'équipe Balinaisa vous rappelle pour affiner votre projet et répondre à vos questions.": "The Balinaisa team calls you back to refine your project and answer your questions.",
     "Visiter le site Balinaisa": "Visit the Balinaisa site",
-    "Partager l'œil de Dom": "Share Dom's eye",
+    "Partager Balinaisa.ai": "Share Balinaisa.ai",
     "Refaire une simulation": "Run another simulation",
     "Showroom · itinéraire": "Showroom · directions",
     // — Blocked / curious screen —
@@ -107,7 +107,7 @@
     "Chaque pièce est façonnée à la main par nos artisans partenaires en Indonésie, dans un teck massif choisi avec soin. Une relation directe, sans intermédiaire, pour une qualité rare et des finitions durables, pensées pour l'extérieur comme pour l'intérieur.": "Each piece is handcrafted by our partner artisans in Indonesia, from carefully selected solid teak. A direct relationship, with no middlemen, for rare quality and durable finishes, designed for outdoors as well as indoors.",
     "Artisans partenaires, circuit court": "Partner artisans, short supply chain",
     "Showroom au bassin d'Arcachon": "Showroom in the Arcachon basin",
-    "Balinaisa.ai, c'est l'œil de Dominique Raynal : son savoir-faire du teck, rendu accessible. Photographiez votre espace : il compose votre aménagement et vous adresse un devis en quelques secondes.": "Balinaisa.ai is Dominique Raynal's eye: his teak expertise, made accessible. Photograph your space: it composes your layout and sends you a quote in seconds.",
+    "Balinaisa.ai, entraîné comme l'œil de Dominique Raynal : son savoir-faire du teck, rendu accessible. Photographiez votre espace : il compose votre aménagement et vous adresse un devis en quelques secondes.": "Balinaisa.ai, trained as Dominique Raynal's eye: his teak expertise, made accessible. Photograph your space: it composes your layout and sends you a quote in seconds.",
     "« J'ai façonné Balinaisa.ai comme une extension de mon savoir-faire : des années de teck, un regard sur les proportions, le goût des matières justes. Aujourd'hui, il compose pour vous, chez vous, comme si je poussais votre portail à vos côtés. »": "“I shaped Balinaisa.ai as an extension of my craft: years of teak, an eye for proportion, a taste for the right materials. Today it composes for you, in your home, as if I were stepping through your gate beside you.”",
     "Dominique Raynal · Balinaisa": "Dominique Raynal · Balinaisa",
     "Dominique Raynal, Balinaisa": "Dominique Raynal, Balinaisa",
@@ -141,16 +141,16 @@
     // — Alt / aria —
     "Espace visible pour placer un meuble": "Visible space to place furniture",
     "Bonne luminosité naturelle": "Good natural light",
-    "Terrasse, jardin, bord de piscine": "Terrace, garden, poolside",
+    "Salon, terrasse, jardin, véranda": "Living room, terrace, garden, veranda",
     "Voir les avis sur Google ": "See the reviews on Google ",
     // — JS messages (simulator.js) —
     "Indiquez un numéro de téléphone valide (8 à 15 chiffres, indicatif international accepté, ex. +33 6 12 34 56 78).": "Please enter a valid phone number (8 to 15 digits, international prefix accepted, e.g. +33 6 12 34 56 78).",
     "Le simulateur reçoit un grand nombre de demandes en ce moment. Merci de réessayer un peu plus tard dans la journée.": "The simulator is receiving a high volume of requests right now. Please try again a little later today.",
     "Un souci est survenu lors de la validation. Merci de réessayer, ou écrivez-nous à contact@balinaisa.com.": "Something went wrong during validation. Please try again, or write to us at contact@balinaisa.com.",
     "Merci de confirmer que vous n'êtes pas un robot.": "Please confirm you are not a robot.",
-    "J'ai découvert Balinaisa.ai, l'œil de Dominique : le simulateur d'aménagement en teck Balinaisa, intérieur et extérieur. Une photo de votre espace suffit :": "I discovered Balinaisa.ai, Dominique's eye: the Balinaisa teak layout simulator, indoor and outdoor. A photo of your space is all it takes:",
+    "J'ai découvert Balinaisa.ai, le simulateur d'aménagement en teck Balinaisa (intérieur et extérieur), entraîné comme l'œil de Dominique. Une photo de votre espace suffit :": "I discovered Balinaisa.ai, the Balinaisa teak layout simulator (indoor and outdoor), trained as Dominique's eye. A photo of your space is all it takes:",
     // — boutons / labels / placeholders / aria / alt manquants —
-    "Balinaisa.ai, l'œil de Dominique": "Balinaisa.ai, Dominique's eye",
+    "Balinaisa.ai, entraîné comme l'œil de Dominique": "Balinaisa.ai, trained as Dominique's eye",
     "Prendre une photo": "Take a photo",
     "Importer une photo": "Upload a photo",
     "Lancer ma simulation gratuite": "Start my free simulation",
@@ -238,7 +238,7 @@
     if (document.title && EN[document.title.replace(/\s+/g, ' ').trim()]) document.title = EN[document.title.replace(/\s+/g, ' ').trim()];
     // meta description + og/twitter (SEO cote client)
     var metaEN = {
-      'description': "Upload a photo of your terrace, garden or interior: Balinaisa.ai, Dominique's eye, places Balinaisa teak furniture in it and sends you a quote. Free, no sign-up.",
+      'description': "Upload a photo of your terrace, garden or interior: Balinaisa.ai, trained as Dominique's eye, places Balinaisa teak furniture in it and sends you a quote. Free, no sign-up.",
       'og:title': "Your space, elevated by teak · Balinaisa",
       'twitter:title': "Your space, elevated by teak · Balinaisa",
       'og:description': "One photo is enough: Balinaisa.ai places Balinaisa teak furniture in your space and sends you a quote. Free, no sign-up.",

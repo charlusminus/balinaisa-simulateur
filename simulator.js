@@ -502,7 +502,7 @@ function resetSimulator() {
    repli WhatsApp Web sur desktop. */
 function shareSimulator() {
   const url = 'https://charlusminus.github.io/balinaisa-simulateur/?utm_source=partage&utm_medium=share&utm_campaign=balinaisa-ai';
-  const text = T("J'ai découvert Balinaisa.ai, l'œil de Dominique : le simulateur d'aménagement en teck Balinaisa, intérieur et extérieur. Une photo de votre espace suffit :");
+  const text = T("J'ai découvert Balinaisa.ai, le simulateur d'aménagement en teck Balinaisa (intérieur et extérieur), entraîné comme l'œil de Dominique. Une photo de votre espace suffit :");
   if (navigator.share) {
     navigator.share({ title: 'Balinaisa.ai · Balinaisa', text: text, url: url }).catch(() => {});
   } else {
