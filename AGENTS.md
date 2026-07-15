@@ -3,7 +3,7 @@
 Contexte technique pour travailler sur ce repo. **Public** : il ne contient que le front. Le backend, la config et le contexte projet vivent dans un **repo privé séparé** (`balinaisa-assets`) : s'y référer pour tout ce qui n'est pas le site.
 
 ## Ce repo
-Site statique du simulateur d'extérieur Balinaisa, servi par **GitHub Pages** (`https://charlusminus.github.io/balinaisa-simulateur/`). Aucun build : HTML/CSS/JS purs.
+Site statique du simulateur d'extérieur Balinaisa, servi par **GitHub Pages** (`https://balinaisa.ai/`). Aucun build : HTML/CSS/JS purs.
 
 ```
 index.html     wizard (Photo, Coordonnées, Confirmation)
