@@ -420,13 +420,13 @@ function showBlockedScreen(reason) {
   const sub   = document.querySelector('#step-5 .confirmation-sub');
   const icon  = document.querySelector('#step-5 .confirmation-icon');
   if (reason === 'limit') {
-    if (title) title.textContent = 'Votre intérêt nous honore';
-    if (sub) sub.textContent = "Vous avez déjà composé plusieurs ambiances avec Balinaisa.ai, et votre enthousiasme nous touche. Pour imaginer la suite sur mesure et donner vie à votre projet, l'équipe Balinaisa se fera une joie d'échanger avec vous :";
+    if (title) title.textContent = T('Votre intérêt nous honore');
+    if (sub) sub.textContent = T("Vous avez déjà composé plusieurs ambiances avec Balinaisa.ai, et votre enthousiasme nous touche. Pour imaginer la suite sur mesure et donner vie à votre projet, l'équipe Balinaisa se fera une joie d'échanger avec vous :");
   } else if (reason === 'daily') {
-    if (title) title.textContent = 'Simulateur très sollicité';
+    if (title) title.textContent = T('Simulateur très sollicité');
     if (sub) sub.textContent = T("Le simulateur reçoit un grand nombre de demandes en ce moment. Merci de réessayer un peu plus tard dans la journée.");
   } else {
-    if (title) title.textContent = "Nous n'avons pas pu traiter votre demande";
+    if (title) title.textContent = T("Nous n'avons pas pu traiter votre demande");
     if (sub) sub.textContent = T("Un souci est survenu lors de la validation. Merci de réessayer, ou écrivez-nous à contact@balinaisa.com.");
   }
   // Coordonnées complètes Balinaisa : affichées seulement sur l'écran de limite atteinte.

@@ -148,6 +148,10 @@
     "Le simulateur reçoit un grand nombre de demandes en ce moment. Merci de réessayer un peu plus tard dans la journée.": "The simulator is receiving a high volume of requests right now. Please try again a little later today.",
     "Un souci est survenu lors de la validation. Merci de réessayer, ou écrivez-nous à contact@balinaisa.com.": "Something went wrong during validation. Please try again, or write to us at contact@balinaisa.com.",
     "Merci de confirmer que vous n'êtes pas un robot.": "Please confirm you are not a robot.",
+    "Votre intérêt nous honore": "We're honoured by your interest",
+    "Vous avez déjà composé plusieurs ambiances avec Balinaisa.ai, et votre enthousiasme nous touche. Pour imaginer la suite sur mesure et donner vie à votre projet, l'équipe Balinaisa se fera une joie d'échanger avec vous :": "You have already composed several looks with Balinaisa.ai, and your enthusiasm touches us. To imagine the next steps, tailor-made, and bring your project to life, the Balinaisa team will be delighted to talk with you:",
+    "Simulateur très sollicité": "Simulator in high demand",
+    "Nous n'avons pas pu traiter votre demande": "We couldn't process your request",
     "J'ai découvert Balinaisa.ai, le simulateur d'aménagement en teck Balinaisa (intérieur et extérieur), entraîné comme l'œil de Dominique. Une photo de votre espace suffit :": "I discovered Balinaisa.ai, the Balinaisa teak layout simulator (indoor and outdoor), trained as Dominique's eye. A photo of your space is all it takes:",
     // — boutons / labels / placeholders / aria / alt manquants —
     "Balinaisa.ai, entraîné comme l'œil de Dominique": "Balinaisa.ai, trained as Dominique's eye",
