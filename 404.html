@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Balinaisa</title>
+  <script>
+    // Repli SPA (GitHub Pages statique) : les etapes du simulateur sont des URLs virtuelles
+    // (/profil, /coordonnees, /projet, /merci...). Un acces direct ou un refresh sur ces chemins
+    // n'a pas de fichier correspondant -> on renvoie proprement a l'accueil (en gardant ?lang, UTM).
+    location.replace('/' + location.search + location.hash);
+  </script>
+</head>
+<body></body>
+</html>

@@ -60,6 +60,24 @@ const TRACKING = captureTracking();
 
 // State
 let currentStep = 0;
+
+/* Routage SPA : une URL virtuelle par etape (funnel / analytics tool-agnostique, SANS rechargement).
+   Le script Plausible (pa-*.js) auto-capte les navigations History API en pages vues.
+   Accueil+import = '/' ; etapes 2..5 = /profil, /coordonnees, /projet, /merci. */
+const STEP_ROUTES = { 1: '/', 2: '/profil', 3: '/coordonnees', 4: '/projet', 5: '/merci' };
+const PATH_TO_STEP = { '/': 1, '/import': 1, '/profil': 2, '/coordonnees': 3, '/projet': 4, '/merci': 5 };
+function routeTo(path, opts) {
+  if (!path) return;
+  opts = opts || {};
+  if (location.pathname === path && !opts.force) return; // deja sur cette URL
+  const url = path + location.search + location.hash;
+  try { history[opts.replace ? 'replaceState' : 'pushState']({ balPath: path }, '', url); } catch (e) {}
+}
+// Bouton retour/suivant : re-synchronise l'etape affichee avec l'URL (sans re-empiler l'historique).
+window.addEventListener('popstate', function () {
+  const step = PATH_TO_STEP[location.pathname];
+  if (step && step !== currentStep) goToStep(step, { noRoute: true });
+});
 let uploadedFile = null;
 let uploadedDataURL = null;
 let profile = null; // 'particulier' | 'pro'
@@ -206,7 +224,8 @@ function applyStickies() {
 /* =============================================
    STEP NAVIGATION
    ============================================= */
-function goToStep(step) {
+function goToStep(step, opts) {
+  opts = opts || {};
   document.querySelectorAll('.step-panel').forEach(p => p.classList.add('hidden'));
   document.getElementById(`step-${step}`).classList.remove('hidden');
   updateStepsCounter(step);
@@ -221,6 +240,9 @@ function goToStep(step) {
 
   applyStickies();
   window.scrollTo({ top: 60, behavior: 'smooth' });
+
+  // Une URL par etape (sauf navigation via bouton retour, deja synchronisee).
+  if (!opts.noRoute) routeTo(STEP_ROUTES[step], { replace: opts.replace });
 }
 
 function updateStepsCounter(step) {
@@ -435,7 +457,9 @@ function showBlockedScreen(reason) {
   if (icon) icon.classList.add('confirmation-icon--info');
   document.querySelector('#step-5 .confirmation-details')?.classList.add('hidden');
   document.querySelector('#step-5 .confirmation-trust')?.classList.add('hidden');
-  goToStep(5);
+  // Ecran de blocage : URL distincte pour ne PAS compter un blocage comme une conversion /merci.
+  goToStep(5, { noRoute: true });
+  routeTo(reason === 'limit' ? '/limite' : '/indisponible');
 }
 
 /* =============================================
