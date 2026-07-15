@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Analytics respectueux de la vie privée (Plausible) : sans cookie, sans donnée perso, exempté CNIL -->
+  <script async src="https://plausible.io/js/pa-LQmhy-Wx5R6u7vxz-r8EF.js"></script>
+  <script>
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init()
+  </script>
+
   <!-- i18n : détection langue + anti-flash (masque le temps de traduire pour les non-francophones) -->
   <script>(function(){try{var q=new URLSearchParams(location.search).get('lang');var s=localStorage.getItem('bal_lang');var l=(q==='fr'||q==='en')?q:((s==='fr'||s==='en')?s:(((navigator.languages&&navigator.languages[0])||navigator.language||'fr').toLowerCase().indexOf('fr')===0?'fr':'en'));document.documentElement.lang=l;if(l==='en')document.documentElement.setAttribute('data-i18n-pending','');}catch(e){}})();</script>
   <style>html[data-i18n-pending] body{visibility:hidden}</style>
