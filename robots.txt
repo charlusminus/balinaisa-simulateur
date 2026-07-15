@@ -32,7 +32,7 @@ Allow: /
 # Ne pas indexer la page de rendu individuelle (contenu ephemere par lead)
 Disallow: /result.html
 
-Sitemap: https://charlusminus.github.io/balinaisa-simulateur/sitemap.xml
+Sitemap: https://balinaisa.ai/sitemap.xml
 
 # Brief entite/marque pour moteurs generatifs
-# https://charlusminus.github.io/balinaisa-simulateur/llms.txt
+# https://balinaisa.ai/llms.txt

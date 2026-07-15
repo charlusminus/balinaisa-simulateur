@@ -33,7 +33,7 @@ branche dédiée puis une Pull Request. La branche `main` est protégée (PR req
 
 4. **Merge sur `main`** → l'Action `Deploy to GitHub Pages` déploie. Vérifier que le run passe au **vert** (Actions).
 
-5. **Smoke test en prod** sur https://charlusminus.github.io/balinaisa-simulateur/ :
+5. **Smoke test en prod** sur https://balinaisa.ai/ :
    - [ ] La page charge, le wizard s'ouvre
    - [ ] Switch de langue OK
    - [ ] Une **simulation de test** de bout en bout : le lead atterrit dans le Sheet et l'email part
