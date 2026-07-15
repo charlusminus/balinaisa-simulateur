@@ -505,6 +505,28 @@ input, textarea, select { font-family: var(--font-sans); }
 .upload-zone:hover { border-color: var(--primary); background: var(--primary-light); }
 .upload-zone.has-file { border-style: solid; border-color: var(--primary); }
 
+/* Bouton retirer/changer la photo (sur l'apercu) — surtout utile sur mobile. */
+.preview-remove {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: rgba(42, 31, 20, .62);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .25);
+  transition: background var(--transition);
+}
+.preview-remove:hover { background: rgba(42, 31, 20, .85); }
+.preview-remove.hidden { display: none; }
+
 .upload-zone-inner {
   display: flex;
   flex-direction: column;
@@ -1052,13 +1074,6 @@ input, textarea, select { font-family: var(--font-sans); }
 .price-band { margin: 20px 0 4px; }
 .price-band-head { font-size: 12.5px; line-height: 1.5; color: var(--text-muted); text-align: center; margin: 0 0 12px; }
 .price-band-head strong { color: var(--primary); font-weight: 600; }
-.price-band-scroll { display: flex; gap: 10px; overflow-x: auto; padding: 2px 2px 8px; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
-.price-band-scroll::-webkit-scrollbar { height: 5px; }
-.price-band-scroll::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
-.price-chip { flex: 0 0 auto; width: 94px; text-align: center; }
-.price-chip img { width: 94px; height: 72px; object-fit: cover; border-radius: 10px; display: block; background: var(--bg-muted); }
-.price-chip .pc-name { display: block; font-size: 12px; color: var(--text); margin: 6px 0 1px; }
-.price-chip .pc-price { display: block; font-size: 12.5px; font-weight: 600; color: var(--primary); }
 .label-opt { color: var(--text-muted); font-weight: 400; font-size: 0.9em; }
 
 @media (max-width: 760px) {

@@ -14,7 +14,7 @@
   <!-- i18n : détection langue + anti-flash (masque le temps de traduire pour les non-francophones) -->
   <script>(function(){try{var q=new URLSearchParams(location.search).get('lang');var s=localStorage.getItem('bal_lang');var l=(q==='fr'||q==='en')?q:((s==='fr'||s==='en')?s:(((navigator.languages&&navigator.languages[0])||navigator.language||'fr').toLowerCase().indexOf('fr')===0?'fr':'en'));document.documentElement.lang=l;if(l==='en')document.documentElement.setAttribute('data-i18n-pending','');}catch(e){}})();</script>
   <style>html[data-i18n-pending] body{visibility:hidden}</style>
-  <script src="i18n.js?v=20260715b"></script>
+  <script src="i18n.js?v=20260715f"></script>
 
   <!-- SEO -->
   <title>Mobilier en teck, intérieur et extérieur : simulateur | Balinaisa</title>
@@ -48,7 +48,7 @@
   <link rel="icon" type="image/png" href="favicon.png?v=20260715b">
   <link rel="apple-touch-icon" href="favicon.png?v=20260715b">
   <link rel="preconnect" href="https://balinaisa.com">
-  <link rel="stylesheet" href="styles.css?v=20260715b">
+  <link rel="stylesheet" href="styles.css?v=20260715f">
   <link href="fonts/fonts.css?v=20260715c" rel="stylesheet">
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad" async defer></script>
 
@@ -335,6 +335,10 @@
           <p class="upload-sub">ou cliquez pour importer</p>
         </div>
         <img id="preview-img" class="hidden" alt="Aperçu de votre pièce">
+        <button type="button" class="preview-remove hidden" id="preview-remove" aria-label="Retirer la photo" title="Retirer la photo"
+                onclick="event.stopPropagation(); clearPhoto()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
       </div>
       <!-- Boutons d'action (mobile-first) : Prendre une photo, puis Importer.
            La dropzone ci-dessus n'apparaît que sur desktop (drag & drop). -->
@@ -358,22 +362,13 @@
         <div class="tip"><span class="tip-icon">✓</span> Espace visible pour placer un meuble</div>
       </div>
       <!-- Bande de prix : ancre la gamme dans la tête du visiteur avant de générer (self-qualification budget). -->
-      <div class="price-band" aria-label="Aperçu de la collection et des prix">
-        <p class="price-band-head">Gamme premium, façonnée à la main en teck massif · <strong>à partir de 219 €</strong></p>
-        <div class="price-band-scroll">
-          <div class="price-chip"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20250920_234118.png" alt="Chaise Andini" loading="lazy"><span class="pc-name">Andini</span><span class="pc-price">219 €</span></div>
-          <div class="price-chip"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20250918_174321.jpg" alt="Chaise Nara" loading="lazy"><span class="pc-name">Nara</span><span class="pc-price">319 €</span></div>
-          <div class="price-chip"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20250921_161427.jpg" alt="Chaise Aruna" loading="lazy"><span class="pc-name">Aruna</span><span class="pc-price">359 €</span></div>
-          <div class="price-chip"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20250920_235719.jpg" alt="Fauteuil Indra" loading="lazy"><span class="pc-name">Indra</span><span class="pc-price">389 €</span></div>
-          <div class="price-chip"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Luma1.jpg" alt="Fauteuil Luma" loading="lazy"><span class="pc-name">Luma</span><span class="pc-price">499 €</span></div>
-          <div class="price-chip"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20250921_151659.jpg" alt="Table basse Nara" loading="lazy"><span class="pc-name">Nara coffee</span><span class="pc-price">549 €</span></div>
-          <div class="price-chip"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20250926_203623.png" alt="Transat Satria" loading="lazy"><span class="pc-name">Satria</span><span class="pc-price">999 €</span></div>
-        </div>
+      <div class="price-band">
+        <p class="price-band-head">Gamme premium, façonnée à la main en teck massif · <strong>à partir de 219 € la pièce</strong></p>
       </div>
       <div class="client-note">
         <label class="client-note-label" for="f-note">Vos préférences <span>(optionnel)</span></label>
         <textarea id="f-note" class="client-note-input" rows="3" maxlength="500"
-          placeholder="Précisez-nous vos directions : couleurs chaudes plutôt que froides, ambiance cosy, budget maximum, type de pièces souhaitées…"></textarea>
+          placeholder="Ex. : « Une ambiance chaleureuse et cosy, tons sable et bois, pour un coin détente à l'ombre. » Couleurs, style, budget max, pièces souhaitées…"></textarea>
       </div>
       <div class="step-actions">
         <button class="btn-primary" id="btn-step1-next" onclick="goToStep(2)" disabled>
@@ -617,7 +612,7 @@
   </div>
   -->
 
-  <script src="simulator.js?v=20260715d"></script>
+  <script src="simulator.js?v=20260715e"></script>
   <script>
     function widgetClick() {
       const hero = document.getElementById('hero');
