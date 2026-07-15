@@ -20,7 +20,7 @@ result.html    — page de rendu
 
 1. Push sur `main`
 2. Settings → Pages → Source : `main` / `/ (root)`
-3. URL publique : `https://charlusminus.github.io/balinaisa-pz/`
+3. URL publique : `https://balinaisa.ai/`
 
 ## Intégration sur balinaisa.com (widget « Simuler avec Balinaisa.ai »)
 

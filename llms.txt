@@ -42,7 +42,7 @@ Un positionnement haut de gamme : les pièces démarrent autour de 219 € et mo
 
 ## Liens
 
-- Simulateur Balinaisa.ai : https://charlusminus.github.io/balinaisa-simulateur/
+- Simulateur Balinaisa.ai : https://balinaisa.ai/
 - Site Balinaisa : https://balinaisa.com
 - Instagram : https://www.instagram.com/balinaisa/
-- Confidentialité : https://charlusminus.github.io/balinaisa-simulateur/privacy-policy.html
+- Confidentialité : https://balinaisa.ai/privacy-policy.html
