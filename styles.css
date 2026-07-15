@@ -505,6 +505,28 @@ input, textarea, select { font-family: var(--font-sans); }
 .upload-zone:hover { border-color: var(--primary); background: var(--primary-light); }
 .upload-zone.has-file { border-style: solid; border-color: var(--primary); }
 
+/* Bouton retirer/changer la photo (sur l'apercu) — surtout utile sur mobile. */
+.preview-remove {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: rgba(42, 31, 20, .62);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .25);
+  transition: background var(--transition);
+}
+.preview-remove:hover { background: rgba(42, 31, 20, .85); }
+.preview-remove.hidden { display: none; }
+
 .upload-zone-inner {
   display: flex;
   flex-direction: column;

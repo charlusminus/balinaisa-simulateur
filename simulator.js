@@ -169,12 +169,30 @@ function handleFileUpload(input) {
       preview.src = uploadedDataURL;
       preview.classList.remove('hidden');
       zone.classList.add('has-file');
+      document.getElementById('preview-remove')?.classList.remove('hidden');
       document.getElementById('btn-step1-next').disabled = false;
       applyStickies();
     };
     img.src = e.target.result;
   };
   reader.readAsDataURL(file);
+}
+
+// Retirer la photo importee : revient a l'etat "aucune photo".
+// Sur mobile, la dropzone se re-masque et les boutons Prendre/Importer reapparaissent.
+function clearPhoto() {
+  uploadedFile = null;
+  uploadedDataURL = null;
+  const prev = document.getElementById('preview-img');
+  if (prev) { prev.classList.add('hidden'); prev.src = ''; }
+  document.getElementById('upload-zone-inner')?.classList.remove('hidden');
+  document.getElementById('upload-zone')?.classList.remove('has-file');
+  document.getElementById('preview-remove')?.classList.add('hidden');
+  document.getElementById('btn-step1-next').disabled = true;
+  const fi = document.getElementById('file-input'); if (fi) fi.value = '';
+  const ci = document.getElementById('camera-input'); if (ci) ci.value = '';
+  document.getElementById('upload-error')?.classList.add('hidden');
+  applyStickies();
 }
 
 // Camera/gallery buttons only on mobile (tablet/phone). On desktop the
@@ -485,6 +503,7 @@ function resetSimulator() {
   document.getElementById('preview-img').src = '';
   document.getElementById('upload-zone-inner').classList.remove('hidden');
   document.getElementById('upload-zone').classList.remove('has-file');
+  document.getElementById('preview-remove')?.classList.add('hidden');
   document.getElementById('btn-step1-next').disabled = true;
   const noteEl = document.getElementById('f-note');
   if (noteEl) noteEl.value = '';
