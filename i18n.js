@@ -35,6 +35,7 @@
     "JPG, PNG, WEBP · max 8 Mo": "JPG, PNG, WEBP · max 8 MB",
     "Façonnées à la main, à partir de 219 €": "Handcrafted, from €219",
     "à partir de 219 €": "from €219",
+    "à partir de 219 € la pièce": "from €219 apiece",
     "Gamme premium, façonnée à la main en teck massif ·": "Premium range, handcrafted in solid teak ·",
     "Teck massif d'Indonésie": "Solid Indonesian teak",
     // — Wizard steps —
