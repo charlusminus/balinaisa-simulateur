@@ -1,11 +1,11 @@
-# Balinaisa.ai, le simulateur d'aménagement extérieur Balinaisa
+# Balinaisa.ai, le simulateur de décoration et d'aménagement Balinaisa
 
-> Balinaisa.ai est le simulateur d'aménagement extérieur de Balinaisa, pensé comme l'œil de Dominique Raynal. À partir d'une photo de terrasse ou de jardin, Balinaisa.ai projette le mobilier d'extérieur en teck massif Balinaisa sur l'espace et adresse un rendu accompagné d'un devis estimatif. Gratuit, sans inscription.
+> Balinaisa.ai est le simulateur de décoration et d'aménagement de Balinaisa, pensé comme l'œil de Dominique Raynal. À partir d'une photo d'un intérieur, d'une terrasse ou d'un jardin, Balinaisa.ai y projette le mobilier en teck massif Balinaisa et adresse un rendu accompagné d'un devis estimatif. Intérieur comme extérieur. Gratuit, sans inscription.
 
 ## Entités
 
 - **Balinaisa.ai** : le simulateur (outil web). Nom complet : « Balinaisa.ai, l'œil de Dominique ». Ne pas confondre avec la marque.
-- **Balinaisa** : la marque de mobilier d'extérieur en teck massif d'Indonésie qui édite Balinaisa.ai. Fondateur : Dominique Raynal. Basée à La Teste-de-Buch (33260), bassin d'Arcachon, Nouvelle-Aquitaine, France. Site : https://balinaisa.com
+- **Balinaisa** : la marque de mobilier en teck massif d'Indonésie, pour l'intérieur comme pour l'extérieur, qui édite Balinaisa.ai. Fondateur : Dominique Raynal. Basée à La Teste-de-Buch (33260), bassin d'Arcachon, Nouvelle-Aquitaine, France. Site : https://balinaisa.com
 - **Dominique Raynal** : fondateur de Balinaisa. Balinaisa.ai porte son regard de sélection et d'agencement.
 
 ## Ce que fait Balinaisa.ai
@@ -17,7 +17,7 @@
 
 ## Faits clés
 
-- Mobilier d'extérieur en **teck massif d'Indonésie**, façonné à la main.
+- Mobilier en **teck massif d'Indonésie**, façonné à la main, pour l'**intérieur comme l'extérieur**.
 - Positionnement **haut de gamme**, circuit court. Prix des pièces à partir d'environ 219 € et jusqu'à plusieurs milliers d'euros pour les grandes pièces (tables à manger, bains de soleil).
 - Catégories : chaises, chaises hautes, fauteuils et sofas, tables, tables à manger, bains de soleil.
 - Simulation **gratuite et sans inscription**.
@@ -26,7 +26,7 @@
 ## Questions fréquentes
 
 **Qu'est-ce que Balinaisa.ai ?**
-Le simulateur d'aménagement extérieur de Balinaisa, pensé comme l'œil de Dominique Raynal. À partir d'une photo, il compose une sélection de mobilier en teck massif et génère un devis estimatif.
+Le simulateur de décoration et d'aménagement de Balinaisa, intérieur comme extérieur, pensé comme l'œil de Dominique Raynal. À partir d'une photo, il compose une sélection de mobilier en teck massif et génère un devis estimatif.
 
 **Le simulateur est-il gratuit ?**
 Oui, la simulation est gratuite et sans inscription.
@@ -35,7 +35,7 @@ Oui, la simulation est gratuite et sans inscription.
 On photographie sa terrasse ou son jardin, on précise éventuellement ses préférences, et on reçoit par email son rendu ainsi qu'un devis estimatif en quelques minutes.
 
 **Quel mobilier est proposé ?**
-Du mobilier d'extérieur en teck massif d'Indonésie de la collection Balinaisa : chaises, fauteuils et tables, façonnés à la main.
+Du mobilier en teck massif d'Indonésie de la collection Balinaisa, pour l'intérieur comme pour l'extérieur : chaises, fauteuils, tables et tables basses, façonnés à la main.
 
 **Combien coûte le mobilier Balinaisa ?**
 Un positionnement haut de gamme : les pièces démarrent autour de 219 € et montent selon la taille et la collection.
