@@ -194,7 +194,6 @@
     return Object.prototype.hasOwnProperty.call(EN, key) ? EN[key] : s;
   }
 
-  function reveal() { document.documentElement.removeAttribute('data-i18n-pending'); }
 
   // Le switch est fait de vrais LIENS, pas de boutons JS. Deux raisons : la langue EST le
   // chemin, donc changer de langue = changer de page ; et un <a href> entre les deux versions
@@ -253,7 +252,7 @@
     // Sur /en/ le texte est deja anglais (cuit au build) : la boucle ci-dessous ne trouve rien.
     // On la garde comme FILET : si build-en.js rate un noeud, le runtime le rattrape au lieu
     // de servir du francais a un anglophone.
-    if (LANG !== 'en') { reveal(); return; }
+    if (LANG !== 'en') return;
     // textes
     var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
     var nodes = [], n;
@@ -290,7 +289,6 @@
       if (el) el.setAttribute('content', metaEN[k]);
     });
     document.querySelector('html').setAttribute('lang', 'en');
-    reveal();
   }
 
   window.i18n = { lang: LANG, t: tr };
