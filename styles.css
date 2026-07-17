@@ -1139,6 +1139,11 @@ select:focus-visible,
   border-left: 3px solid var(--primary); padding: 6px 0 6px 16px; margin: 2px 0 0; max-width: 44ch; transition: border-color .18s ease; }
 .press-ref:hover { border-left-color: var(--primary-dark); }
 .press-ref-label { font-size: 10px; text-transform: uppercase; letter-spacing: .18em; color: var(--primary); font-weight: 600; }
+.press-ref-head { display: flex; align-items: center; gap: 10px; }
+/* Le cercle est fait ici, pas dans l'image : l'asset reste le logo brut de Marie Claire,
+   et le masque est du style. Meme parti pris que la vignette des resultats Google. */
+.press-ref-logo { width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0; background: #fff;
+  border: 1px solid var(--border); }
 .press-ref-pub { font-family: var(--font-serif); font-size: 21px; font-weight: 600; color: var(--text); line-height: 1.1; }
 .press-ref-quote { font-size: 14px; font-style: italic; color: var(--text-sub); line-height: 1.55; }
 .press-ref-cta { font-size: 13px; font-weight: 500; color: var(--primary); }

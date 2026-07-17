@@ -215,7 +215,16 @@
         </ul>
         <a class="press-ref" href="https://www.marieclaire.fr/maison/adresses-incontournables/balinaisa/" target="_blank" rel="noopener">
           <span class="press-ref-label">As seen in the press</span>
-          <span class="press-ref-pub">Marie Claire Maison</span>
+          <span class="press-ref-head">
+            <!-- Logo officiel de Marie Claire : celui qu'ils declarent eux-memes dans leur
+                 JSON-LD Organization (champ `logo`). Recadre et centre sur fond blanc pour
+                 tenir dans le cercle : leur asset est un monogramme pleine largeur, un masque
+                 circulaire applique tel quel en rognerait les extremites. Meme parti pris que
+                 la vignette des resultats Google. -->
+            <img class="press-ref-logo" src="/presse/marie-claire.png?v=20260717a"
+                 alt="Marie Claire" width="128" height="128" loading="lazy" decoding="async">
+            <span class="press-ref-pub">Marie Claire Maison</span>
+          </span>
           <span class="press-ref-quote">“Balinaisa, the house that takes you travelling without leaving your living room”</span>
           <span class="press-ref-cta">Read the article<span aria-hidden="true"> →</span></span>
         </a>
