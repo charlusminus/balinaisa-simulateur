@@ -14,7 +14,7 @@
   <!-- i18n : détection langue + anti-flash (masque le temps de traduire pour les non-francophones) -->
   <script>(function(){try{var q=new URLSearchParams(location.search).get('lang');var s=localStorage.getItem('bal_lang');var l=(q==='fr'||q==='en')?q:((s==='fr'||s==='en')?s:(((navigator.languages&&navigator.languages[0])||navigator.language||'fr').toLowerCase().indexOf('fr')===0?'fr':'en'));document.documentElement.lang=l;if(l==='en')document.documentElement.setAttribute('data-i18n-pending','');}catch(e){}})();</script>
   <style>html[data-i18n-pending] body{visibility:hidden}</style>
-  <script src="i18n.js?v=20260715f"></script>
+  <script src="i18n.js?v=20260717a"></script>
 
   <!-- SEO -->
   <title>Simulateur déco et aménagement à partir d'une photo | Balinaisa</title>
@@ -31,21 +31,21 @@
   <meta property="og:locale" content="fr_FR">
   <meta property="og:url" content="https://balinaisa.ai/">
   <meta property="og:title" content="Votre espace, sublimé par le teck · Balinaisa">
-  <meta property="og:description" content="Une photo suffit : Balinaisa.ai projette le mobilier en teck Balinaisa dans votre espace et vous adresse un devis. Gratuit, sans inscription.">
+  <meta property="og:description" content="Une photo suffit : Balinaisa.ai projette le mobilier en teck Balinaisa dans votre espace et vous adresse un devis. Gratuit, sans engagement.">
   <meta property="og:image" content="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20251008_144205.jpg">
   <meta property="og:image:alt" content="Mobilier en teck massif Balinaisa mis en situation">
 
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Votre espace, sublimé par le teck · Balinaisa">
-  <meta name="twitter:description" content="Une photo suffit : Balinaisa.ai projette le mobilier en teck Balinaisa dans votre espace et vous adresse un devis. Gratuit, sans inscription.">
+  <meta name="twitter:description" content="Une photo suffit : Balinaisa.ai projette le mobilier en teck Balinaisa dans votre espace et vous adresse un devis. Gratuit, sans engagement.">
   <meta name="twitter:image" content="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20251008_144205.jpg">
   <meta name="twitter:image:alt" content="Mobilier en teck massif Balinaisa mis en situation">
 
   <link rel="icon" type="image/png" href="favicon.png?v=20260715b">
   <link rel="apple-touch-icon" href="favicon.png?v=20260715b">
   <link rel="preconnect" href="https://balinaisa.com">
-  <link rel="stylesheet" href="styles.css?v=20260715f">
+  <link rel="stylesheet" href="styles.css?v=20260717a">
   <link href="fonts/fonts.css?v=20260715c" rel="stylesheet">
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad" async defer></script>
 
@@ -110,12 +110,12 @@
           {
             "@type": "Question",
             "name": "Le simulateur est-il gratuit ?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Oui. La simulation est gratuite et sans inscription." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Oui. La simulation est gratuite et sans engagement." }
           },
           {
             "@type": "Question",
             "name": "Comment fonctionne la simulation ?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Photographiez votre terrasse, votre jardin ou votre intérieur, précisez éventuellement vos préférences, et recevez par email votre rendu ainsi qu'un devis estimatif en quelques minutes." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Intérieur ou extérieur, photographiez votre espace, précisez éventuellement vos préférences, et recevez par email votre rendu ainsi qu'un devis estimatif en quelques minutes." }
           },
           {
             "@type": "Question",
@@ -125,7 +125,7 @@
           {
             "@type": "Question",
             "name": "Combien coûte le mobilier Balinaisa ?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Un positionnement haut de gamme : les pièces démarrent autour de 219 € et montent selon la taille et la collection. Chaque simulation s'accompagne d'un devis estimatif." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Un positionnement haut de gamme, du mobilier façonné à la main en teck massif. Les prix varient selon la pièce, la taille et la collection. Chaque simulation s'accompagne d'un devis estimatif." }
           }
         ]
       }
@@ -140,9 +140,9 @@
     <a href="/" class="header-logo" aria-label="Balinaisa.ai, accueil du simulateur">
       <img src="logo-balinaisa.png?v=20260715b" alt="Balinaisa" height="34">
     </a>
-    <button class="header-cta" id="header-cta" onclick="startSimulator()" aria-label="Simuler avec Balinaisa.ai">
+    <button class="header-cta" id="header-cta" onclick="startSimulator()" aria-label="Commencer">
       <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-      <span>Simuler avec Balinaisa.ai</span>
+      <span>Commencer</span>
     </button>
   </header>
 
@@ -157,15 +157,16 @@
       <img src="logo-balinaisa.png?v=20260715b"
            class="hero-brand-logo" alt="Balinaisa"
            onerror="this.style.display='none'">
-      <h1 class="hero-title">Votre espace,<br><em>sublimé par le teck</em></h1>
-      <p class="hero-sub">Balinaisa.ai, entraîné comme l'œil de Dominique Raynal : son savoir-faire du teck, rendu accessible. Photographiez votre espace : il compose votre aménagement et vous adresse un devis en quelques secondes.</p>
-      <button class="hero-cta-pulse" onclick="startSimulator()" aria-label="Simuler avec Balinaisa.ai">
+      <h1 class="hero-title">Votre espace<br><em>sublimé par le teck</em></h1>
+      <p class="hero-sub">Balinaisa.ai, le regard de Dominique Raynal, créateur et expert d'ameublement d'exception, sublimé par l'Intelligence Artificielle.</p>
+      <p class="hero-sub hero-sub-process">Photographiez votre espace : il imagine votre aménagement et vous adresse un devis en quelques secondes.</p>
+      <button class="hero-cta-pulse" onclick="startSimulator()" aria-label="Commencer">
         <span class="cta-widget-shimmer" aria-hidden="true"></span>
         <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        <span>Simuler avec Balinaisa.ai</span>
+        <span>Commencer</span>
         <span class="cta-widget-star" aria-hidden="true">✦</span>
       </button>
-      <p class="hero-note">Gratuit · Sans inscription · Résultats en boite mail en quelques minutes</p>
+      <p class="hero-note">Gratuit · Sans engagement · Résultats en boite mail en quelques minutes</p>
     </div>
     <div class="hero-scroll-hint" aria-hidden="true">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
@@ -183,9 +184,9 @@
       </figure>
       <div class="balinaisa-ai-text">
         <p class="balinaisa-ai-eyebrow">Balinaisa.ai, entraîné comme l'œil de Dominique</p>
-        <blockquote class="balinaisa-ai-quote">« J'ai façonné Balinaisa.ai comme une extension de mon savoir-faire : des années de teck, un regard sur les proportions, le goût des matières justes. Aujourd'hui, il compose pour vous, chez vous, comme si je poussais votre portail à vos côtés. »</blockquote>
+        <blockquote class="balinaisa-ai-quote">« J'ai façonné Balinaisa.ai comme une extension de mon savoir-faire : un regard sur les proportions, le goût des matières justes. Aujourd'hui, il compose pour vous, chez vous, comme si je poussais votre porte à vos côtés. »</blockquote>
         <p class="balinaisa-ai-sign">Dominique Raynal, Balinaisa</p>
-        <p class="balinaisa-ai-explain">Photographiez votre terrasse, votre jardin ou votre intérieur : Balinaisa.ai y projette les pièces en teck massif qui subliment le lieu, et vous adresse un devis. Le regard d'un artisan, à portée de tous.</p>
+        <p class="balinaisa-ai-explain">Intérieur ou extérieur, photographiez votre salon, votre véranda, votre terrasse ou votre jardin : Balinaisa.ai y projette les pièces en teck massif qui subliment le lieu, et vous adresse un devis. Le regard d'un artisan, à portée de tous.</p>
       </div>
     </div>
   </section>
@@ -218,18 +219,18 @@
 
     <div class="brand-slider-head">
       <p class="brand-slider-title">Quelques pièces de la collection</p>
-      <p class="brand-slider-sub">Façonnées à la main, à partir de 219 €</p>
+      <p class="brand-slider-sub">Façonnées à la main</p>
     </div>
     <div class="brand-slider">
-      <article class="prod-card"><div class="prod-media"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20250920_234118.png" alt="Chaise Andini en teck massif" loading="lazy" decoding="async"></div><span class="prod-cat">Chaise</span><h3 class="prod-name">Andini</h3><p class="prod-price">219 €</p></article>
-      <article class="prod-card"><div class="prod-media"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20250815_110226.jpg" alt="Chaise Dune en teck massif" loading="lazy" decoding="async"></div><span class="prod-cat">Chaise</span><h3 class="prod-name">Dune</h3><p class="prod-price">309 €</p></article>
-      <article class="prod-card"><div class="prod-media"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20250918_174321.jpg" alt="Chaise Nara en teck massif" loading="lazy" decoding="async"></div><span class="prod-cat">Chaise</span><h3 class="prod-name">Nara</h3><p class="prod-price">319 €</p></article>
-      <article class="prod-card"><div class="prod-media"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20250921_161427.jpg" alt="Chaise Aruna en teck massif" loading="lazy" decoding="async"></div><span class="prod-cat">Chaise</span><h3 class="prod-name">Aruna</h3><p class="prod-price">359 €</p></article>
-      <article class="prod-card"><div class="prod-media"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20250920_235719.jpg" alt="Fauteuil Indra en teck massif" loading="lazy" decoding="async"></div><span class="prod-cat">Fauteuil</span><h3 class="prod-name">Indra</h3><p class="prod-price">389 €</p></article>
-      <article class="prod-card"><div class="prod-media"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Luma1.jpg" alt="Fauteuil Luma en teck massif" loading="lazy" decoding="async"></div><span class="prod-cat">Fauteuil</span><h3 class="prod-name">Luma</h3><p class="prod-price">499 €</p></article>
-      <article class="prod-card"><div class="prod-media"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20250921_151659.jpg" alt="Table basse Nara coffeetable en teck massif" loading="lazy" decoding="async"></div><span class="prod-cat">Table basse</span><h3 class="prod-name">Nara coffeetable</h3><p class="prod-price">549 €</p></article>
-      <article class="prod-card"><div class="prod-media"><img src="https://balinaisa.com/wp-content/uploads/2025/11/Photoroom_20250926_142913.webp" alt="Fauteuil Nara en teck massif" loading="lazy" decoding="async"></div><span class="prod-cat">Fauteuil</span><h3 class="prod-name">Fauteuil Nara</h3><p class="prod-price">599 €</p></article>
-      <article class="prod-card"><div class="prod-media"><img src="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20250926_203623.png" alt="Transat Satria en teck massif" loading="lazy" decoding="async"></div><span class="prod-cat">Bain de soleil</span><h3 class="prod-name">Satria</h3><p class="prod-price">999 €</p></article>
+      <article class="prod-card"><div class="prod-media"><img src="produits/hanoi.jpg?v=20260717a" alt="Table basse Hanoi en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Table basse</span><h3 class="prod-name">Hanoi</h3><p class="prod-price">529 € <span>TTC</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="produits/reza.jpg?v=20260717a" alt="Meuble TV Reza en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Meuble TV</span><h3 class="prod-name">Reza</h3><p class="prod-price">759 € <span>TTC</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="produits/jaya.jpg?v=20260717a" alt="Fauteuil de bar Jaya en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Fauteuil de bar</span><h3 class="prod-name">Jaya</h3><p class="prod-price">369 € <span>TTC</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="produits/nara.jpg?v=20260717a" alt="Chaise avec accoudoirs Nara en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Chaise</span><h3 class="prod-name">Nara</h3><p class="prod-price">319 € <span>TTC</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="produits/lyodra.jpg?v=20260717a" alt="Table à manger Lyodra en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Table à manger</span><h3 class="prod-name">Lyodra</h3><p class="prod-price">2 079 € <span>TTC</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="produits/kumala.jpg?v=20260717a" alt="Fauteuil d'intérieur Kumala en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Fauteuil</span><h3 class="prod-name">Kumala</h3><p class="prod-price">459 € <span>TTC</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="produits/uma.jpg?v=20260717a" alt="Chaise Uma en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Chaise</span><h3 class="prod-name">Uma</h3><p class="prod-price">199 € <span>TTC</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="produits/siti.jpg?v=20260717a" alt="Table Siti en teck massif" width="292" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Table</span><h3 class="prod-name">Siti</h3><p class="prod-price">2 129 € <span>TTC</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="produits/timor.jpg?v=20260717a" alt="Table basse Timor en teck massif" width="300" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Table basse</span><h3 class="prod-name">Timor</h3><p class="prod-price">1 329 € <span>TTC</span></p></article>
     </div>
   </section>
 
@@ -276,11 +277,11 @@
         </details>
         <details class="faq-item">
           <summary>Le simulateur est-il gratuit ?</summary>
-          <p>Oui. La simulation est gratuite et sans inscription.</p>
+          <p>Oui. La simulation est gratuite et sans engagement.</p>
         </details>
         <details class="faq-item">
           <summary>Comment fonctionne la simulation ?</summary>
-          <p>Photographiez votre terrasse, votre jardin ou votre intérieur, précisez éventuellement vos préférences, et recevez par email votre rendu ainsi qu'un devis estimatif en quelques minutes.</p>
+          <p>Intérieur ou extérieur, photographiez votre espace, précisez éventuellement vos préférences, et recevez par email votre rendu ainsi qu'un devis estimatif en quelques minutes.</p>
         </details>
         <details class="faq-item">
           <summary>Quel mobilier est proposé ?</summary>
@@ -288,7 +289,7 @@
         </details>
         <details class="faq-item">
           <summary>Combien coûte le mobilier Balinaisa ?</summary>
-          <p>Un positionnement haut de gamme : les pièces démarrent autour de 219 € et montent selon la taille et la collection. Chaque simulation s'accompagne d'un devis estimatif.</p>
+          <p>Un positionnement haut de gamme, du mobilier façonné à la main en teck massif. Les prix varient selon la pièce, la taille et la collection. Chaque simulation s'accompagne d'un devis estimatif.</p>
         </details>
       </div>
     </div>
@@ -361,10 +362,6 @@
         <div class="tip"><span class="tip-icon">✓</span> Salon, terrasse, jardin, véranda</div>
         <div class="tip"><span class="tip-icon">✓</span> Bonne luminosité naturelle</div>
         <div class="tip"><span class="tip-icon">✓</span> Espace visible pour placer un meuble</div>
-      </div>
-      <!-- Bande de prix : ancre la gamme dans la tête du visiteur avant de générer (self-qualification budget). -->
-      <div class="price-band">
-        <p class="price-band-head">Gamme premium, façonnée à la main en teck massif · <strong>à partir de 219 € la pièce</strong></p>
       </div>
       <div class="client-note">
         <label class="client-note-label" for="f-note">Vos préférences <span>(optionnel)</span></label>
@@ -613,7 +610,7 @@
   </div>
   -->
 
-  <script src="simulator.js?v=20260715e"></script>
+  <script src="simulator.js?v=20260717a"></script>
   <script>
     function widgetClick() {
       const hero = document.getElementById('hero');

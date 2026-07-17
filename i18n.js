@@ -21,22 +21,19 @@
   // Dictionnaire FR -> EN (cle = texte FR exact, tel qu'affiche).
   var EN = {
     // — SEO / meta —
-    "Mobilier en teck, intérieur et extérieur : simulateur | Balinaisa": "Teak furniture, indoor and outdoor: simulator | Balinaisa",
+    "Simulateur déco et aménagement à partir d'une photo | Balinaisa": "Interior design and layout simulator from a photo | Balinaisa",
     // — Header / hero —
-    "Simuler avec Balinaisa.ai": "Try Balinaisa.ai",
-    "Votre espace,": "Your space,",
+    "Commencer": "Get started",
+    "Votre espace": "Your space",
     "sublimé par le teck": "elevated by teak",
-    "Photographiez votre terrasse, votre jardin ou votre intérieur : Balinaisa.ai y projette les pièces en teck massif qui subliment le lieu, et vous adresse un devis. Le regard d'un artisan, à portée de tous.": "Photograph your terrace, garden or interior: Balinaisa.ai places the solid teak pieces that elevate the space and sends you a quote. A craftsman's eye, within everyone's reach.",
-    "Gratuit · Sans inscription · Résultats en boite mail en quelques minutes": "Free · No sign-up · Results in your inbox within minutes",
+    "Intérieur ou extérieur, photographiez votre salon, votre véranda, votre terrasse ou votre jardin : Balinaisa.ai y projette les pièces en teck massif qui subliment le lieu, et vous adresse un devis. Le regard d'un artisan, à portée de tous.": "Indoors or outdoors, photograph your living room, veranda, terrace or garden: Balinaisa.ai places the solid teak pieces that elevate the space and sends you a quote. A craftsman's eye, within everyone's reach.",
+    "Gratuit · Sans engagement · Résultats en boite mail en quelques minutes": "Free · No commitment · Results in your inbox within minutes",
     "Importez une photo de votre espace": "Upload a photo of your space",
     "Glissez votre photo ici": "Drop your photo here",
     "ou cliquez pour importer": "or click to upload",
     "JPG ou PNG · max 10 Mo · salon, terrasse, jardin, véranda · vue d'ensemble recommandée": "JPG or PNG · max 10 MB · living room, terrace, garden, veranda · a wide shot works best",
     "JPG, PNG, WEBP · max 8 Mo": "JPG, PNG, WEBP · max 8 MB",
-    "Façonnées à la main, à partir de 219 €": "Handcrafted, from €219",
-    "à partir de 219 €": "from €219",
-    "à partir de 219 € la pièce": "from €219 apiece",
-    "Gamme premium, façonnée à la main en teck massif ·": "Premium range, handcrafted in solid teak ·",
+    "Façonnées à la main": "Handcrafted",
     "Teck massif d'Indonésie": "Solid Indonesian teak",
     // — Wizard steps —
     "Étape 1 / 4": "Step 1 / 4",
@@ -102,14 +99,20 @@
     "Chaise": "Chair",
     "Fauteuil": "Armchair",
     "Table basse": "Coffee table",
+    "TTC": "incl. VAT",
     "Bain de soleil": "Sun lounger",
+    "Meuble TV": "TV unit",
+    "Fauteuil de bar": "Bar chair",
+    "Table à manger": "Dining table",
+    "Table": "Table",
     "La maison Balinaisa": "The Balinaisa house",
     "Le teck d'Indonésie, en circuit court": "Indonesian teak, direct from the source",
     "Chaque pièce est façonnée à la main par nos artisans partenaires en Indonésie, dans un teck massif choisi avec soin. Une relation directe, sans intermédiaire, pour une qualité rare et des finitions durables, pensées pour l'extérieur comme pour l'intérieur.": "Each piece is handcrafted by our partner artisans in Indonesia, from carefully selected solid teak. A direct relationship, with no middlemen, for rare quality and durable finishes, designed for outdoors as well as indoors.",
     "Artisans partenaires, circuit court": "Partner artisans, short supply chain",
     "Showroom au bassin d'Arcachon": "Showroom in the Arcachon basin",
-    "Balinaisa.ai, entraîné comme l'œil de Dominique Raynal : son savoir-faire du teck, rendu accessible. Photographiez votre espace : il compose votre aménagement et vous adresse un devis en quelques secondes.": "Balinaisa.ai, trained as Dominique Raynal's eye: his teak expertise, made accessible. Photograph your space: it composes your layout and sends you a quote in seconds.",
-    "« J'ai façonné Balinaisa.ai comme une extension de mon savoir-faire : des années de teck, un regard sur les proportions, le goût des matières justes. Aujourd'hui, il compose pour vous, chez vous, comme si je poussais votre portail à vos côtés. »": "“I shaped Balinaisa.ai as an extension of my craft: years of teak, an eye for proportion, a taste for the right materials. Today it composes for you, in your home, as if I were stepping through your gate beside you.”",
+    "Balinaisa.ai, le regard de Dominique Raynal, créateur et expert d'ameublement d'exception, sublimé par l'Intelligence Artificielle.": "Balinaisa.ai, the eye of Dominique Raynal, creator and expert in exceptional furniture, elevated by Artificial Intelligence.",
+    "Photographiez votre espace : il imagine votre aménagement et vous adresse un devis en quelques secondes.": "Photograph your space: it imagines your layout and sends you a quote in seconds.",
+    "« J'ai façonné Balinaisa.ai comme une extension de mon savoir-faire : un regard sur les proportions, le goût des matières justes. Aujourd'hui, il compose pour vous, chez vous, comme si je poussais votre porte à vos côtés. »": "“I shaped Balinaisa.ai as an extension of my craft: an eye for proportion, a taste for the right materials. Today it composes for you, in your home, as if I were stepping through your door beside you.”",
     "Dominique Raynal · Balinaisa": "Dominique Raynal · Balinaisa",
     "Dominique Raynal, Balinaisa": "Dominique Raynal, Balinaisa",
     "Simulation propulsée par": "Simulation powered by",
@@ -130,13 +133,13 @@
     "Qu'est-ce que Balinaisa.ai ?": "What is Balinaisa.ai?",
     "Balinaisa.ai est le simulateur d'aménagement Balinaisa, pensé comme l'œil de Dominique Raynal. À partir d'une photo de votre espace, il compose une sélection de mobilier en teck massif et génère un devis estimatif.": "Balinaisa.ai is the Balinaisa layout simulator, designed as Dominique Raynal's eye. From a photo of your space, it composes a selection of solid teak furniture and generates an estimated quote.",
     "Le simulateur est-il gratuit ?": "Is the simulator free?",
-    "Oui. La simulation est gratuite et sans inscription.": "Yes. The simulation is free and requires no sign-up.",
+    "Oui. La simulation est gratuite et sans engagement.": "Yes. The simulation is free with no commitment.",
     "Comment fonctionne la simulation ?": "How does the simulation work?",
-    "Photographiez votre terrasse, votre jardin ou votre intérieur, précisez éventuellement vos préférences, et recevez par email votre rendu ainsi qu'un devis estimatif en quelques minutes.": "Photograph your terrace, garden or interior, optionally add your preferences, and receive your rendering plus an estimated quote by email within minutes.",
+    "Intérieur ou extérieur, photographiez votre espace, précisez éventuellement vos préférences, et recevez par email votre rendu ainsi qu'un devis estimatif en quelques minutes.": "Indoors or outdoors, photograph your space, optionally add your preferences, and receive your rendering plus an estimated quote by email within minutes.",
     "Quel mobilier est proposé ?": "What furniture is offered?",
     "Du mobilier en teck massif d'Indonésie de la collection Balinaisa, pour l'intérieur comme pour l'extérieur : chaises, fauteuils et tables, façonnés à la main.": "Solid Indonesian teak furniture from the Balinaisa collection, for indoors and outdoors: chairs, armchairs and tables, handcrafted.",
     "Combien coûte le mobilier Balinaisa ?": "How much does Balinaisa furniture cost?",
-    "Un positionnement haut de gamme : les pièces démarrent autour de 219 € et montent selon la taille et la collection. Chaque simulation s'accompagne d'un devis estimatif.": "A premium positioning: pieces start around €219 and rise depending on size and collection. Each simulation comes with an estimated quote.",
+    "Un positionnement haut de gamme, du mobilier façonné à la main en teck massif. Les prix varient selon la pièce, la taille et la collection. Chaque simulation s'accompagne d'un devis estimatif.": "A premium positioning, furniture handcrafted in solid teak. Prices vary by piece, size and collection. Each simulation comes with an estimated quote.",
     // — Footer —
     "Showroom au bassin d'Arcachon ": "Showroom in the Arcachon basin ",
     // — Alt / aria —
@@ -244,11 +247,11 @@
     if (document.title && EN[document.title.replace(/\s+/g, ' ').trim()]) document.title = EN[document.title.replace(/\s+/g, ' ').trim()];
     // meta description + og/twitter (SEO cote client)
     var metaEN = {
-      'description': "Upload a photo of your terrace, garden or interior: Balinaisa.ai, trained as Dominique's eye, places Balinaisa teak furniture in it and sends you a quote. Free, no sign-up.",
+      'description': "Interior design and layout simulator: upload a photo of your living room, terrace or garden and receive a solid teak rendering with a quote. Free.",
       'og:title': "Your space, elevated by teak · Balinaisa",
       'twitter:title': "Your space, elevated by teak · Balinaisa",
-      'og:description': "One photo is enough: Balinaisa.ai places Balinaisa teak furniture in your space and sends you a quote. Free, no sign-up.",
-      'twitter:description': "One photo is enough: Balinaisa.ai places Balinaisa teak furniture in your space and sends you a quote. Free, no sign-up."
+      'og:description': "One photo is enough: Balinaisa.ai places Balinaisa teak furniture in your space and sends you a quote. Free, no commitment.",
+      'twitter:description': "One photo is enough: Balinaisa.ai places Balinaisa teak furniture in your space and sends you a quote. Free, no commitment."
     };
     Object.keys(metaEN).forEach(function (k) {
       var el = document.querySelector('meta[name="' + k + '"]') || document.querySelector('meta[property="' + k + '"]');
