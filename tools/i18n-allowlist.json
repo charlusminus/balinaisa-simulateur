@@ -1,0 +1,20 @@
+{
+  "_doc": "Cles du dico EN (i18n.js) qui n'ont pas d'equivalent dans le rendu, et dont c'est normal. Lu par tools/check-i18n.js. Tout le reste est une erreur.",
+
+  "catalogue": {
+    "reason": "Vocabulaire produit : une categorie entre et sort du slider au gre des arrivages, sans que la traduction ait a bouger. Son absence du rendu est normale et n'est jamais signalee. Ajouter ici toute nouvelle categorie mise au dico.",
+    "keys": [
+      "Bain de soleil",
+      "Chaise",
+      "Fauteuil",
+      "Fauteuil de bar",
+      "Meuble TV",
+      "Table",
+      "Table basse",
+      "Table à manger"
+    ]
+  },
+
+  "_exemptions": "Cas particuliers hors catalogue : { \"key\": ..., \"reason\": ... }, raison obligatoire. Une entree devenue inutile est signalee (sans bloquer) pour que la liste ne pourrisse pas.",
+  "exemptions": []
+}

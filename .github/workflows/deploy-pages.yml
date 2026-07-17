@@ -3,19 +3,34 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
-
 jobs:
+  # Garde-fou i18n : une cle du dico EN qui ne correspond plus a aucun texte rendu
+  # renvoie du francais aux anglophones, sans erreur console. Bloque la PR.
+  check-i18n:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Cles i18n orphelines
+        run: node tools/check-i18n.js
+
   deploy:
+    needs: check-i18n
+    if: github.event_name != 'pull_request' # sur une PR, les controles suffisent
+    # Concurrence au niveau du job (et non du workflow) : sinon une PR entre dans le
+    # groupe "pages" et annule une mise en ligne en cours.
+    concurrency:
+      group: pages
+      cancel-in-progress: true
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
