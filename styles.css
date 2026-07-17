@@ -147,20 +147,26 @@ input, textarea, select { font-family: var(--font-sans); }
   color: #F5D49A;
 }
 
+/* Texte sur photo : une ombre portee decolle les lettres du fond quel que soit ce
+   qu'il y a derriere (un canape gris clair passait sous le seuil de lisibilite).
+   Meme parti pris que le logo du hero, qui porte deja un drop-shadow. */
 .hero-sub {
   font-size: 16px;
-  color: rgba(255,255,255,.80);
+  color: rgba(255,255,255,.92);
   line-height: 1.65;
   max-width: 480px;
   margin: 0;
+  text-shadow: 0 1px 3px rgba(20,12,5,.85), 0 1px 12px rgba(20,12,5,.55);
 }
 
-/* La signature porte, le process explique : on resserre le second sous le premier
-   (le gap de .hero-content les eloignerait autant que du CTA) et on l'attenue. */
+/* La hierarchie vient de la taille (16 vs 15) et de la place, PAS d'une couleur plus
+   pale : le process est la phrase qui explique le produit, elle doit rester aussi
+   lisible que la signature. Meme couleur, meme ombre. */
 .hero-sub-process {
   font-size: 15px;
-  color: rgba(255,255,255,.68);
+  color: rgba(255,255,255,.92);
   margin-top: -.5rem;
+  text-shadow: 0 1px 3px rgba(20,12,5,.85), 0 1px 12px rgba(20,12,5,.55);
 }
 
 /* Hero CTA - same look & animation as the sticky widget, scaled up */
