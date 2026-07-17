@@ -18,6 +18,11 @@ jobs:
         uses: actions/checkout@v4
       - name: Cles i18n orphelines
         run: node tools/check-i18n.js
+      # /en/ est COMMITE pour etre relisible en PR, mais il est GENERE. Si quelqu'un touche
+      # index.html ou i18n.js sans relancer le generateur, la page anglaise part en prod
+      # perimee, indexee telle quelle par Google. Ce controle regenere et compare.
+      - name: /en/ a jour
+        run: node tools/build-en.js --check
 
   deploy:
     needs: check-i18n

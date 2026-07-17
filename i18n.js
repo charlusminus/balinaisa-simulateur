@@ -1,22 +1,34 @@
 /* Balinaisa.ai — i18n FR/EN.
-   Politique: francophone (navigator.language commence par "fr") => FR (defaut, aucune trad).
-   Sinon => EN. Override manuel possible via ?lang=fr|en (persiste en localStorage).
-   Traduction non-invasive: dictionnaire FR->EN applique au DOM (textes + attributs) au chargement.
-   Les noms propres (Balinaisa, produits, avis, emails, adresse) ne sont pas dans le dico -> inchanges.
+   UNE PAGE = UNE LANGUE = UN CANONICAL. La langue vient du CHEMIN, jamais du navigateur :
+     /     -> FR, toujours, pour tout le monde, Googlebot compris.
+     /en/  -> EN, page generee au build par tools/build-en.js depuis ce dictionnaire.
+   Avant, `/` se traduisait toute seule pour un navigateur non francophone. Or Googlebot
+   execute le JS ET se presente en en-US : il pouvait donc indexer `/` comme une page
+   anglaise, en concurrence avec /en/ sur les memes requetes. D'ou la bascule sur le chemin.
+   Un bandeau discret (pas une redirection : Googlebot crawle depuis les US et ne verrait
+   jamais le FR) propose /en/ aux navigateurs non francophones.
+   Ce fichier reste la SOURCE DE VERITE des traductions : tools/build-en.js le lit pour
+   generer /en/, tools/check-i18n.js le controle. Ne jamais traduire ailleurs.
    window.i18n.lang / window.i18n.t(fr) exposes pour les chaines generees en JS (simulator.js). */
 (function () {
+  // Le chemin fait foi. Rien d'autre.
   function detect() {
-    try {
-      var q = new URLSearchParams(location.search).get('lang');
-      if (q === 'fr' || q === 'en') { localStorage.setItem('bal_lang', q); return q; }
-      var s = localStorage.getItem('bal_lang');
-      if (s === 'fr' || s === 'en') return s;
-    } catch (e) {}
-    var nav = ((navigator.languages && navigator.languages[0]) || navigator.language || 'fr').toLowerCase();
-    return nav.indexOf('fr') === 0 ? 'fr' : 'en';
+    return /^\/en(\/|$)/.test(location.pathname) ? 'en' : 'fr';
   }
 
   var LANG = detect();
+
+  // Compat : ?lang=en etait l'ancien override. Des liens externes peuvent encore le porter.
+  // On le renvoie sur la vraie page anglaise plutot que de le laisser mourir en silence.
+  (function legacyLangParam() {
+    try {
+      var q = new URLSearchParams(location.search).get('lang');
+      if (q !== 'fr' && q !== 'en') return;
+      var target = (q === 'en') ? '/en/' : '/';
+      if (location.pathname === target) return;
+      location.replace(target);
+    } catch (e) {}
+  })();
 
   // Dictionnaire FR -> EN (cle = texte FR exact, tel qu'affiche).
   var EN = {
@@ -184,15 +196,9 @@
 
   function reveal() { document.documentElement.removeAttribute('data-i18n-pending'); }
 
-  function setLang(l) {
-    if (l !== 'fr' && l !== 'en') return;
-    try { localStorage.setItem('bal_lang', l); } catch (e) {}
-    var u = new URL(location.href);
-    u.searchParams.delete('lang'); // le choix explicite prime -> on retire l'override d'URL
-    location.replace(u.pathname + u.search + u.hash);
-  }
-
-  // Switch FR | EN injecte dans le header (present sur toutes les pages qui chargent i18n.js).
+  // Le switch est fait de vrais LIENS, pas de boutons JS. Deux raisons : la langue EST le
+  // chemin, donc changer de langue = changer de page ; et un <a href> entre les deux versions
+  // est crawlable, ce qui est precisement ce qu'un couple hreflang attend.
   function buildSwitch() {
     var header = document.querySelector('.header');
     if (!header || document.getElementById('lang-switch')) return;
@@ -201,22 +207,52 @@
     wrap.setAttribute('role', 'group');
     wrap.setAttribute('aria-label', 'Language / Langue');
     wrap.style.cssText = 'display:inline-flex;gap:2px;align-items:center;margin-left:auto;margin-right:12px;font-family:Helvetica,Arial,sans-serif;font-size:12px;font-weight:600;letter-spacing:.04em';
-    ['fr', 'en'].forEach(function (l) {
-      var b = document.createElement('button');
-      b.type = 'button'; b.textContent = l.toUpperCase();
-      var on = (LANG === l);
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
-      b.style.cssText = 'cursor:pointer;border:none;background:' + (on ? '#B87D4B' : 'transparent') + ';color:' + (on ? '#fff' : '#8a7a66') + ';padding:4px 9px;border-radius:6px;line-height:1;transition:background .15s';
-      b.addEventListener('click', function () { if (!on) setLang(l); });
-      wrap.appendChild(b);
+    [['fr', '/'], ['en', '/en/']].forEach(function (pair) {
+      var l = pair[0], on = (LANG === l);
+      var a = document.createElement('a');
+      a.textContent = l.toUpperCase();
+      a.href = pair[1];
+      a.setAttribute('hreflang', l);
+      if (on) a.setAttribute('aria-current', 'true');
+      a.style.cssText = 'text-decoration:none;cursor:pointer;background:' + (on ? '#B87D4B' : 'transparent') + ';color:' + (on ? '#fff' : '#8a7a66') + ';padding:4px 9px;border-radius:6px;line-height:1;transition:background .15s';
+      wrap.appendChild(a);
     });
     var cta = header.querySelector('#header-cta, .header-cta');
     if (cta) header.insertBefore(wrap, cta); else header.appendChild(wrap);
   }
 
+  // Un bandeau, PAS une redirection. Rediriger selon navigator.language est le piege SEO
+  // classique : Googlebot crawle depuis les US, se fait rediriger, et n'indexe jamais le FR.
+  // On propose, on n'impose pas.
+  function offerEnglish() {
+    if (LANG !== 'fr') return;
+    var nav = ((navigator.languages && navigator.languages[0]) || navigator.language || 'fr').toLowerCase();
+    if (nav.indexOf('fr') === 0) return;
+    try { if (localStorage.getItem('bal_en_offer') === 'off') return; } catch (e) {}
+    var bar = document.createElement('div');
+    bar.id = 'en-offer';
+    bar.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:1000;background:#2A1F14;color:#fff;padding:11px 16px;display:flex;align-items:center;justify-content:center;gap:14px;font-family:Helvetica,Arial,sans-serif;font-size:14px';
+    var a = document.createElement('a');
+    a.href = '/en/'; a.textContent = 'Read this page in English \u2192';
+    a.style.cssText = 'color:#F5D49A;text-decoration:none;font-weight:600';
+    var x = document.createElement('button');
+    x.type = 'button'; x.textContent = '\u2715'; x.setAttribute('aria-label', 'Dismiss');
+    x.style.cssText = 'background:none;border:none;color:rgba(255,255,255,.55);cursor:pointer;font-size:15px;line-height:1;padding:2px 4px';
+    x.addEventListener('click', function () {
+      try { localStorage.setItem('bal_en_offer', 'off'); } catch (e) {}
+      bar.remove();
+    });
+    bar.appendChild(a); bar.appendChild(x);
+    document.body.appendChild(bar);
+  }
+
   function applyDOM() {
     document.documentElement.setAttribute('lang', LANG);
     buildSwitch();
+    offerEnglish();
+    // Sur /en/ le texte est deja anglais (cuit au build) : la boucle ci-dessous ne trouve rien.
+    // On la garde comme FILET : si build-en.js rate un noeud, le runtime le rattrape au lieu
+    // de servir du francais a un anglophone.
     if (LANG !== 'en') { reveal(); return; }
     // textes
     var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
@@ -257,7 +293,7 @@
     reveal();
   }
 
-  window.i18n = { lang: LANG, t: tr, setLang: setLang };
+  window.i18n = { lang: LANG, t: tr };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', applyDOM);
   else applyDOM();
 })();
