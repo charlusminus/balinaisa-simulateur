@@ -140,13 +140,10 @@
     "Du mobilier en teck massif d'Indonésie de la collection Balinaisa, pour l'intérieur comme pour l'extérieur : chaises, fauteuils et tables, façonnés à la main.": "Solid Indonesian teak furniture from the Balinaisa collection, for indoors and outdoors: chairs, armchairs and tables, handcrafted.",
     "Combien coûte le mobilier Balinaisa ?": "How much does Balinaisa furniture cost?",
     "Un positionnement haut de gamme, du mobilier façonné à la main en teck massif. Les prix varient selon la pièce, la taille et la collection. Chaque simulation s'accompagne d'un devis estimatif.": "A premium positioning, furniture handcrafted in solid teak. Prices vary by piece, size and collection. Each simulation comes with an estimated quote.",
-    // — Footer —
-    "Showroom au bassin d'Arcachon ": "Showroom in the Arcachon basin ",
     // — Alt / aria —
     "Espace visible pour placer un meuble": "Visible space to place furniture",
     "Bonne luminosité naturelle": "Good natural light",
     "Salon, terrasse, jardin, véranda": "Living room, terrace, garden, veranda",
-    "Voir les avis sur Google ": "See the reviews on Google ",
     // — JS messages (simulator.js) —
     "Indiquez un numéro de téléphone valide (8 à 15 chiffres, indicatif international accepté, ex. +33 6 12 34 56 78).": "Please enter a valid phone number (8 to 15 digits, international prefix accepted, e.g. +33 6 12 34 56 78).",
     "Le simulateur reçoit un grand nombre de demandes en ce moment. Merci de réessayer un peu plus tard dans la journée.": "The simulator is receiving a high volume of requests right now. Please try again a little later today.",
@@ -168,7 +165,6 @@
     "Note : 5 sur 5": "Rating: 5 out of 5",
     "Note Google : 5 sur 5, 8 avis": "Google rating: 5 out of 5, 8 reviews",
     "Importer une photo de votre espace": "Upload a photo of your space",
-    "Aperçu de la collection et des prix": "Preview of the collection and prices",
     "Vous êtes": "You are",
     "Mobilier en teck massif Balinaisa dans le showroom": "Balinaisa solid teak furniture in the showroom",
     "Aperçu de votre pièce": "Preview of your room",
