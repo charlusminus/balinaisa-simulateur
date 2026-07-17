@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="fr">
+<!-- GENERE par tools/build-en.js depuis index.html + i18n.js. NE PAS EDITER A LA MAIN :
+     toute correction se fait dans index.html (structure) ou i18n.js (traduction), puis
+     `node tools/build-en.js`. La CI regenere et compare. -->
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,13 +20,13 @@
   <script src="i18n.js?v=20260717a"></script>
 
   <!-- SEO -->
-  <title>Simulateur déco et aménagement à partir d'une photo | Balinaisa</title>
-  <meta name="description" content="Simulateur de déco et d'aménagement : importez une photo de votre intérieur, terrasse ou jardin, et recevez un rendu en teck massif avec devis. Gratuit.">
+  <title>Interior design and layout simulator from a photo | Balinaisa</title>
+  <meta name="description" content="Interior design and layout simulator: upload a photo of your living room, terrace or garden and receive a solid teak rendering with a quote. Free.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="author" content="Balinaisa">
   <meta name="keywords" content="mobilier teck, mobilier extérieur teck, mobilier teck intérieur, salon de jardin teck, table teck, aménagement terrasse, teck Indonésie, Balinaisa, simulateur aménagement">
   <meta name="theme-color" content="#B87D4B">
-  <link rel="canonical" href="https://balinaisa.ai/">
+  <link rel="canonical" href="https://balinaisa.ai/en/">
   <!-- hreflang : retire le 16/07 parce que ?lang=en n'etait pas une vraie page (son canonical
        pointait sur /, donc Google ignorait le couple). Remis parce que /en/ EST une page, avec
        son propre canonical auto-referent : c'est la condition pour que Google honore
@@ -35,25 +38,25 @@
   <!-- Open Graph (Facebook, LinkedIn, WhatsApp, iMessage…) -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Balinaisa">
-  <meta property="og:locale" content="fr_FR">
-  <meta property="og:url" content="https://balinaisa.ai/">
-  <meta property="og:title" content="Votre espace, sublimé par le teck · Balinaisa">
-  <meta property="og:description" content="Une photo suffit : Balinaisa.ai projette le mobilier en teck Balinaisa dans votre espace et vous adresse un devis. Gratuit, sans engagement.">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:url" content="https://balinaisa.ai/en/">
+  <meta property="og:title" content="Your space, elevated by teak · Balinaisa">
+  <meta property="og:description" content="One photo is enough: Balinaisa.ai places Balinaisa teak furniture in your space and sends you a quote. Free, no commitment.">
   <meta property="og:image" content="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20251008_144205.jpg">
   <meta property="og:image:alt" content="Mobilier en teck massif Balinaisa mis en situation">
 
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Votre espace, sublimé par le teck · Balinaisa">
-  <meta name="twitter:description" content="Une photo suffit : Balinaisa.ai projette le mobilier en teck Balinaisa dans votre espace et vous adresse un devis. Gratuit, sans engagement.">
+  <meta name="twitter:title" content="Your space, elevated by teak · Balinaisa">
+  <meta name="twitter:description" content="One photo is enough: Balinaisa.ai places Balinaisa teak furniture in your space and sends you a quote. Free, no commitment.">
   <meta name="twitter:image" content="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20251008_144205.jpg">
   <meta name="twitter:image:alt" content="Mobilier en teck massif Balinaisa mis en situation">
 
-  <link rel="icon" type="image/png" href="favicon.png?v=20260715b">
-  <link rel="apple-touch-icon" href="favicon.png?v=20260715b">
+  <link rel="icon" type="image/png" href="/favicon.png?v=20260715b">
+  <link rel="apple-touch-icon" href="/favicon.png?v=20260715b">
   <link rel="preconnect" href="https://balinaisa.com">
-  <link rel="stylesheet" href="styles.css?v=20260717a">
-  <link href="fonts/fonts.css?v=20260715c" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=20260717a">
+  <link href="/fonts/fonts.css?v=20260715c" rel="stylesheet">
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad" async defer></script>
 
   <!-- Données structurées (SEO / GEO) -->
@@ -145,11 +148,11 @@
   <!-- HEADER -->
   <header class="header">
     <a href="/" class="header-logo" aria-label="Balinaisa.ai, accueil du simulateur">
-      <img src="logo-balinaisa.png?v=20260715b" alt="Balinaisa" height="34">
+      <img src="/logo-balinaisa.png?v=20260715b" alt="Balinaisa" height="34">
     </a>
-    <button class="header-cta" id="header-cta" onclick="startSimulator()" aria-label="Commencer">
+    <button class="header-cta" id="header-cta" onclick="startSimulator()" aria-label="Get started">
       <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-      <span>Commencer</span>
+      <span>Get started</span>
     </button>
   </header>
 
@@ -161,19 +164,19 @@
     </video>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
-      <img src="logo-balinaisa.png?v=20260715b"
+      <img src="/logo-balinaisa.png?v=20260715b"
            class="hero-brand-logo" alt="Balinaisa"
            onerror="this.style.display='none'">
-      <h1 class="hero-title">Votre espace<br><em>sublimé par le teck</em></h1>
-      <p class="hero-sub">Balinaisa.ai, le regard de Dominique Raynal, créateur et expert d'ameublement d'exception, sublimé par l'Intelligence Artificielle.</p>
-      <p class="hero-sub hero-sub-process">Photographiez votre espace : il imagine votre aménagement et vous adresse un devis en quelques secondes.</p>
-      <button class="hero-cta-pulse" onclick="startSimulator()" aria-label="Commencer">
+      <h1 class="hero-title">Your space<br><em>elevated by teak</em></h1>
+      <p class="hero-sub">Balinaisa.ai, the eye of Dominique Raynal, creator and expert in exceptional furniture, elevated by Artificial Intelligence.</p>
+      <p class="hero-sub hero-sub-process">Photograph your space: it imagines your layout and sends you a quote in seconds.</p>
+      <button class="hero-cta-pulse" onclick="startSimulator()" aria-label="Get started">
         <span class="cta-widget-shimmer" aria-hidden="true"></span>
         <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        <span>Commencer</span>
+        <span>Get started</span>
         <span class="cta-widget-star" aria-hidden="true">✦</span>
       </button>
-      <p class="hero-note">Gratuit · Sans engagement · Résultats en boite mail en quelques minutes</p>
+      <p class="hero-note">Free · No commitment · Results in your inbox within minutes</p>
     </div>
     <div class="hero-scroll-hint" aria-hidden="true">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
@@ -184,16 +187,16 @@
   <section class="balinaisa-ai-intro" id="balinaisa-ai">
     <div class="balinaisa-ai-inner">
       <figure class="balinaisa-ai-portrait">
-        <img src="dominique.jpg" alt="Dominique Raynal, fondateur de Balinaisa"
+        <img src="/dominique.jpg" alt="Dominique Raynal, fondateur de Balinaisa"
              width="900" height="450" loading="lazy" decoding="async"
              onerror="this.closest('.balinaisa-ai-portrait').classList.add('is-placeholder')">
         <figcaption>Dominique Raynal · Balinaisa</figcaption>
       </figure>
       <div class="balinaisa-ai-text">
-        <p class="balinaisa-ai-eyebrow">Balinaisa.ai, entraîné comme l'œil de Dominique</p>
-        <blockquote class="balinaisa-ai-quote">« J'ai façonné Balinaisa.ai comme une extension de mon savoir-faire : un regard sur les proportions, le goût des matières justes. Aujourd'hui, il compose pour vous, chez vous, comme si je poussais votre porte à vos côtés. »</blockquote>
+        <p class="balinaisa-ai-eyebrow">Balinaisa.ai, trained as Dominique's eye</p>
+        <blockquote class="balinaisa-ai-quote">“I shaped Balinaisa.ai as an extension of my craft: an eye for proportion, a taste for the right materials. Today it composes for you, in your home, as if I were stepping through your door beside you.”</blockquote>
         <p class="balinaisa-ai-sign">Dominique Raynal, Balinaisa</p>
-        <p class="balinaisa-ai-explain">Intérieur ou extérieur, photographiez votre salon, votre véranda, votre terrasse ou votre jardin : Balinaisa.ai y projette les pièces en teck massif qui subliment le lieu, et vous adresse un devis. Le regard d'un artisan, à portée de tous.</p>
+        <p class="balinaisa-ai-explain">Indoors or outdoors, photograph your living room, veranda, terrace or garden: Balinaisa.ai places the solid teak pieces that elevate the space and sends you a quote. A craftsman's eye, within everyone's reach.</p>
       </div>
     </div>
   </section>
@@ -202,42 +205,42 @@
   <section class="brand-intro" id="balinaisa">
     <div class="brand-inner">
       <div class="brand-lead">
-        <p class="brand-eyebrow">La maison Balinaisa</p>
-        <h2 class="brand-title">Le teck d'Indonésie, en circuit court</h2>
-        <p class="brand-text">Chaque pièce est façonnée à la main par nos artisans partenaires en Indonésie, dans un teck massif choisi avec soin. Une relation directe, sans intermédiaire, pour une qualité rare et des finitions durables, pensées pour l'extérieur comme pour l'intérieur.</p>
+        <p class="brand-eyebrow">The Balinaisa house</p>
+        <h2 class="brand-title">Indonesian teak, direct from the source</h2>
+        <p class="brand-text">Each piece is handcrafted by our partner artisans in Indonesia, from carefully selected solid teak. A direct relationship, with no middlemen, for rare quality and durable finishes, designed for outdoors as well as indoors.</p>
         <ul class="brand-points">
-          <li><span aria-hidden="true">✦</span> Teck massif d'Indonésie</li>
-          <li><span aria-hidden="true">✦</span> Artisans partenaires, circuit court</li>
-          <li><span aria-hidden="true">✦</span> Showroom au bassin d'Arcachon</li>
+          <li><span aria-hidden="true">✦</span> Solid Indonesian teak</li>
+          <li><span aria-hidden="true">✦</span> Partner artisans, short supply chain</li>
+          <li><span aria-hidden="true">✦</span> Showroom in the Arcachon basin</li>
         </ul>
         <a class="press-ref" href="https://www.marieclaire.fr/maison/adresses-incontournables/balinaisa/" target="_blank" rel="noopener">
-          <span class="press-ref-label">Vu dans la presse</span>
+          <span class="press-ref-label">As seen in the press</span>
           <span class="press-ref-pub">Marie Claire Maison</span>
-          <span class="press-ref-quote">« Balinaisa, la maison qui fait voyager sans quitter votre salon »</span>
-          <span class="press-ref-cta">Lire l'article<span aria-hidden="true"> →</span></span>
+          <span class="press-ref-quote">“Balinaisa, the house that takes you travelling without leaving your living room”</span>
+          <span class="press-ref-cta">Read the article<span aria-hidden="true"> →</span></span>
         </a>
       </div>
       <figure class="brand-visual">
-        <img src="atelier-balinaisa.jpg" alt="Mobilier en teck massif Balinaisa dans le showroom"
+        <img src="/atelier-balinaisa.jpg" alt="Balinaisa solid teak furniture in the showroom"
              width="800" height="400" loading="lazy" decoding="async"
              onerror="this.closest('.brand-visual').style.display='none'">
       </figure>
     </div>
 
     <div class="brand-slider-head">
-      <p class="brand-slider-title">Quelques pièces de la collection</p>
-      <p class="brand-slider-sub">Façonnées à la main</p>
+      <p class="brand-slider-title">A few pieces from the collection</p>
+      <p class="brand-slider-sub">Handcrafted</p>
     </div>
     <div class="brand-slider">
-      <article class="prod-card"><div class="prod-media"><img src="produits/hanoi.jpg?v=20260717a" alt="Table basse Hanoi en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Table basse</span><h3 class="prod-name">Hanoi</h3><p class="prod-price">529 € <span>TTC</span></p></article>
-      <article class="prod-card"><div class="prod-media"><img src="produits/reza.jpg?v=20260717a" alt="Meuble TV Reza en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Meuble TV</span><h3 class="prod-name">Reza</h3><p class="prod-price">759 € <span>TTC</span></p></article>
-      <article class="prod-card"><div class="prod-media"><img src="produits/jaya.jpg?v=20260717a" alt="Fauteuil de bar Jaya en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Fauteuil de bar</span><h3 class="prod-name">Jaya</h3><p class="prod-price">369 € <span>TTC</span></p></article>
-      <article class="prod-card"><div class="prod-media"><img src="produits/nara.jpg?v=20260717a" alt="Chaise avec accoudoirs Nara en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Chaise</span><h3 class="prod-name">Nara</h3><p class="prod-price">319 € <span>TTC</span></p></article>
-      <article class="prod-card"><div class="prod-media"><img src="produits/lyodra.jpg?v=20260717a" alt="Table à manger Lyodra en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Table à manger</span><h3 class="prod-name">Lyodra</h3><p class="prod-price">2 079 € <span>TTC</span></p></article>
-      <article class="prod-card"><div class="prod-media"><img src="produits/kumala.jpg?v=20260717a" alt="Fauteuil d'intérieur Kumala en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Fauteuil</span><h3 class="prod-name">Kumala</h3><p class="prod-price">459 € <span>TTC</span></p></article>
-      <article class="prod-card"><div class="prod-media"><img src="produits/uma.jpg?v=20260717a" alt="Chaise Uma en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Chaise</span><h3 class="prod-name">Uma</h3><p class="prod-price">199 € <span>TTC</span></p></article>
-      <article class="prod-card"><div class="prod-media"><img src="produits/siti.jpg?v=20260717a" alt="Table Siti en teck massif" width="292" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Table</span><h3 class="prod-name">Siti</h3><p class="prod-price">2 129 € <span>TTC</span></p></article>
-      <article class="prod-card"><div class="prod-media"><img src="produits/timor.jpg?v=20260717a" alt="Table basse Timor en teck massif" width="300" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Table basse</span><h3 class="prod-name">Timor</h3><p class="prod-price">1 329 € <span>TTC</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="/produits/hanoi.jpg?v=20260717a" alt="Table basse Hanoi en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Coffee table</span><h3 class="prod-name">Hanoi</h3><p class="prod-price">529 € <span>incl. VAT</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="/produits/reza.jpg?v=20260717a" alt="Meuble TV Reza en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">TV unit</span><h3 class="prod-name">Reza</h3><p class="prod-price">759 € <span>incl. VAT</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="/produits/jaya.jpg?v=20260717a" alt="Fauteuil de bar Jaya en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Bar chair</span><h3 class="prod-name">Jaya</h3><p class="prod-price">369 € <span>incl. VAT</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="/produits/nara.jpg?v=20260717a" alt="Chaise avec accoudoirs Nara en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Chair</span><h3 class="prod-name">Nara</h3><p class="prod-price">319 € <span>incl. VAT</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="/produits/lyodra.jpg?v=20260717a" alt="Table à manger Lyodra en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Dining table</span><h3 class="prod-name">Lyodra</h3><p class="prod-price">2 079 € <span>incl. VAT</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="/produits/kumala.jpg?v=20260717a" alt="Fauteuil d'intérieur Kumala en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Armchair</span><h3 class="prod-name">Kumala</h3><p class="prod-price">459 € <span>incl. VAT</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="/produits/uma.jpg?v=20260717a" alt="Chaise Uma en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Chair</span><h3 class="prod-name">Uma</h3><p class="prod-price">199 € <span>incl. VAT</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="/produits/siti.jpg?v=20260717a" alt="Table Siti en teck massif" width="292" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Table</span><h3 class="prod-name">Siti</h3><p class="prod-price">2 129 € <span>incl. VAT</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="/produits/timor.jpg?v=20260717a" alt="Table basse Timor en teck massif" width="300" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Coffee table</span><h3 class="prod-name">Timor</h3><p class="prod-price">1 329 € <span>incl. VAT</span></p></article>
     </div>
   </section>
 
@@ -245,58 +248,58 @@
   <section class="reviews" id="avis">
     <div class="reviews-inner">
       <div class="reviews-head">
-        <span class="reviews-eyebrow">Ils nous font confiance</span>
+        <span class="reviews-eyebrow">They trust us</span>
         <div class="reviews-rating">
           <span class="reviews-score">5,0</span>
           <span class="reviews-stars" aria-hidden="true">★★★★★</span>
-          <span class="reviews-count">8 avis Google</span>
+          <span class="reviews-count">8 Google reviews</span>
         </div>
       </div>
       <div class="reviews-grid">
         <figure class="review-card">
-          <div class="review-stars" role="img" aria-label="Note : 5 sur 5">★★★★★</div>
-          <blockquote>Magnifique collection de meubles décoratifs intérieurs et extérieurs. Accueil très sympa et professionnel.</blockquote>
+          <div class="review-stars" role="img" aria-label="Rating: 5 out of 5">★★★★★</div>
+          <blockquote>Wonderful collection of decorative indoor and outdoor furniture. Very friendly and professional welcome.</blockquote>
           <figcaption>Denis P.</figcaption>
         </figure>
         <figure class="review-card">
-          <div class="review-stars" role="img" aria-label="Note : 5 sur 5">★★★★★</div>
-          <blockquote>J'ai acheté une table en teck et des chaises. Une très belle qualité de fabrication à un prix plus que raisonnable.</blockquote>
+          <div class="review-stars" role="img" aria-label="Rating: 5 out of 5">★★★★★</div>
+          <blockquote>I bought a teak table and chairs. Beautiful build quality at a more than reasonable price.</blockquote>
           <figcaption>Francky T.</figcaption>
         </figure>
         <figure class="review-card">
-          <div class="review-stars" role="img" aria-label="Note : 5 sur 5">★★★★★</div>
-          <blockquote>On ne peut qu'être séduit par la sélection de meubles. Très bons conseils.</blockquote>
+          <div class="review-stars" role="img" aria-label="Rating: 5 out of 5">★★★★★</div>
+          <blockquote>You can't help but be won over by the furniture selection. Great advice.</blockquote>
           <figcaption>Laure</figcaption>
         </figure>
       </div>
-      <a class="reviews-cta" href="https://www.google.com/search?q=balinaisa&kgmid=/g/11ty24z4fn" target="_blank" rel="noopener">Voir les avis sur Google<span aria-hidden="true"> →</span></a>
+      <a class="reviews-cta" href="https://www.google.com/search?q=balinaisa&kgmid=/g/11ty24z4fn" target="_blank" rel="noopener">See the reviews on Google<span aria-hidden="true"> →</span></a>
     </div>
   </section>
 
   <!-- FAQ (home only) -->
   <section class="faq" id="faq">
     <div class="faq-inner">
-      <h2 class="faq-title">Questions fréquentes</h2>
+      <h2 class="faq-title">Frequently asked questions</h2>
       <div class="faq-list">
         <details class="faq-item">
-          <summary>Qu'est-ce que Balinaisa.ai ?</summary>
-          <p>Balinaisa.ai est le simulateur d'aménagement Balinaisa, pensé comme l'œil de Dominique Raynal. À partir d'une photo de votre espace, il compose une sélection de mobilier en teck massif et génère un devis estimatif.</p>
+          <summary>What is Balinaisa.ai?</summary>
+          <p>Balinaisa.ai is the Balinaisa layout simulator, designed as Dominique Raynal's eye. From a photo of your space, it composes a selection of solid teak furniture and generates an estimated quote.</p>
         </details>
         <details class="faq-item">
-          <summary>Le simulateur est-il gratuit ?</summary>
-          <p>Oui. La simulation est gratuite et sans engagement.</p>
+          <summary>Is the simulator free?</summary>
+          <p>Yes. The simulation is free with no commitment.</p>
         </details>
         <details class="faq-item">
-          <summary>Comment fonctionne la simulation ?</summary>
-          <p>Intérieur ou extérieur, photographiez votre espace, précisez éventuellement vos préférences, et recevez par email votre rendu ainsi qu'un devis estimatif en quelques minutes.</p>
+          <summary>How does the simulation work?</summary>
+          <p>Indoors or outdoors, photograph your space, optionally add your preferences, and receive your rendering plus an estimated quote by email within minutes.</p>
         </details>
         <details class="faq-item">
-          <summary>Quel mobilier est proposé ?</summary>
-          <p>Du mobilier en teck massif d'Indonésie de la collection Balinaisa, pour l'intérieur comme pour l'extérieur : chaises, fauteuils et tables, façonnés à la main.</p>
+          <summary>What furniture is offered?</summary>
+          <p>Solid Indonesian teak furniture from the Balinaisa collection, for indoors and outdoors: chairs, armchairs and tables, handcrafted.</p>
         </details>
         <details class="faq-item">
-          <summary>Combien coûte le mobilier Balinaisa ?</summary>
-          <p>Un positionnement haut de gamme, du mobilier façonné à la main en teck massif. Les prix varient selon la pièce, la taille et la collection. Chaque simulation s'accompagne d'un devis estimatif.</p>
+          <summary>How much does Balinaisa furniture cost?</summary>
+          <p>A premium positioning, furniture handcrafted in solid teak. Prices vary by piece, size and collection. Each simulation comes with an estimated quote.</p>
         </details>
       </div>
     </div>
@@ -316,35 +319,35 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
         Retour
       </button>
-      <span class="sim-trust" role="img" aria-label="Note Google : 5 sur 5, 8 avis">
+      <span class="sim-trust" role="img" aria-label="Google rating: 5 out of 5, 8 reviews">
         <span class="sim-trust-stars" aria-hidden="true">★★★★★</span>
-        <span class="sim-trust-text"><strong>5,0</strong><span class="sim-trust-full"> · 8 avis Google</span></span>
+        <span class="sim-trust-text"><strong>5,0</strong><span class="sim-trust-full"> · 8 Google reviews</span></span>
       </span>
     </div>
 
     <!-- STEP COUNTER -->
     <div class="steps-nav" id="steps-nav">
-      <span class="steps-counter" id="steps-counter">Étape 1 / 4</span>
+      <span class="steps-counter" id="steps-counter">Step 1 / 4</span>
     </div>
 
     <!-- STEP 1 - Upload photo -->
     <div class="step-panel active" id="step-1">
       <div class="step-header">
-        <h2 class="step-title">Importez une photo de votre espace</h2>
-        <p class="step-desc">JPG ou PNG · max 10 Mo · salon, terrasse, jardin, véranda · vue d'ensemble recommandée</p>
+        <h2 class="step-title">Upload a photo of your space</h2>
+        <p class="step-desc">JPG or PNG · max 10 MB · living room, terrace, garden, veranda · a wide shot works best</p>
       </div>
-      <div class="upload-zone" id="upload-zone" role="button" tabindex="0" aria-label="Importer une photo de votre espace"
+      <div class="upload-zone" id="upload-zone" role="button" tabindex="0" aria-label="Upload a photo of your space"
            onclick="document.getElementById('file-input').click()"
            onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();document.getElementById('file-input').click()}">
         <div class="upload-zone-inner" id="upload-zone-inner">
           <div class="upload-icon">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
           </div>
-          <p class="upload-main">Glissez votre photo ici</p>
-          <p class="upload-sub">ou cliquez pour importer</p>
+          <p class="upload-main">Drop your photo here</p>
+          <p class="upload-sub">or click to upload</p>
         </div>
-        <img id="preview-img" class="hidden" alt="Aperçu de votre pièce">
-        <button type="button" class="preview-remove hidden" id="preview-remove" aria-label="Retirer la photo" title="Retirer la photo"
+        <img id="preview-img" class="hidden" alt="Preview of your room">
+        <button type="button" class="preview-remove hidden" id="preview-remove" aria-label="Remove photo" title="Remove photo"
                 onclick="event.stopPropagation(); clearPhoto()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
@@ -354,26 +357,26 @@
       <div class="upload-actions" id="upload-actions">
         <button type="button" class="btn-camera" id="btn-camera" onclick="event.stopPropagation(); document.getElementById('camera-input').click()">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
-          Prendre une photo
+          Take a photo
         </button>
         <button type="button" class="btn-upload" id="btn-upload" onclick="event.stopPropagation(); document.getElementById('file-input').click()">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-          Importer une photo
+          Upload a photo
         </button>
       </div>
       <input type="file" id="file-input" accept="image/*" style="display:none" onchange="handleFileUpload(this)">
       <input type="file" id="camera-input" accept="image/*" capture="environment" style="display:none" onchange="handleFileUpload(this)">
-      <p class="upload-hint">JPG, PNG, WEBP · max 8 Mo</p>
+      <p class="upload-hint">JPG, PNG, WEBP · max 8 MB</p>
       <p class="upload-error hidden" id="upload-error"></p>
       <div class="upload-tips">
-        <div class="tip"><span class="tip-icon">✓</span> Salon, terrasse, jardin, véranda</div>
-        <div class="tip"><span class="tip-icon">✓</span> Bonne luminosité naturelle</div>
-        <div class="tip"><span class="tip-icon">✓</span> Espace visible pour placer un meuble</div>
+        <div class="tip"><span class="tip-icon">✓</span> Living room, terrace, garden, veranda</div>
+        <div class="tip"><span class="tip-icon">✓</span> Good natural light</div>
+        <div class="tip"><span class="tip-icon">✓</span> Visible space to place furniture</div>
       </div>
       <div class="client-note">
-        <label class="client-note-label" for="f-note">Vos préférences <span>(optionnel)</span></label>
+        <label class="client-note-label" for="f-note">Your preferences <span>(optional)</span></label>
         <textarea id="f-note" class="client-note-input" rows="3" maxlength="500"
-          placeholder="Ex. : « Une ambiance chaleureuse et cosy, tons sable et bois, pour un coin détente à l'ombre. » Couleurs, style, budget max, pièces souhaitées…"></textarea>
+          placeholder="E.g. “A warm, cosy feel in sand and wood tones, for a shaded relaxation nook.” Colours, style, max budget, the pieces you'd like…"></textarea>
       </div>
       <div class="step-actions">
         <button class="btn-primary" id="btn-step1-next" onclick="goToStep(2)" disabled>
@@ -386,8 +389,8 @@
     <!-- STEP 2 - Profil -->
     <div class="step-panel step-panel--form hidden" id="step-2">
       <div class="step-header">
-        <h2 class="step-title">Vous êtes...</h2>
-        <p class="step-desc">Pour adapter votre simulation et votre devis</p>
+        <h2 class="step-title">You are...</h2>
+        <p class="step-desc">To tailor your simulation and quote</p>
       </div>
 
       <div class="lead-form-wrap">
@@ -397,22 +400,22 @@
 
         <div class="contact-card">
           <div class="form-group">
-            <label>Vous êtes *</label>
-            <div class="profile-toggle" id="profile-toggle" role="radiogroup" aria-label="Vous êtes">
-              <button type="button" class="profile-btn" data-profile="particulier" onclick="selectProfile('particulier')" aria-pressed="false">Un particulier</button>
-              <button type="button" class="profile-btn" data-profile="pro" onclick="selectProfile('pro')" aria-pressed="false">Un professionnel</button>
+            <label>You are *</label>
+            <div class="profile-toggle" id="profile-toggle" role="radiogroup" aria-label="You are">
+              <button type="button" class="profile-btn" data-profile="particulier" onclick="selectProfile('particulier')" aria-pressed="false">An individual</button>
+              <button type="button" class="profile-btn" data-profile="pro" onclick="selectProfile('pro')" aria-pressed="false">A professional</button>
             </div>
           </div>
           <div class="form-group hidden" id="company-group">
-            <label for="f-company">Nom de l'entreprise *</label>
-            <input type="text" id="f-company" placeholder="Votre société">
+            <label for="f-company">Company name *</label>
+            <input type="text" id="f-company" placeholder="Your company">
           </div>
-          <p class="profile-error hidden" id="profile-error">Indiquez si vous êtes un particulier ou un professionnel.</p>
+          <p class="profile-error hidden" id="profile-error">Let us know whether you are an individual or a professional.</p>
         </div>
       </div>
 
       <div class="step-actions">
-        <button class="btn-ghost" onclick="goToStep(1)">← Retour</button>
+        <button class="btn-ghost" onclick="goToStep(1)">← Back</button>
         <button class="btn-primary hidden" id="btn-step2-next" onclick="goToStep3()">
           Continuer
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -423,19 +426,19 @@
     <!-- STEP 3 - Coordonnées -->
     <div class="step-panel step-panel--form hidden" id="step-3">
       <div class="step-header">
-        <h2 class="step-title">Vos coordonnées</h2>
-        <p class="step-desc">Pour vous envoyer votre simulation par email</p>
+        <h2 class="step-title">Your details</h2>
+        <p class="step-desc">So we can email you your simulation</p>
       </div>
 
       <div class="lead-form-wrap">
         <div class="contact-card">
           <div class="form-row">
             <div class="form-group">
-              <label for="f-firstname">Prénom *</label>
+              <label for="f-firstname">First name *</label>
               <input type="text" id="f-firstname" name="given-name" autocomplete="given-name" placeholder="Marie" required>
             </div>
             <div class="form-group">
-              <label for="f-lastname">Nom *</label>
+              <label for="f-lastname">Last name *</label>
               <input type="text" id="f-lastname" name="family-name" autocomplete="family-name" placeholder="Dupont" required>
             </div>
           </div>
@@ -445,15 +448,15 @@
               <input type="email" id="f-email" name="email" autocomplete="email" placeholder="marie@exemple.fr" required>
             </div>
             <div class="form-group">
-              <label for="f-phone">Téléphone *</label>
-              <input type="tel" id="f-phone" name="tel" autocomplete="tel" inputmode="tel" required placeholder="+33 6 12 34 56 78" title="Indiquez un numéro de téléphone valide (indicatif international accepté).">
+              <label for="f-phone">Phone *</label>
+              <input type="tel" id="f-phone" name="tel" autocomplete="tel" inputmode="tel" required placeholder="+33 6 12 34 56 78" title="Enter a valid phone number (international prefix accepted).">
             </div>
           </div>
         </div>
       </div>
 
       <div class="step-actions">
-        <button class="btn-ghost" onclick="goToStep(2)">← Retour</button>
+        <button class="btn-ghost" onclick="goToStep(2)">← Back</button>
         <button class="btn-primary" onclick="goToStep4()">
           Continuer
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -464,42 +467,42 @@
     <!-- STEP 4 - Horizon d'achat + consentement -->
     <div class="step-panel step-panel--form hidden" id="step-4">
       <div class="step-header">
-        <h2 class="step-title">Dernière étape</h2>
-        <p class="step-desc">Votre horizon d'achat, et c'est parti</p>
+        <h2 class="step-title">Last step</h2>
+        <p class="step-desc">Your purchase horizon, and off we go</p>
       </div>
 
       <div class="lead-form-wrap">
         <div class="contact-card">
           <form id="lead-form" onsubmit="submitLead(event)">
             <div class="form-group">
-              <label for="f-intent">Horizon d'achat *</label>
+              <label for="f-intent">Purchase horizon *</label>
               <select id="f-intent" required>
-                <option value="">Sélectionnez…</option>
-                <option value="now">Maintenant</option>
-                <option value="1-3months">D'ici 1 à 3 mois</option>
-                <option value="3months+">Dans 3 mois et plus</option>
-                <option value="curious">Je suis juste curieux(se)</option>
+                <option value="">Select…</option>
+                <option value="now">Now</option>
+                <option value="1-3months">Within 1 to 3 months</option>
+                <option value="3months+">In 3 months or more</option>
+                <option value="curious">Just curious</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="f-budget">Budget approximatif du projet <span class="label-opt">(optionnel)</span></label>
+              <label for="f-budget">Approximate project budget <span class="label-opt">(optional)</span></label>
               <select id="f-budget">
-                <option value="">Préfère ne pas préciser</option>
-                <option value="<1000">Moins de 1 000 €</option>
+                <option value="">Prefer not to say</option>
+                <option value="<1000">Under €1,000</option>
                 <option value="1000-3000">1 000 – 3 000 €</option>
                 <option value="3000-8000">3 000 – 8 000 €</option>
-                <option value="8000+">Plus de 8 000 €</option>
+                <option value="8000+">Over €8,000</option>
               </select>
-              <p class="field-hint">Votre simulation reste une proposition d'ensemble, pensée pour inspirer, et sera affinée avec l'équipe Balinaisa.</p>
+              <p class="field-hint">Your simulation is an overall proposal, meant to inspire, and will be refined with the Balinaisa team.</p>
             </div>
             <label class="checkbox-row">
               <input type="checkbox" id="f-consent" required>
-              <span>J'accepte que Balinaisa me contacte au sujet de ma simulation</span>
+              <span>I agree that Balinaisa may contact me about my simulation</span>
             </label>
             <div id="turnstile-box" class="turnstile-box"></div>
-            <p id="captcha-error" class="captcha-error hidden">Merci de confirmer que vous n'êtes pas un robot.</p>
+            <p id="captcha-error" class="captcha-error hidden">Please confirm you are not a robot.</p>
             <button type="submit" class="btn-primary btn-full btn-lg" id="btn-submit-lead">
-              Lancer ma simulation gratuite
+              Start my free simulation
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
             </button>
           </form>
@@ -507,7 +510,7 @@
       </div>
 
       <div class="step-actions">
-        <button class="btn-ghost" onclick="goToStep(3)">← Retour</button>
+        <button class="btn-ghost" onclick="goToStep(3)">← Back</button>
       </div>
     </div>
 
@@ -517,8 +520,8 @@
         <div class="confirmation-icon">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         </div>
-        <h2 class="confirmation-title">Votre simulation se prépare</h2>
-        <p class="confirmation-sub">Vous recevrez votre rendu personnalisé par email d'ici quelques minutes, accompagné de votre devis estimatif.</p>
+        <h2 class="confirmation-title">Your simulation is on its way</h2>
+        <p class="confirmation-sub">You will receive your personalised rendering by email within a few minutes, along with your estimated quote.</p>
         <div class="confirmation-contact hidden" id="limit-contact">
           <a class="cc-item" href="mailto:contact@balinaisa.com">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
@@ -526,11 +529,11 @@
           </a>
           <a class="cc-item" href="tel:+33745065216">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.52 9.84 19.79 19.79 0 0 1 .45 1.17 2 2 0 0 1 2.44 3h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L6.91 10.9a16 16 0 0 0 6.18 6.18l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 18v.92z"/></svg>
-            <span><span class="cc-label">Téléphone</span>07 45 06 52 16</span>
+            <span><span class="cc-label">Phone</span>07 45 06 52 16</span>
           </a>
           <a class="cc-item" href="https://maps.app.goo.gl/xQtubMHCZsBzLBbE7" target="_blank" rel="noopener">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span><span class="cc-label">Showroom · itinéraire</span>370 Av. de l'Aérodrome, 33260 La Teste-de-Buch</span>
+            <span><span class="cc-label">Showroom · directions</span>370 Av. de l'Aérodrome, 33260 La Teste-de-Buch</span>
           </a>
         </div>
         <div class="confirmation-details">
@@ -539,8 +542,8 @@
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
             <div class="confirmation-detail-body">
-              <h4>Simulation dans votre boîte email</h4>
-              <p>Votre rendu avec le mobilier en teck intégré dans votre espace, accompagné d'un devis personnalisé.</p>
+              <h4>Simulation in your inbox</h4>
+              <p>Your rendering with the teak furniture placed in your space, along with a personalised quote.</p>
             </div>
           </div>
           <div class="confirmation-detail">
@@ -548,22 +551,22 @@
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.52 9.84 19.79 19.79 0 01.45 1.17 2 2 0 012.44 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 10.9a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 18v.92z"/></svg>
             </div>
             <div class="confirmation-detail-body">
-              <h4>Un conseiller vous contacte</h4>
-              <p>L'équipe Balinaisa vous rappelle pour affiner votre projet et répondre à vos questions.</p>
+              <h4>An advisor reaches out</h4>
+              <p>The Balinaisa team calls you back to refine your project and answer your questions.</p>
             </div>
           </div>
         </div>
         <div class="confirmation-trust">
           <span class="confirmation-trust-stars" aria-hidden="true">★★★★★</span>
-          <p class="confirmation-trust-score"><strong>5,0 / 5</strong> · 8 avis Google</p>
-          <p class="confirmation-trust-quote">« Une très belle qualité de fabrication à un prix plus que raisonnable. »</p>
+          <p class="confirmation-trust-score"><strong>5,0 / 5</strong> · 8 Google reviews</p>
+          <p class="confirmation-trust-quote">“Beautiful build quality at a more than reasonable price.”</p>
         </div>
         <div class="confirmation-actions">
-          <button class="btn-primary" onclick="window.open('https://balinaisa.com/?utm_source=simulateur-balinaisa-ai&utm_medium=referral&utm_campaign=balinaisa-ai&utm_content=ecran-fin','_blank','noopener')">Visiter le site Balinaisa</button>
-          <button class="btn-outline" onclick="shareSimulator()">Partager Balinaisa.ai</button>
-          <button class="btn-ghost" onclick="resetSimulator()">Refaire une simulation</button>
+          <button class="btn-primary" onclick="window.open('https://balinaisa.com/?utm_source=simulateur-balinaisa-ai&utm_medium=referral&utm_campaign=balinaisa-ai&utm_content=ecran-fin','_blank','noopener')">Visit the Balinaisa site</button>
+          <button class="btn-outline" onclick="shareSimulator()">Share Balinaisa.ai</button>
+          <button class="btn-ghost" onclick="resetSimulator()">Run another simulation</button>
         </div>
-        <p class="confirmation-note">Votre simulation est une proposition d'ensemble, pensée pour inspirer : le budget n'est pas une limite, et votre sélection sera affinée en direct avec l'équipe Balinaisa.</p>
+        <p class="confirmation-note">Your simulation is an overall proposal, meant to inspire: the budget is not a limit, and your selection will be refined directly with the Balinaisa team.</p>
       </div>
     </div>
 
@@ -573,22 +576,22 @@
         <div class="confirmation-icon confirmation-icon--info">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
         </div>
-        <h2 class="confirmation-title">Merci pour votre intérêt</h2>
-        <p class="confirmation-sub">Chaque simulation composée par Balinaisa.ai a un coût réel. Pour cette raison, elle est aujourd'hui réservée aux personnes ayant une intention d'achat confirmée.</p>
+        <h2 class="confirmation-title">Thank you for your interest</h2>
+        <p class="confirmation-sub">Each simulation composed by Balinaisa.ai has a real cost. For this reason, it is currently reserved for people with a confirmed purchase intent.</p>
         <div class="confirmation-details">
           <div class="confirmation-detail">
             <div class="confirmation-detail-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             </div>
             <div class="confirmation-detail-body">
-              <h4>Vous avez un projet en tête ?</h4>
-              <p>Revenez à l'étape précédente et indiquez votre horizon d'achat réel pour lancer votre simulation gratuite.</p>
+              <h4>Have a project in mind?</h4>
+              <p>Go back to the previous step and enter your real purchase horizon to start your free simulation.</p>
             </div>
           </div>
         </div>
         <div class="confirmation-actions">
-          <button class="btn-primary" onclick="goToStep(4)">Modifier mon horizon d'achat</button>
-          <button class="btn-ghost" onclick="backToHome()">Retour à l'accueil</button>
+          <button class="btn-primary" onclick="goToStep(4)">Change my purchase horizon</button>
+          <button class="btn-ghost" onclick="backToHome()">Back to home</button>
         </div>
       </div>
     </div>
@@ -599,8 +602,8 @@
   <footer class="footer">
     <div class="footer-inner">
       <p>© 2026 Balinaisa · <a href="https://balinaisa.com/?utm_source=simulateur-balinaisa-ai&amp;utm_medium=referral&amp;utm_campaign=balinaisa-ai&amp;utm_content=footer" target="_blank" rel="noopener">balinaisa.com</a></p>
-      <p class="footer-sub"><a href="privacy-policy.html" target="_blank" rel="noopener">Politique de confidentialité &amp; Protection des données</a></p>
-      <p class="footer-sub">Simulation propulsée par <a href="https://paktiz.fr" target="_blank" rel="noopener">Paktiz</a></p>
+      <p class="footer-sub"><a href="/privacy-policy.html" target="_blank" rel="noopener">Privacy policy &amp; Data protection</a></p>
+      <p class="footer-sub">Simulation powered by <a href="https://paktiz.fr" target="_blank" rel="noopener">Paktiz</a></p>
     </div>
   </footer>
 
