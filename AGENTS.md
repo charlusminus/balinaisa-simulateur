@@ -16,6 +16,11 @@ result.html    page de rendu
 ## Déploiement
 Push sur `main` = mise en ligne (Pages, source `main` / root). Les liens `styles.css` / `simulator.js` sont versionnés (`?v=...`) : bumper le numéro à chaque changement pour forcer le rechargement chez les visiteurs (évite le cache navigateur).
 
+## i18n : la clé, c'est la phrase FR
+`i18n.js` traduit en cherchant le **texte FR entier comme clé** du dico EN. Changer un texte FR dans un `.html` sans reporter le nouveau texte **à l'identique** en clé suffit à casser la traduction : `tr()` ne trouve plus rien et **renvoie le français aux anglophones, sans aucune erreur console**. C'est arrivé au `<title>` (PR #11).
+
+Garde-fou : `node tools/check-i18n.js` liste les clés qui ne correspondent à aucun texte rendu. Il tourne en CI sur chaque PR. Les absences légitimes (catégories du catalogue, UI retirée) se déclarent dans `tools/i18n-allowlist.json`, raison obligatoire.
+
 ## Notes techniques
 - Le front **POST le lead en `application/json`** au webhook n8n (voir `simulator.js`). Ne pas utiliser `mode:'no-cors'` : ça force `text/plain` et le backend ne parse plus le body.
 - La photo est **redimensionnée côté client** (~1200px, JPEG 0.85) avant envoi.
