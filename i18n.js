@@ -167,9 +167,9 @@
     "Vous avez déjà composé plusieurs ambiances avec Balinaisa.ai, et votre enthousiasme nous touche. Pour imaginer la suite sur mesure et donner vie à votre projet, l'équipe Balinaisa se fera une joie d'échanger avec vous :": "You have already composed several looks with Balinaisa.ai, and your enthusiasm touches us. To imagine the next steps, tailor-made, and bring your project to life, the Balinaisa team will be delighted to talk with you:",
     "Simulateur très sollicité": "Simulator in high demand",
     "Nous n'avons pas pu traiter votre demande": "We couldn't process your request",
-    "J'ai découvert Balinaisa.ai, le simulateur d'aménagement en teck Balinaisa (intérieur et extérieur), entraîné comme l'œil de Dominique. Une photo de votre espace suffit :": "I discovered Balinaisa.ai, the Balinaisa teak layout simulator (indoor and outdoor), trained as Dominique's eye. A photo of your space is all it takes:",
+    "J'ai découvert Balinaisa.ai, le simulateur d'aménagement en teck Balinaisa (intérieur et extérieur), entraîné comme l'œil de Dominique Raynal. Une photo de votre espace suffit :": "I discovered Balinaisa.ai, the Balinaisa teak layout simulator (indoor and outdoor), trained as Dominique Raynal's eye. A photo of your space is all it takes:",
     // — boutons / labels / placeholders / aria / alt manquants —
-    "Balinaisa.ai, entraîné comme l'œil de Dominique": "Balinaisa.ai, trained as Dominique's eye",
+    "Balinaisa.ai, entraîné comme l'œil de Dominique Raynal": "Balinaisa.ai, trained as Dominique Raynal's eye",
     "Prendre une photo": "Take a photo",
     "Importer une photo": "Upload a photo",
     "Retirer la photo": "Remove photo",
