@@ -88,7 +88,9 @@
     "Politique de confidentialité & Protection des données": "Privacy policy & Data protection",
     // — Confirmation (step 5) —
     "Votre simulation se prépare": "Your simulation is on its way",
-    "Vous recevrez votre rendu personnalisé par email d'ici quelques minutes, accompagné de votre devis estimatif.": "You will receive your personalised rendering by email within a few minutes, along with your estimated quote.",
+    "Vous recevrez votre rendu personnalisé par email": "You will receive your personalised rendering by email",
+    "d'ici quelques minutes": "within a few minutes",
+    ", accompagné de votre devis estimatif.": ", along with your estimated quote.",
     "Votre simulation est une proposition d'ensemble, pensée pour inspirer : le budget n'est pas une limite, et votre sélection sera affinée en direct avec l'équipe Balinaisa.": "Your simulation is an overall proposal, meant to inspire: the budget is not a limit, and your selection will be refined directly with the Balinaisa team.",
     "Votre simulation reste une proposition d'ensemble, pensée pour inspirer, et sera affinée avec l'équipe Balinaisa.": "Your simulation is an overall proposal, meant to inspire, and will be refined with the Balinaisa team.",
     "Simulation dans votre boîte email": "Simulation in your inbox",
