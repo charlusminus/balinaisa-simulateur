@@ -544,12 +544,18 @@ function resetSimulator() {
 /* Partage du simulateur - Web Share API (mobile : WhatsApp, réseaux, iMessage…),
    repli WhatsApp Web sur desktop. */
 function shareSimulator() {
-  const url = 'https://balinaisa.ai/?utm_source=partage&utm_medium=share&utm_campaign=balinaisa-ai';
-  const text = T("J'ai découvert Balinaisa.ai, le simulateur d'aménagement en teck Balinaisa (intérieur et extérieur), entraîné comme l'œil de Dominique. Une photo de votre espace suffit :");
+  const url = 'https://balinaisa.ai/?utm_source=partage&utm_medium=share';
+  const intro = T("J'ai découvert Balinaisa.ai, le simulateur d'aménagement en teck Balinaisa (intérieur et extérieur), entraîné comme l'œil de Dominique Raynal. Une photo de votre espace suffit :");
+  const cta = T("Essaye, c'est bluffant.");
+  // Un seul bloc de texte (intro + url + CTA) : c'est le seul moyen de garantir que
+  // l'appel a l'action arrive APRES le lien. navigator.share concatene text+url dans un
+  // ordre non garanti, donc on passe tout dans `text` et on laisse WhatsApp/iMessage
+  // dérouler l'apercu depuis l'url presente dans le message.
+  const message = intro + ' ' + url + ' ' + cta;
   if (navigator.share) {
-    navigator.share({ title: 'Balinaisa.ai · Balinaisa', text: text, url: url }).catch(() => {});
+    navigator.share({ title: 'Balinaisa.ai · Balinaisa', text: message }).catch(() => {});
   } else {
-    window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener');
+    window.open('https://wa.me/?text=' + encodeURIComponent(message), '_blank', 'noopener');
   }
 }
 
