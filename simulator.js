@@ -544,14 +544,26 @@ function resetSimulator() {
 /* Partage du simulateur - Web Share API (mobile : WhatsApp, réseaux, iMessage…),
    repli WhatsApp Web sur desktop. */
 function shareSimulator() {
-  const url = 'https://balinaisa.ai/?utm_source=partage&utm_medium=share';
-  const intro = T("J'ai découvert Balinaisa.ai, le simulateur d'aménagement en teck Balinaisa (intérieur et extérieur), entraîné comme l'œil de Dominique Raynal. Une photo de ton espace suffit :");
-  const cta = T("Essaye, c'est bluffant.");
-  // Un seul bloc de texte (intro + url + CTA), avec l'url sur sa propre ligne : c'est le
-  // seul moyen de garantir que l'appel a l'action arrive APRES le lien. navigator.share
-  // concatene text+url dans un ordre non garanti, donc on passe tout dans `text` et on
-  // laisse WhatsApp/iMessage dérouler l'apercu depuis l'url presente dans le message.
-  const message = intro + '\n' + url + '\n' + cta;
+  // Url volontairement courte (un seul utm) : l'API Web Share ne transporte que du texte
+  // brut, ni HTML ni lien a libelle, donc l'url s'affiche telle quelle et c'est le client
+  // (WhatsApp, Mail, iMessage) qui la rend cliquable. Plus elle est courte, mieux elle passe.
+  const url = 'https://balinaisa.ai/?utm_source=partage';
+  // Un seul bloc de texte : navigator.share concatene text+url dans un ordre non garanti,
+  // donc on passe tout dans `text` pour que l'appel a l'action arrive bien APRES le lien.
+  const message = [
+    T('Salut,'),
+    '',
+    T("J'ai découvert Balinaisa.ai, le simulateur d'aménagement de Balinaisa (intérieur et extérieur), entraîné comme l'œil de Dominique Raynal, créateur et expert de mobilier en teck d'exception."),
+    '',
+    T('Une photo de ton espace suffit.'),
+    '',
+    url,
+    '',
+    T("Essaye, c'est surprenant."),
+    '',
+    T("Hâte d'avoir ton retour,"),
+    T('À très vite,')
+  ].join('\n');
   if (navigator.share) {
     navigator.share({ title: 'Balinaisa.ai · Balinaisa', text: message }).catch(() => {});
   } else {

@@ -167,8 +167,13 @@
     "Vous avez déjà composé plusieurs ambiances avec Balinaisa.ai, et votre enthousiasme nous touche. Pour imaginer la suite sur mesure et donner vie à votre projet, l'équipe Balinaisa se fera une joie d'échanger avec vous :": "You have already composed several looks with Balinaisa.ai, and your enthusiasm touches us. To imagine the next steps, tailor-made, and bring your project to life, the Balinaisa team will be delighted to talk with you:",
     "Simulateur très sollicité": "Simulator in high demand",
     "Nous n'avons pas pu traiter votre demande": "We couldn't process your request",
-    "J'ai découvert Balinaisa.ai, le simulateur d'aménagement en teck Balinaisa (intérieur et extérieur), entraîné comme l'œil de Dominique Raynal. Une photo de ton espace suffit :": "I discovered Balinaisa.ai, the Balinaisa teak layout simulator (indoor and outdoor), trained as Dominique Raynal's eye. A photo of your space is all it takes:",
-    "Essaye, c'est bluffant.": "Try it, it's stunning.",
+    // — message de partage (bloc par bloc : l'API Web Share ne prend que du texte brut) —
+    "Salut,": "Hi,",
+    "J'ai découvert Balinaisa.ai, le simulateur d'aménagement de Balinaisa (intérieur et extérieur), entraîné comme l'œil de Dominique Raynal, créateur et expert de mobilier en teck d'exception.": "I discovered Balinaisa.ai, the Balinaisa layout simulator (indoor and outdoor), trained as the eye of Dominique Raynal, creator and expert in exceptional teak furniture.",
+    "Une photo de ton espace suffit.": "A photo of your space is all it takes.",
+    "Essaye, c'est surprenant.": "Try it, you'll be surprised.",
+    "Hâte d'avoir ton retour,": "Looking forward to hearing what you think,",
+    "À très vite,": "Talk soon,",
     // — boutons / labels / placeholders / aria / alt manquants —
     "Balinaisa.ai, entraîné comme l'œil de Dominique Raynal": "Balinaisa.ai, trained as Dominique Raynal's eye",
     "Prendre une photo": "Take a photo",
