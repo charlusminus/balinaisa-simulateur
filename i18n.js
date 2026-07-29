@@ -38,7 +38,6 @@
     "Commencer": "Get started",
     "Votre espace": "Your space",
     "sublimé par le teck": "elevated by teak",
-    "Intérieur ou extérieur, photographiez votre salon, votre véranda, votre terrasse ou votre jardin : Balinaisa.ai y projette les pièces en teck massif qui subliment le lieu, et vous adresse un devis. Le regard d'un artisan, à portée de tous.": "Indoors or outdoors, photograph your living room, veranda, terrace or garden: Balinaisa.ai places the solid teak pieces that elevate the space and sends you a quote. A craftsman's eye, within everyone's reach.",
     "Gratuit · Sans engagement · Résultats en boite mail en quelques minutes": "Free · No commitment · Results in your inbox within minutes",
     "Importez une photo de votre espace": "Upload a photo of your space",
     "Glissez votre photo ici": "Drop your photo here",
@@ -127,8 +126,8 @@
     "Le regard de Dominique Raynal, créateur et expert de mobilier en teck d'exception, sublimé par l'Intelligence Artificielle": "The eye of Dominique Raynal, creator and expert in exceptional teak furniture, elevated by Artificial Intelligence",
     "Photographiez votre espace (intérieur ou extérieur), Balinaisa.ai imagine un aménagement personnalisé et vous adresse un devis en quelques secondes.": "Photograph your space (indoors or outdoors), Balinaisa.ai imagines a bespoke layout and sends you a quote in seconds.",
     "« J'ai façonné Balinaisa.ai comme une extension de mon savoir-faire : un regard sur les proportions, le goût des matières justes. Aujourd'hui, il compose pour vous, chez vous, comme si je poussais votre porte à vos côtés. »": "“I shaped Balinaisa.ai as an extension of my craft: an eye for proportion, a taste for the right materials. Today it composes for you, in your home, as if I were stepping through your door beside you.”",
-    "Dominique Raynal · Balinaisa": "Dominique Raynal · Balinaisa",
     "Dominique Raynal, Balinaisa": "Dominique Raynal, Balinaisa",
+    "Intérieur ou extérieur, photographiez votre salon, votre véranda, votre terrasse ou votre jardin : Balinaisa.ai y projette les pièces en teck massif qui subliment le lieu, et vous adresse un devis. Le regard d'un artisan, à portée de tous.": "Indoors or outdoors, photograph your living room, veranda, terrace or garden: Balinaisa.ai places the solid teak pieces that elevate the space and sends you a quote. A craftsman's eye, within everyone's reach.",
     "Simulation propulsée par": "Simulation powered by",
     // — Trust / reviews / press —
     "Ils nous font confiance": "They trust us",
@@ -175,7 +174,6 @@
     "Hâte d'avoir ton retour,": "Looking forward to hearing what you think,",
     "À très vite,": "Talk soon,",
     // — boutons / labels / placeholders / aria / alt manquants —
-    "Balinaisa.ai, entraîné comme l'œil de Dominique Raynal": "Balinaisa.ai, trained as Dominique Raynal's eye",
     "Prendre une photo": "Take a photo",
     "Importer une photo": "Upload a photo",
     "Retirer la photo": "Remove photo",
