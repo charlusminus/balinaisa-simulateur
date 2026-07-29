@@ -127,6 +127,7 @@
     "Photographiez votre espace (intérieur ou extérieur), Balinaisa.ai imagine un aménagement personnalisé et vous adresse un devis en quelques secondes.": "Photograph your space (indoors or outdoors), Balinaisa.ai imagines a bespoke layout and sends you a quote in seconds.",
     "« J'ai façonné Balinaisa.ai comme une extension de mon savoir-faire : un regard sur les proportions, le goût des matières justes. Aujourd'hui, il compose pour vous, chez vous, comme si je poussais votre porte à vos côtés. »": "“I shaped Balinaisa.ai as an extension of my craft: an eye for proportion, a taste for the right materials. Today it composes for you, in your home, as if I were stepping through your door beside you.”",
     "Dominique Raynal, Balinaisa": "Dominique Raynal, Balinaisa",
+    "Intérieur ou extérieur, photographiez votre salon, votre véranda, votre terrasse ou votre jardin : Balinaisa.ai y projette les pièces en teck massif qui subliment le lieu, et vous adresse un devis. Le regard d'un artisan, à portée de tous.": "Indoors or outdoors, photograph your living room, veranda, terrace or garden: Balinaisa.ai places the solid teak pieces that elevate the space and sends you a quote. A craftsman's eye, within everyone's reach.",
     "Simulation propulsée par": "Simulation powered by",
     // — Trust / reviews / press —
     "Ils nous font confiance": "They trust us",

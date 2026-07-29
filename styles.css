@@ -991,15 +991,17 @@ input, textarea, select { font-family: var(--font-sans); }
 .balinaisa-ai-portrait.is-placeholder::before { content: "DR"; display: flex; align-items: center; justify-content: center; width: 100%; max-width: 330px; height: 200px; border-radius: 16px; background: var(--primary); color: #fff; font-family: Georgia, serif; font-size: 46px; letter-spacing: .08em; }
 .balinaisa-ai-text { flex: 1; min-width: 0; }
 .balinaisa-ai-quote { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 31px; line-height: 1.38; color: var(--text); font-style: italic; font-weight: 500; margin: 0 0 20px; }
-/* La signature ferme le bloc : plus de margin-bottom, sinon le vide qu'elle laisse
-   decale le texte vers le haut face au portrait (le conteneur est en align-items:center). */
-.balinaisa-ai-sign { font-size: 13px; color: var(--text-sub); letter-spacing: .04em; text-transform: uppercase; margin: 0; }
+/* La signature est passee SOUS la photo (figcaption) : centree, marge en haut et non en
+   bas. En mobile le conteneur est en colonne, elle tombe donc entre la photo et la citation. */
+.balinaisa-ai-sign { font-size: 13px; color: var(--text-sub); letter-spacing: .04em; text-transform: uppercase; text-align: center; margin: 16px 0 0; }
+.balinaisa-ai-explain { font-size: 15px; line-height: 1.8; color: var(--text-sub); margin: 0; max-width: 48ch; }
 @media (max-width: 760px) {
   .balinaisa-ai-intro { padding: 52px 24px; }
   .balinaisa-ai-inner { flex-direction: column; gap: 30px; text-align: center; }
   .balinaisa-ai-portrait { flex-basis: auto; width: 100%; }
   .balinaisa-ai-portrait img, .balinaisa-ai-portrait.is-placeholder::before { max-width: 460px; margin-left: auto; margin-right: auto; }
   .balinaisa-ai-quote { font-size: 25px; }
+  .balinaisa-ai-explain { max-width: 42ch; margin-left: auto; margin-right: auto; }
 }
 
 /* ── Upload mobile-first : 2 boutons (photo d'abord), dropzone = desktop uniquement ── */
