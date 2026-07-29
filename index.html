@@ -155,9 +155,15 @@
   </header>
 
   <!-- HERO -->
+  <!-- Le poster n'est pas qu'un ecran d'attente : sous 760px la video n'est jamais chargee
+       (cf maybeLoadHeroVideo dans simulator.js), donc en mobile c'est LUI le visuel du hero.
+       Il portait une chaise detouree sur fond uni, qui ne raconte pas le produit. On reprend
+       la scene salle a manger, celle de l'apercu de partage, cadree en 9:16 pour un hero
+       plein ecran (le hero fait 100vh, une image paysage en object-fit:cover n'en montrerait
+       qu'une bande centrale). Suspensions en haut, la ou le degrade est le plus clair. -->
   <section class="hero" id="hero">
     <video class="hero-bg-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"
-           poster="https://balinaisa.com/wp-content/uploads/2025/10/Photoroom_20251008_144205.jpg">
+           poster="https://cdn.jsdelivr.net/gh/charlusminus/balinaisa-visuels@main/hero-balinaisa.jpg">
       <source data-src="https://balinaisa.com/wp-content/uploads/2025/11/New-Balinaisa-Hero-Header.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay" aria-hidden="true"></div>
