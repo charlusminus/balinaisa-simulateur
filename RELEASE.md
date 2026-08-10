@@ -38,6 +38,36 @@ branche dédiée puis une Pull Request. La branche `main` est protégée (PR req
    - [ ] Switch de langue OK
    - [ ] Une **simulation de test** de bout en bout : le lead atterrit dans le Sheet et l'email part
 
+6. **Contrôle des commits orphelins** :
+   ```
+   node tools/check-orphans.js
+   ```
+   - [ ] Aucun orphelin, ou chaque orphelin est rebranché sur une PR
+
+## Commits orphelins : le piège qui a mordu deux fois
+
+**Un commit poussé sur une branche dont la PR est DÉJÀ mergée n'arrive jamais dans `main`.** La PR est close, elle ne reprend pas les commits suivants. Rien ne le signale : `git status` reste propre, aucune PR n'apparaît ouverte, et le travail semble fait.
+
+Ça s'est produit **deux fois sur ce repo**, et les deux fois le travail a été annoncé comme livré :
+
+| Date | Incident | Découvert |
+|---|---|---|
+| 27/07 | PR #21 mergée à 19h38, commit `e16ae50` poussé à 19h50. Portait la simplification des UTM des liens sortants | **2 semaines plus tard** (PR #28) |
+| 29/07 | PR #24 mergée, commit schema.org poussé après | le jour même (PR #25) |
+
+**Pourquoi une relecture de `git log` ne suffit pas.** Le merge se fait en squash : les sha d'origine disparaissent. Du coup `git branch --merged` croit la branche non fusionnée, **et** `git log main..branche` liste des commits dont le contenu est pourtant déjà dans `main`. Les deux signaux sont trompeurs, dans des sens opposés.
+
+`tools/check-orphans.js` compare les **patches** et non les sha (via `git cherry`), sur les branches locales **et distantes**, puis croise avec l'état de la PR :
+
+- `ORPHELIN` (PR mergée ou fermée) → ces commits n'arriveront jamais, il faut les rebrancher :
+  ```
+  git checkout -b fix/<slug> origin/main && git cherry-pick <sha>
+  ```
+- `PR ouverte` → normal, travail en cours.
+- `aucune PR` → branche de travail, à proposer ou à supprimer.
+
+**Réflexe à garder** : après un merge, si tu t'apprêtes à pousser « juste un petit ajout » sur la même branche, **ouvre une nouvelle branche**. C'est exactement le moment où ça casse.
+
 ## Rollback
 
 En cas de régression en prod, revenir à l'état précédent :
