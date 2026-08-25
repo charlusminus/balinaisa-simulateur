@@ -57,13 +57,90 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 const { EN, metaEN } = readDict(path.join(ROOT, 'i18n.js'));
 
 /* Garde-fou : une page anglaise qui contient encore du francais est un echec silencieux. */
-const FR = /\b(votre|vos|une|des|avec|pour|dans|gratuit|sans|photographiez|imagine|aménagement|espace|pièce|chaque|nous|vous|les|est|sont|aucun|aucune|cette|conserv)\b/i;
-const EXEMPT = /Balinaisa|Dominique|Marie Claire|Hanoi|Reza|Jaya|Nara|Lyodra|Kumala|Uma|Siti|Timor|Atalya|Paktiz|Plausible|CNIL|cnil\.fr|Cloudflare|Turnstile|Google/;
+/* Mots choisis pour n'avoir AUCUN homographe anglais : « photo », « de », « en » ou « son »
+   en feraient un controle bruyant, qui finirait desactive. Les seconds ajoutes le 25/08 sont
+   le vocabulaire du bloc de donnees structurees (une FAQ produit), la ou il manquait. */
+const FR = /\b(votre|vos|une|des|avec|pour|dans|gratuit|gratuite|sans|photographiez|imagine|aménagement|espace|pièce|chaque|nous|vous|les|est|sont|aucun|aucune|cette|conserv|combien|coûte|mobilier|meubles|simulateur|devis|fonctionne|proposé|propose|quel|quelle|prix|selon|façonné|haut de gamme|estimatif)\b/i;
+
+/* Noms propres et marques : ils s'ecrivent pareil dans les deux langues, leur presence ne dit
+   rien de la langue de la phrase. On les RETIRE avant de tester, au lieu d'exempter la phrase
+   entiere : « Combien coûte le mobilier Balinaisa ? » contient « Balinaisa », donc l'ancienne
+   version l'exemptait en bloc et laissait passer une question de FAQ restee francaise. */
+const EXEMPT = /Balinaisa|Dominique|Raynal|Marie Claire|Hanoi|Reza|Jaya|Nara|Lyodra|Kumala|Uma|Siti|Timor|Atalya|Paktiz|Plausible|CNIL|cnil\.fr|Cloudflare|Turnstile|Google|Indonesian|Arcachon/gi;
+
+/* Ce qui reste d'une phrase une fois les noms propres retires. C'est la-dessus qu'on juge. */
+const stripNames = (v) => v.replace(EXEMPT, ' ').replace(/\s+/g, ' ').trim();
+const looksFrench = (v) => { const rest = stripNames(v); return rest.length > 3 && FR.test(rest); };
 const SKIP = /<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi;
+
+/* Le bloc de donnees structurees. C'est un <script>, donc SKIP le mettait en reserve avec
+   le reste du JS : il partait en anglais AVEC SON TEXTE FRANCAIS. Trois consequences, toutes
+   invisibles (aucune erreur, la page s'affiche bien) :
+     1. la FAQPage de /en/ decrivait des questions francaises alors que la FAQ affichee est
+        en anglais. Google demande que les donnees structurees correspondent au contenu VISIBLE ;
+        la page anglaise etait donc en contradiction avec elle-meme.
+     2. les noeuds WebApplication et FAQPage gardaient l'@id et l'url de la page FR : deux URL
+        differentes declaraient les memes @id avec des contenus differents.
+     3. la ligne qui repassait "inLanguage" en "en" s'executait pendant que le bloc etait en
+        reserve : elle ne matchait donc jamais rien, et /en/ annoncait "inLanguage": "fr".
+   On le traite donc explicitement, AVANT la mise en reserve, avec la meme discipline que le
+   reste du fichier : on ne remplace un texte que s'il est une cle du dictionnaire. */
+const LD = /(<script\b[^>]*type="application\/ld\+json"[^>]*>)([\s\S]*?)(<\/script>)/i;
+
+/* Cles JSON dont la valeur est du texte editorial (donc traduisible). `name` couvre aussi
+   le nom d'une Person ou d'un Review author : sans entree au dictionnaire, ils ne bougent pas. */
+const LD_TEXT_KEYS = /"(name|description|text|headline|caption)":\s*"((?:[^"\\]|\\.)*)"/g;
+/* Une URL de noeud : a repointer vers la page anglaise. `logo`/`image` en sont exclus (ce sont
+   des fichiers, pas des pages) et l'Organization vit sur balinaisa.com (autre origine, intacte). */
+const LD_URL_KEYS = /"(@id|url)":\s*"((?:[^"\\]|\\.)*)"/g;
+
+const jsonUnesc = (raw) => JSON.parse('"' + raw + '"');
+const jsonEsc = (v) => JSON.stringify(v).slice(1, -1);
+
+function translateLd(html, page, stats) {
+  return html.replace(LD, (m, open, json, close) => {
+    json = json.replace(LD_TEXT_KEYS, (hit, key, raw) => {
+      const dictKey = norm(jsonUnesc(raw));
+      if (!dictKey || !Object.prototype.hasOwnProperty.call(EN, dictKey)) return hit;
+      stats.ld++;
+      return '"' + key + '": "' + jsonEsc(EN[dictKey]) + '"';
+    });
+
+    if (page.canonical) {
+      json = json.replace(LD_URL_KEYS, (hit, key, raw) => {
+        const url = jsonUnesc(raw);
+        if (!url.startsWith(ORIGIN + '/')) return hit;   /* balinaisa.com : autre entite */
+        stats.ld++;
+        return '"' + key + '": "' + jsonEsc(page.canonical + url.slice(ORIGIN.length + 1)) + '"';
+      });
+    }
+
+    json = json.replace(/"inLanguage":\s*"fr"/g, () => { stats.ld++; return '"inLanguage": "en"'; });
+    return open + json + close;
+  });
+}
+
+/* Fuites FR du bloc structure. `reviewBody` est exclu : un avis client est un verbatim, le
+   traduire serait le reecrire. Il reste donc en francais, dans les deux langues. */
+function ldLeaks(html) {
+  const block = LD.exec(html);
+  if (!block) return [];
+  const out = [];
+  block[2].replace(/"reviewBody":\s*"(?:[^"\\]|\\.)*"/g, ' ')
+    .replace(LD_TEXT_KEYS, (m, key, raw) => {
+      const v = norm(jsonUnesc(raw));
+      if (looksFrench(v)) out.push(v.slice(0, 70));
+      return m;
+    });
+  return out;
+}
 
 function build(page) {
   let html = fs.readFileSync(path.join(ROOT, page.src), 'utf8');
-  const stats = { texts: 0, attrs: 0, metas: 0, paths: 0, links: 0 };
+  const stats = { texts: 0, attrs: 0, metas: 0, paths: 0, links: 0, ld: 0 };
+
+  /* 0. Donnees structurees. AVANT la mise en reserve : sinon SKIP emporte le bloc intact. */
+  html = translateLd(html, page, stats);
 
   /* 1. Textes. On ne touche qu'aux noeuds de texte, jamais au balisage. On saute
      script/style : leur contenu n'est pas du texte affiche, et simulator.js fait sa
@@ -122,7 +199,6 @@ function build(page) {
     html = html.replace(/<link rel="alternate" hreflang="en"[^>]*>/i, '<link rel="alternate" hreflang="en" href="' + page.canonical + '">');
   }
   html = html.replace(/<meta property="og:locale" content="[^"]*">/i, '<meta property="og:locale" content="en_GB">');
-  html = html.replace(/"inLanguage": "fr"/g, '"inLanguage": "en"');
 
   holes.forEach((h, i) => { html = html.replace(' HOLE' + i + ' ', () => h); });
 
@@ -130,14 +206,14 @@ function build(page) {
   html = html.replace(/^<!DOCTYPE html>\n/i, '<!DOCTYPE html>\n' + banner);
 
   const body = html.slice(html.indexOf('<body')).replace(SKIP, '').replace(/<!--[\s\S]*?-->/g, '');
-  const leaks = [];
+  const leaks = ldLeaks(html);   /* le bloc structure vit dans <head> : le scan du body ne le voit pas */
   body.replace(/>([^<>]+)</g, (m, t) => {
     const v = norm(t);
-    if (v.length > 3 && FR.test(v) && !EXEMPT.test(v)) leaks.push(v.slice(0, 70));
+    if (looksFrench(v)) leaks.push(v.slice(0, 70));
     return m;
   });
 
-  return { html, stats, leaks };
+  return { html, stats, leaks: [...new Set(leaks)] };   /* meme phrase vue dans le corps ET dans le bloc structure : un seul signalement */
 }
 
 let failed = false;
@@ -159,8 +235,8 @@ PAGES.forEach((page) => {
     }
   } else {
     fs.writeFileSync(outPath, html);
-    console.log('%s ecrit : %d textes, %d attributs, %d metas, %d chemins absolutises, %d liens vers /en/.',
-      label, stats.texts, stats.attrs, stats.metas, stats.paths, stats.links);
+    console.log('%s ecrit : %d textes, %d attributs, %d metas, %d chemins absolutises, %d liens vers /en/, %d champs de donnees structurees.',
+      label, stats.texts, stats.attrs, stats.metas, stats.paths, stats.links, stats.ld);
   }
 
   if (leaks.length) {

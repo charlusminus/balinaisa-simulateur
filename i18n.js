@@ -34,6 +34,11 @@
   var EN = {
     // — SEO / meta —
     "Simulateur déco et aménagement à partir d'une photo | Balinaisa": "Interior design and layout simulator from a photo | Balinaisa",
+    // Donnees structurees (bloc ld+json). Ces trois textes ne sont jamais affiches : ils ne
+    // vivent que dans le balisage lu par les moteurs. Ils sont ici parce que /en/ le sert aussi.
+    "Spécialiste du mobilier en teck massif d'Indonésie, pour l'intérieur comme pour l'extérieur, dans le bassin d'Arcachon.": "Specialists in solid Indonesian teak furniture, indoors and out, in the Arcachon basin.",
+    "Balinaisa.ai, simulateur d'aménagement Balinaisa": "Balinaisa.ai, the Balinaisa layout simulator",
+    "Balinaisa.ai, entraîné comme l'œil de Dominique Raynal : photographiez votre terrasse, votre jardin ou votre intérieur, Balinaisa.ai y projette le mobilier en teck massif Balinaisa et vous adresse un devis estimatif.": "Balinaisa.ai, trained as Dominique Raynal's eye: photograph your terrace, garden or interior, and Balinaisa.ai places Balinaisa solid teak furniture in it and sends you an estimated quote.",
     // — Header / hero —
     "Commencer": "Get started",
     "Votre espace": "Your space",

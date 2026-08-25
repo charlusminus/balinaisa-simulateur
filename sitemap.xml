@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Uniquement les pages indexables. /privacy-policy.html (et sa version /en/) portent
+     "noindex, follow" : les declarer ici reviendrait a demander l'indexation d'une page
+     qui la refuse, ce que la Search Console remonte en erreur. /result.html est en
+     noindex + Disallow dans robots.txt. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
@@ -6,7 +10,7 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://balinaisa.ai/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://balinaisa.ai/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://balinaisa.ai/"/>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -15,14 +19,8 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://balinaisa.ai/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://balinaisa.ai/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://balinaisa.ai/"/>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://balinaisa.ai/privacy-policy.html</loc>
-    <lastmod>2026-07-04</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
   </url>
 </urlset>
