@@ -173,7 +173,7 @@
     "Nous n'avons pas pu traiter votre demande": "We couldn't process your request",
     // — message de partage (bloc par bloc : l'API Web Share ne prend que du texte brut) —
     "Salut,": "Hi,",
-    "J'ai découvert Balinaisa.ai, le simulateur d'aménagement de Balinaisa (intérieur et extérieur), entraîné comme l'œil de Dominique Raynal, créateur et expert de mobilier en teck d'exception.": "I discovered Balinaisa.ai, the Balinaisa layout simulator (indoor and outdoor), trained as the eye of Dominique Raynal, creator and expert in exceptional teak furniture.",
+    "J'ai découvert Balinaisa.ai, le simulateur d'aménagement de Balinaisa (intérieur et extérieur), proposé par Dominique, le fondateur de la société Balinaisa.": "I discovered Balinaisa.ai, the Balinaisa interior and outdoor design simulator, offered by Dominique, the founder of Balinaisa.",
     "Une photo de ton espace suffit.": "A photo of your space is all it takes.",
     "Essaye, c'est surprenant.": "Try it, you'll be surprised.",
     "Hâte d'avoir ton retour,": "Looking forward to hearing what you think,",

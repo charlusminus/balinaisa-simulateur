@@ -1,18 +1,22 @@
 /* ============================================================
-   BALINAISA — Widget « Simuler avec Balinaisa.ai »
+   BALINAISA — Widget « Simulateur IA »
    Bouton flottant (sticky CTA) à déposer sur balinaisa.com.
+
+   Défauts arrêtés le 27/08 : libellé « Simulateur IA », cible https://balinaisa.ai/
+   et arrivée DIRECTE sur l'étape 1 (import de la photo) via ?start=1, jamais sur
+   l'écran d'accueil : le site porte déjà l'accroche, la redoubler fait perdre le clic.
    Autonome : aucune dépendance au CSS du site hôte, styles scopés.
 
    Intégration (avant </body>) :
-     <script src="https://simulateur.balinaisa.com/embed.js" defer></script>
+     <script src="https://balinaisa.ai/embed.js" defer></script>
 
    Options (data-attributes sur la balise <script>) :
      data-position="bottom-right" (défaut) | "bottom-left"
-     data-label="Simuler avec Balinaisa.ai"
+     data-label="Simulateur IA"
      data-utm-source="site-balinaisa"     (défaut)
      data-utm-medium="widget-sticky"      (défaut)
      data-utm-campaign="balinaisa-ai"            (défaut)
-     data-target="https://simulateur.balinaisa.com/"  (défaut)
+     data-target="https://balinaisa.ai/"  (défaut)
      data-skip-intro="true"  (défaut) — arrive direct sur l'import photo (ajoute ?start=1),
                               "false" pour ouvrir l'écran d'accueil du simulateur
 
@@ -28,8 +32,8 @@
   var ds = (script && script.dataset) || {};
 
   var position = ds.position === 'bottom-left' ? 'bottom-left' : 'bottom-right';
-  var label    = ds.label || 'Simuler avec Balinaisa.ai';
-  var base     = ds.target || 'https://simulateur.balinaisa.com/';
+  var label    = ds.label || 'Simulateur IA';
+  var base     = ds.target || 'https://balinaisa.ai/';
   // Venant du site, on saute l'ecran d'accueil et on arrive direct sur l'import photo.
   var skipIntro = ds.skipIntro !== 'false';
   var utm = {
