@@ -1,10 +1,17 @@
 /* ============================================================
-   BALINAISA — Widget « Simulateur IA »
+   BALINAISA — Widget « Imaginez chez vous »
    Bouton flottant (sticky CTA) à déposer sur balinaisa.com.
 
-   Défauts arrêtés le 27/08 : libellé « Simulateur IA », cible https://balinaisa.ai/
+   Défauts arrêtés le 27/08 : libellé « Imaginez chez vous », cible https://balinaisa.ai/
    et arrivée DIRECTE sur l'étape 1 (import de la photo) via ?start=1, jamais sur
    l'écran d'accueil : le site porte déjà l'accroche, la redoubler fait perdre le clic.
+
+   Le libellé dit le BÉNÉFICE, pas la fonction : « Imaginez chez vous » plutôt que
+   « Simulateur ». « Imaginer » est le verbe retenu au point d'étape du 17/07 pour son
+   côté projectif, préféré à « composer ». Il respecte aussi la règle de marque
+   « zéro mention IA » d'AGENTS.md, ce que le libellé précédent ne faisait pas.
+   Il est modifiable À DISTANCE sans toucher au site hôte : c'est tout l'intérêt de
+   faire coller la balise NUE, sans data-label. Ne pas figer ce texte côté client.
    Autonome : aucune dépendance au CSS du site hôte, styles scopés.
 
    Intégration (avant </body>) :
@@ -12,7 +19,7 @@
 
    Options (data-attributes sur la balise <script>) :
      data-position="bottom-right" (défaut) | "bottom-left"
-     data-label="Simulateur IA"
+     data-label="Imaginez chez vous"
      data-utm-source="site-balinaisa"     (défaut)
      data-utm-medium="widget-sticky"      (défaut)
      data-utm-campaign="balinaisa-ai"            (défaut)
@@ -32,7 +39,7 @@
   var ds = (script && script.dataset) || {};
 
   var position = ds.position === 'bottom-left' ? 'bottom-left' : 'bottom-right';
-  var label    = ds.label || 'Simulateur IA';
+  var label    = ds.label || 'Imaginez chez vous';
   var base     = ds.target || 'https://balinaisa.ai/';
   // Venant du site, on saute l'ecran d'accueil et on arrive direct sur l'import photo.
   var skipIntro = ds.skipIntro !== 'false';
