@@ -553,7 +553,7 @@ function shareSimulator() {
   const message = [
     T('Salut,'),
     '',
-    T("J'ai découvert Balinaisa.ai, le simulateur d'aménagement de Balinaisa (intérieur et extérieur), proposé par Dominique, le fondateur de la société Balinaisa."),
+    T("J'ai découvert Balinaisa.ai, le simulateur d'aménagement (intérieur et extérieur), proposé par Dominique, le fondateur de la société Balinaisa."),
     '',
     T('Une photo de ton espace suffit.'),
     '',
