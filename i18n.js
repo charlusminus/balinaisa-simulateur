@@ -90,6 +90,7 @@
     "J'accepte que Balinaisa me contacte au sujet de ma simulation": "I agree that Balinaisa may contact me about my simulation",
     "Politique de confidentialité &amp; Protection des données": "Privacy policy &amp; Data protection",
     "Politique de confidentialité & Protection des données": "Privacy policy & Data protection",
+    "Espace presse": "Press kit",
     // — Confirmation (step 5) —
     "Votre simulation se prépare": "Your simulation is on its way",
     "Vous recevrez votre rendu personnalisé par email": "You will receive your personalised rendering by email",
