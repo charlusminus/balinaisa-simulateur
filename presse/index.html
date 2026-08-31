@@ -9,13 +9,14 @@
     window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
     plausible.init()
   </script>
-  <title>Espace presse | Balinaisa.ai</title>
-  <meta name="description" content="Espace presse Balinaisa.ai : communiqué, chiffres clés, visuels avant/après en haute définition, logo, contact et accès démonstration.">
+  <title>Communiqué de presse | Balinaisa.ai</title>
+  <meta name="description" content="Communiqué de presse Balinaisa.ai : un outil d'IA qui transforme une photo de pièce en projet d'aménagement chiffré. Visuels avant/après, chiffres clés et contact.">
   <link rel="canonical" href="https://balinaisa.ai/presse/">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Espace presse | Balinaisa.ai">
-  <meta property="og:description" content="Communiqué, chiffres clés, visuels avant/après en haute définition, logo et contact presse.">
+  <meta property="og:title" content="Communiqué de presse | Balinaisa.ai">
+  <meta property="og:description" content="Un outil d'IA qui transforme une photo de pièce en projet d'aménagement chiffré. Visuels avant/après, chiffres clés et contact presse.">
   <meta property="og:url" content="https://balinaisa.ai/presse/">
+  <meta property="og:image" content="https://balinaisa.ai/presse/medias/balinaisa-ai_apres_salle-a-manger-01.jpg">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/styles.css?v=20260729">
   <link href="/fonts/fonts.css?v=20260715c" rel="stylesheet">
@@ -23,10 +24,53 @@
     /* Styles propres a l'espace presse. Volontairement dans la page et non dans styles.css :
        la feuille globale est chargee par le simulateur sur chaque visite, et ces regles ne
        servent qu'ici. Elles s'appuient sur les variables et les classes .legal-* existantes. */
-    .press-lead { font-size: 1.05rem; line-height: 1.7; color: var(--text-sub, #7A6A58); margin-bottom: 1.5rem; }
+    .press-lead { font-size: 1.02rem; line-height: 1.7; color: var(--text-sub, #7A6A58); margin-bottom: 1.6rem; }
+
+    /* Le communique, compose comme un document : c'est le meme texte que le PDF. */
+    .cp { border-top: 1px solid var(--border, #DDD5C8); padding-top: 1.8rem; margin-bottom: 2.4rem; }
+    .cp-title {
+      font-family: var(--font-serif, Georgia, serif); font-weight: 600; font-size: 1.72rem;
+      line-height: 1.2; color: var(--text, #2A1F14); margin-bottom: .8rem;
+    }
+    .cp-chapo { font-size: 1.06rem; line-height: 1.65; color: var(--text, #2A1F14); font-weight: 500; margin-bottom: .7rem; }
+    .cp-dateline { font-size: .88rem; color: var(--text-muted, #9A8B76); margin-bottom: 1.6rem; }
+    .cp h3 {
+      font-family: var(--font-serif, Georgia, serif); font-weight: 600; font-size: 1.2rem;
+      color: var(--primary-dark, #8B5C32); margin: 1.9rem 0 .5rem;
+    }
+    .cp p { font-size: .96rem; line-height: 1.75; color: var(--text-sub, #7A6A58); margin-bottom: .7rem; }
+
+    /* Paires avant / apres. Chaque image est un lien de telechargement vers le fichier
+       en taille native : c'est ce dont une redaction a besoin. */
+    figure.media { margin: 1.4rem 0 0; }
+    figure.media .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      background: var(--border, #DDD5C8); border: 1px solid var(--border, #DDD5C8); border-radius: 12px; overflow: hidden; }
+    figure.media .shot { position: relative; display: block; background: var(--bg-card, #FDFAF6); }
+    figure.media img { display: block; width: 100%; height: auto; }
+    figure.media .tag {
+      position: absolute; top: 8px; left: 8px; background: rgba(42,31,20,.82); color: #fff;
+      font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
+      padding: 3px 8px; border-radius: 3px;
+    }
+    figure.media .tag.after { background: var(--primary, #B87D4B); }
+    figure.media figcaption { font-size: .84rem; line-height: 1.6; color: var(--text-sub, #7A6A58); margin-top: .6rem; }
+    figure.media figcaption b { color: var(--text, #2A1F14); }
+    figure.media .dl { display: block; margin-top: .3rem; font-size: .76rem; color: var(--text-muted, #9A8B76); }
+    .doc-shot { border: 1px solid var(--border, #DDD5C8); border-radius: 12px; overflow: hidden; display: block; }
+
+    /* Portrait et citation */
+    .voice { display: flex; gap: 16px; align-items: flex-start; margin: 1.1rem 0 .5rem; flex-wrap: wrap; }
+    .voice img { width: 128px; height: auto; border: 1px solid var(--border, #DDD5C8); border-radius: 8px; flex: none; }
+    .voice blockquote {
+      flex: 1 1 260px; border-left: 3px solid var(--primary, #B87D4B); padding-left: 16px; margin: 0;
+      font-family: var(--font-serif, Georgia, serif); font-style: italic; font-size: 1.08rem;
+      line-height: 1.6; color: var(--text, #2A1F14);
+    }
+    .voice cite { display: block; font-style: normal; font-size: .84rem; color: var(--text-muted, #9A8B76); margin-top: .5rem; }
+
     .press-cta {
       background: #FBF5EB; border: 1px solid var(--border, #DDD5C8); border-radius: 14px;
-      padding: 20px 22px; margin: 1.75rem 0;
+      padding: 20px 22px; margin: 1.8rem 0;
     }
     .press-cta p { margin: 0; }
     .press-cta p + p { margin-top: .5rem; }
@@ -34,34 +78,6 @@
     .facts li { padding: .45rem 0; border-bottom: 1px solid var(--border, #DDD5C8); }
     .facts li:last-child { border-bottom: 0; }
     .facts b { color: var(--text, #2A1F14); }
-    .press-release { border-left: 3px solid var(--primary, #B87D4B); padding-left: 20px; }
-    .press-release h3 {
-      font-family: Georgia, serif; font-size: 1.05rem; margin: 1.5rem 0 .4rem;
-      color: var(--text, #2A1F14);
-    }
-    .press-quote {
-      font-family: Georgia, serif; font-style: italic; font-size: 1.05rem; line-height: 1.75;
-      color: var(--text, #2A1F14); margin: 1rem 0 .4rem;
-    }
-    .press-quote-author { font-size: .9rem; color: var(--text-sub, #7A6A58); margin: 0; }
-    .press-dateline { margin-top: 1rem; color: var(--text-sub, #7A6A58); }
-    .media-grid { display: grid; gap: 22px; margin-top: 1rem; }
-    .media-card {
-      border: 1px solid var(--border, #DDD5C8); border-radius: 12px; overflow: hidden;
-      background: var(--bg-card, #FDFAF6); margin: 0;
-    }
-    .media-card .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border, #DDD5C8); }
-    .media-card .shot { position: relative; display: block; background: var(--bg-card, #FDFAF6); }
-    .media-card img { display: block; width: 100%; height: auto; }
-    .media-card .tag {
-      position: absolute; top: 8px; left: 8px; background: rgba(42,31,20,.82); color: #fff;
-      font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
-      padding: 3px 8px; border-radius: 3px;
-    }
-    .media-card .tag.after { background: var(--primary, #B87D4B); }
-    .media-card figcaption { padding: 12px 14px; font-size: .84rem; line-height: 1.6; color: var(--text-sub, #7A6A58); }
-    .media-card figcaption b { color: var(--text, #2A1F14); }
-    .media-card .dl { display: block; margin-top: 6px; font-size: .76rem; color: var(--text-muted, #7C6A54); }
     .dl-list { list-style: none; padding: 0; margin: .6rem 0 0; }
     .dl-list li { margin-bottom: .5rem; }
     .legal-note { font-size: .84rem; color: var(--text-muted, #7C6A54); margin-top: .9rem; }
@@ -80,11 +96,74 @@
 
   <main class="legal-page">
     <a class="legal-back" href="/">← Retour au simulateur</a>
-    <h1 class="legal-title">Espace presse</h1>
+    <h1 class="legal-title">Communiqué de presse</h1>
     <p class="legal-updated">Balinaisa.ai · septembre 2026</p>
 
-    <p class="press-lead">Vous trouverez ici le communiqué, les chiffres clés, les visuels en haute définition et le contact direct. Tous les éléments de cette page sont libres de reproduction dans un cadre rédactionnel, avec la mention « Balinaisa ».</p>
+    <p class="press-lead">Le communiqué dans son intégralité, avec ses visuels. Chaque image se télécharge en pleine définition d'un clic. Tous les éléments de cette page sont libres de reproduction dans un cadre rédactionnel, avec la mention « Balinaisa ».</p>
 
+    <!-- ============ LE COMMUNIQUÉ, mot pour mot le même que le PDF ============ -->
+    <article class="cp">
+      <h2 class="cp-title">Balinaisa lance un outil d'IA qui transforme une photo de pièce en projet d'aménagement chiffré</h2>
+
+      <p class="cp-chapo">Photographiez votre salon, votre terrasse ou votre salle de restaurant. Une minute plus tard, Balinaisa.ai vous renvoie l'image de votre espace réaménagé et le devis des meubles qui s'y trouvent, calculé sur les 98 références réelles du catalogue de la maison. Gratuit, sans création de compte, sur <a href="/">balinaisa.ai</a>.</p>
+
+      <p class="cp-dateline">La Teste-de-Buch, septembre 2026.</p>
+
+      <figure class="media">
+        <div class="pair">
+          <a class="shot" href="medias/balinaisa-ai_avant_salle-a-manger-01.jpg" download title="Télécharger la photo d'origine"><img src="medias/apercu/balinaisa-ai_avant_salle-a-manger-01.jpg" alt="Salle à manger avant aménagement" loading="lazy"><span class="tag">Avant</span></a>
+          <a class="shot" href="medias/balinaisa-ai_apres_salle-a-manger-01.jpg" download title="Télécharger le rendu"><img src="medias/apercu/balinaisa-ai_apres_salle-a-manger-01.jpg" alt="La même salle à manger aménagée par Balinaisa.ai" loading="lazy"><span class="tag after">Après</span></a>
+        </div>
+        <figcaption><b>Une salle à manger, sous charpente.</b> Table Adika, six chaises Lisa, buffet Cocon 3, bibliothèque Cocon 1 et miroir Mentari. Rendu brut, non retouché. La charpente, les poutres, le puits de lumière et le sol restent intacts : l'outil ne redessine pas le bâti.<span class="dl">Cliquez sur une image pour la télécharger en pleine définition.</span></figcaption>
+      </figure>
+
+      <h3>Photo, aménagement, devis</h3>
+      <p>Une photo, un budget si on en a un, une adresse email. En une minute, le rendu et le devis arrivent, au même cadrage et sous le même angle que la photo d'origine.</p>
+      <p>Le chiffrage n'est pas une estimation de catégorie : chaque meuble représenté est une référence du catalogue Balinaisa, avec son prix hors taxes réel. 98 références, 17 familles, du fauteuil de jardin à la suspension. Deux propositions arrivent, la scène complète telle qu'elle apparaît sur l'image et la sélection qui tient dans le budget annoncé, avec l'écart entre les deux. Le devis est estimatif.</p>
+
+      <h3>Le devis, ligne par ligne</h3>
+      <figure class="media">
+        <a class="doc-shot" href="medias/balinaisa-ai_devis_salle-a-manger-01.jpg" download title="Télécharger le devis"><img src="medias/apercu/balinaisa-ai_devis_salle-a-manger-01.jpg" alt="Le devis reçu par email pour cette simulation" loading="lazy"></a>
+        <figcaption><b>Le devis reçu par email, pour l'image ci-dessus.</b> Cinq références du catalogue, leur quantité, leur catégorie, leur prix TTC et le total. Rien n'est arrondi ni inventé : chaque ligne est un produit qui existe, au prix auquel il se vend. Ce que l'outil ajoute pour la mise en scène, tapis, plantes et objets, est signalé au client et n'est pas facturé.</figcaption>
+      </figure>
+
+      <h3>La technologie, et ce que deviennent les photos</h3>
+      <p>Une chaîne d'automatisation développée pour Balinaisa avec <a href="https://paktiz.fr" target="_blank" rel="noopener">Paktiz</a>, son partenaire technique, appuyée sur des modèles de dernière génération. La différence se joue dans le catalogue : pour chaque produit retenu, le générateur reçoit la photo de référence du meuble et son descriptif, ce qui l'oblige à reproduire une pièce qui existe au lieu d'en inventer une.</p>
+      <p>La photo importée et le rendu ne servent qu'à produire la simulation et à suivre le projet. Ils ne sont cédés à aucun tiers, sont supprimés automatiquement au-delà de 36 mois, et le simulateur n'emploie ni cookie publicitaire ni traceur intersites. Politique complète sur <a href="/privacy-policy.html">balinaisa.ai/privacy-policy.html</a>, suppression sur simple demande à <a href="mailto:contact@balinaisa.com">contact@balinaisa.com</a>.</p>
+
+      <figure class="media">
+        <div class="pair">
+          <a class="shot" href="medias/balinaisa-ai_avant_terrasse-couverte-01.jpg" download title="Télécharger la photo d'origine"><img src="medias/apercu/balinaisa-ai_avant_terrasse-couverte-01.jpg" alt="Terrasse couverte avant aménagement" loading="lazy"><span class="tag">Avant</span></a>
+          <a class="shot" href="medias/balinaisa-ai_apres_terrasse-couverte-01.jpg" download title="Télécharger le rendu"><img src="medias/apercu/balinaisa-ai_apres_terrasse-couverte-01.jpg" alt="La même terrasse couverte aménagée par Balinaisa.ai" loading="lazy"><span class="tag after">Après</span></a>
+        </div>
+        <figcaption><b>Une terrasse couverte.</b> La demande tenait en une phrase : « cette terrasse avec une grande table rectangle, des fauteuils et un salon de jardin ». Table Senjara à piètement araignée, fauteuils de repas à coussins, salon de jardin au fond. La charpente peinte, les poteaux, le dallage et le jardin ne bougent pas.<span class="dl">Cliquez sur une image pour la télécharger en pleine définition.</span></figcaption>
+      </figure>
+
+      <h3>Le regard de Dominique Raynal</h3>
+      <p>Dominique Raynal dessine et fait fabriquer du mobilier en teck entre la France et l'Indonésie. C'est sa connaissance de la matière et sa manière de placer un meuble dans un volume que l'outil met en œuvre à chaque simulation.</p>
+      <div class="voice">
+        <img src="medias/balinaisa-ai_portrait-dominique-raynal.jpg" alt="Dominique Raynal, fondateur de Balinaisa" loading="lazy">
+        <blockquote>« J'ai souhaité associer mon expertise à l'Intelligence Artificielle afin de proposer une expérience plus immédiate, visuelle et personnalisée de l'aménagement. J'ai ainsi façonné Balinaisa.ai comme une extension de mon savoir-faire. Aujourd'hui, il compose pour vous, chez vous, comme si je poussais votre porte à vos côtés. »
+          <cite>Dominique Raynal, directeur général de Balinaisa</cite>
+        </blockquote>
+      </div>
+
+      <h3>Pour les particuliers comme pour les professionnels</h3>
+      <p>Repenser une pièce ou un extérieur chez soi. Ou, pour un architecte d'intérieur, un décorateur, un paysagiste, un hôtelier, un restaurateur, faire visualiser un projet à son client avant de l'engager.</p>
+
+      <figure class="media">
+        <div class="pair">
+          <a class="shot" href="medias/balinaisa-ai_avant_terrasse-cafe-01.jpg" download title="Télécharger la photo d'origine"><img src="medias/apercu/balinaisa-ai_avant_terrasse-cafe-01.jpg" alt="Terrasse de café avant aménagement" loading="lazy"><span class="tag">Avant</span></a>
+          <a class="shot" href="medias/balinaisa-ai_apres_terrasse-cafe-01.jpg" download title="Télécharger le rendu"><img src="medias/apercu/balinaisa-ai_apres_terrasse-cafe-01.jpg" alt="La même terrasse de café aménagée par Balinaisa.ai" loading="lazy"><span class="tag after">Après</span></a>
+        </div>
+        <figcaption><b>Un usage professionnel, place Royale à Nantes.</b> La demande : « je veux refaire la terrasse de mon café avec 10 tables et 20 chaises ». Tables rondes à piètement cannelé et chaises en teck à assise tressée remplacent le mobilier métal noir, sous les mêmes parasols et devant la même façade.<span class="dl">Cliquez sur une image pour la télécharger en pleine définition.</span></figcaption>
+      </figure>
+
+      <h3>À propos de Balinaisa</h3>
+      <p>Balinaisa est une maison française de mobilier et de décoration spécialisée dans une gamme premium en teck. Entre la France et l'Indonésie, elle imagine des collections où design contemporain, matériaux nobles et artisanat traditionnel donnent naissance à des meubles durables, destinés aux particuliers comme aux projets d'hôtellerie, de restauration et d'architecture intérieure.</p>
+    </article>
+
+    <!-- ============ POINTS CLÉS ET PRATIQUE ============ -->
     <div class="press-cta">
       <p><b>Testez l'outil vous-même.</b> Il suffit d'une photo, c'est gratuit et sans création de compte : <a href="/">balinaisa.ai</a>.</p>
       <p>Nous proposons également une démonstration en direct ou un accompagnement sur un cas de votre choix. Écrivez à <a href="mailto:contact@balinaisa.com">contact@balinaisa.com</a>.</p>
@@ -104,117 +183,14 @@
     </section>
 
     <section class="legal-section">
-      <h2>Communiqué</h2>
-      <div class="press-release">
-        <h3>Balinaisa lance un outil d'intelligence artificielle qui transforme la photo d'une pièce en projet d'aménagement chiffré</h3>
-
-        <p><strong>Balinaisa.ai génère, à partir d'une simple photo d'un intérieur ou d'un extérieur, une proposition d'aménagement en image et le devis des meubles qui y figurent, calculé sur les 98 références réelles du catalogue de la maison. L'outil est en ligne, gratuit et sans création de compte, sur balinaisa.ai.</strong></p>
-
-        <p class="press-dateline">La Teste-de-Buch, septembre 2026.</p>
-
-        <h3>Photo, aménagement, devis</h3>
-        <p>L'utilisateur photographie son salon, sa terrasse ou sa salle de restaurant, indique s'il le souhaite un budget, et reçoit par email en une minute deux choses : l'image de son espace réaménagé, au même cadrage et sous le même angle que sa photo d'origine, et le détail chiffré des meubles qui y ont été placés.</p>
-        <p>Le chiffrage n'est pas une estimation de catégorie. Chaque meuble représenté correspond à une référence du catalogue Balinaisa, avec son prix hors taxes réel : 98 références réparties en 17 familles, du fauteuil de jardin à la suspension. L'outil renvoie deux propositions, la scène complète telle qu'elle apparaît sur l'image, et la sélection qui tient dans le budget annoncé, avec l'écart entre les deux. Le devis est estimatif et n'engage pas commercialement.</p>
-
-        <h3>La technologie, et ce que deviennent les photos</h3>
-        <p>Balinaisa.ai repose sur une chaîne d'automatisation développée pour Balinaisa avec Paktiz, son partenaire technique, qui s'appuie sur des modèles de dernière génération. La différence se joue dans le catalogue : pour chaque produit retenu, le générateur d'image reçoit la photo de référence du meuble et son descriptif, ce qui l'oblige à reproduire une pièce qui existe au lieu d'en inventer une.</p>
-        <p>Sur les données personnelles, la règle est écrite et publique. La photo importée et le rendu généré servent uniquement à produire la simulation et à suivre le projet. Ils ne sont cédés à aucun tiers et sont supprimés automatiquement au-delà de 36 mois, comme les coordonnées. Le simulateur n'emploie ni cookie publicitaire ni traceur intersites, et sa mesure d'audience est anonyme et sans cookie. Toute suppression peut être demandée à <a href="mailto:contact@balinaisa.com">contact@balinaisa.com</a>. La politique complète est publiée sur <a href="/privacy-policy.html">balinaisa.ai/privacy-policy.html</a>.</p>
-
-        <h3>Le regard de Dominique Raynal</h3>
-        <p>Balinaisa est née du travail d'un homme sur une matière. Dominique Raynal dessine et fait fabriquer du mobilier en teck entre la France et l'Indonésie. C'est sa connaissance du matériau et sa manière de placer un meuble dans un volume que l'outil met en œuvre à chaque simulation.</p>
-        <p class="press-quote">« J'ai souhaité associer mon expertise à l'Intelligence Artificielle afin de proposer une expérience plus immédiate, visuelle et personnalisée de l'aménagement. J'ai ainsi façonné Balinaisa.ai comme une extension de mon savoir-faire. Aujourd'hui, il compose pour vous, chez vous, comme si je poussais votre porte à vos côtés. »</p>
-        <p class="press-quote-author">Dominique Raynal, directeur général de Balinaisa</p>
-
-        <h3>Pour les particuliers comme pour les professionnels</h3>
-        <p>L'outil s'adresse aux particuliers qui veulent repenser une pièce ou un extérieur. Il s'adresse aussi aux architectes d'intérieur, décorateurs, paysagistes, hôteliers, restaurateurs et professionnels de l'immobilier, pour qui la difficulté est souvent de faire visualiser un projet à un client avant de l'engager.</p>
-
-        <h3>À propos de Balinaisa</h3>
-        <p>Balinaisa est une maison française de mobilier et de décoration spécialisée dans une gamme premium en teck. Entre la France et l'Indonésie, elle imagine des collections où design contemporain, matériaux nobles et artisanat traditionnel donnent naissance à des meubles durables, destinés aux particuliers comme aux projets d'hôtellerie, de restauration et d'architecture intérieure.</p>
-      </div>
-    </section>
-
-    <section class="legal-section">
-      <h2>Visuels avant / après</h2>
-      <p>Trois espaces réels, photographiés puis passés dans le simulateur. <strong>Chaque image cliquée se télécharge en pleine définition.</strong> Les rendus sont <strong>bruts</strong>, tels que l'outil les produit, sans aucune retouche, et le cadrage, l'angle et le bâti de la photo d'origine sont conservés.</p>
-      <!-- Pour ajouter une paire : deposer les deux fichiers dans presse/medias/ (taille native, qualite
-           d'origine), generer leur version d'affichage dans presse/medias/apercu/ (560 px de large,
-           qualite 78), puis ajouter une entree au tableau MEDIAS. Tant que le tableau est vide, la
-           grille reste masquee et le paragraphe de repli s'affiche : la page ne montre jamais d'image
-           cassee ni de bloc « a venir ». Voir presse/medias/README.md. -->
-      <div id="media-grid" class="media-grid" hidden></div>
-      <p id="media-fallback">Les avant/après sont disponibles sur simple demande à <a href="mailto:contact@balinaisa.com">contact@balinaisa.com</a>, avec leurs légendes et leurs crédits. Précisez le format souhaité, nous les envoyons dans la journée.</p>
-      <p class="legal-note">Les fichiers sont au format JPEG. Les photos d'origine font de <strong>900 x 1200 à 1536 x 2048 pixels</strong>, les rendus <strong>896 x 1200</strong>, qui est la définition native produite par l'outil. Cela convient à une publication web et à une reproduction imprimée jusqu'à environ 7 x 10 cm pour les rendus. Pour un usage plus grand, écrivez-nous et nous produirons le rendu au format dont vous avez besoin.</p>
-      <script>
-        // [{ titre, avant, apres, legende }] : les fichiers sont relatifs a medias/, leur version
-        // d'affichage a medias/apercu/ et porte le meme nom.
-        var MEDIAS = [
-          {
-            titre: 'Salle à manger',
-            avant: 'balinaisa-ai_avant_salle-a-manger-01.jpg',
-            apres: 'balinaisa-ai_apres_salle-a-manger-01.jpg',
-            legende: 'Table Adika, six chaises Lisa, buffet Cocon 3, bibliothèque Cocon 1 et miroir Mentari, pour 8 110,39 € TTC au devis. La charpente, les poutres, le puits de lumière et le sol restent intacts : l\'outil ne redessine pas le bâti.'
-          },
-          {
-            titre: 'Terrasse couverte',
-            avant: 'balinaisa-ai_avant_terrasse-couverte-01.jpg',
-            apres: 'balinaisa-ai_apres_terrasse-couverte-01.jpg',
-            legende: 'La demande tenait en une phrase : « cette terrasse avec une grande table rectangle, des fauteuils et un salon de jardin ». Table Senjara à piètement araignée, fauteuils de repas à coussins, salon de jardin au fond. La charpente peinte, les poteaux, le dallage et le jardin ne bougent pas.'
-          },
-          {
-            titre: 'Terrasse de café',
-            avant: 'balinaisa-ai_avant_terrasse-cafe-01.jpg',
-            apres: 'balinaisa-ai_apres_terrasse-cafe-01.jpg',
-            legende: 'Un usage professionnel, place Royale à Nantes. La demande : « je veux refaire la terrasse de mon café avec 10 tables et 20 chaises ». Tables rondes à piètement cannelé et chaises en teck à assise tressée remplacent le mobilier métal noir, sous les mêmes parasols et devant la même façade.'
-          }
-        ];
-        (function () {
-          if (!MEDIAS.length) return;
-          var grid = document.getElementById('media-grid');
-          MEDIAS.forEach(function (m) {
-            var fig = document.createElement('figure');
-            fig.className = 'media-card';
-            var pair = document.createElement('div');
-            pair.className = 'pair';
-            [['Avant', m.avant, ''], ['Après', m.apres, ' after']].forEach(function (v) {
-              var a = document.createElement('a');
-              a.className = 'shot';
-              a.href = 'medias/' + v[1];
-              a.setAttribute('download', v[1]);
-              a.title = 'Télécharger ' + v[1];
-              var img = document.createElement('img');
-              img.src = 'medias/apercu/' + v[1];
-              img.alt = m.titre + ', ' + v[0].toLowerCase();
-              img.loading = 'lazy';
-              var tag = document.createElement('span');
-              tag.className = 'tag' + v[2];
-              tag.textContent = v[0];
-              a.appendChild(img); a.appendChild(tag);
-              pair.appendChild(a);
-            });
-            var cap = document.createElement('figcaption');
-            var b = document.createElement('b');
-            b.textContent = m.titre + '. ';
-            cap.appendChild(b);
-            cap.appendChild(document.createTextNode(m.legende));
-            var dl = document.createElement('span');
-            dl.className = 'dl';
-            dl.textContent = 'Cliquez sur une image pour la télécharger : ' + m.avant + ' et ' + m.apres;
-            cap.appendChild(dl);
-            fig.appendChild(pair); fig.appendChild(cap);
-            grid.appendChild(fig);
-          });
-          grid.hidden = false;
-          document.getElementById('media-fallback').hidden = true;
-        })();
-      </script>
-    </section>
-
-    <section class="legal-section">
-      <h2>Logo et identité</h2>
+      <h2>Visuels, logo et portrait</h2>
+      <p>Les visuels du communiqué se téléchargent directement en cliquant dessus. Les rendus sont <strong>bruts</strong>, tels que l'outil les produit, sans aucune retouche, et le cadrage, l'angle et le bâti de la photo d'origine sont conservés.</p>
       <ul class="dl-list">
         <li><a href="https://balinaisa.com/wp-content/uploads/2025/10/LOGO-SVG-Content.svg" target="_blank" rel="noopener">Logo Balinaisa, format vectoriel SVG</a></li>
-        <li>Logo en PNG à fond transparent et portrait de Dominique Raynal : sur demande à <a href="mailto:contact@balinaisa.com">contact@balinaisa.com</a>.</li>
+        <li><a href="medias/balinaisa-ai_portrait-dominique-raynal.jpg" download>Portrait de Dominique Raynal</a></li>
+        <li>Logo en PNG à fond transparent et portrait en haute définition : sur demande à <a href="mailto:contact@balinaisa.com">contact@balinaisa.com</a>.</li>
       </ul>
+      <p class="legal-note">Les fichiers sont au format JPEG. Les photos d'origine font de <strong>900 x 1200 à 1536 x 2048 pixels</strong>, les rendus <strong>896 x 1200</strong>, qui est la définition native produite par l'outil. Cela convient à une publication web et à une reproduction imprimée jusqu'à environ 7 x 10 cm pour les rendus. Pour un usage plus grand, écrivez-nous et nous produirons le rendu au format dont vous avez besoin.</p>
     </section>
 
     <section class="legal-section">

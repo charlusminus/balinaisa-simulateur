@@ -1,8 +1,9 @@
 # Médias de l'espace presse
 
-Fichiers servis par `presse/index.html` et déclarés dans son tableau `MEDIAS`.
-Tant que ce tableau est vide, la grille reste masquée et la page propose l'envoi par
-email : elle ne montre jamais d'image cassée ni de bloc « à venir ».
+Fichiers servis par `presse/index.html`. La page est le communiqué lui-même, mot pour
+mot celui du PDF, et les visuels sont placés dans le fil du texte, à l'endroit exact où
+ils l'illustrent. Ils ne sont plus pilotés par un tableau JavaScript : chaque paire est
+écrite en dur dans la page, à sa place dans le récit.
 
 ## Ce qu'il y a aujourd'hui
 
@@ -23,10 +24,19 @@ n'a commencé que le 28/07 à 18h09) : elles ont été récupérées auprès de 
 couverte, et le gérant pour la terrasse de café, qui est identifiable (place Royale à
 Nantes). La salle à manger est le domicile de Charles.
 
+S'y ajoutent deux fichiers hors paires :
+
+- `balinaisa-ai_devis_salle-a-manger-01.jpg`, la capture du **vrai devis** reçu par email
+  pour la simulation de la salle à manger. Extraite du HTML de l'email de l'exécution 497
+  et rendue à 3x, ce n'est pas une maquette.
+- `balinaisa-ai_portrait-dominique-raynal.jpg`, extrait du communiqué d'origine.
+
 ## Ce qui manque encore
 
 - Le logo en PNG à fond transparent (le SVG est déjà servi depuis balinaisa.com).
-- Le portrait de Dominique Raynal.
+- **Le portrait de Dominique Raynal en haute définition.** Celui qui est servi fait
+  253 x 210 pixels, tiré du PDF du communiqué d'origine faute de mieux. Ça passe à la
+  taille où la page l'affiche, c'est très insuffisant pour qu'une rédaction le publie.
 
 ## Format
 
@@ -48,13 +58,18 @@ Nantes). La salle à manger est le domicile de Charles.
 
 ## Ajouter une paire
 
-Déposer les deux fichiers ici, générer leurs aperçus, puis ajouter une entrée :
+Déposer les deux fichiers ici, générer leurs aperçus, puis insérer le bloc dans
+`presse/index.html` à l'endroit du texte qu'il illustre :
 
-```js
-{
-  titre: 'Terrasse',
-  avant: 'balinaisa-ai_avant_terrasse-02.jpg',
-  apres: 'balinaisa-ai_apres_terrasse-02.jpg',
-  legende: 'Ce que montre la scène, et ce qui a été conservé du bâti.'
-}
+```html
+<figure class="media">
+  <div class="pair">
+    <a class="shot" href="medias/balinaisa-ai_avant_x-01.jpg" download><img src="medias/apercu/balinaisa-ai_avant_x-01.jpg" alt="..." loading="lazy"><span class="tag">Avant</span></a>
+    <a class="shot" href="medias/balinaisa-ai_apres_x-01.jpg" download><img src="medias/apercu/balinaisa-ai_apres_x-01.jpg" alt="..." loading="lazy"><span class="tag after">Après</span></a>
+  </div>
+  <figcaption><b>Titre.</b> Ce que montre la scène, et ce qui a été conservé du bâti.<span class="dl">Cliquez sur une image pour la télécharger en pleine définition.</span></figcaption>
+</figure>
 ```
+
+**Le PDF du communiqué doit suivre.** Les deux supports racontent la même chose, dans le
+même ordre : intérieur, extérieur privé, usage professionnel.
