@@ -1,35 +1,60 @@
 # Médias de l'espace presse
 
-Déposer ici les fichiers servis par `presse/index.html`, puis les déclarer dans le tableau
-`MEDIAS` de cette page. Tant que le tableau est vide, la grille reste masquée et la page
-propose l'envoi par email : elle ne montre jamais d'image cassée ni de bloc « à venir ».
+Fichiers servis par `presse/index.html` et déclarés dans son tableau `MEDIAS`.
+Tant que ce tableau est vide, la grille reste masquée et la page propose l'envoi par
+email : elle ne montre jamais d'image cassée ni de bloc « à venir ».
 
-## Ce qui manque aujourd'hui
+## Ce qu'il y a aujourd'hui
 
-- Les avant/après en haute définition.
+Trois paires avant / après, issues de simulations réelles de fin juillet 2026 :
+
+| paire | lead | photo d'origine | rendu |
+|---|---|---|---|
+| terrasse couverte | `2026-07-27T19:27:46.330Z-52200` | 1200 x 1600 | 896 x 1200 |
+| salle à manger | `2026-07-27T20:27:25.146Z-364109` | 1512 x 2016 | 896 x 1200 |
+| terrasse de café | `2026-07-28T09:51:26.998Z-587437` | 1536 x 2048 | 896 x 1200 |
+
+Les rendus viennent du dossier Drive des simulations, en qualité d'origine, pas des
+copies WhatsApp qui circulaient. Les photos « avant » de ces trois leads n'ont jamais
+été déposées sur Drive par le pipeline (le dépôt automatique de la photo du prospect
+n'a commencé que le 28/07 à 18h09) : elles ont été récupérées auprès de Charles.
+
+**Accords obtenus** avant publication : Marine Imbert, amie de Dom, pour la terrasse
+couverte, et le gérant pour la terrasse de café, qui est identifiable (place Royale à
+Nantes). La salle à manger est le domicile de Charles.
+
+## Ce qui manque encore
+
 - Le logo en PNG à fond transparent (le SVG est déjà servi depuis balinaisa.com).
 - Le portrait de Dominique Raynal.
 
-## Format attendu pour les avant/après
+## Format
 
-- JPEG, **2000 px minimum sur le grand côté**, qualité 85 environ.
-- Nommage lisible et stable : `balinaisa-ai_avant-apres_terrasse_01.jpg`.
-- Une légende par visuel, écrite dans le tableau `MEDIAS`, pas dans le nom du fichier.
+- **Fichier pleine taille** dans ce dossier : qualité et définition d'origine, jamais
+  recompressé. C'est ce que télécharge une rédaction.
+- **Aperçu** dans `apercu/`, **560 px de large, qualité 78**, même nom de fichier.
+  C'est ce que la page affiche. Sans lui, la page pèserait 3,2 Mo à l'ouverture pour
+  des visiteurs qui, pour la plupart, ne téléchargeront rien.
+- Nommage stable et lisible : `balinaisa-ai_<avant|apres>_<lieu>-<NN>.jpg`.
+- La légende vit dans le tableau `MEDIAS`, jamais dans le nom du fichier.
 
-## Deux vérifications avant de publier un avant/après
+## Deux vérifications avant de publier une nouvelle paire
 
-1. **Le rendu doit être brut**, tel que la chaîne le produit. La page l'affirme noir sur blanc.
-   Si un visuel a été retouché, soit on le retire, soit on retire la phrase.
-2. **La photo « avant » montre un lieu réel.** À ce jour, les photos de test viennent de
-   l'entourage, pas de clients. Il faut l'accord de la personne concernée avant toute
-   publication, et ne jamais laisser croire qu'il s'agit d'un chantier client si ce n'en est pas un.
+1. **Le rendu doit être brut**, tel que la chaîne le produit. La page l'affirme noir sur
+   blanc. Si un visuel a été retouché, soit on le retire, soit on retire la phrase.
+2. **La photo « avant » montre un lieu réel**, donc il faut l'accord de la personne ou
+   de l'établissement concerné, et ne jamais laisser croire qu'il s'agit d'un chantier
+   client si ce n'en est pas un.
 
-## Ajouter un visuel
+## Ajouter une paire
 
-Dans `presse/index.html`, remplacer `var MEDIAS = [];` par :
+Déposer les deux fichiers ici, générer leurs aperçus, puis ajouter une entrée :
 
 ```js
-var MEDIAS = [
-  { fichier: 'balinaisa-ai_avant-apres_terrasse_01.jpg', legende: 'Terrasse, avant et après. Rendu Balinaisa.ai, brut.' }
-];
+{
+  titre: 'Terrasse',
+  avant: 'balinaisa-ai_avant_terrasse-02.jpg',
+  apres: 'balinaisa-ai_apres_terrasse-02.jpg',
+  legende: 'Ce que montre la scène, et ce qui a été conservé du bâti.'
+}
 ```
