@@ -216,12 +216,21 @@ function htmlCandidates(src) {
  * Controle
  * ------------------------------------------------------------------ */
 
+/* Sous-repertoires qui contiennent des pages SOURCE, en plus de la racine.
+   `en/` en est volontairement exclu : ses pages sont GENEREES depuis les sources FR par
+   tools/build-en.js, donc deja traduites. Les scanner ferait passer pour atteignable une
+   cle qui ne l'est en realite nulle part, et le controle ne servirait plus a rien. */
+const SRC_DIRS = ['presse'];
+
 function sourceFiles() {
-  return fs.readdirSync(ROOT)
-    .filter((f) => /\.(html|js)$/i.test(f))
-    .filter((f) => f !== 'i18n.js') // le dico se contient lui-meme : tout y matcherait
-    .sort()
-    .map((f) => path.join(ROOT, f));
+  const pick = (dir) => fs.existsSync(dir)
+    ? fs.readdirSync(dir)
+        .filter((f) => /\.(html|js)$/i.test(f))
+        .filter((f) => path.join(dir, f) !== path.join(ROOT, 'i18n.js')) // le dico se contient lui-meme : tout y matcherait
+        .sort()
+        .map((f) => path.join(dir, f))
+    : [];
+  return [...pick(ROOT), ...SRC_DIRS.flatMap((d) => pick(path.join(ROOT, d)))];
 }
 
 function collectCandidates(files) {
