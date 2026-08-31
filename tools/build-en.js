@@ -41,6 +41,10 @@ const ORIGIN = 'https://balinaisa.ai';
 const PAGES = [
   { src: 'index.html', out: 'index.html', canonical: ORIGIN + '/en/', frUrl: ORIGIN + '/' },
   { src: 'privacy-policy.html', out: 'privacy-policy.html', canonical: null, frUrl: null },
+  /* metaFromFr : cette page a ses propres meta. Le `metaEN` global decrit le simulateur ;
+     l'appliquer ici collerait la description du simulateur sur le communique de presse.
+     On traduit donc chaque meta par le dictionnaire, comme n'importe quel autre texte. */
+  { src: 'presse/index.html', out: 'presse/index.html', canonical: ORIGIN + '/en/presse/', frUrl: ORIGIN + '/presse/', metaFromFr: true },
 ];
 
 /* Reecriture des liens INTERNES pour la version anglaise : un lien vers index.html doit
@@ -49,6 +53,16 @@ const PAGES = [
 const EN_LINKS = {
   'index.html': '/en/',
   'privacy-policy.html': '/en/privacy-policy.html',
+};
+
+/* Liens ABSOLUS vers une page traduite. L'etape 4 ne rattrape que les liens RELATIFS, et une
+   page rangee dans un sous-repertoire (/presse/) doit ecrire les siens en absolu pour rester
+   valides depuis /en/presse/ : ils passeraient donc a cote de la traduction. Sans cette table,
+   la page anglaise de l'espace presse renvoie ses lecteurs vers le simulateur en francais. */
+const EN_LINKS_ABS = {
+  '/': '/en/',
+  '/privacy-policy.html': '/en/privacy-policy.html',
+  '/presse/': '/en/presse/',
 };
 
 const norm = (s) => String(s).replace(/\s+/g, ' ').trim();
@@ -175,10 +189,19 @@ function build(page) {
     return '<title>' + EN[key] + '</title>';
   });
 
-  Object.keys(metaEN).forEach((k) => {
-    const re = new RegExp('(<meta\\s+(?:name|property)="' + k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '"\\s+content=")([^"]*)(")', 'i');
-    if (re.test(html)) { html = html.replace(re, (m, a, v, c) => a + esc(metaEN[k]) + c); stats.metas++; }
-  });
+  if (page.metaFromFr) {
+    html = html.replace(/(<meta\s+(?:name|property)="(?:description|og:title|og:description|twitter:title|twitter:description)"\s+content=")([^"]*)(")/gi, (m, a, v, c) => {
+      const key = norm(v);
+      if (!Object.prototype.hasOwnProperty.call(EN, key)) return m;
+      stats.metas++;
+      return a + esc(EN[key]) + c;
+    });
+  } else {
+    Object.keys(metaEN).forEach((k) => {
+      const re = new RegExp('(<meta\\s+(?:name|property)="' + k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '"\\s+content=")([^"]*)(")', 'i');
+      if (re.test(html)) { html = html.replace(re, (m, a, v, c) => a + esc(metaEN[k]) + c); stats.metas++; }
+    });
+  }
 
   /* 4. Liens internes vers une autre page traduite -> son equivalent /en/. A faire AVANT
      l'absolutisation, sinon "index.html" est deja devenu "/index.html" et ne matche plus. */
@@ -186,6 +209,13 @@ function build(page) {
     if (Object.prototype.hasOwnProperty.call(EN_LINKS, url)) { stats.links++; return attr + '="' + EN_LINKS[url] + '"'; }
     stats.paths++;
     return attr + '="/' + url + '"';   /* /en/x.html resout "styles.css" en /en/styles.css : 404 */
+  });
+
+  /* 4 bis. Les liens deja absolus vers une page qui a une version anglaise. */
+  html = html.replace(/\bhref="(\/[^"]*)"/g, (m, url) => {
+    if (!Object.prototype.hasOwnProperty.call(EN_LINKS_ABS, url)) return m;
+    stats.links++;
+    return 'href="' + EN_LINKS_ABS[url] + '"';
   });
 
   /* 5. lang, canonical, hreflang, og:url. UN CANONICAL AUTO-REFERENT PAR PAGE : c'est la
@@ -222,6 +252,7 @@ fs.mkdirSync(OUT_DIR, { recursive: true });
 PAGES.forEach((page) => {
   const { html, stats, leaks } = build(page);
   const outPath = path.join(OUT_DIR, page.out);
+  fs.mkdirSync(path.dirname(outPath), { recursive: true });
   const label = 'en/' + page.out;
 
   if (CHECK) {
