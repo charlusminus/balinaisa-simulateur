@@ -45,15 +45,26 @@
     }
     .press-quote-author { font-size: .9rem; color: var(--text-sub, #7A6A58); margin: 0; }
     .press-dateline { margin-top: 1rem; color: var(--text-sub, #7A6A58); }
-    .media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-top: 1rem; }
+    .media-grid { display: grid; gap: 22px; margin-top: 1rem; }
     .media-card {
       border: 1px solid var(--border, #DDD5C8); border-radius: 12px; overflow: hidden;
-      background: var(--bg-card, #FDFAF6);
+      background: var(--bg-card, #FDFAF6); margin: 0;
     }
+    .media-card .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border, #DDD5C8); }
+    .media-card .shot { position: relative; display: block; background: var(--bg-card, #FDFAF6); }
     .media-card img { display: block; width: 100%; height: auto; }
-    .media-card figcaption { padding: 10px 12px; font-size: .82rem; line-height: 1.5; color: var(--text-sub, #7A6A58); }
+    .media-card .tag {
+      position: absolute; top: 8px; left: 8px; background: rgba(42,31,20,.82); color: #fff;
+      font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
+      padding: 3px 8px; border-radius: 3px;
+    }
+    .media-card .tag.after { background: var(--primary, #B87D4B); }
+    .media-card figcaption { padding: 12px 14px; font-size: .84rem; line-height: 1.6; color: var(--text-sub, #7A6A58); }
+    .media-card figcaption b { color: var(--text, #2A1F14); }
+    .media-card .dl { display: block; margin-top: 6px; font-size: .76rem; color: var(--text-muted, #7C6A54); }
     .dl-list { list-style: none; padding: 0; margin: .6rem 0 0; }
     .dl-list li { margin-bottom: .5rem; }
+    .legal-note { font-size: .84rem; color: var(--text-muted, #7C6A54); margin-top: .9rem; }
   </style>
 </head>
 <body>
@@ -124,36 +135,78 @@
 
     <section class="legal-section">
       <h2>Visuels avant / après</h2>
-      <!-- Pour ajouter un visuel : deposer le fichier dans presse/medias/ et ajouter une ligne
-           dans le tableau MEDIAS ci-dessous. Tant que le tableau est vide, la grille reste
-           masquee et seul le paragraphe de repli s'affiche : la page ne montre jamais d'image
-           cassee ni de bloc « a venir ». Format attendu : JPEG, 2000 px minimum sur le grand
-           cote, nomme lisiblement (balinaisa-ai_avant-apres_terrasse_01.jpg). -->
+      <p>Trois espaces réels, photographiés puis passés dans le simulateur. <strong>Chaque image cliquée se télécharge en pleine définition.</strong> Les rendus sont <strong>bruts</strong>, tels que l'outil les produit, sans aucune retouche, et le cadrage, l'angle et le bâti de la photo d'origine sont conservés.</p>
+      <!-- Pour ajouter une paire : deposer les deux fichiers dans presse/medias/ (taille native, qualite
+           d'origine), generer leur version d'affichage dans presse/medias/apercu/ (560 px de large,
+           qualite 78), puis ajouter une entree au tableau MEDIAS. Tant que le tableau est vide, la
+           grille reste masquee et le paragraphe de repli s'affiche : la page ne montre jamais d'image
+           cassee ni de bloc « a venir ». Voir presse/medias/README.md. -->
       <div id="media-grid" class="media-grid" hidden></div>
-      <p id="media-fallback">Les avant/après en haute définition sont disponibles sur simple demande à <a href="mailto:contact@balinaisa.com">contact@balinaisa.com</a>, avec leurs légendes et leurs crédits. Précisez le format souhaité, nous les envoyons dans la journée.</p>
+      <p id="media-fallback">Les avant/après sont disponibles sur simple demande à <a href="mailto:contact@balinaisa.com">contact@balinaisa.com</a>, avec leurs légendes et leurs crédits. Précisez le format souhaité, nous les envoyons dans la journée.</p>
+      <p class="legal-note">Les fichiers sont au format JPEG, <strong>896 x 1200 pixels</strong> pour les rendus et 900 x 1200 pour les photos d'origine. C'est la définition native produite par l'outil, elle convient à une publication web et à une reproduction imprimée jusqu'à environ 7 x 10 cm. Pour un usage plus grand, écrivez-nous et nous produirons le rendu au format dont vous avez besoin.</p>
       <script>
-        // [{ fichier, legende }] : le fichier est relatif a presse/medias/.
-        var MEDIAS = [];
+        // [{ titre, avant, apres, legende }] : les fichiers sont relatifs a medias/, leur version
+        // d'affichage a medias/apercu/ et porte le meme nom.
+        var MEDIAS = [
+          {
+            titre: 'Terrasse',
+            avant: 'balinaisa-ai_avant_terrasse-01.jpg',
+            apres: 'balinaisa-ai_apres_terrasse-01.jpg',
+            legende: 'Une terrasse, photographiée puis réaménagée. Table à manger ronde en teck, six chaises Dune, salon de jardin Koa autour de la table basse Borneo, deux lampes Wulan posées au sol.'
+          },
+          {
+            titre: 'Salle à manger',
+            avant: 'balinaisa-ai_avant_salle-a-manger-01.jpg',
+            apres: 'balinaisa-ai_apres_salle-a-manger-01.jpg',
+            legende: 'Une salle à manger, sous charpente. Table Adika, six chaises Lisa, buffet Cocon 3, bibliothèque Cocon 1 et miroir Mentari. La charpente, les poutres, le puits de lumière et le sol restent intacts : l\'outil ne redessine pas le bâti.'
+          },
+          {
+            titre: 'Chambre',
+            avant: 'balinaisa-ai_avant_chambre-01.jpg',
+            apres: 'balinaisa-ai_apres_chambre-01.jpg',
+            legende: 'Une chambre. Lit Tino, deux bouts de canapé Kyoto en chevets, miroir Ombak, meuble Cocon 4 et deux lampes Wulan. Chaque pièce nommée dans le devis est une pièce visible sur l\'image.'
+          }
+        ];
         (function () {
           if (!MEDIAS.length) return;
           var grid = document.getElementById('media-grid');
           MEDIAS.forEach(function (m) {
             var fig = document.createElement('figure');
             fig.className = 'media-card';
-            var img = document.createElement('img');
-            img.src = 'medias/' + m.fichier;
-            img.alt = m.legende;
-            img.loading = 'lazy';
+            var pair = document.createElement('div');
+            pair.className = 'pair';
+            [['Avant', m.avant, ''], ['Après', m.apres, ' after']].forEach(function (v) {
+              var a = document.createElement('a');
+              a.className = 'shot';
+              a.href = 'medias/' + v[1];
+              a.setAttribute('download', v[1]);
+              a.title = 'Télécharger ' + v[1];
+              var img = document.createElement('img');
+              img.src = 'medias/apercu/' + v[1];
+              img.alt = m.titre + ', ' + v[0].toLowerCase();
+              img.loading = 'lazy';
+              var tag = document.createElement('span');
+              tag.className = 'tag' + v[2];
+              tag.textContent = v[0];
+              a.appendChild(img); a.appendChild(tag);
+              pair.appendChild(a);
+            });
             var cap = document.createElement('figcaption');
-            cap.textContent = m.legende;
-            fig.appendChild(img); fig.appendChild(cap);
+            var b = document.createElement('b');
+            b.textContent = m.titre + '. ';
+            cap.appendChild(b);
+            cap.appendChild(document.createTextNode(m.legende));
+            var dl = document.createElement('span');
+            dl.className = 'dl';
+            dl.textContent = 'Cliquez sur une image pour la télécharger : ' + m.avant + ' et ' + m.apres;
+            cap.appendChild(dl);
+            fig.appendChild(pair); fig.appendChild(cap);
             grid.appendChild(fig);
           });
           grid.hidden = false;
           document.getElementById('media-fallback').hidden = true;
         })();
       </script>
-      <p style="margin-top:1rem">Les rendus que nous fournissons sont <strong>bruts</strong>, tels que l'outil les produit, sans retouche.</p>
     </section>
 
     <section class="legal-section">
