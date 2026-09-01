@@ -6,6 +6,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KN42LDBT');</script>
+  <!-- End Google Tag Manager -->
   <!-- Analytics respectueux de la vie privée (Plausible) : sans cookie, sans donnée perso, exempté CNIL -->
   <script async src="https://plausible.io/js/pa-LQmhy-Wx5R6u7vxz-r8EF.js"></script>
   <script>
@@ -88,6 +95,20 @@
     }
     .press-cta p { margin: 0; }
     .press-cta p + p { margin-top: .5rem; }
+    /* CTA de cloture. Le lien reste NU, sans UTM : c'est un lien interne au meme domaine,
+       et poser des UTM dessus reinitialiserait la source d'acquisition du visiteur dans
+       l'analytique, ce qui effacerait justement l'information qu'on cherche a garder. */
+    .end-cta {
+      border-top: 1px solid var(--border, #DDD5C8); margin-top: 2.4rem; padding-top: 2rem;
+      padding-bottom: 1rem; text-align: center;
+    }
+    .end-cta p { margin: 0 0 1.1rem; font-size: .96rem; color: var(--text-sub, #7A6A58); }
+    .end-cta a {
+      display: inline-block; background: var(--primary, #B87D4B); color: #fff;
+      padding: 14px 30px; border-radius: 8px; font-weight: 600; font-size: 1rem;
+      text-decoration: none;
+    }
+    .end-cta a:hover { background: var(--primary-dark, #8B5C32); }
     .facts { list-style: none; padding: 0; margin: .6rem 0 0; }
     .facts li { padding: .45rem 0; border-bottom: 1px solid var(--border, #DDD5C8); }
     .facts li:last-child { border-bottom: 0; }
@@ -98,6 +119,10 @@
   </style>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KN42LDBT"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <!-- HEADER -->
   <header class="header">
@@ -121,7 +146,7 @@
     <article class="cp">
       <h2 class="cp-title">Balinaisa launches an AI tool that turns a photo of a room into a costed interior plan</h2>
 
-      <p class="cp-chapo">Photograph your living room, your terrace or your restaurant floor. One minute later, Balinaisa.ai sends back an image of your space refurnished, together with a quote for the furniture in it, priced on the 98 real references in the company catalogue. Free, no account needed, at <a href="/en/">balinaisa.ai</a>.</p>
+      <p class="cp-chapo">Photograph your living room, your terrace or your restaurant floor. One minute later, Balinaisa.ai sends back an image of your space refurnished, together with a quote for the furniture in it, priced on the 97 real references in the company catalogue. Free, no account needed, at <a href="/en/">balinaisa.ai</a>.</p>
 
       <p class="cp-dateline">La Teste-de-Buch, September 2026.</p>
 
@@ -135,7 +160,7 @@
 
       <h3>Photo, plan, quote</h3>
       <p>One photo, a budget if you have one, an email address. Within a minute the rendering and the quote arrive, in the same framing and from the same angle as the original photo.</p>
-      <p>The pricing is not a per-category estimate: every piece of furniture shown is a reference from the Balinaisa catalogue, at its real price before tax. 98 references, 17 families, from the garden armchair to the pendant light. Two proposals arrive, the complete scene as it appears in the image and the selection that fits the stated budget, with the gap between them. The quote is an estimate.</p>
+      <p>The pricing is not a per-category estimate: every piece of furniture shown is a reference from the Balinaisa catalogue, at its real price before tax. 97 references, 17 families, from the garden armchair to the pendant light. Two proposals arrive, the complete scene as it appears in the image and the selection that fits the stated budget, with the gap between them. The quote is an estimate.</p>
 
       <h3>The quote, line by line</h3>
       <figure class="media">
@@ -189,7 +214,7 @@
       <h2>At a glance</h2>
       <ul class="facts">
         <li><b>What it is:</b> a tool that turns the photo of a room or an outdoor space into an illustrated furnishing proposal, together with a quote for the furniture in it.</li>
-        <li><b>The quote:</b> priced on real references, not estimated by category. <b>98 references</b> au catalogue, réparties en <b>17 families</b>, each with its price before tax. The quote is an estimate and carries no commercial commitment.</li>
+        <li><b>The quote:</b> priced on real references, not estimated by category. <b>97 references</b> in the catalogue, across <b>17 families</b>, each with its price before tax. The quote is an estimate and carries no commercial commitment.</li>
         <li><b>The wait:</b> about a minute between sending the photo and receiving the rendering and the quote by email.</li>
         <li><b>The price:</b> free, no account needed.</li>
         <li><b>Availability:</b> online since September 2026, in French and English, for France.</li>
@@ -225,6 +250,11 @@
       </ul>
       <p style="margin-top:1rem">We are available for an interview, a live demonstration, or a trial on a space of your choosing.</p>
     </section>
+
+    <div class="end-cta">
+      <p>One photo is all it takes. Free, no account needed.</p>
+      <p><a href="/en/">Try the simulator</a></p>
+    </div>
   </main>
 
   <footer class="footer">

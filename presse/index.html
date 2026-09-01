@@ -3,6 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KN42LDBT');</script>
+  <!-- End Google Tag Manager -->
   <!-- Analytics respectueux de la vie privée (Plausible) : sans cookie, sans donnée perso, exempté CNIL -->
   <script async src="https://plausible.io/js/pa-LQmhy-Wx5R6u7vxz-r8EF.js"></script>
   <script>
@@ -85,6 +92,20 @@
     }
     .press-cta p { margin: 0; }
     .press-cta p + p { margin-top: .5rem; }
+    /* CTA de cloture. Le lien reste NU, sans UTM : c'est un lien interne au meme domaine,
+       et poser des UTM dessus reinitialiserait la source d'acquisition du visiteur dans
+       l'analytique, ce qui effacerait justement l'information qu'on cherche a garder. */
+    .end-cta {
+      border-top: 1px solid var(--border, #DDD5C8); margin-top: 2.4rem; padding-top: 2rem;
+      padding-bottom: 1rem; text-align: center;
+    }
+    .end-cta p { margin: 0 0 1.1rem; font-size: .96rem; color: var(--text-sub, #7A6A58); }
+    .end-cta a {
+      display: inline-block; background: var(--primary, #B87D4B); color: #fff;
+      padding: 14px 30px; border-radius: 8px; font-weight: 600; font-size: 1rem;
+      text-decoration: none;
+    }
+    .end-cta a:hover { background: var(--primary-dark, #8B5C32); }
     .facts { list-style: none; padding: 0; margin: .6rem 0 0; }
     .facts li { padding: .45rem 0; border-bottom: 1px solid var(--border, #DDD5C8); }
     .facts li:last-child { border-bottom: 0; }
@@ -95,6 +116,10 @@
   </style>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KN42LDBT"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <!-- HEADER -->
   <header class="header">
@@ -118,7 +143,7 @@
     <article class="cp">
       <h2 class="cp-title">Balinaisa lance un outil d'IA qui transforme une photo de pièce en projet d'aménagement chiffré</h2>
 
-      <p class="cp-chapo">Photographiez votre salon, votre terrasse ou votre salle de restaurant. Une minute plus tard, Balinaisa.ai vous renvoie l'image de votre espace réaménagé et le devis des meubles qui s'y trouvent, calculé sur les 98 références réelles du catalogue de la maison. Gratuit, sans création de compte, sur <a href="/">balinaisa.ai</a>.</p>
+      <p class="cp-chapo">Photographiez votre salon, votre terrasse ou votre salle de restaurant. Une minute plus tard, Balinaisa.ai vous renvoie l'image de votre espace réaménagé et le devis des meubles qui s'y trouvent, calculé sur les 97 références réelles du catalogue de la maison. Gratuit, sans création de compte, sur <a href="/">balinaisa.ai</a>.</p>
 
       <p class="cp-dateline">La Teste-de-Buch, septembre 2026.</p>
 
@@ -132,7 +157,7 @@
 
       <h3>Photo, aménagement, devis</h3>
       <p>Une photo, un budget si on en a un, une adresse email. En une minute, le rendu et le devis arrivent, au même cadrage et sous le même angle que la photo d'origine.</p>
-      <p>Le chiffrage n'est pas une estimation de catégorie : chaque meuble représenté est une référence du catalogue Balinaisa, avec son prix hors taxes réel. 98 références, 17 familles, du fauteuil de jardin à la suspension. Deux propositions arrivent, la scène complète telle qu'elle apparaît sur l'image et la sélection qui tient dans le budget annoncé, avec l'écart entre les deux. Le devis est estimatif.</p>
+      <p>Le chiffrage n'est pas une estimation de catégorie : chaque meuble représenté est une référence du catalogue Balinaisa, avec son prix hors taxes réel. 97 références, 17 familles, du fauteuil de jardin à la suspension. Deux propositions arrivent, la scène complète telle qu'elle apparaît sur l'image et la sélection qui tient dans le budget annoncé, avec l'écart entre les deux. Le devis est estimatif.</p>
 
       <h3>Le devis, ligne par ligne</h3>
       <figure class="media">
@@ -186,7 +211,7 @@
       <h2>En bref</h2>
       <ul class="facts">
         <li><b>Ce que c'est :</b> un outil qui transforme la photo d'une pièce ou d'un extérieur en proposition d'aménagement illustrée, accompagnée du devis des meubles qui y figurent.</li>
-        <li><b>Le devis :</b> calculé sur des références réelles, pas estimé par catégorie. <b>98 références</b> au catalogue, réparties en <b>17 familles</b>, chacune avec son prix hors taxes. Le devis est estimatif et n'engage pas commercialement.</li>
+        <li><b>Le devis :</b> calculé sur des références réelles, pas estimé par catégorie. <b>97 références</b> au catalogue, réparties en <b>17 familles</b>, chacune avec son prix hors taxes. Le devis est estimatif et n'engage pas commercialement.</li>
         <li><b>Le délai :</b> environ une minute entre l'envoi de la photo et la réception du rendu et du devis par email.</li>
         <li><b>Le prix :</b> gratuit, sans création de compte.</li>
         <li><b>La disponibilité :</b> en ligne depuis septembre 2026, en français et en anglais, pour la France.</li>
@@ -222,6 +247,11 @@
       </ul>
       <p style="margin-top:1rem">Nous sommes disponibles pour une interview, une démonstration en direct, ou un essai sur un espace de votre choix.</p>
     </section>
+
+    <div class="end-cta">
+      <p>Une photo suffit. C'est gratuit, sans création de compte.</p>
+      <p><a href="/">Tester le simulateur</a></p>
+    </div>
   </main>
 
   <footer class="footer">
