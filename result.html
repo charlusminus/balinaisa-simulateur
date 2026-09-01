@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-KN42LDBT');</script>
-  <!-- End Google Tag Manager -->
+  <!-- PAS de Google Tag Manager sur cette page, volontairement.
+       Elle lit le PRENOM du prospect dans l'URL (?n=), avec le nom du produit et les
+       montants. GA envoie l'URL complete, query string comprise, dans page_location.
+       Le masquage du parametre `n` est configure cote GA4, mais c'est un reglage dans
+       une interface tierce : il peut sauter sans que rien ici ne le signale. Ne pas
+       charger le conteneur du tout est le seul correctif qui tienne tout seul.
+       Page prototype de juillet, noindex, referencee nulle part. -->
   <meta name="robots" content="noindex, nofollow">
   <title>Votre simulation Balinaisa</title>
   <link rel="icon" type="image/png" href="favicon.png?v=20260709b">
@@ -93,10 +93,6 @@
   </style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KN42LDBT"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
 
 <header class="header">
   <div>
