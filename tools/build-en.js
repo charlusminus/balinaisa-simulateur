@@ -149,6 +149,23 @@ function ldLeaks(html) {
   return out;
 }
 
+/* Typographie anglaise : pas d'espace avant « : ; ! ? ».
+   Le francais en met une, et cette espace ne fait PAS partie du nœud de texte traduit :
+   elle vit dans le HTML, entre la balise fermante et le texte (« </strong> : le service… »).
+   Le dictionnaire ne peut donc pas la corriger, elle survit telle quelle dans la page
+   anglaise. On la retire ici, et UNIQUEMENT dans les zones de texte : les commentaires,
+   les scripts et les styles sont mis de cote le temps de la passe, sinon une regle CSS
+   comme « margin : 0 » y passerait aussi. */
+function typoAnglaise(html) {
+  const garde = [];
+  const masque = html.replace(/<!--[\s\S]*?-->|<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g,
+    (m) => { garde.push(m); return '\u0000' + (garde.length - 1) + '\u0000'; });
+  const propre = masque
+    .replace(/>(\s+)([:;!?])/g, '>$2')            /* « </strong> : texte » -> « </strong>: texte » */
+    .replace(/([A-Za-z0-9\u00e0-\u00ff)\]"']) ([:;!?])(\s|<|$)/g, '$1$2$3');  /* « mot : » -> « mot : » */
+  return propre.replace(/\u0000(\d+)\u0000/g, (m, i) => garde[Number(i)]);
+}
+
 function build(page) {
   let html = fs.readFileSync(path.join(ROOT, page.src), 'utf8');
   const stats = { texts: 0, attrs: 0, metas: 0, paths: 0, links: 0, ld: 0 };
@@ -234,6 +251,7 @@ function build(page) {
 
   const banner = '<!-- GENERE par tools/build-en.js depuis ' + page.src + ' + i18n.js. NE PAS EDITER A LA MAIN :\n     toute correction se fait dans ' + page.src + ' (structure) ou i18n.js (traduction), puis\n     `node tools/build-en.js`. La CI regenere et compare. -->\n';
   html = html.replace(/^<!DOCTYPE html>\n/i, '<!DOCTYPE html>\n' + banner);
+  html = typoAnglaise(html);
 
   const body = html.slice(html.indexOf('<body')).replace(SKIP, '').replace(/<!--[\s\S]*?-->/g, '');
   const leaks = ldLeaks(html);   /* le bloc structure vit dans <head> : le scan du body ne le voit pas */
