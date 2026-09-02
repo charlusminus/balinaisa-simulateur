@@ -3,29 +3,78 @@
    ============================================= */
 
 :root {
-  --bg:          #F2ECE3;
-  --bg-card:     #FDFAF6;
-  --bg-muted:    #EAE2D8;
-  --border:      #DDD5C8;
-  --border-strong: #C2B6A8;
-  --text:        #2A1F14;
-  --text-sub:    #7A6A58;
-  --text-muted:  #7C6A54;
-  --primary:     #B87D4B;
-  --primary-dark:#8B5C32;
-  --primary-light:#F5EDE0;
-  --accent:      #C4975A;
-  --accent-light:#FBF4E8;
+  /* ============================================================
+     Design system Balinaisa v0.3 « Catalogue doré » (02/09/2026).
+     Source : balinaisa-assets/site/design-system/DESIGN-SYSTEM.md,
+     couleurs mesurees sur le Catalogue Collection 2027.
+     L accent est le teck dore #9A6A33, arbitrage v0.3 qui remplace
+     l ardoise #3C4854 de tokens.css, restee en v0.1.
+     Les anciens noms de variables sont CONSERVES : ils sont utilises
+     dans 1200 lignes de CSS et dans les pages. Seules leurs valeurs
+     changent, ce qui evite une reecriture a risque de chaque regle.
+     ============================================================ */
+
+  /* ---- Palette du catalogue ---- */
+  --bali-ivoire:      #FAF9F5;
+  --bali-ivoire-2:    #F5F3EC;
+  --bali-blanc:       #FDFDFD;
+  --bali-encre:       #242424;
+  --bali-greige:      #9C9084;   /* premier mot des titres deux tons */
+  --bali-gris:        #6C6C6C;
+  --bali-gris-2:      #8A8A85;
+  --bali-sable:       #D9C19E;   /* filet dore */
+  --bali-sable-clair: #F0E4CC;
+  --bali-teck:        #9A6A33;   /* accent v0.3 */
+  --bali-teck-hover:  #7C5325;
+
+  /* ---- Correspondance avec les noms deja en place ---- */
+  --bg:            var(--bali-ivoire);
+  --bg-card:       var(--bali-blanc);
+  --bg-muted:      var(--bali-ivoire-2);
+  --border:        var(--bali-sable-clair);
+  --border-strong: var(--bali-sable);
+  --text:          var(--bali-encre);
+  --text-sub:      var(--bali-gris);
+  --text-muted:    var(--bali-gris-2);
+  --primary:       var(--bali-teck);
+  --primary-dark:  var(--bali-teck-hover);
+  --primary-light: var(--bali-sable-clair);
+  --accent:        var(--bali-sable);
+  --accent-light:  var(--bali-ivoire-2);
+
+  /* Retours fonctionnels : hors charte, ils doivent rester lisibles comme signaux. */
   --success:     #3D7A5A;
   --success-bg:  #EBF5EF;
-  --radius-sm:   6px;
-  --radius-md:   10px;
-  --radius-lg:   16px;
-  --radius-xl:   24px;
-  --shadow-sm:   0 1px 3px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.05);
-  --shadow-md:   0 4px 16px rgba(0,0,0,.09);
-  --font-serif:  'Cormorant Garamond', Georgia, serif;
-  --font-sans:   'Inter', system-ui, sans-serif;
+
+  /* ---- Angles droits : signature du catalogue ----
+     « Aucun arrondi : photos et blocs a angles droits, plein cadre. »
+     Les tokens passent a 0 plutot que d etre supprimes, pour ne pas
+     casser les 17 regles qui les appellent. */
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+
+  /* ---- Ombres : le catalogue n en a pas. On les allege sans les
+     supprimer, une carte de formulaire a besoin d un peu de relief. */
+  --shadow-sm:   0 1px 2px rgba(36,36,36,.05);
+  --shadow-md:   0 10px 40px -24px rgba(36,36,36,.35);
+
+  /* ---- Typographie ----
+     Trois familles de la charte, plus Inter conserve en CORPS.
+     Le design system signale lui-meme que la faible hauteur d x de
+     Josefin Sans pose un probleme de lisibilite mesure sur mobile ;
+     le simulateur est d abord un formulaire mobile. Josefin porte donc
+     les signatures (capitales, boutons, standfirsts, specs), pas la
+     saisie. Arbitrage de Charles du 02/09. */
+  --font-display: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+  --font-serif:   'Lora', 'Libre Baskerville', Georgia, serif;
+  --font-sans:    'Inter', system-ui, sans-serif;
+  --font-caps:    'Josefin Sans', 'Century Gothic', 'Avenir', sans-serif;
+
+  --tracking-caps: 0.18em;   /* interlettrage des capitales, signature */
+  --rule-w: 88px;            /* longueur du filet dore sous les titres */
+
   --transition:  0.18s ease;
 }
 
@@ -133,7 +182,7 @@ input, textarea, select { font-family: var(--font-sans); }
 }
 
 .hero-title {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);   /* Cormorant : hero et grands displays (charte §2) */
   font-size: clamp(2.4rem, 5vw, 3.8rem);
   font-weight: 500;
   line-height: 1.18;
@@ -144,7 +193,7 @@ input, textarea, select { font-family: var(--font-sans); }
 
 .hero-title em {
   font-style: italic;
-  color: #F5D49A;
+  color: var(--bali-sable);   /* le filet dore du catalogue, pas un jaune */
 }
 
 /* Texte sur photo : une ombre portee decolle les lettres du fond quel que soit ce
@@ -179,16 +228,17 @@ input, textarea, select { font-family: var(--font-sans); }
   background: var(--primary);
   color: #fff;
   border: none;
-  border-radius: 50px;
-  padding: 16px 26px 16px 22px;
-  font-family: var(--font-sans);
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  border-radius: 0;
+  padding: 17px 30px 17px 26px;
+  font-family: var(--font-caps);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
-  filter: drop-shadow(0 6px 30px rgba(184,125,75,.55));
+  filter: drop-shadow(0 6px 30px rgba(154,106,51,.45));   /* teck dore v0.3 */
   transition: transform .2s ease, background .2s ease;
 }
 
@@ -196,7 +246,7 @@ input, textarea, select { font-family: var(--font-sans); }
   content: '';
   position: absolute;
   inset: -4px;
-  border-radius: 50px;
+  border-radius: 0;
   border: 2px solid rgba(255,255,255,.55);
   pointer-events: none;
   animation: widget-ring 2.8s ease-in-out infinite;
@@ -224,8 +274,9 @@ input, textarea, select { font-family: var(--font-sans); }
   align-items: center;
   gap: 6px;
   color: rgba(255,255,255,.40);
+  font-family: var(--font-caps);
   font-size: 10px;
-  letter-spacing: 0.12em;
+  letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
   animation: hint-bounce 2.2s ease-in-out infinite;
 }
@@ -243,15 +294,15 @@ input, textarea, select { font-family: var(--font-sans); }
   bottom: 28px;
   right: 28px;
   z-index: 999;
-  filter: drop-shadow(0 8px 28px rgba(184,125,75,.50));
+  filter: drop-shadow(0 8px 28px rgba(154,106,51,.50));
 }
 
 .cta-widget::before {
   content: '';
   position: absolute;
   inset: -4px;
-  border-radius: 50px;
-  border: 2px solid rgba(184,125,75,.50);
+  border-radius: 0;
+  border: 2px solid rgba(154,106,51,.50);
   pointer-events: none;
   animation: widget-ring 2.8s ease-in-out infinite;
 }
@@ -269,7 +320,7 @@ input, textarea, select { font-family: var(--font-sans); }
   background: var(--primary);
   color: #fff;
   border: none;
-  border-radius: 50px;
+  border-radius: 0;
   padding: 13px 20px 13px 16px;
   font-size: 14px;
   font-weight: 500;
@@ -319,10 +370,13 @@ input, textarea, select { font-family: var(--font-sans); }
   background: var(--primary);
   color: #fff;
   border: none;
-  border-radius: var(--radius-md);
-  padding: 13px 26px;
-  font-size: 14.5px;
-  font-weight: 500;
+  border-radius: 0;
+  padding: 14px 28px;
+  font-family: var(--font-caps);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   transition: background var(--transition), transform var(--transition);
 }
 
@@ -330,7 +384,7 @@ input, textarea, select { font-family: var(--font-sans); }
 .btn-primary:active { transform: translateY(0); }
 .btn-primary:disabled { background: var(--border-strong); color: var(--text-muted); cursor: not-allowed; transform: none; }
 
-.btn-lg { padding: 16px 30px; font-size: 15.5px; border-radius: var(--radius-lg); }
+.btn-lg { padding: 16px 30px; font-size: 15.5px; border-radius: 0; }
 .btn-full { width: 100%; justify-content: center; }
 
 .btn-ghost {
@@ -338,16 +392,19 @@ input, textarea, select { font-family: var(--font-sans); }
   align-items: center;
   gap: 6px;
   background: transparent;
-  color: var(--text-sub);
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius-md);
-  padding: 12px 20px;
-  font-size: 14.5px;
+  color: var(--text);
+  border: 1px solid var(--bali-encre);   /* CTA secondaire : filet encre (charte §4) */
+  border-radius: 0;
+  padding: 13px 22px;
+  font-family: var(--font-caps);
+  font-size: 13px;
   font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   transition: background var(--transition), color var(--transition);
 }
 
-.btn-ghost:hover { background: var(--bg-muted); color: var(--text); }
+.btn-ghost:hover { background: var(--bali-encre); color: var(--bali-ivoire); }
 
 /* =============================================
    SIMULATOR TOP BAR (back button)
@@ -425,9 +482,10 @@ input, textarea, select { font-family: var(--font-sans); }
 }
 
 .steps-counter {
+  font-family: var(--font-caps);
   font-size: 12.5px;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
   color: var(--text-muted);
 }
@@ -504,7 +562,7 @@ input, textarea, select { font-family: var(--font-sans); }
    ============================================= */
 .upload-zone {
   border: 2px dashed var(--border-strong);
-  border-radius: var(--radius-lg);
+  border-radius: 0;
   background: var(--bg-card);
   min-height: 280px;
   display: flex;
@@ -526,7 +584,7 @@ input, textarea, select { font-family: var(--font-sans); }
   right: 10px;
   width: 36px;
   height: 36px;
-  border-radius: 50%;
+  border-radius: 50%;   /* bouton de fermeture : rond, ce n est ni une photo ni un bloc */
   border: none;
   cursor: pointer;
   background: rgba(42, 31, 20, .62);
@@ -559,7 +617,7 @@ input, textarea, select { font-family: var(--font-sans); }
   height: 100%;
   object-fit: contain;
   max-height: 360px;
-  border-radius: var(--radius-lg);
+  border-radius: 0;
 }
 
 .upload-actions {
@@ -574,7 +632,7 @@ input, textarea, select { font-family: var(--font-sans); }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border-radius: var(--radius-md);
+  border-radius: 0;
   padding: 11px 18px;
   font-size: 14px;
   font-weight: 500;
@@ -631,7 +689,7 @@ input, textarea, select { font-family: var(--font-sans); }
 .client-note-input {
   width: 100%;
   border: 1px solid var(--border-strong);
-  border-radius: var(--radius-md);
+  border-radius: 0;
   background: var(--bg-card);
   padding: 12px 14px;
   font-size: 14px;
@@ -647,7 +705,7 @@ input, textarea, select { font-family: var(--font-sans); }
 .contact-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-radius: 0;
   padding: 1.75rem;
   box-shadow: var(--shadow-sm);
 }
@@ -663,7 +721,7 @@ input, textarea, select { font-family: var(--font-sans); }
 .form-group input,
 .form-group textarea {
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border-radius: 0;
   padding: 12px 14px;
   font-size: 14.5px;
   color: var(--text);
@@ -705,7 +763,7 @@ input, textarea, select { font-family: var(--font-sans); }
 
 .profile-btn {
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border-radius: 0;
   background: var(--bg);
   color: var(--text-sub);
   padding: 16px 14px;
@@ -743,7 +801,7 @@ input, textarea, select { font-family: var(--font-sans); }
   gap: 14px;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border-radius: 0;
   padding: 14px 18px;
   margin-bottom: 1.5rem;
 }
@@ -763,7 +821,7 @@ input, textarea, select { font-family: var(--font-sans); }
 .lead-recap-photo img {
   width: 52px; height: 44px;
   object-fit: cover;
-  border-radius: var(--radius-sm);
+  border-radius: 0;
   border: 1px solid var(--border);
 }
 
@@ -776,7 +834,7 @@ input, textarea, select { font-family: var(--font-sans); }
 .form-group select {
   width: 100%;
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border-radius: 0;
   padding: 12px 36px 12px 14px;
   font-size: 14.5px;
   color: var(--text);
@@ -807,7 +865,7 @@ input, textarea, select { font-family: var(--font-sans); }
 .confirmation-icon {
   width: 72px; height: 72px;
   background: var(--success-bg);
-  border-radius: 50%;
+  border-radius: 50%;   /* pastille de confirmation */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -845,7 +903,7 @@ input, textarea, select { font-family: var(--font-sans); }
 .confirmation-details {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-radius: 0;
   padding: 1.25rem 1.5rem;
   text-align: left;
   display: flex;
@@ -863,7 +921,7 @@ input, textarea, select { font-family: var(--font-sans); }
 .confirmation-detail-icon {
   width: 36px; height: 36px;
   background: var(--primary-light);
-  border-radius: var(--radius-sm);
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -986,14 +1044,14 @@ input, textarea, select { font-family: var(--font-sans); }
 .balinaisa-ai-intro { background: var(--bg-muted); padding: 76px 24px; }
 .balinaisa-ai-inner { max-width: 940px; margin: 0 auto; display: flex; gap: 52px; align-items: center; }
 .balinaisa-ai-portrait { margin: 0; flex: 0 0 330px; }
-.balinaisa-ai-portrait img { width: 100%; max-width: 330px; height: auto; border-radius: 16px; display: block; box-shadow: 0 18px 44px rgba(60,42,24,.16); }
+.balinaisa-ai-portrait img { width: 100%; max-width: 330px; height: auto; border-radius: 0; display: block; box-shadow: 0 18px 44px rgba(60,42,24,.16); }
 .balinaisa-ai-portrait.is-placeholder img { display: none; }
-.balinaisa-ai-portrait.is-placeholder::before { content: "DR"; display: flex; align-items: center; justify-content: center; width: 100%; max-width: 330px; height: 200px; border-radius: 16px; background: var(--primary); color: #fff; font-family: Georgia, serif; font-size: 46px; letter-spacing: .08em; }
+.balinaisa-ai-portrait.is-placeholder::before { content: "DR"; display: flex; align-items: center; justify-content: center; width: 100%; max-width: 330px; height: 200px; border-radius: 0; background: var(--primary); color: #fff; font-family: Georgia, serif; font-size: 46px; letter-spacing: .08em; }
 .balinaisa-ai-text { flex: 1; min-width: 0; }
-.balinaisa-ai-quote { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 31px; line-height: 1.38; color: var(--text); font-style: italic; font-weight: 500; margin: 0 0 20px; }
+.balinaisa-ai-quote { font-family: var(--font-display); font-size: 31px; line-height: 1.38; color: var(--text); font-style: italic; font-weight: 500; margin: 0 0 20px; }
 /* La signature est passee SOUS la photo (figcaption) : centree, marge en haut et non en
    bas. En mobile le conteneur est en colonne, elle tombe donc entre la photo et la citation. */
-.balinaisa-ai-sign { font-size: 13px; color: var(--text-sub); letter-spacing: .04em; text-transform: uppercase; text-align: center; margin: 16px 0 0; }
+.balinaisa-ai-sign { font-family: var(--font-caps); font-size: 13px; color: var(--text-sub); letter-spacing: var(--tracking-caps); text-transform: uppercase; text-align: center; margin: 16px 0 0; }
 .balinaisa-ai-explain { font-size: 15px; line-height: 1.8; color: var(--text-sub); margin: 0; max-width: 48ch; }
 @media (max-width: 760px) {
   .balinaisa-ai-intro { padding: 52px 24px; }
@@ -1020,7 +1078,7 @@ input, textarea, select { font-family: var(--font-sans); }
   background: transparent;
   color: var(--primary);
   border: 1px solid var(--primary);
-  border-radius: var(--radius-md);
+  border-radius: 0;
   padding: 12px 20px;
   font-size: 14px;
   font-weight: 500;
@@ -1037,11 +1095,13 @@ input, textarea, select { font-family: var(--font-sans); }
   background: var(--primary);
   color: #fff;
   border: none;
-  border-radius: 50px;
-  padding: 8px 15px;
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 500;
+  border-radius: 0;
+  padding: 9px 16px;
+  font-family: var(--font-caps);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   white-space: nowrap;
   cursor: pointer;
   opacity: 0;
@@ -1060,7 +1120,7 @@ input, textarea, select { font-family: var(--font-sans); }
 .brand-intro { background: var(--bg-card); padding: 74px 0 78px; }
 .brand-inner { max-width: 1000px; margin: 0 auto; padding: 0 24px; display: flex; gap: 50px; align-items: center; }
 .brand-lead { flex: 1; min-width: 0; }
-.brand-eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: .22em; color: var(--primary); font-weight: 600; margin: 0 0 18px; }
+.brand-eyebrow { font-family: var(--font-caps); font-size: 12px; text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--primary); font-weight: 600; margin: 0 0 18px; }
 .brand-title { font-family: var(--font-serif); font-size: 34px; line-height: 1.2; font-weight: 500; color: var(--text); margin: 0 0 20px; }
 .brand-text { font-size: 15px; line-height: 1.8; color: var(--text-sub); margin: 0 0 22px; max-width: 46ch; }
 .brand-points { list-style: none; margin: 0 0 20px; padding: 0; display: flex; flex-direction: column; gap: 10px; }
@@ -1068,15 +1128,15 @@ input, textarea, select { font-family: var(--font-sans); }
 .brand-points li span { color: var(--primary); font-size: 12px; }
 .brand-ref { font-size: 13px; font-style: italic; color: var(--text-muted); margin: 0; }
 .brand-visual { flex: 0 0 42%; margin: 0; }
-.brand-visual img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; display: block; box-shadow: 0 18px 44px rgba(60,42,24,.14); }
+.brand-visual img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 0; display: block; box-shadow: 0 18px 44px rgba(60,42,24,.14); }
 
 .brand-slider-head { max-width: 1000px; margin: 48px auto 16px; padding: 0 24px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .brand-slider-title { font-family: var(--font-serif); font-size: 21px; font-weight: 500; color: var(--text); margin: 0; }
-.brand-slider-sub { font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); margin: 0; }
+.brand-slider-sub { font-family: var(--font-caps); font-size: 12px; text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-muted); margin: 0; }
 .brand-slider { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; max-width: 1000px; margin: 0 auto; padding: 4px 24px 10px; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
 .brand-slider::-webkit-scrollbar { height: 6px; }
-.brand-slider::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
-.prod-card { scroll-snap-align: start; flex: 0 0 190px; background: var(--bg-muted); border-radius: 14px; padding: 14px 16px 18px; }
+.brand-slider::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 0; }
+.prod-card { scroll-snap-align: start; flex: 0 0 190px; background: var(--bg-muted); border-radius: 0; padding: 14px 16px 18px; }
 .prod-media { height: 150px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
 .prod-media img { max-width: 100%; max-height: 150px; object-fit: contain; }
 .prod-cat { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); }
@@ -1102,12 +1162,12 @@ input, textarea, select { font-family: var(--font-sans); }
 .faq-inner { max-width: 760px; margin: 0 auto; padding: 0 24px; }
 .faq-title { font-family: var(--font-serif); font-size: 34px; line-height: 1.2; font-weight: 500; color: var(--text); text-align: center; margin: 0 0 34px; }
 .faq-list { display: flex; flex-direction: column; gap: 12px; }
-.faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; }
+.faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 0; }
 .faq-item summary { list-style: none; cursor: pointer; padding: 18px 22px; font-size: 16px; font-weight: 600; color: var(--text); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .faq-item summary::-webkit-details-marker { display: none; }
 .faq-item summary::after { content: '+'; color: var(--primary); font-size: 24px; line-height: 1; flex: none; transition: transform .2s ease; }
 .faq-item[open] summary::after { transform: rotate(45deg); }
-.faq-item summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 12px; }
+.faq-item summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 0; }
 .faq-item p { margin: 0; padding: 0 22px 20px; font-size: 15px; line-height: 1.75; color: var(--text-sub); }
 
 @media (max-width: 760px) {
@@ -1127,7 +1187,7 @@ select:focus-visible,
 [tabindex]:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1148,13 +1208,13 @@ select:focus-visible,
 .press-ref-head { display: flex; align-items: center; gap: 10px; }
 /* Le cercle est fait ici, pas dans l'image : l'asset reste le logo brut de Marie Claire,
    et le masque est du style. Meme parti pris que la vignette des resultats Google. */
-.press-ref-logo { width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0; background: #fff;
+.press-ref-logo { width: 34px; height: 34px; border-radius: 50%;   /* contient un logo rond */ flex-shrink: 0; background: #fff;
   border: 1px solid var(--border); }
 .press-ref-pub { font-family: var(--font-serif); font-size: 21px; font-weight: 600; color: var(--text); line-height: 1.1; }
 .press-ref-quote { font-size: 14px; font-style: italic; color: var(--text-sub); line-height: 1.55; }
 .press-ref-cta { font-size: 13px; font-weight: 500; color: var(--primary); }
 .press-ref:hover .press-ref-cta { color: var(--primary-dark); }
-.press-ref:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 4px; }
+.press-ref:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 0; }
 
 /* ── Avis clients (Google) ─────────────────────────────────────── */
 .reviews { background: var(--bg-muted); padding: 66px 0 72px; }
@@ -1166,13 +1226,13 @@ select:focus-visible,
 .reviews-stars { color: #E3A008; font-size: 22px; letter-spacing: 2px; }
 .reviews-count { font-size: 14px; color: var(--text-sub); }
 .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.review-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 22px 20px; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.review-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 0; padding: 22px 20px; margin: 0; display: flex; flex-direction: column; gap: 12px; }
 .review-stars { color: #E3A008; font-size: 15px; letter-spacing: 2px; }
 .review-card blockquote { margin: 0; font-family: var(--font-serif); font-size: 17px; line-height: 1.55; color: var(--text); font-style: italic; flex: 1 1 auto; }
 .review-card figcaption { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .1em; }
 .reviews-cta { display: block; text-align: center; margin-top: 28px; font-size: 14px; font-weight: 500; color: var(--primary); text-decoration: none; }
 .reviews-cta:hover { color: var(--primary-dark); }
-.reviews-cta:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 4px; }
+.reviews-cta:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 0; }
 
 @media (max-width: 760px) {
   .reviews { padding: 52px 0 56px; }
@@ -1182,7 +1242,7 @@ select:focus-visible,
 
 /* ── Bloc de confiance sur l'écran de fin ──────────────────────── */
 .confirmation-trust { text-align: center; margin: 26px auto 4px; padding: 18px 22px; max-width: 420px;
-  background: var(--bg-muted); border: 1px solid var(--border); border-radius: 14px; }
+  background: var(--bg-muted); border: 1px solid var(--border); border-radius: 0; }
 .confirmation-trust-stars { color: #E3A008; font-size: 17px; letter-spacing: 2px; }
 .confirmation-trust-score { margin: 6px 0 8px; font-size: 13.5px; color: var(--text-sub); }
 .confirmation-trust-score strong { color: var(--text); font-weight: 600; }
@@ -1195,7 +1255,7 @@ select:focus-visible,
 
 /* ── Coordonnées Balinaisa (écran limite de simulations) ───────── */
 .confirmation-contact { display: flex; flex-direction: column; gap: 10px; margin: 6px auto 26px; max-width: 430px; text-align: left; }
-.cc-item { display: flex; align-items: center; gap: 14px; padding: 13px 16px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--bg-card); color: var(--text); text-decoration: none; transition: border-color var(--transition), background var(--transition); }
+.cc-item { display: flex; align-items: center; gap: 14px; padding: 13px 16px; border: 1px solid var(--border); border-radius: 0; background: var(--bg-card); color: var(--text); text-decoration: none; transition: border-color var(--transition), background var(--transition); }
 .cc-item:hover { border-color: var(--primary); background: var(--bg-muted); }
 .cc-item svg { color: var(--primary); flex: 0 0 auto; }
 .cc-item > span { display: flex; flex-direction: column; font-size: 15px; line-height: 1.3; }
@@ -1204,3 +1264,45 @@ select:focus-visible,
 /* Disclaimer budget (simulation inspirationnelle, RDV3) */
 .field-hint { font-size: 12.5px; line-height: 1.5; color: var(--text-muted); margin: 6px 0 0; }
 .confirmation-note { font-size: 13.5px; line-height: 1.6; color: var(--text-sub); max-width: 46ch; margin: 20px auto 0; }
+
+
+/* =============================================
+   MOTIFS SIGNATURES DU CATALOGUE (design system v0.3)
+   Ajoutes le 02/09/2026. Ces trois classes portent l identite ;
+   le reste de la charte passe par les tokens.
+   ============================================= */
+
+/* Filet dore sous les titres : 1 px, 88 px, degrade sable -> sable clair. */
+.bali-rule {
+  border: 0;
+  width: var(--rule-w);
+  height: 1px;
+  margin: 14px 0 24px;
+  background: linear-gradient(90deg, var(--bali-sable), var(--bali-sable-clair));
+}
+.bali-rule--center { margin-left: auto; margin-right: auto; }
+
+/* Titre deux tons : premier segment greige, second encre, point final systematique.
+   « La collection Cocon. » Le point fait partie du motif, il s ecrit dans le HTML. */
+.bali-muted { color: var(--bali-greige); }
+
+/* Libelle capitales : Josefin, interlettrage 0.18em, gris. */
+.bali-label {
+  font-family: var(--font-caps);
+  font-weight: 400;
+  font-size: 0.72rem;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--text-sub);
+}
+
+/* Standfirst italique light sous les titres de section. */
+.bali-standfirst {
+  font-family: var(--font-caps);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-sub);
+  max-width: 62ch;
+}

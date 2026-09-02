@@ -239,7 +239,8 @@
     "Table à manger": "Dining table",
     "Table": "Table",
     "La maison Balinaisa": "The Balinaisa house",
-    "Le teck d'Indonésie, en circuit court": "Indonesian teak, direct from the source",
+    "Le teck d'Indonésie,": "Indonesian teak,",
+    "en circuit court.": "direct from the source.",
     "Chaque pièce est façonnée à la main par nos artisans partenaires en Indonésie, dans un teck massif choisi avec soin. Une relation directe, sans intermédiaire, pour une qualité rare et des finitions durables, pensées pour l'extérieur comme pour l'intérieur.": "Each piece is handcrafted by our partner artisans in Indonesia, from carefully selected solid teak. A direct relationship, with no middlemen, for rare quality and durable finishes, designed for outdoors as well as indoors.",
     "Artisans partenaires, circuit court": "Partner artisans, short supply chain",
     "Showroom au bassin d'Arcachon": "Showroom in the Arcachon basin",
@@ -262,7 +263,8 @@
     "« Balinaisa, la maison qui fait voyager sans quitter votre salon »": "“Balinaisa, the house that takes you travelling without leaving your living room”",
     "Lire l'article": "Read the article",
     // — FAQ —
-    "Questions fréquentes": "Frequently asked questions",
+    "Questions": "Frequently asked",
+    "fréquentes.": "questions.",
     "Qu'est-ce que Balinaisa.ai ?": "What is Balinaisa.ai?",
     "Balinaisa.ai est le simulateur d'aménagement Balinaisa, pensé comme l'œil de Dominique Raynal. À partir d'une photo de votre espace, il compose une sélection de mobilier en teck massif et génère un devis estimatif.": "Balinaisa.ai is the Balinaisa layout simulator, designed as Dominique Raynal's eye. From a photo of your space, it composes a selection of solid teak furniture and generates an estimated quote.",
     "Le simulateur est-il gratuit ?": "Is the simulator free?",
@@ -385,7 +387,7 @@
       a.href = pair[1];
       a.setAttribute('hreflang', l);
       if (on) a.setAttribute('aria-current', 'true');
-      a.style.cssText = 'text-decoration:none;cursor:pointer;background:' + (on ? '#B87D4B' : 'transparent') + ';color:' + (on ? '#fff' : '#8a7a66') + ';padding:4px 9px;border-radius:6px;line-height:1;transition:background .15s';
+      a.style.cssText = 'text-decoration:none;cursor:pointer;background:' + (on ? '#9A6A33' : 'transparent') + ';color:' + (on ? '#fff' : '#8A8A85') + ';padding:5px 10px;border-radius:0;letter-spacing:.12em;line-height:1;transition:background .15s';
       wrap.appendChild(a);
     });
     var cta = header.querySelector('#header-cta, .header-cta');
@@ -402,10 +404,10 @@
     try { if (localStorage.getItem('bal_en_offer') === 'off') return; } catch (e) {}
     var bar = document.createElement('div');
     bar.id = 'en-offer';
-    bar.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:1000;background:#2A1F14;color:#fff;padding:11px 16px;display:flex;align-items:center;justify-content:center;gap:14px;font-family:Helvetica,Arial,sans-serif;font-size:14px';
+    bar.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:1000;background:#242424;color:#fff;padding:11px 16px;display:flex;align-items:center;justify-content:center;gap:14px;font-family:Helvetica,Arial,sans-serif;font-size:14px';
     var a = document.createElement('a');
     a.href = '/en/'; a.textContent = 'Read this page in English \u2192';
-    a.style.cssText = 'color:#F5D49A;text-decoration:none;font-weight:600';
+    a.style.cssText = 'color:#D9C19E;text-decoration:none;font-weight:600';
     var x = document.createElement('button');
     x.type = 'button'; x.textContent = '\u2715'; x.setAttribute('aria-label', 'Dismiss');
     x.style.cssText = 'background:none;border:none;color:rgba(255,255,255,.55);cursor:pointer;font-size:15px;line-height:1;padding:2px 4px';
