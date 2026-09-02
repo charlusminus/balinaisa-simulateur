@@ -1,11 +1,18 @@
 # Balinaisa, repères de marque · design system v0.3
 
-Bibliothèque de marque. Chaque fichier de ce dossier est servi publiquement
-sur `https://balinaisa.ai/marque/<nom-du-fichier>`, donc téléchargeable d'un
-clic sans compte ni permission.
+Bibliothèque de marque, présentée sur une page :
 
-`planche_reperes-de-marque_v0.3.png` réunit les déclinaisons, la palette et les
-quatre polices sur une page. C'est le document à partager.
+**https://balinaisa.ai/marque/**
+
+La page montre chaque déclinaison, la palette et les quatre polices en
+spécimens, avec un lien de téléchargement par fichier. C'est l'adresse à
+transmettre : elle s'ouvre sans compte ni permission.
+
+`planche_reperes-de-marque_v0.3.png` reprend le tout sur une image, à joindre
+à un message pour qui préfère une pièce jointe à un lien.
+
+Ce README est la note technique. Les raisons des choix y sont détaillées ; la
+page, elle, va à l'essentiel.
 
 Toutes ces déclinaisons sont dérivées de deux fichiers source de la marque, le
 monogramme carré et la signature horizontale, conservés au Drive dans
