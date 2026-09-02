@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repères de marque | Balinaisa</title>
+  <meta name="description" content="Le monogramme, la signature, la palette et les polices de Balinaisa. Chaque déclinaison se télécharge d'un clic.">
+  <!-- Reference interne, pas du contenu editorial : hors index pour ne pas concurrencer
+       les pages qui portent le referencement. Crawl autorise, sinon le noindex ne serait
+       jamais lu. Volontairement absente du sitemap. -->
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" href="/favicon.svg?v=20260902" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png?v=20260902">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20260902">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#9A6A33">
+  <link rel="stylesheet" href="/styles.css?v=20260902">
+  <link href="/fonts/fonts.css?v=20260902" rel="stylesheet">
+  <style>
+    /* Styles propres a cette page. Dans la page et non dans styles.css : rien ici ne sert
+       ailleurs, et styles.css est charge par le simulateur, ou chaque octet compte. */
+    /* .legal-title du site est en Lora (--font-serif). Sur une page qui documente le systeme,
+       le titre doit porter la police de TITRAGE qu'elle declare, sinon elle se contredit en
+       en-tete. Surcharge locale seulement : les pages presse et confidentialite ne bougent pas,
+       leur choix est a arbitrer separement. */
+    .legal-title { font-family: var(--font-display); font-weight: 400; font-size: 2.4rem; }
+
+    /* Cartes de hauteur egale : sans ca, une legende qui passe sur deux lignes decale
+       la vignette voisine et la grille se met a onduler. */
+    .ds-card { display: flex; flex-direction: column; }
+    .ds-corps { flex: 1; display: flex; flex-direction: column; }
+    .ds-dl { margin-top: auto; }
+
+    .ds-hero { display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; flex-wrap: wrap; }
+    .ds-hero-logo { width: 168px; height: auto; flex: none; }
+
+    .ds-grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fill, minmax(196px, 1fr)); }
+    .ds-card { border: 1px solid var(--bali-sable-clair); background: var(--bali-blanc); }
+    .ds-vue { height: 168px; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+    .ds-vue img { max-width: 100%; max-height: 100%; display: block; }
+    /* Damier : rend visible la transparence d'un PNG detoure, qu'un fond uni masquerait. */
+    .ds-vue--damier {
+      background-image:
+        linear-gradient(45deg, #EDEDEA 25%, transparent 25%), linear-gradient(-45deg, #EDEDEA 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #EDEDEA 75%), linear-gradient(-45deg, transparent 75%, #EDEDEA 75%);
+      background-size: 18px 18px; background-position: 0 0, 0 9px, 9px -9px, -9px 0;
+    }
+    .ds-vue--sombre { background: #2B2B2B; }
+    .ds-corps { padding: .85rem 1rem 1rem; border-top: 1px solid var(--bali-sable-clair); }
+    .ds-nom { font-family: var(--font-caps); font-size: .72rem; letter-spacing: var(--tracking-caps);
+              text-transform: uppercase; color: var(--bali-encre); margin: 0 0 .4rem; }
+    .ds-usage { font-size: .82rem; line-height: 1.5; color: var(--bali-gris); margin: 0 0 .7rem; }
+    .ds-dl { display: flex; gap: .5rem; }
+    .ds-dl a { font-family: var(--font-caps); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
+               color: var(--bali-teck); text-decoration: none; border: 1px solid var(--bali-sable);
+               padding: .3rem .6rem; }
+    .ds-dl a:hover { background: var(--bali-teck); border-color: var(--bali-teck); color: #fff; }
+
+    .ds-couleurs { display: grid; grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); gap: 0; }
+    .ds-c { padding: 3.6rem .8rem .8rem; }
+    .ds-c b { display: block; font-family: var(--font-caps); font-size: .68rem; letter-spacing: .1em;
+              text-transform: uppercase; font-weight: 400; }
+    .ds-c code { font-family: var(--font-sans); font-size: .76rem; opacity: .78; }
+    .ds-c button { display: block; margin-top: .45rem; background: none; border: 0; padding: 0; cursor: pointer;
+                   font-family: var(--font-caps); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase;
+                   color: inherit; opacity: .6; }
+    .ds-c button:hover { opacity: 1; }
+
+    .ds-typo { border-top: 1px solid var(--bali-sable-clair); padding: 1.15rem 0; display: flex; gap: 1.6rem; flex-wrap: wrap; }
+    .ds-typo-role { width: 150px; flex: none; font-family: var(--font-caps); font-size: .7rem;
+                    letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--bali-gris); padding-top: .35rem; }
+    .ds-typo-corps { flex: 1; min-width: 240px; }
+    .ds-typo-detail { font-size: .8rem; color: var(--bali-gris-2); margin: .35rem 0 0; }
+
+    .ds-note { border-left: 2px solid var(--bali-sable); padding: .1rem 0 .1rem .9rem; margin: 1rem 0 0;
+               font-size: .88rem; line-height: 1.65; color: var(--bali-gris); }
+    .ds-note b { color: var(--bali-encre); font-weight: 600; }
+
+    @media (max-width: 620px) {
+      .ds-hero-logo { width: 120px; }
+      .ds-typo-role { width: 100%; padding-top: 0; }
+    }
+  </style>
+</head>
+<body>
+  <main class="legal-page">
+    <a class="legal-back" href="/">← Retour au simulateur</a>
+
+    <div class="ds-hero">
+      <div>
+        <h1 class="legal-title"><span class="bali-muted">Repères</span> de marque.</h1>
+        <hr class="bali-rule">
+        <p class="legal-updated">Design system v0.3 · septembre 2026</p>
+      </div>
+      <img class="ds-hero-logo" src="/marque/signature_encre_transparent.png" alt="Balinaisa">
+    </div>
+
+    <p class="bali-standfirst">Le monogramme, la signature, la palette et les quatre polices. Chaque déclinaison
+      se télécharge d'un clic, en PNG pour un document et en SVG pour un usage qui demande de l'agrandir.</p>
+
+    <p class="ds-note">Tout est dérivé des deux fichiers source de la marque, le monogramme carré et la
+      signature horizontale. <b>Aucun tracé n'a été redessiné</b>, seuls le cadrage et les couleurs changent.</p>
+
+    <section class="legal-section">
+      <h2>Le monogramme</h2>
+      <hr class="bali-rule">
+      <div class="ds-grid">
+
+        <div class="ds-card">
+          <div class="ds-vue"><img src="/marque/monogramme_carre_ivoire-sur-teck.png" alt="Monogramme ivoire sur teck doré"></div>
+          <div class="ds-corps">
+            <p class="ds-nom">Ivoire sur teck</p>
+            <p class="ds-usage">La déclinaison en production : icône d'application et favicon.</p>
+            <p class="ds-dl"><a href="/marque/monogramme_carre_ivoire-sur-teck.png" download>PNG</a>
+               <a href="/marque/monogramme_carre_ivoire-sur-teck.svg" download>SVG</a></p>
+          </div>
+        </div>
+
+        <div class="ds-card">
+          <div class="ds-vue"><img src="/marque/monogramme_carre_encre-sur-ivoire.png" alt="Monogramme encre sur ivoire"></div>
+          <div class="ds-corps">
+            <p class="ds-nom">Encre sur ivoire</p>
+            <p class="ds-usage">Variante claire, pour un support où le doré jure. Pas sous 32 px.</p>
+            <p class="ds-dl"><a href="/marque/monogramme_carre_encre-sur-ivoire.png" download>PNG</a>
+               <a href="/marque/monogramme_carre_encre-sur-ivoire.svg" download>SVG</a></p>
+          </div>
+        </div>
+
+        <div class="ds-card">
+          <div class="ds-vue"><img src="/marque/monogramme_maskable_ivoire-sur-teck.png" alt="Monogramme maskable"></div>
+          <div class="ds-corps">
+            <p class="ds-nom">Maskable</p>
+            <p class="ds-usage">Android, qui recadre en cercle ou en squircle. Tracé resserré pour survivre au rognage.</p>
+            <p class="ds-dl"><a href="/marque/monogramme_maskable_ivoire-sur-teck.png" download>PNG</a>
+               <a href="/marque/monogramme_maskable_ivoire-sur-teck.svg" download>SVG</a></p>
+          </div>
+        </div>
+
+        <div class="ds-card">
+          <div class="ds-vue ds-vue--damier"><img src="/marque/monogramme_libre_encre_transparent.png" alt="Monogramme détouré en encre"></div>
+          <div class="ds-corps">
+            <p class="ds-nom">Détouré, encre</p>
+            <p class="ds-usage">Le tracé seul, fond transparent. Sur un fond clair maîtrisé.</p>
+            <p class="ds-dl"><a href="/marque/monogramme_libre_encre_transparent.png" download>PNG</a>
+               <a href="/marque/monogramme_libre_encre_transparent.svg" download>SVG</a></p>
+          </div>
+        </div>
+
+        <div class="ds-card">
+          <div class="ds-vue ds-vue--sombre"><img src="/marque/monogramme_libre_ivoire_transparent.png" alt="Monogramme détouré en ivoire"></div>
+          <div class="ds-corps">
+            <p class="ds-nom">Détouré, ivoire</p>
+            <p class="ds-usage">Le tracé seul en ivoire, pour un fond sombre ou une photo.</p>
+            <p class="ds-dl"><a href="/marque/monogramme_libre_ivoire_transparent.png" download>PNG</a>
+               <a href="/marque/monogramme_libre_ivoire_transparent.svg" download>SVG</a></p>
+          </div>
+        </div>
+
+      </div>
+      <p class="ds-note"><b>Le monogramme ne tient pas en encre sur ivoire en petite taille.</b> Mesuré à 16 px,
+        ce tracé filiforme ne laisse que 2 pixels nettement sombres sur 256, le plus foncé à peine à 126/255
+        du blanc : il disparaît dans une barre d'onglets claire. C'est pourquoi la version en production
+        est reversée sur le doré.</p>
+    </section>
+
+    <section class="legal-section">
+      <h2>La signature</h2>
+      <hr class="bali-rule">
+      <div class="ds-grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">
+        <div class="ds-card">
+          <div class="ds-vue"><img src="/marque/signature_plaque-ivoire.png" alt="Signature sur plaque ivoire"></div>
+          <div class="ds-corps">
+            <p class="ds-nom">Sur plaque ivoire</p>
+            <p class="ds-usage">En-tête d'email. Le fond ivoire est dans l'image, ce qui la rend immune au mode sombre.</p>
+            <p class="ds-dl"><a href="/marque/signature_plaque-ivoire.png" download>PNG</a></p>
+          </div>
+        </div>
+        <div class="ds-card">
+          <div class="ds-vue ds-vue--damier"><img src="/marque/signature_encre_transparent.png" alt="Signature détourée"></div>
+          <div class="ds-corps">
+            <p class="ds-nom">Détourée</p>
+            <p class="ds-usage">La signature seule, fond transparent, sur un fond clair maîtrisé.</p>
+            <p class="ds-dl"><a href="/marque/signature_encre_transparent.png" download>PNG</a></p>
+          </div>
+        </div>
+      </div>
+      <p class="ds-note"><b>Une messagerie inverse les couleurs d'un email en mode sombre, jamais une image.</b>
+        Une signature détourée à encre noire se retrouve donc noir sur noir, à 1.29:1. La plaque ivoire
+        existe pour ça : elle emporte son propre fond.</p>
+    </section>
+
+    <section class="legal-section">
+      <h2>La palette</h2>
+      <hr class="bali-rule">
+      <div class="ds-couleurs">
+        <div class="ds-c" style="background:#9A6A33;color:#FAF9F5"><b>Teck doré</b><code>#9A6A33</code><button type="button" data-hex="#9A6A33">Copier</button></div>
+        <div class="ds-c" style="background:#7C5325;color:#FAF9F5"><b>Teck survol</b><code>#7C5325</code><button type="button" data-hex="#7C5325">Copier</button></div>
+        <div class="ds-c" style="background:#242424;color:#FAF9F5"><b>Encre</b><code>#242424</code><button type="button" data-hex="#242424">Copier</button></div>
+        <div class="ds-c" style="background:#6C6C6C;color:#FAF9F5"><b>Gris</b><code>#6C6C6C</code><button type="button" data-hex="#6C6C6C">Copier</button></div>
+        <div class="ds-c" style="background:#9C9084;color:#FAF9F5"><b>Greige</b><code>#9C9084</code><button type="button" data-hex="#9C9084">Copier</button></div>
+        <div class="ds-c" style="background:#8A8A85;color:#FAF9F5"><b>Gris 2</b><code>#8A8A85</code><button type="button" data-hex="#8A8A85">Copier</button></div>
+        <div class="ds-c" style="background:#D9C19E;color:#242424"><b>Sable</b><code>#D9C19E</code><button type="button" data-hex="#D9C19E">Copier</button></div>
+        <div class="ds-c" style="background:#F0E4CC;color:#242424"><b>Sable clair</b><code>#F0E4CC</code><button type="button" data-hex="#F0E4CC">Copier</button></div>
+        <div class="ds-c" style="background:#FAF9F5;color:#242424;box-shadow:inset 0 0 0 1px #E8E4DA"><b>Ivoire</b><code>#FAF9F5</code><button type="button" data-hex="#FAF9F5">Copier</button></div>
+        <div class="ds-c" style="background:#F5F3EC;color:#242424;box-shadow:inset 0 0 0 1px #E8E4DA"><b>Ivoire 2</b><code>#F5F3EC</code><button type="button" data-hex="#F5F3EC">Copier</button></div>
+        <div class="ds-c" style="background:#FDFDFD;color:#242424;box-shadow:inset 0 0 0 1px #E8E4DA"><b>Blanc</b><code>#FDFDFD</code><button type="button" data-hex="#FDFDFD">Copier</button></div>
+      </div>
+      <p class="ds-note"><b>Le gris 2 ne passe pas le seuil AA sur blanc</b>, à 3.47:1. Il convient à une mention
+        discrète sur grand écran, pas à un texte qu'on doit lire. Dans un email, où l'écran est petit et le fond
+        inversable, on lui préfère le gris.</p>
+    </section>
+
+    <section class="legal-section">
+      <h2>La typographie</h2>
+      <hr class="bali-rule">
+
+      <div class="ds-typo">
+        <div class="ds-typo-role">Titres</div>
+        <div class="ds-typo-corps">
+          <div style="font-family:var(--font-display);font-size:2.1rem;line-height:1.15">Votre espace <span class="bali-muted">réimaginé.</span></div>
+          <p class="ds-typo-detail">Cormorant Garamond · 400 à 600 · repli Georgia</p>
+        </div>
+      </div>
+
+      <div class="ds-typo">
+        <div class="ds-typo-role">Textes longs</div>
+        <div class="ds-typo-corps">
+          <div style="font-family:var(--font-serif);font-size:1.18rem;font-style:italic;line-height:1.5">Le teck d'Indonésie, en circuit court.</div>
+          <p class="ds-typo-detail">Lora · romain et italique · repli Georgia</p>
+        </div>
+      </div>
+
+      <div class="ds-typo">
+        <div class="ds-typo-role">Capitales</div>
+        <div class="ds-typo-corps">
+          <div style="font-family:var(--font-caps);font-size:1.1rem;letter-spacing:var(--tracking-caps);text-transform:uppercase">Confirmer mon intérêt</div>
+          <p class="ds-typo-detail">Josefin Sans · chasse 0.18em · repli Century Gothic, Avenir</p>
+        </div>
+      </div>
+
+      <div class="ds-typo">
+        <div class="ds-typo-role">Corps</div>
+        <div class="ds-typo-corps">
+          <div style="font-family:var(--font-sans);font-size:.98rem;line-height:1.6">Photographiez votre espace, recevez un aménagement en teck massif et son devis.</div>
+          <p class="ds-typo-detail">Inter · 300 à 600 · repli system-ui</p>
+        </div>
+      </div>
+
+      <p class="ds-note"><b>Aucune police web dans un email.</b> Gmail supprime les @font-face : Lora et
+        Josefin Sans n'y apparaîtront jamais. Les emails emploient donc les replis déclarés ci-dessus,
+        Georgia pour les serifs et une pile Century Gothic pour les capitales.</p>
+    </section>
+
+    <section class="legal-section">
+      <h2>Les principes</h2>
+      <hr class="bali-rule">
+      <ul>
+        <li><b>Angles droits.</b> Aucun arrondi, nulle part. Trois cercles subsistent et sont voulus : le bouton de fermeture, la pastille de confirmation et le logo de presse.</li>
+        <li><b>Le filet doré de 88 px</b> ouvre une section, en couleur pleine et non en dégradé, qu'Outlook ignore.</li>
+        <li><b>Les capitales sont toujours chassées à 0.18em.</b> Une capitale non chassée n'est pas de la marque.</li>
+        <li><b>Le titre bicolore</b> pose le premier mot en greige et la suite en encre, avec un point final.</li>
+        <li><b>Teck massif d'Indonésie</b>, jamais « Bali » pour la matière.</li>
+      </ul>
+    </section>
+
+    <section class="legal-section">
+      <h2>La planche</h2>
+      <hr class="bali-rule">
+      <p>Tout ce qui précède tient sur une page, à joindre à un message.</p>
+      <p class="ds-dl" style="margin-top:.9rem">
+        <a href="/marque/planche_reperes-de-marque_v0.3.png" download>Télécharger la planche</a>
+        <a href="/marque/README.md" download>La notice technique</a>
+      </p>
+    </section>
+  </main>
+
+  <script>
+    /* Copie du hexa au clic. Sans confirmation visible, on ne sait pas si le clic a pris. */
+    document.querySelectorAll('.ds-c button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var hex = b.getAttribute('data-hex');
+        var fini = function () { b.textContent = 'Copié'; setTimeout(function () { b.textContent = 'Copier'; }, 1400); };
+        /* navigator.clipboard n'existe pas hors HTTPS ni sur les navigateurs anciens :
+           on retombe sur un champ temporaire plutot que de ne rien faire. */
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(hex).then(fini, function () { fini(); });
+        } else {
+          var t = document.createElement('textarea');
+          t.value = hex; t.setAttribute('readonly', ''); t.style.position = 'absolute'; t.style.left = '-9999px';
+          document.body.appendChild(t); t.select();
+          try { document.execCommand('copy'); } catch (e) {}
+          document.body.removeChild(t); fini();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
