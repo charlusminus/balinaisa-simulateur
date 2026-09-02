@@ -44,10 +44,11 @@
       line-height: 1.2; color: var(--text, #242424); margin-bottom: .8rem;
     }
     .cp-chapo { font-size: 1.06rem; line-height: 1.65; color: var(--text, #242424); font-weight: 500; margin-bottom: .7rem; }
-    .cp-dateline { font-size: .88rem; color: var(--text-muted, #8A8A85); margin-bottom: 1.6rem; }
+    .cp-dateline { font-family: var(--font-caps); font-size: .76rem; letter-spacing: var(--tracking-caps);
+      text-transform: uppercase; color: var(--text-muted, #8A8A85); margin-bottom: 1.6rem; }
     .cp h3 {
-      font-family: var(--font-serif, Georgia, serif); font-weight: 600; font-size: 1.2rem;
-      color: var(--primary-dark, #7C5325); margin: 1.9rem 0 .5rem;
+      font-family: var(--font-serif, Georgia, serif); font-weight: 500; font-size: 1.2rem;
+      color: var(--text, #242424); margin: 1.9rem 0 .5rem;
     }
     .cp p { font-size: .96rem; line-height: 1.75; color: var(--text-sub, #6C6C6C); margin-bottom: .7rem; }
 
@@ -59,8 +60,9 @@
     figure.media .shot { position: relative; display: block; background: var(--bg-card, #FDFDFD); }
     figure.media img { display: block; width: 100%; height: auto; }
     figure.media .tag {
-      position: absolute; top: 8px; left: 8px; background: rgba(42,31,20,.82); color: #fff;
-      font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
+      position: absolute; top: 8px; left: 8px; background: rgba(36,36,36,.82); color: #fff;
+      font-family: var(--font-caps); font-size: .66rem; letter-spacing: var(--tracking-caps);
+      text-transform: uppercase; font-weight: 400;
       padding: 3px 8px; border-radius: 0;
     }
     figure.media .tag.after { background: var(--primary, #9A6A33); }
@@ -132,7 +134,8 @@
 
   <main class="legal-page">
     <a class="legal-back" href="/">← Retour au simulateur</a>
-    <h1 class="legal-title">Communiqué de presse</h1>
+    <h1 class="legal-title"><span class="bali-muted">Communiqué</span> de presse.</h1>
+    <hr class="bali-rule">
     <p class="legal-updated">Balinaisa.ai · septembre 2026</p>
 
     <p class="press-lead">Le communiqué dans son intégralité, avec ses visuels. Chaque image se télécharge en pleine définition d'un clic. Tous les éléments de cette page sont libres de reproduction dans un cadre rédactionnel, avec la mention « Balinaisa ».</p>
@@ -209,6 +212,7 @@
 
     <section class="legal-section">
       <h2>En bref</h2>
+      <hr class="bali-rule">
       <ul class="facts">
         <li><b>Ce que c'est :</b> un outil qui transforme la photo d'une pièce ou d'un extérieur en proposition d'aménagement illustrée, accompagnée du devis des meubles qui y figurent.</li>
         <li><b>Le devis :</b> calculé sur des références réelles, pas estimé par catégorie. <b>97 références</b> au catalogue, réparties en <b>17 familles</b>, chacune avec son prix hors taxes. Le devis est estimatif et n'engage pas commercialement.</li>
@@ -222,6 +226,7 @@
 
     <section class="legal-section">
       <h2>Visuels, logo et portrait</h2>
+      <hr class="bali-rule">
       <p>Les visuels du communiqué se téléchargent directement en cliquant dessus. Les rendus sont <strong>bruts</strong>, tels que l'outil les produit, sans aucune retouche, et le cadrage, l'angle et le bâti de la photo d'origine sont conservés.</p>
       <ul class="dl-list">
         <li><a href="/assets/balinaisa-logo.svg" download>Logo Balinaisa, format vectoriel SVG</a></li>
@@ -233,11 +238,13 @@
 
     <section class="legal-section">
       <h2>Conditions d'utilisation des éléments</h2>
+      <hr class="bali-rule">
       <p>Les visuels, le logo et les textes de cette page peuvent être reproduits librement dans un cadre rédactionnel, en accompagnement d'un article traitant de Balinaisa ou de Balinaisa.ai, avec la mention <strong>« Balinaisa »</strong>. Toute autre utilisation, notamment publicitaire ou commerciale, demande notre accord écrit préalable.</p>
     </section>
 
     <section class="legal-section">
       <h2>Contact presse</h2>
+      <hr class="bali-rule">
       <ul class="facts">
         <li><b>Dominique Raynal</b>, directeur général de Balinaisa</li>
         <li><a href="mailto:contact@balinaisa.com">contact@balinaisa.com</a></li>

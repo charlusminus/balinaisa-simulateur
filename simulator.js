@@ -406,7 +406,7 @@ async function submitLead(e) {
 
   const btn = document.getElementById('btn-submit-lead');
   btn.disabled = true;
-  btn.innerHTML = '<span>Envoi en cours…</span>';
+  btn.innerHTML = '<span>' + T('Envoi en cours…') + '</span>';
 
   const firstName = document.getElementById('f-firstname').value.trim();
   const lastName  = document.getElementById('f-lastname').value.trim();
