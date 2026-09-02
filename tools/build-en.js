@@ -63,6 +63,9 @@ const EN_LINKS_ABS = {
   '/': '/en/',
   '/privacy-policy.html': '/en/privacy-policy.html',
   '/presse/': '/en/presse/',
+  /* Sans cette ligne, installer l application depuis /en/ prendrait le manifeste FR,
+     dont le start_url est « / » : l application se lancerait en francais. */
+  '/site.webmanifest': '/site.en.webmanifest',
 };
 
 const norm = (s) => String(s).replace(/\s+/g, ' ').trim();

@@ -28,7 +28,17 @@
   <meta property="og:description" content="Un outil d'IA qui transforme une photo de pièce en projet d'aménagement chiffré. Visuels avant/après, chiffres clés et contact presse.">
   <meta property="og:url" content="https://balinaisa.ai/presse/">
   <meta property="og:image" content="https://balinaisa.ai/presse/medias/balinaisa-ai_apres_salle-a-manger-01.jpg">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <!-- Icones : un seul bloc, identique sur toutes les pages. Elles divergeaient page par page
+       (SVG seul ici, PNG seul la, trois ?v= differents, chemins tantot relatifs tantot absolus).
+       Chemins ABSOLUS : une page rangee dans un sous-repertoire resoudrait un chemin relatif
+       depuis son propre dossier. La marque est reversee en ivoire sur le teck dore : en encre
+       sur ivoire, le trace filiforme ne laisse que 2 pixels sombres sur 256 a 16 px et
+       disparait dans une barre d onglets claire. -->
+  <link rel="icon" href="/favicon.svg?v=20260902" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png?v=20260902">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20260902">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#9A6A33">
   <link rel="stylesheet" href="/styles.css?v=20260902">
   <link href="/fonts/fonts.css?v=20260902" rel="stylesheet">
   <style>
