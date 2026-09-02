@@ -47,10 +47,11 @@
       line-height: 1.2; color: var(--text, #242424); margin-bottom: .8rem;
     }
     .cp-chapo { font-size: 1.06rem; line-height: 1.65; color: var(--text, #242424); font-weight: 500; margin-bottom: .7rem; }
-    .cp-dateline { font-size: .88rem; color: var(--text-muted, #8A8A85); margin-bottom: 1.6rem; }
+    .cp-dateline { font-family: var(--font-caps); font-size: .76rem; letter-spacing: var(--tracking-caps);
+      text-transform: uppercase; color: var(--text-muted, #8A8A85); margin-bottom: 1.6rem; }
     .cp h3 {
-      font-family: var(--font-serif, Georgia, serif); font-weight: 600; font-size: 1.2rem;
-      color: var(--primary-dark, #7C5325); margin: 1.9rem 0 .5rem;
+      font-family: var(--font-serif, Georgia, serif); font-weight: 500; font-size: 1.2rem;
+      color: var(--text, #242424); margin: 1.9rem 0 .5rem;
     }
     .cp p { font-size: .96rem; line-height: 1.75; color: var(--text-sub, #6C6C6C); margin-bottom: .7rem; }
 
@@ -62,8 +63,9 @@
     figure.media .shot { position: relative; display: block; background: var(--bg-card, #FDFDFD); }
     figure.media img { display: block; width: 100%; height: auto; }
     figure.media .tag {
-      position: absolute; top: 8px; left: 8px; background: rgba(42,31,20,.82); color: #fff;
-      font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
+      position: absolute; top: 8px; left: 8px; background: rgba(36,36,36,.82); color: #fff;
+      font-family: var(--font-caps); font-size: .66rem; letter-spacing: var(--tracking-caps);
+      text-transform: uppercase; font-weight: 400;
       padding: 3px 8px; border-radius: 0;
     }
     figure.media .tag.after { background: var(--primary, #9A6A33); }
@@ -135,7 +137,8 @@
 
   <main class="legal-page">
     <a class="legal-back" href="/en/">← Back to the simulator</a>
-    <h1 class="legal-title">Press release</h1>
+    <h1 class="legal-title"><span class="bali-muted">Press</span> release.</h1>
+    <hr class="bali-rule">
     <p class="legal-updated">Balinaisa.ai · September 2026</p>
 
     <p class="press-lead">The full press release, with its images. Every picture downloads at full resolution in one click. Everything on this page may be reproduced freely in an editorial context, credited to « Balinaisa ».</p>
@@ -212,6 +215,7 @@
 
     <section class="legal-section">
       <h2>At a glance</h2>
+      <hr class="bali-rule">
       <ul class="facts">
         <li><b>What it is:</b> a tool that turns the photo of a room or an outdoor space into an illustrated furnishing proposal, together with a quote for the furniture in it.</li>
         <li><b>The quote:</b> priced on real references, not estimated by category. <b>97 references</b> in the catalogue, across <b>17 families</b>, each with its price before tax. The quote is an estimate and carries no commercial commitment.</li>
@@ -225,6 +229,7 @@
 
     <section class="legal-section">
       <h2>Images, logo and portrait</h2>
+      <hr class="bali-rule">
       <p>The images in the press release download directly when you click them. The renderings are <strong>raw</strong>, exactly as the tool produces them, with no retouching, and the framing, the angle and the building in the original photo are preserved.</p>
       <ul class="dl-list">
         <li><a href="/assets/balinaisa-logo.svg" download>Balinaisa logo, SVG vector format</a></li>
@@ -236,11 +241,13 @@
 
     <section class="legal-section">
       <h2>Terms of use for these materials</h2>
+      <hr class="bali-rule">
       <p>The images, the logo and the texts on this page may be reproduced freely in an editorial context, alongside an article about Balinaisa or Balinaisa.ai, credited to <strong>« Balinaisa »</strong>. Any other use, in particular advertising or commercial use, requires our prior written agreement.</p>
     </section>
 
     <section class="legal-section">
       <h2>Press contact</h2>
+      <hr class="bali-rule">
       <ul class="facts">
         <li><b>Dominique Raynal</b>, directeur général de Balinaisa</li>
         <li><a href="mailto:contact@balinaisa.com">contact@balinaisa.com</a></li>
