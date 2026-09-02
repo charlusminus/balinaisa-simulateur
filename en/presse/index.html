@@ -32,65 +32,65 @@
   <meta property="og:url" content="https://balinaisa.ai/en/presse/">
   <meta property="og:image" content="https://balinaisa.ai/presse/medias/balinaisa-ai_apres_salle-a-manger-01.jpg">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/styles.css?v=20260729">
-  <link href="/fonts/fonts.css?v=20260715c" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=20260902">
+  <link href="/fonts/fonts.css?v=20260902" rel="stylesheet">
   <style>
     /* Styles propres a l'espace presse. Volontairement dans la page et non dans styles.css :
        la feuille globale est chargee par le simulateur sur chaque visite, et ces regles ne
        servent qu'ici. Elles s'appuient sur les variables et les classes .legal-* existantes. */
-    .press-lead { font-size: 1.02rem; line-height: 1.7; color: var(--text-sub, #7A6A58); margin-bottom: 1.6rem; }
+    .press-lead { font-size: 1.02rem; line-height: 1.7; color: var(--text-sub, #6C6C6C); margin-bottom: 1.6rem; }
 
     /* Le communique, compose comme un document : c'est le meme texte que le PDF. */
-    .cp { border-top: 1px solid var(--border, #DDD5C8); padding-top: 1.8rem; margin-bottom: 2.4rem; }
+    .cp { border-top: 1px solid var(--border, #F0E4CC); padding-top: 1.8rem; margin-bottom: 2.4rem; }
     .cp-title {
       font-family: var(--font-serif, Georgia, serif); font-weight: 600; font-size: 1.72rem;
-      line-height: 1.2; color: var(--text, #2A1F14); margin-bottom: .8rem;
+      line-height: 1.2; color: var(--text, #242424); margin-bottom: .8rem;
     }
-    .cp-chapo { font-size: 1.06rem; line-height: 1.65; color: var(--text, #2A1F14); font-weight: 500; margin-bottom: .7rem; }
-    .cp-dateline { font-size: .88rem; color: var(--text-muted, #9A8B76); margin-bottom: 1.6rem; }
+    .cp-chapo { font-size: 1.06rem; line-height: 1.65; color: var(--text, #242424); font-weight: 500; margin-bottom: .7rem; }
+    .cp-dateline { font-size: .88rem; color: var(--text-muted, #8A8A85); margin-bottom: 1.6rem; }
     .cp h3 {
       font-family: var(--font-serif, Georgia, serif); font-weight: 600; font-size: 1.2rem;
-      color: var(--primary-dark, #8B5C32); margin: 1.9rem 0 .5rem;
+      color: var(--primary-dark, #7C5325); margin: 1.9rem 0 .5rem;
     }
-    .cp p { font-size: .96rem; line-height: 1.75; color: var(--text-sub, #7A6A58); margin-bottom: .7rem; }
+    .cp p { font-size: .96rem; line-height: 1.75; color: var(--text-sub, #6C6C6C); margin-bottom: .7rem; }
 
     /* Paires avant / apres. Chaque image est un lien de telechargement vers le fichier
        en taille native : c'est ce dont une redaction a besoin. */
     figure.media { margin: 1.4rem 0 0; }
     figure.media .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
-      background: var(--border, #DDD5C8); border: 1px solid var(--border, #DDD5C8); border-radius: 12px; overflow: hidden; }
-    figure.media .shot { position: relative; display: block; background: var(--bg-card, #FDFAF6); }
+      background: var(--border, #F0E4CC); border: 1px solid var(--border, #F0E4CC); border-radius: 0; overflow: hidden; }
+    figure.media .shot { position: relative; display: block; background: var(--bg-card, #FDFDFD); }
     figure.media img { display: block; width: 100%; height: auto; }
     figure.media .tag {
       position: absolute; top: 8px; left: 8px; background: rgba(42,31,20,.82); color: #fff;
       font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
-      padding: 3px 8px; border-radius: 3px;
+      padding: 3px 8px; border-radius: 0;
     }
-    figure.media .tag.after { background: var(--primary, #B87D4B); }
-    figure.media figcaption { font-size: .84rem; line-height: 1.6; color: var(--text-sub, #7A6A58); margin-top: .6rem; }
-    figure.media figcaption b { color: var(--text, #2A1F14); }
-    figure.media .dl { display: block; margin-top: .3rem; font-size: .76rem; color: var(--text-muted, #9A8B76); }
-    .doc-shot { border: 1px solid var(--border, #DDD5C8); border-radius: 12px; overflow: hidden; display: block; }
+    figure.media .tag.after { background: var(--primary, #9A6A33); }
+    figure.media figcaption { font-size: .84rem; line-height: 1.6; color: var(--text-sub, #6C6C6C); margin-top: .6rem; }
+    figure.media figcaption b { color: var(--text, #242424); }
+    figure.media .dl { display: block; margin-top: .3rem; font-size: .76rem; color: var(--text-muted, #8A8A85); }
+    .doc-shot { border: 1px solid var(--border, #F0E4CC); border-radius: 0; overflow: hidden; display: block; }
 
     /* Portrait et citation */
     .voice { display: flex; gap: 16px; align-items: flex-start; margin: 1.1rem 0 .5rem; flex-wrap: wrap; }
-    .voice img { width: 128px; height: auto; border: 1px solid var(--border, #DDD5C8); border-radius: 8px; flex: none; }
+    .voice img { width: 128px; height: auto; border: 1px solid var(--border, #F0E4CC); border-radius: 0; flex: none; }
     .voice blockquote {
-      flex: 1 1 260px; border-left: 3px solid var(--primary, #B87D4B); padding-left: 16px; margin: 0;
+      flex: 1 1 260px; border-left: 3px solid var(--primary, #9A6A33); padding-left: 16px; margin: 0;
       font-family: var(--font-serif, Georgia, serif); font-style: italic; font-size: 1.08rem;
-      line-height: 1.6; color: var(--text, #2A1F14);
+      line-height: 1.6; color: var(--text, #242424);
     }
-    .voice cite { display: block; font-style: normal; font-size: .84rem; color: var(--text-muted, #9A8B76); margin-top: .5rem; }
+    .voice cite { display: block; font-style: normal; font-size: .84rem; color: var(--text-muted, #8A8A85); margin-top: .5rem; }
 
     .pdf-dl { margin: 0 0 1.8rem; }
     .pdf-dl a {
-      display: inline-block; background: var(--primary, #B87D4B); color: #fff;
-      padding: 11px 20px; border-radius: 8px; font-weight: 600; font-size: .94rem;
+      display: inline-block; background: var(--primary, #9A6A33); color: #fff;
+      padding: 11px 20px; border-radius: 0; font-weight: 600; font-size: .94rem;
       text-decoration: none;
     }
-    .pdf-dl span { display: inline-block; margin-left: .7rem; font-size: .84rem; color: var(--text-muted, #9A8B76); }
+    .pdf-dl span { display: inline-block; margin-left: .7rem; font-size: .84rem; color: var(--text-muted, #8A8A85); }
     .press-cta {
-      background: #FBF5EB; border: 1px solid var(--border, #DDD5C8); border-radius: 14px;
+      background: #FBF5EB; border: 1px solid var(--border, #F0E4CC); border-radius: 0;
       padding: 20px 22px; margin: 1.8rem 0;
     }
     .press-cta p { margin: 0; }
@@ -99,23 +99,23 @@
        et poser des UTM dessus reinitialiserait la source d'acquisition du visiteur dans
        l'analytique, ce qui effacerait justement l'information qu'on cherche a garder. */
     .end-cta {
-      border-top: 1px solid var(--border, #DDD5C8); margin-top: 2.4rem; padding-top: 2rem;
+      border-top: 1px solid var(--border, #F0E4CC); margin-top: 2.4rem; padding-top: 2rem;
       padding-bottom: 1rem; text-align: center;
     }
-    .end-cta p { margin: 0 0 1.1rem; font-size: .96rem; color: var(--text-sub, #7A6A58); }
+    .end-cta p { margin: 0 0 1.1rem; font-size: .96rem; color: var(--text-sub, #6C6C6C); }
     .end-cta a {
-      display: inline-block; background: var(--primary, #B87D4B); color: #fff;
-      padding: 14px 30px; border-radius: 8px; font-weight: 600; font-size: 1rem;
+      display: inline-block; background: var(--primary, #9A6A33); color: #fff;
+      padding: 14px 30px; border-radius: 0; font-weight: 600; font-size: 1rem;
       text-decoration: none;
     }
-    .end-cta a:hover { background: var(--primary-dark, #8B5C32); }
+    .end-cta a:hover { background: var(--primary-dark, #7C5325); }
     .facts { list-style: none; padding: 0; margin: .6rem 0 0; }
-    .facts li { padding: .45rem 0; border-bottom: 1px solid var(--border, #DDD5C8); }
+    .facts li { padding: .45rem 0; border-bottom: 1px solid var(--border, #F0E4CC); }
     .facts li:last-child { border-bottom: 0; }
-    .facts b { color: var(--text, #2A1F14); }
+    .facts b { color: var(--text, #242424); }
     .dl-list { list-style: none; padding: 0; margin: .6rem 0 0; }
     .dl-list li { margin-bottom: .5rem; }
-    .legal-note { font-size: .84rem; color: var(--text-muted, #7C6A54); margin-top: .9rem; }
+    .legal-note { font-size: .84rem; color: var(--text-muted, #8A8A85); margin-top: .9rem; }
   </style>
 </head>
 <body>
@@ -127,9 +127,9 @@
   <!-- HEADER -->
   <header class="header">
     <a href="/en/" class="header-logo">
-      <img src="https://balinaisa.com/wp-content/uploads/2025/10/LOGO-SVG-Content.svg"
+      <img src="/assets/balinaisa-logo-header.png?v=20260902"
            alt="Balinaisa" height="28"
-           onerror="this.outerHTML='<svg width=&quot;28&quot; height=&quot;28&quot; viewBox=&quot;0 0 28 28&quot; fill=&quot;none&quot;><rect width=&quot;28&quot; height=&quot;28&quot; rx=&quot;6&quot; fill=&quot;#B87D4B&quot;/><text x=&quot;14&quot; y=&quot;20&quot; font-family=&quot;Georgia,serif&quot; font-size=&quot;16&quot; font-weight=&quot;bold&quot; text-anchor=&quot;middle&quot; fill=&quot;#fff&quot;>B</text></svg>'">
+           onerror="this.outerHTML='<svg width=&quot;28&quot; height=&quot;28&quot; viewBox=&quot;0 0 28 28&quot; fill=&quot;none&quot;><rect width=&quot;28&quot; height=&quot;28&quot; rx=&quot;6&quot; fill=&quot;#9A6A33&quot;/><text x=&quot;14&quot; y=&quot;20&quot; font-family=&quot;Georgia,serif&quot; font-size=&quot;16&quot; font-weight=&quot;bold&quot; text-anchor=&quot;middle&quot; fill=&quot;#fff&quot;>B</text></svg>'">
     </a>
   </header>
 
@@ -227,7 +227,7 @@
       <h2>Images, logo and portrait</h2>
       <p>The images in the press release download directly when you click them. The renderings are <strong>raw</strong>, exactly as the tool produces them, with no retouching, and the framing, the angle and the building in the original photo are preserved.</p>
       <ul class="dl-list">
-        <li><a href="https://balinaisa.com/wp-content/uploads/2025/10/LOGO-SVG-Content.svg" target="_blank" rel="noopener">Balinaisa logo, SVG vector format</a></li>
+        <li><a href="/assets/balinaisa-logo.svg" download>Balinaisa logo, SVG vector format</a></li>
         <li><a href="/presse/medias/balinaisa-ai_portrait-dominique-raynal.jpg" download>Portrait of Dominique Raynal</a></li>
         <li>Logo as a transparent PNG and portrait at high resolution: on request from <a href="mailto:contact@balinaisa.com">contact@balinaisa.com</a>.</li>
       </ul>

@@ -15,12 +15,12 @@
   <link rel="icon" type="image/png" href="favicon.png?v=20260709b">
   <style>
     :root {
-      --bg: #F2ECE3;
-      --primary: #B87D4B;
-      --accent: #C4975A;
-      --text: #2A1F14;
-      --muted: #7A6A58;
-      --border: #DDD5C8;
+      --bg: #FAF9F5;
+      --primary: #9A6A33;
+      --accent: #D9C19E;
+      --text: #242424;
+      --muted: #6C6C6C;
+      --border: #F0E4CC;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: Inter, -apple-system, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
@@ -37,15 +37,15 @@
     @media (max-width: 760px) { .result-grid { grid-template-columns: 1fr; } }
 
     /* Simulation card */
-    .sim-card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,.07); }
+    .sim-card { background: #fff; border-radius: 0; overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,.07); }
     .sim-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
     .sim-placeholder {
       width: 100%; aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #EAE2D8 0%, #DDD5C8 100%);
+      background: linear-gradient(135deg, #F5F3EC 0%, #F0E4CC 100%);
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
     }
     .sim-placeholder-icon {
-      width: 80px; height: 80px; background: rgba(184,125,75,.15); border-radius: 50%;
+      width: 80px; height: 80px; background: rgba(154,106,51,.15); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
     }
     .sim-placeholder-text { font-size: 14px; color: var(--muted); text-align: center; padding: 0 32px; line-height: 1.65; }
@@ -53,15 +53,15 @@
     .sim-badge {
       display: inline-flex; align-items: center;
       background: #FBF4E8; border: 1px solid var(--accent); color: var(--primary);
-      font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px;
+      font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 0;
     }
     .sim-badge-pending {
-      background: #F2ECE3; border-color: var(--border); color: var(--muted);
+      background: #FAF9F5; border-color: var(--border); color: var(--muted);
     }
     .sim-foot-label { font-size: 12px; color: var(--muted); }
 
     /* Devis card */
-    .devis-card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,.07); }
+    .devis-card { background: #fff; border-radius: 0; overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,.07); }
     .devis-head { background: var(--bg); padding: 18px 22px; border-bottom: 1px solid var(--border); }
     .devis-head-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 4px; }
     .devis-product-name { font-size: 20px; font-weight: 600; }
@@ -76,17 +76,17 @@
     .devis-total-label { font-size: 15px; font-weight: 700; }
     .devis-total-price { font-size: 24px; font-weight: 700; color: var(--primary); }
 
-    .devis-intent { margin-top: 14px; padding: 10px 14px; background: #FBF4E8; border-radius: 8px; font-size: 13px; color: var(--muted); }
+    .devis-intent { margin-top: 14px; padding: 10px 14px; background: #FBF4E8; border-radius: 0; font-size: 13px; color: var(--muted); }
     .devis-intent strong { color: var(--primary); }
     .discount-tag {
       display: inline-flex; align-items: center; margin-top: 10px;
       background: #E8F5E8; border: 1px solid #7CB87C; color: #2A6A2A;
-      font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px;
+      font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 0;
     }
 
     .devis-actions { padding: 16px 22px 22px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px; }
-    .btn-cta { display: block; background: var(--primary); color: #fff; padding: 14px 20px; border-radius: 9px; text-decoration: none; font-size: 14px; font-weight: 600; text-align: center; }
-    .btn-outline { display: block; color: var(--primary); padding: 11px 20px; border-radius: 9px; border: 1.5px solid var(--accent); text-decoration: none; font-size: 14px; font-weight: 500; text-align: center; }
+    .btn-cta { display: block; background: var(--primary); color: #fff; padding: 14px 20px; border-radius: 0; text-decoration: none; font-size: 14px; font-weight: 600; text-align: center; }
+    .btn-outline { display: block; color: var(--primary); padding: 11px 20px; border-radius: 0; border: 1.5px solid var(--accent); text-decoration: none; font-size: 14px; font-weight: 500; text-align: center; }
 
     .footer { padding: 22px 24px; text-align: center; border-top: 1px solid var(--border); font-size: 12px; color: var(--muted); margin-top: 48px; }
     .footer a { color: var(--primary); text-decoration: none; }
@@ -152,7 +152,7 @@
 
 <script>
 const CATALOG_COLORS = {
-  joko:'#C4975A',aruna:'#B8895A',dune:'#D4A96A',nara:'#C09050',lisa:'#B87848',sari:'#D0A870',
+  joko:'#D9C19E',aruna:'#B8895A',dune:'#D4A96A',nara:'#C09050',lisa:'#B87848',sari:'#D0A870',
   luma:'#9A7050',ananda:'#A87850',andini:'#C8A878',padma:'#BC9060',kinanti:'#D4A060',indra:'#8B6030'
 };
 
@@ -190,7 +190,7 @@ if (intentLabel) {
 
 // Simulation image
 const wrap = document.getElementById('sim-img-wrap');
-const col  = CATALOG_COLORS[productId] || '#B87D4B';
+const col  = CATALOG_COLORS[productId] || '#9A6A33';
 
 if (imgUrl) {
   wrap.innerHTML = `<img src="${imgUrl}" alt="Simulation ${productName}" class="sim-img">`;
