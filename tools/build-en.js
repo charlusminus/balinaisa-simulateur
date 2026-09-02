@@ -85,7 +85,11 @@ const EXEMPT = /Balinaisa|Dominique|Raynal|Marie Claire|Hanoi|Reza|Jaya|Nara|Lyo
 /* Ce qui reste d'une phrase une fois les noms propres retires. C'est la-dessus qu'on juge. */
 const stripNames = (v) => v.replace(EXEMPT, ' ').replace(/\s+/g, ' ').trim();
 const looksFrench = (v) => { const rest = stripNames(v); return rest.length > 3 && FR.test(rest); };
-const SKIP = /<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi;
+/* On ne met en reserve que le CONTENU de script/style : la balise ouvrante reste exposee,
+   sinon l'etape 4 ne voit jamais son src. Le 02/09, <script src="i18n.js"> partait dans le
+   trou avec sa balise : /en/ servait un 404 sur i18n.js ET simulator.js. Aucune erreur
+   visible cote page, mais ni traduction runtime ni simulateur pour un anglophone. */
+const SKIP = /(<(script|style)\b[^>]*>)([\s\S]*?)(<\/\2>)/gi;
 
 /* Le bloc de donnees structurees. C'est un <script>, donc SKIP le mettait en reserve avec
    le reste du JS : il partait en anglais AVEC SON TEXTE FRANCAIS. Trois consequences, toutes
@@ -166,6 +170,31 @@ function typoAnglaise(html) {
   return propre.replace(/\u0000(\d+)\u0000/g, (m, i) => garde[Number(i)]);
 }
 
+/* Chaque chemin local de la page generee doit exister sur le disque. Ce filet est ne du
+   02/09 : <script src="i18n.js"> restait relatif, /en/ demandait /en/i18n.js et /en/simulator.js,
+   deux 404. La page s'affichait sans une erreur visible, mais un anglophone n'avait ni
+   traduction runtime ni simulateur. Rien ne l'a signale pendant des semaines : ni --check
+   (le fichier etait bien "a jour"), ni le detecteur de fuites, ni check-i18n. Un 404 n'est
+   pas une fuite de texte, il faut donc le chercher pour lui-meme. */
+function liensMorts(html) {
+  const morts = [];
+  const sansCommentaires = html.replace(/<!--[\s\S]*?-->/g, '');
+  let m;
+  const re = /\b(?:src|href)="([^"]+)"/g;
+  while ((m = re.exec(sansCommentaires)) !== null) {
+    const url = m[1];
+    if (/^(https?:|\/\/|#|mailto:|tel:|data:)/.test(url)) continue;
+    const chemin = url.split('?')[0].split('#')[0];
+    if (!chemin) continue;
+    /* Un chemin relatif dans /en/ est deja une anomalie : l'etape 4 aurait du l'absolutiser. */
+    let disque = chemin.startsWith('/') ? path.join(ROOT, chemin.slice(1)) : null;
+    if (disque === null) { morts.push(url + ' (relatif, non absolutise)'); continue; }
+    if (disque.endsWith('/')) disque = path.join(disque, 'index.html');
+    if (!fs.existsSync(disque)) morts.push(url);
+  }
+  return [...new Set(morts)];
+}
+
 function build(page) {
   let html = fs.readFileSync(path.join(ROOT, page.src), 'utf8');
   const stats = { texts: 0, attrs: 0, metas: 0, paths: 0, links: 0, ld: 0 };
@@ -177,7 +206,7 @@ function build(page) {
      script/style : leur contenu n'est pas du texte affiche, et simulator.js fait sa
      propre traduction via T() a l'execution. */
   const holes = [];
-  html = html.replace(SKIP, (m) => { holes.push(m); return ' HOLE' + (holes.length - 1) + ' '; });
+  html = html.replace(SKIP, (m, open, tag, body, close) => { holes.push(body); return open + ' HOLE' + (holes.length - 1) + ' ' + close; });
 
   html = html.replace(/>([^<>]+)</g, (m, text) => {
     const key = norm(text);
@@ -261,14 +290,14 @@ function build(page) {
     return m;
   });
 
-  return { html, stats, leaks: [...new Set(leaks)] };   /* meme phrase vue dans le corps ET dans le bloc structure : un seul signalement */
+  return { html, stats, leaks: [...new Set(leaks)], morts: liensMorts(html) };   /* meme phrase vue dans le corps ET dans le bloc structure : un seul signalement */
 }
 
 let failed = false;
 fs.mkdirSync(OUT_DIR, { recursive: true });
 
 PAGES.forEach((page) => {
-  const { html, stats, leaks } = build(page);
+  const { html, stats, leaks, morts } = build(page);
   const outPath = path.join(OUT_DIR, page.out);
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   const label = 'en/' + page.out;
@@ -286,6 +315,13 @@ PAGES.forEach((page) => {
     fs.writeFileSync(outPath, html);
     console.log('%s ecrit : %d textes, %d attributs, %d metas, %d chemins absolutises, %d liens vers /en/, %d champs de donnees structurees.',
       label, stats.texts, stats.attrs, stats.metas, stats.paths, stats.links, stats.ld);
+  }
+
+  if (morts.length) {
+    console.error('\nLIEN MORT dans ' + label + ' : ' + morts.length + ' chemin(s) local(aux) ne pointent sur rien :');
+    morts.forEach((l) => console.error('  - ' + l));
+    console.error('Un asset absent ne fait pas d\'erreur visible : la page s\'affiche, la fonction manque.');
+    failed = true;
   }
 
   if (leaks.length) {
