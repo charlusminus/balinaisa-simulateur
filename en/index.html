@@ -24,8 +24,13 @@
   <!-- i18n : la langue vient du CHEMIN (/ = FR, /en/ = EN, page generee). Le texte est deja
        dans la bonne langue dans le HTML servi, donc aucune traduction au chargement, donc plus
        d'anti-flash a poser : le script inline qui masquait le body (et lisait navigator.language)
-       est devenu du code mort quand /en/ est passe en page generee. Retire. -->
-  <script src="/i18n.js?v=20260903a"></script>
+       est devenu du code mort quand /en/ est passe en page generee. Retire.
+       Charge en defer (03/09) : synchrone dans le head, ses 55 Ko bloquaient le rendu (2 s
+       estimees par Lighthouse mobile). Il n'agit qu'au DOMContentLoaded, que defer precede
+       toujours ; seul le renvoi de compat ?lang=en part quelques ms plus tard. simulator.js
+       passe en defer lui aussi : les scripts defer s'executent dans l'ordre du document,
+       window.i18n existe donc avant que T() serve. -->
+  <script src="/i18n.js?v=20260903b" defer></script>
 
   <!-- SEO -->
   <title>Interior design and layout simulator from a photo | Balinaisa</title>
@@ -71,7 +76,11 @@
   <meta name="twitter:image:alt" content="Salle à manger en teck massif Balinaisa, suspensions et grande table face à la pinède">
 
   <link rel="preconnect" href="https://balinaisa.com">
-  <link rel="stylesheet" href="/styles.css?v=20260903">
+  <!-- Poster du hero : c'est le LCP mobile (la video n'y est jamais chargee). Il etait servi
+       en JPEG de 262 Ko depuis jsDelivr, decouvert tard (attribut poster) sur une origine
+       tierce. Copie locale en WebP (136 Ko), prechargee en priorite haute des le head. -->
+  <link rel="preload" as="image" href="/hero-balinaisa.webp?v=20260903" fetchpriority="high">
+  <link rel="stylesheet" href="/styles.css?v=20260903b">
   <link href="/fonts/fonts.css?v=20260902" rel="stylesheet">
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad" async defer></script>
 
@@ -168,7 +177,7 @@
   <!-- HEADER -->
   <header class="header">
     <a href="/en/" class="header-logo" aria-label="Balinaisa.ai, accueil du simulateur">
-      <img src="/assets/balinaisa-logo-header.png?v=20260902" alt="Balinaisa" height="34">
+      <img src="/assets/balinaisa-logo-header.png?v=20260902" alt="Balinaisa" width="68" height="34">
     </a>
     <button class="header-cta" id="header-cta" onclick="startSimulator()" aria-label="Get started">
       <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
@@ -182,16 +191,18 @@
        Il portait une chaise detouree sur fond uni, qui ne raconte pas le produit. On reprend
        la scene salle a manger, celle de l'apercu de partage, cadree en 9:16 pour un hero
        plein ecran (le hero fait 100vh, une image paysage en object-fit:cover n'en montrerait
-       qu'une bande centrale). Suspensions en haut, la ou le degrade est le plus clair. -->
+       qu'une bande centrale). Suspensions en haut, la ou le degrade est le plus clair.
+       Source HD : hero-balinaisa.jpg du repo balinaisa-visuels ; servi ici en WebP local,
+       precharge dans le head (cf commentaire du preload). -->
   <section class="hero" id="hero">
     <video class="hero-bg-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"
-           poster="https://cdn.jsdelivr.net/gh/charlusminus/balinaisa-visuels@main/hero-balinaisa.jpg">
+           poster="/hero-balinaisa.webp?v=20260903">
       <source data-src="https://balinaisa.com/wp-content/uploads/2025/11/New-Balinaisa-Hero-Header.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
       <img src="/assets/balinaisa-logo-header.png?v=20260902"
-           class="hero-brand-logo" alt="Balinaisa"
+           class="hero-brand-logo" alt="Balinaisa" width="241" height="120"
            onerror="this.style.display='none'">
       <h1 class="hero-title">Your space<br><em>elevated by teak</em></h1>
       <p class="hero-sub">The eye of Dominique Raynal, creator and expert in exceptional teak furniture, elevated by Artificial Intelligence</p>
@@ -213,9 +224,16 @@
   <section class="balinaisa-ai-intro" id="balinaisa-ai">
     <div class="balinaisa-ai-inner">
       <figure class="balinaisa-ai-portrait">
-        <img src="/dominique.jpg" alt="Dominique Raynal, founder of Balinaisa"
-             width="900" height="450" loading="lazy" decoding="async"
-             onerror="this.closest('.balinaisa-ai-portrait').classList.add('is-placeholder')">
+        <!-- WebP en deux largeurs (640 pour un mobile, 900 au-dela), JPEG d'origine en secours.
+             Chemins absolus : /en/ est une page generee dans un sous-repertoire. -->
+        <picture>
+          <source type="image/webp"
+                  srcset="/dominique-640.webp?v=20260903 640w, /dominique.webp?v=20260903 900w"
+                  sizes="(max-width: 760px) min(calc(100vw - 48px), 460px), 330px">
+          <img src="/dominique.jpg" alt="Dominique Raynal, founder of Balinaisa"
+               width="900" height="450" loading="lazy" decoding="async"
+               onerror="this.closest('.balinaisa-ai-portrait').classList.add('is-placeholder')">
+        </picture>
         <figcaption class="balinaisa-ai-sign">Dominique Raynal, Balinaisa</figcaption>
       </figure>
       <div class="balinaisa-ai-text">
@@ -255,9 +273,14 @@
         </a>
       </div>
       <figure class="brand-visual">
-        <img src="/atelier-balinaisa.jpg" alt="Balinaisa solid teak furniture in the showroom"
-             width="800" height="400" loading="lazy" decoding="async"
-             onerror="this.closest('.brand-visual').style.display='none'">
+        <picture>
+          <source type="image/webp"
+                  srcset="/atelier-balinaisa-640.webp?v=20260903 640w, /atelier-balinaisa.webp?v=20260903 1000w"
+                  sizes="(max-width: 760px) calc(100vw - 44px), min(42vw, 400px)">
+          <img src="/atelier-balinaisa.jpg" alt="Balinaisa solid teak furniture in the showroom"
+               width="800" height="400" loading="lazy" decoding="async"
+               onerror="this.closest('.brand-visual').style.display='none'">
+        </picture>
       </figure>
     </div>
 
@@ -657,7 +680,7 @@
   </div>
   -->
 
-  <script src="/simulator.js?v=20260902"></script>
+  <script src="/simulator.js?v=20260902" defer></script>
   <script>
     function widgetClick() {
       const hero = document.getElementById('hero');

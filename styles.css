@@ -40,7 +40,7 @@
   --border:        var(--bali-sable-clair);
   --border-strong: var(--bali-sable);
   --text:          var(--bali-encre);
-  --text-sub:      var(--bali-gris);
+  --text-sub:      var(--bali-taupe-aa);   /* etait le taupe plein : 3.93 sur ivoire 2 a 15 px (Lighthouse, 03/09) */
   --text-muted:    var(--bali-taupe-aa);   /* etait le sauge, 2.82 : jamais un texte a lire */
   --primary:       var(--bali-teck);
   --primary-dark:  var(--bali-teck-hover);
@@ -364,18 +364,21 @@ input, textarea, select { font-family: var(--font-sans); }
 .cta-widget-shimmer {
   position: absolute;
   top: 0;
-  left: -80%;
+  left: 0;
   width: 55%;
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,.38), transparent);
-  transform: skewX(-15deg);
+  /* Animee en transform et non en left : left declenche une mise en page a chaque image
+     (animation non composee, Lighthouse 03/09). Le reflet fait 55 % du bouton, donc
+     -80 % / 160 % du bouton = -145 % / 291 % de sa propre largeur. */
+  transform: translateX(-145%) skewX(-15deg);
   animation: widget-shimmer 2.8s ease-in-out infinite;
   pointer-events: none;
 }
 
 @keyframes widget-shimmer {
-  0% { left: -80%; }
-  65%, 100% { left: 160%; }
+  0% { transform: translateX(-145%) skewX(-15deg); }
+  65%, 100% { transform: translateX(291%) skewX(-15deg); }
 }
 
 .cta-widget-star {
@@ -985,6 +988,11 @@ input, textarea, select { font-family: var(--font-sans); }
 }
 
 .footer-sub { color: var(--text-muted); }
+/* Liens dans du texte courant : sans soulignement, seule la couleur les distingue
+   (axe link-in-text-block, 03/09), et le dore a 12 px ne fait que 2.97 sur blanc. Ils
+   heritent donc du taupe AA du pied de page, soulignes d'un filet sable, dores au survol. */
+.footer-inner a { color: inherit; text-decoration: underline; text-decoration-color: var(--bali-sable); text-underline-offset: 3px; }
+.footer-inner a:hover { color: var(--primary); text-decoration-color: currentColor; }
 
 /* =============================================
    LEGAL PAGE (privacy policy)

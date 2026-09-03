@@ -402,7 +402,8 @@
       a.href = pair[1];
       a.setAttribute('hreflang', l);
       if (on) a.setAttribute('aria-current', 'true');
-      a.style.cssText = 'text-decoration:none;cursor:pointer;background:' + (on ? '#C3875E' : 'transparent') + ';color:' + (on ? '#fff' : '#6F685B') + ';padding:5px 10px;border-radius:0;letter-spacing:.06em;line-height:1;transition:background .15s';
+      // Langue active en encre sur ivoire (14.7) : le blanc sur dore faisait 3.0 a 12 px (axe, 03/09).
+      a.style.cssText = 'text-decoration:none;cursor:pointer;background:' + (on ? '#242424' : 'transparent') + ';color:' + (on ? '#FAF9F5' : '#6F685B') + ';padding:5px 10px;border-radius:0;letter-spacing:.06em;line-height:1;transition:background .15s';
       wrap.appendChild(a);
     });
     var cta = header.querySelector('#header-cta, .header-cta');
