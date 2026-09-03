@@ -16,7 +16,7 @@
     window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
     plausible.init()
   </script>
-  <title>Communiqué de presse | Balinaisa.ai</title>
+  <title>Espace presse | Balinaisa.ai</title>
   <meta name="description" content="Communiqué de presse Balinaisa.ai : un outil d'IA qui transforme une photo de pièce en projet d'aménagement chiffré. Visuels avant/après, chiffres clés et contact.">
   <link rel="canonical" href="https://balinaisa.ai/presse/">
   <link rel="alternate" hreflang="fr" href="https://balinaisa.ai/presse/">
@@ -24,7 +24,7 @@
   <link rel="alternate" hreflang="x-default" href="https://balinaisa.ai/presse/">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Communiqué de presse | Balinaisa.ai">
+  <meta property="og:title" content="Espace presse | Balinaisa.ai">
   <meta property="og:description" content="Un outil d'IA qui transforme une photo de pièce en projet d'aménagement chiffré. Visuels avant/après, chiffres clés et contact presse.">
   <meta property="og:url" content="https://balinaisa.ai/presse/">
   <meta property="og:image" content="https://balinaisa.ai/presse/medias/balinaisa-ai_apres_salle-a-manger-01.jpg">
@@ -44,23 +44,61 @@
   <style>
     /* Styles propres a l'espace presse. Volontairement dans la page et non dans styles.css :
        la feuille globale est chargee par le simulateur sur chaque visite, et ces regles ne
-       servent qu'ici. Elles s'appuient sur les variables et les classes .legal-* existantes. */
-    .press-lead { font-size: 1.02rem; line-height: 1.7; color: var(--text-sub, #6C6C6C); margin-bottom: 1.6rem; }
+       servent qu'ici. Elles s'appuient sur les variables et les classes .legal-* existantes.
+
+       DEUX REGLES POUR TOUTE LA PAGE, posees le 03/09/2026 :
+
+       1. UNE SEULE POLICE POUR LES PETITS TEXTES : Inter, en graisse normale. La page
+          faisait varier trois familles sous 1 rem (Josefin en capitales chassees pour la
+          dateline et les etiquettes, Lora heritee du blockquote pour la source de la
+          citation, Inter pour le reste), ce qui se lit comme un defaut et non comme une
+          intention. Les capitales chassees a .18em de Josefin sont particulierement
+          couteuses en petit corps : sa hauteur d'x est faible, le design system le
+          signale lui-meme comme un probleme mesure. Les titres restent en Lora, le corps
+          et TOUT le petit texte en Inter.
+
+       2. AUCUNE GRAISSE SYNTHETIQUE. fonts/fonts.css ne sert Lora qu'en 400-500 : un
+          font-weight: 600 sur du Lora fait fabriquer un faux gras par le navigateur, plus
+          lourd et plus sale qu'un vrai. Le titre du communique etait dans ce cas. Les
+          graisses disponibles sont Lora 400-500, Josefin 300-600, Inter 300/400/500/600.
+
+       Les valeurs de repli des variables sont celles de la v0.4 : les anciennes (#6C6C6C,
+       #8A8A85) etaient des gris neutres que la charte a retires. */
+    /* Les 19 <b> et <strong> de la page demandaient 700, la graisse par defaut du
+       navigateur pour ces balises. Inter n'est servie qu'en 300/400/500/600 :
+       chacun etait donc un faux gras synthetique, plus lourd et plus sale qu'un
+       vrai, ce qui pese surtout dans les legendes et les petits textes. Mesure du
+       03/09 : meme defaut ailleurs sur le site, 15 occurrences sur
+       /privacy-policy.html, 5 sur /marque/, 3 sur l'accueil dont 2 en Lora 600.
+       Une regle dans styles.css les reglerait toutes ; celle-ci ne couvre que
+       cette page, par prudence de perimetre. */
+    .legal-page b, .legal-page strong { font-weight: 600; }
+
+    .press-lead { font-size: 1.02rem; line-height: 1.7; color: var(--text-sub, #807869); margin-bottom: 1.6rem; }
 
     /* Le communique, compose comme un document : c'est le meme texte que le PDF. */
     .cp { border-top: 1px solid var(--border, #F0E4CC); padding-top: 1.8rem; margin-bottom: 2.4rem; }
-    .cp-title {
-      font-family: var(--font-serif, Georgia, serif); font-weight: 600; font-size: 1.72rem;
-      line-height: 1.2; color: var(--text, #242424); margin-bottom: .8rem;
+    .cp-h2 {
+      font-family: var(--font-serif, Georgia, serif); font-weight: 500; font-size: 1.35rem;
+      line-height: 1.25; color: var(--text, #242424); margin: 0 0 .1rem;
     }
-    .cp-chapo { font-size: 1.06rem; line-height: 1.65; color: var(--text, #242424); font-weight: 500; margin-bottom: .7rem; }
-    .cp-dateline { font-family: var(--font-caps); font-size: .76rem; letter-spacing: var(--tracking-caps);
-      text-transform: uppercase; color: var(--text-muted, #8A8A85); margin-bottom: 1.6rem; }
-    .cp h3 {
-      font-family: var(--font-serif, Georgia, serif); font-weight: 500; font-size: 1.2rem;
+    .cp-title {
+      font-family: var(--font-serif, Georgia, serif); font-weight: 500; font-size: 1.6rem;
+      line-height: 1.24; color: var(--text, #242424); margin: 1.4rem 0 .7rem;
+    }
+    .cp p.cp-chapo {
+      font-family: var(--font-serif, Georgia, serif); font-weight: 400;
+      font-size: 1.08rem; line-height: 1.7; color: var(--text, #242424); margin-bottom: .9rem;
+    }
+    .cp p.cp-dateline {
+      font-family: var(--font-sans); font-weight: 400; font-size: .88rem;
+      color: var(--text-sub, #807869); margin: 0 0 .2rem;
+    }
+        .cp h4 {
+      font-family: var(--font-serif, Georgia, serif); font-weight: 500; font-size: 1.14rem;
       color: var(--text, #242424); margin: 1.9rem 0 .5rem;
     }
-    .cp p { font-size: .96rem; line-height: 1.75; color: var(--text-sub, #6C6C6C); margin-bottom: .7rem; }
+    .cp p { font-size: .96rem; line-height: 1.75; color: var(--text-sub, #807869); margin-bottom: .7rem; }
 
     /* Paires avant / apres. Chaque image est un lien de telechargement vers le fichier
        en taille native : c'est ce dont une redaction a besoin. */
@@ -71,14 +109,20 @@
     figure.media img { display: block; width: 100%; height: auto; }
     figure.media .tag {
       position: absolute; top: 8px; left: 8px; background: rgba(36,36,36,.82); color: #fff;
-      font-family: var(--font-caps); font-size: .66rem; letter-spacing: var(--tracking-caps);
-      text-transform: uppercase; font-weight: 400;
+      font-family: var(--font-sans); font-size: .7rem; letter-spacing: .06em;
+      text-transform: uppercase; font-weight: 600;
       padding: 3px 8px; border-radius: 0;
     }
     figure.media .tag.after { background: var(--primary, #C3875E); }
-    figure.media figcaption { font-size: .84rem; line-height: 1.6; color: var(--text-sub, #6C6C6C); margin-top: .6rem; }
+    figure.media figcaption {
+      font-family: var(--font-sans); font-weight: 400; font-size: .95rem; line-height: 1.65;
+      color: var(--text-sub, #807869); margin-top: .7rem;
+    }
     figure.media figcaption b { color: var(--text, #242424); }
-    figure.media .dl { display: block; margin-top: .3rem; font-size: .76rem; color: var(--text-muted, #8A8A85); }
+    figure.media .dl {
+      display: block; margin-top: .35rem; font-family: var(--font-sans); font-weight: 400;
+      font-size: .88rem; color: var(--text-sub, #807869);
+    }
     .doc-shot { border: 1px solid var(--border, #F0E4CC); border-radius: 0; overflow: hidden; display: block; }
 
     /* Portrait et citation */
@@ -89,7 +133,10 @@
       font-family: var(--font-serif, Georgia, serif); font-style: italic; font-size: 1.08rem;
       line-height: 1.6; color: var(--text, #242424);
     }
-    .voice cite { display: block; font-style: normal; font-size: .84rem; color: var(--text-muted, #8A8A85); margin-top: .5rem; }
+    .voice cite {
+      display: block; font-family: var(--font-sans); font-style: normal; font-weight: 400;
+      font-size: .92rem; color: var(--text-sub, #807869); margin-top: .6rem;
+    }
 
     .pdf-dl { margin: 0 0 1.8rem; }
     .pdf-dl a {
@@ -97,7 +144,14 @@
       padding: 11px 20px; border-radius: 0; font-weight: 600; font-size: .94rem;
       text-decoration: none;
     }
-    .pdf-dl span { display: inline-block; margin-left: .7rem; font-size: .84rem; color: var(--text-sub, #807869); }
+    /* La legende passe SOUS le bouton, et non a cote. A cote, elle tenait sur la
+       meme ligne pour les deux premiers boutons et basculait pour le troisieme,
+       dont le libelle est plus long : trois lignes de telechargement qui ne
+       s alignaient pas entre elles. Sous le bouton, c est vrai a toute largeur. */
+    .pdf-dl span {
+      display: block; margin: .45rem 0 0; font-family: var(--font-sans); font-weight: 400;
+      font-size: .88rem; color: var(--text-sub, #807869);
+    }
     .press-cta {
       background: #FBF5EB; border: 1px solid var(--border, #F0E4CC); border-radius: 0;
       padding: 20px 22px; margin: 1.8rem 0;
@@ -111,7 +165,7 @@
       border-top: 1px solid var(--border, #F0E4CC); margin-top: 2.4rem; padding-top: 2rem;
       padding-bottom: 1rem; text-align: center;
     }
-    .end-cta p { margin: 0 0 1.1rem; font-size: .96rem; color: var(--text-sub, #6C6C6C); }
+    .end-cta p { margin: 0 0 1.1rem; font-size: .96rem; color: var(--text-sub, #807869); }
     .end-cta a {
       display: inline-block; background: var(--primary, #C3875E); color: #fff;
       padding: 14px 30px; border-radius: 0; font-weight: 600; font-size: 1rem;
@@ -124,7 +178,10 @@
     .facts b { color: var(--text, #242424); }
     .dl-list { list-style: none; padding: 0; margin: .6rem 0 0; }
     .dl-list li { margin-bottom: .5rem; }
-    .legal-note { font-size: .84rem; color: var(--text-muted, #8A8A85); margin-top: .9rem; }
+    .legal-note {
+      font-family: var(--font-sans); font-weight: 400; font-size: .9rem;
+      color: var(--text-sub, #807869); margin-top: .9rem;
+    }
   </style>
 </head>
 <body>
@@ -144,9 +201,8 @@
 
   <main class="legal-page">
     <a class="legal-back" href="/">← Retour au simulateur</a>
-    <h1 class="legal-title"><span class="bali-muted">Communiqué</span> de presse.</h1>
+    <h1 class="legal-title"><span class="bali-muted">Espace</span> presse.</h1>
     <hr class="bali-rule">
-    <p class="legal-updated">Balinaisa.ai · septembre 2026</p>
 
     <p class="press-lead">Le communiqué dans son intégralité, avec ses visuels. Chaque image se télécharge en pleine définition d'un clic. Tous les éléments de cette page sont libres de reproduction dans un cadre rédactionnel, avec la mention « Balinaisa ».</p>
 
@@ -162,11 +218,13 @@
      CP-la a laissees tomber, la technologie, le sort des photos et le devis ligne par ligne.
      Tout ce qui est commun doit rester mot pour mot identique au PDF. ============ -->
     <article class="cp">
-      <h2 class="cp-title">Balinaisa.ai réinvente l'expérience de l'aménagement</h2>
+      <h2 class="cp-h2"><span class="bali-muted">Communiqué</span> de presse.</h2>
+      <hr class="bali-rule">
+      <p class="cp-dateline">La Teste-de-Buch (Bassin d'Arcachon), septembre 2026.</p>
+
+      <h3 class="cp-title">Balinaisa.ai réinvente l'expérience de l'aménagement</h3>
 
       <p class="cp-chapo">Révéler tout le potentiel d'un intérieur ou d'un extérieur à partir d'une simple photographie : le pari de Balinaisa.ai, la nouvelle Intelligence Artificielle spécialisée dans l'aménagement et le design.</p>
-
-      <p class="cp-dateline">La Teste-de-Buch (Bassin d'Arcachon), septembre 2026.</p>
 
       <p>À l'occasion du salon Mode&amp;Objet et de la Paris Design Week, Balinaisa, maison française de mobilier et décoration spécialisée dans le teck d'exception, dévoile Balinaisa.ai, son nouvel outil d'Intelligence Artificielle dédié à l'aménagement et au design d'espaces particuliers ou professionnels : salon, salle à manger, terrasse, jardin, restaurant, hôtel.</p>
 
@@ -180,17 +238,17 @@
         <figcaption><b>Une salle à manger, sous charpente.</b> Table Adika, six chaises Lisa, buffet Cocon 3, bibliothèque Cocon 1 et miroir Mentari. Rendu brut, non retouché. La charpente, les poutres, le puits de lumière et le sol restent intacts : l'outil ne redessine pas le bâti.<span class="dl">Cliquez sur une image pour la télécharger en pleine définition.</span></figcaption>
       </figure>
 
-      <h3>Photo, aménagement, devis</h3>
+      <h4>Photo, aménagement, devis</h4>
       <p>Une photo, un budget si on en a un, une adresse email. En une minute, le rendu et le devis arrivent, au même cadrage et sous le même angle que la photo d'origine.</p>
       <p>Le chiffrage n'est pas une estimation de catégorie : chaque meuble représenté est une référence du catalogue Balinaisa, avec son prix hors taxes réel. 97 références, 17 familles, du fauteuil de jardin à la suspension. Deux propositions arrivent, la scène complète telle qu'elle apparaît sur l'image et la sélection qui tient dans le budget annoncé, avec l'écart entre les deux. Le devis est estimatif.</p>
 
-      <h3>Le devis, ligne par ligne</h3>
+      <h4>Le devis, ligne par ligne</h4>
       <figure class="media">
         <a class="doc-shot" href="/presse/medias/balinaisa-ai_devis_salle-a-manger-01.jpg" download title="Télécharger le devis"><img src="/presse/medias/apercu/balinaisa-ai_devis_salle-a-manger-01.jpg" alt="Le devis reçu par email pour cette simulation" loading="lazy"></a>
         <figcaption><b>Le devis reçu par email, pour l'image ci-dessus.</b> Cinq références du catalogue, leur quantité, leur catégorie, leur prix TTC et le total. Rien n'est arrondi ni inventé : chaque ligne est un produit qui existe, au prix auquel il se vend. Ce que l'outil ajoute pour la mise en scène, tapis, plantes et objets, est signalé au client et n'est pas facturé.</figcaption>
       </figure>
 
-      <h3>La technologie, et ce que deviennent les photos</h3>
+      <h4>La technologie, et ce que deviennent les photos</h4>
       <p>Une chaîne d'automatisation développée pour Balinaisa avec <a href="https://paktiz.fr" target="_blank" rel="noopener">Paktiz</a>, son partenaire technique, appuyée sur des modèles de dernière génération. La différence se joue dans le catalogue : pour chaque produit retenu, le générateur reçoit la photo de référence du meuble et son descriptif, ce qui l'oblige à reproduire une pièce qui existe au lieu d'en inventer une.</p>
       <p>La photo importée et le rendu ne servent qu'à produire la simulation et à suivre le projet. Ils ne sont cédés à aucun tiers, sont supprimés automatiquement au-delà de 36 mois, et le simulateur n'emploie ni cookie publicitaire ni traceur intersites. Politique complète sur <a href="/privacy-policy.html">balinaisa.ai/privacy-policy.html</a>, suppression sur simple demande à <a href="mailto:contact@balinaisa.com">contact@balinaisa.com</a>.</p>
 
@@ -202,7 +260,7 @@
         <figcaption><b>Une terrasse couverte.</b> La demande tenait en une phrase : « cette terrasse avec une grande table rectangle, des fauteuils et un salon de jardin ». Table Senjara à piètement araignée, fauteuils de repas à coussins, salon de jardin au fond. La charpente peinte, les poteaux, le dallage et le jardin ne bougent pas.<span class="dl">Cliquez sur une image pour la télécharger en pleine définition.</span></figcaption>
       </figure>
 
-      <h3>Le regard de Dominique Raynal</h3>
+      <h4>Le regard de Dominique Raynal</h4>
       <p>Derrière Balinaisa.ai, il n'y a pas seulement une technologie. Il y a avant tout un regard. Celui de Dominique Raynal, créateur et expert de mobilier en teck d'exception, dont l'expérience, la connaissance du matériau, le sens des proportions et la manière d'imaginer la relation entre mobilier et architecture constituent l'ADN créatif de la maison Balinaisa. L'Intelligence Artificielle ne remplace pas ce regard : elle le prolonge et permet de rendre une idée immédiatement visible et chiffrée.</p>
       <div class="voice">
         <img src="/presse/medias/balinaisa-ai_portrait-dominique-raynal.jpg" alt="Dominique Raynal, fondateur de Balinaisa" loading="lazy">
@@ -211,7 +269,7 @@
         </blockquote>
       </div>
 
-      <h3>Pour les particuliers comme pour les professionnels</h3>
+      <h4>Pour les particuliers comme pour les professionnels</h4>
       <p>Balinaisa.ai s'adresse naturellement aux particuliers souhaitant repenser leur intérieur ou leurs espaces extérieurs. Mais les usages professionnels sont tout aussi nombreux. Architectes d'intérieur, décorateurs, designers, paysagistes, hôteliers, restaurateurs, professionnels de l'immobilier ou de l'aménagement peuvent utiliser cet outil pour accélérer la projection d'un projet et faciliter les échanges avec leurs clients.</p>
       <p>Pour Balinaisa, l'Intelligence Artificielle ne remplace donc pas le travail du designer : elle réduit la distance entre une idée, sa visualisation et son coût.</p>
 
@@ -223,7 +281,7 @@
         <figcaption><b>Un usage professionnel, place Royale à Nantes.</b> La demande : « je veux refaire la terrasse de mon café avec 10 tables et 20 chaises ». Tables rondes à piètement cannelé et chaises en teck à assise tressée remplacent le mobilier métal noir, sous les mêmes parasols et devant la même façade.<span class="dl">Cliquez sur une image pour la télécharger en pleine définition.</span></figcaption>
       </figure>
 
-      <h3>À propos de Balinaisa</h3>
+      <h4>À propos de Balinaisa</h4>
       <p>Balinaisa est une maison française de mobilier et décoration spécialisée dans une gamme premium en teck. Entre la France et l'Indonésie, elle imagine des collections où design contemporain, matériaux nobles et artisanat traditionnel se rencontrent pour donner naissance à des meubles durables, destinés aux particuliers comme aux plus beaux projets d'hôtellerie, de restauration et d'architecture intérieure.</p>
     </article>
 
