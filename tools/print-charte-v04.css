@@ -129,7 +129,7 @@ h2 .num {
   font-size: 13pt;
   color: var(--dore-aa);
   font-variant-numeric: lining-nums;
-  letter-spacing: .1em;
+  letter-spacing: .06em;
   margin: 0 0 1.5mm;
 }
 h2 + .rule { margin: 3.5mm 0 4mm; }

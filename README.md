@@ -1,4 +1,4 @@
-# Balinaisa — Simulateur d'extérieur IA
+# Balinaisa, simulateur d'extérieur Balinaisa.ai
 
 Front du simulateur de homestaging extérieur pour Balinaisa (mobilier teck), propulsé par Paktiz.
 Ce repo ne contient que le **site statique** servi par GitHub Pages.
@@ -9,11 +9,11 @@ Ce repo ne contient que le **site statique** servi par GitHub Pages.
 ## Structure
 
 ```
-index.html     — page principale (wizard : Photo → Coordonnées → Confirmation)
-styles.css     — design system
-simulator.js   — logique UI + envoi du lead au webhook Activepieces
-embed.js       — snippet à coller sur balinaisa.com
-result.html    — page de rendu
+index.html     : page principale (wizard : Photo → Coordonnées → Confirmation)
+styles.css     : design system
+simulator.js   : logique UI + envoi du lead au webhook n8n
+embed.js       : snippet à coller sur balinaisa.com
+result.html    : page de rendu
 ```
 
 ## Déploiement GitHub Pages

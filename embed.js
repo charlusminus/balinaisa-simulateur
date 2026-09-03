@@ -1,5 +1,5 @@
 /* ============================================================
-   BALINAISA — Widget « Imaginez chez vous »
+   BALINAISA, widget « Imaginez chez vous »
    Bouton flottant (sticky CTA) à déposer sur balinaisa.com.
 
    Défauts arrêtés le 27/08 : libellé « Imaginez chez vous », cible https://balinaisa.ai/
@@ -24,7 +24,7 @@
      data-utm-medium="widget-sticky"      (défaut)
      data-utm-campaign="balinaisa-ai"            (défaut)
      data-target="https://balinaisa.ai/"  (défaut)
-     data-skip-intro="true"  (défaut) — arrive direct sur l'import photo (ajoute ?start=1),
+     data-skip-intro="true"  (défaut) : arrive direct sur l'import photo (ajoute ?start=1),
                               "false" pour ouvrir l'écran d'accueil du simulateur
 
    Tracking : UTM ajoutés à l'URL + événement de clic envoyé, si présents,

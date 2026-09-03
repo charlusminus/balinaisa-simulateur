@@ -600,7 +600,7 @@ input, textarea, select { font-family: var(--font-sans); }
 .upload-zone:hover { border-color: var(--primary); background: var(--primary-light); }
 .upload-zone.has-file { border-style: solid; border-color: var(--primary); }
 
-/* Bouton retirer/changer la photo (sur l'apercu) — surtout utile sur mobile. */
+/* Bouton retirer/changer la photo (sur l'apercu), surtout utile sur mobile. */
 .preview-remove {
   position: absolute;
   top: 10px;
@@ -1175,7 +1175,7 @@ input, textarea, select { font-family: var(--font-sans); }
 .prod-price { font-size: 19px; font-weight: 600; color: var(--primary); margin: 0; }
 .prod-price span { font-size: 12px; font-weight: 500; color: var(--text-muted); }
 
-/* Bande de prix compacte — dans l'etape 1, sous l'upload (ancrage prix, self-qualification budget) */
+/* Bande de prix compacte, dans l'etape 1, sous l'upload (ancrage prix, self-qualification budget) */
 .label-opt { color: var(--text-muted); font-weight: 400; font-size: 0.9em; }
 
 @media (max-width: 760px) {

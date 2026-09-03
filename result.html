@@ -23,24 +23,28 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20260902">
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#C3875E">
+  <!-- Polices de la charte, auto-hebergees : sans ce lien la page rendait Inter et
+       Georgia en polices systeme, seule page du site dans ce cas (constat du 03/09). -->
+  <link rel="stylesheet" href="/fonts/fonts.css?v=20260903">
   <style>
     :root {
       --bg: #FAF9F5;
       --primary: #C3875E;
       --accent: #D9C19E;
       --text: #242424;
-      --muted: #6C6C6C;
+      --muted: #6F685B;   /* taupe AA, 5.24 sur ivoire ; le gris v0.2 #6C6C6C est retire de la charte */
       --border: #F0E4CC;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Inter, -apple-system, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
+    b, strong { font-weight: 600; }   /* 600 est la graisse forte servie par Inter */
     .header { background: var(--primary); padding: 20px 32px; display: flex; align-items: center; justify-content: space-between; }
-    .header-brand { font-size: 18px; font-weight: 700; color: #fff; letter-spacing: -.02em; }
+    .header-brand { font-size: 18px; font-weight: 600; color: #fff; letter-spacing: -.02em; }
     .header-sub { font-size: 12px; color: rgba(255,255,255,.65); margin-top: 2px; }
 
     .main { max-width: 1000px; margin: 0 auto; padding: 52px 24px 80px; }
-    .greeting { font-family: Georgia, serif; font-size: 30px; font-weight: 400; margin-bottom: 6px; }
+    .greeting { font-family: 'Lora', Georgia, serif; font-size: 30px; font-weight: 400; margin-bottom: 6px; }
     .greeting-sub { font-size: 15px; color: var(--muted); margin-bottom: 40px; line-height: 1.6; }
 
     .result-grid { display: grid; grid-template-columns: 1fr 360px; gap: 24px; align-items: start; }
@@ -55,7 +59,7 @@
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
     }
     .sim-placeholder-icon {
-      width: 80px; height: 80px; background: rgba(154,106,51,.15); border-radius: 50%;
+      width: 80px; height: 80px; background: rgba(195,135,94,.15); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
     }
     .sim-placeholder-text { font-size: 14px; color: var(--muted); text-align: center; padding: 0 32px; line-height: 1.65; }
@@ -73,7 +77,7 @@
     /* Devis card */
     .devis-card { background: #fff; border-radius: 0; overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,.07); }
     .devis-head { background: var(--bg); padding: 18px 22px; border-bottom: 1px solid var(--border); }
-    .devis-head-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 4px; }
+    .devis-head-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 4px; }
     .devis-product-name { font-size: 20px; font-weight: 600; }
     .devis-product-sub { font-size: 12px; color: var(--muted); margin-top: 3px; }
 
@@ -83,8 +87,8 @@
     .devis-row-label { color: var(--muted); }
     .devis-row-val { font-weight: 500; }
     .devis-total-row { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0 6px; border-top: 2px solid var(--border); margin-top: 4px; }
-    .devis-total-label { font-size: 15px; font-weight: 700; }
-    .devis-total-price { font-size: 24px; font-weight: 700; color: var(--primary); }
+    .devis-total-label { font-size: 15px; font-weight: 600; }
+    .devis-total-price { font-size: 24px; font-weight: 600; color: var(--primary); }
 
     .devis-intent { margin-top: 14px; padding: 10px 14px; background: #FBF4E8; border-radius: 0; font-size: 13px; color: var(--muted); }
     .devis-intent strong { color: var(--primary); }
