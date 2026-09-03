@@ -29,7 +29,7 @@
 
   --display: 'Cormorant Garamond', Georgia, serif;
   --serif:   'Lora', Georgia, serif;
-  --caps:    'Josefin Sans', 'Century Gothic', sans-serif;
+  --caps:    'Josefin Sans', 'Century Gothic', sans-serif;   /* standfirst seulement, regle du 03/09 */
   --sans:    'Inter', system-ui, sans-serif;
 }
 
@@ -70,10 +70,10 @@ a { color: var(--dore-aa); text-decoration: none; }
 .marque img { height: 13mm; width: auto; display: block; }
 
 .eyebrow {
-  font-family: var(--caps);
+  font-family: var(--sans);
   font-weight: 400;
   font-size: 8pt;
-  letter-spacing: .18em;
+  letter-spacing: .06em;
   text-transform: uppercase;
   color: var(--taupe-aa);
   margin: 0 0 5mm;
@@ -135,10 +135,10 @@ h2 .num {
 h2 + .rule { margin: 3.5mm 0 4mm; }
 
 h3 {
-  font-family: var(--caps);
+  font-family: var(--sans);
   font-weight: 600;
   font-size: 9pt;
-  letter-spacing: .16em;
+  letter-spacing: .06em;
   text-transform: uppercase;
   color: var(--encre);
   margin: 5mm 0 2.2mm;
@@ -181,9 +181,9 @@ ol::marker, li::marker { color: var(--dore-aa); }
 }
 .chiffre .lab {
   display: block;
-  font-family: var(--caps);
+  font-family: var(--sans);
   font-size: 8.4pt;
-  letter-spacing: .13em;
+  letter-spacing: .06em;
   text-transform: uppercase;
   color: var(--taupe-aa);
   margin-top: 3mm;
@@ -202,10 +202,10 @@ figure img, figure svg { display: block; width: 100%; height: auto; }
   top: 2.5mm; left: 2.5mm;
   background: var(--encre);
   color: var(--ivoire);
-  font-family: var(--caps);
+  font-family: var(--sans);
   font-size: 7.2pt;
   font-weight: 600;
-  letter-spacing: .16em;
+  letter-spacing: .06em;
   text-transform: uppercase;
   padding: 1mm 2.5mm;
 }
@@ -235,9 +235,9 @@ figcaption b { color: var(--encre); font-weight: 600; }
   margin: 0 0 3mm;
 }
 .citation .qui {
-  font-family: var(--caps);
+  font-family: var(--sans);
   font-size: 8.2pt;
-  letter-spacing: .14em;
+  letter-spacing: .06em;
   text-transform: uppercase;
   color: var(--taupe-aa);
 }
@@ -250,9 +250,9 @@ figcaption b { color: var(--encre); font-weight: 600; }
   background: var(--ivoire-2);
 }
 .contact .lab {
-  font-family: var(--caps);
+  font-family: var(--sans);
   font-size: 8pt;
-  letter-spacing: .18em;
+  letter-spacing: .06em;
   text-transform: uppercase;
   color: var(--taupe-aa);
   margin: 0 0 2.5mm;
