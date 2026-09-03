@@ -46,4 +46,4 @@ Un positionnement haut de gamme : les prix varient selon la pièce, la taille et
 - Site Balinaisa : https://balinaisa.com
 - Instagram : https://www.instagram.com/balinaisa/
 - Confidentialité : https://balinaisa.ai/privacy-policy.html
-- Espace presse (communiqué, chiffres clés, visuels, contact) : https://balinaisa.ai/presse/
+- Espace presse (communiqué, notes techniques, chiffres clés, visuels, contact) : https://balinaisa.ai/presse/

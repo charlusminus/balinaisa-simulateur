@@ -2,7 +2,25 @@
 <!-- Uniquement les pages indexables. /privacy-policy.html (et sa version /en/) portent
      "noindex, follow" : les declarer ici reviendrait a demander l'indexation d'une page
      qui la refuse, ce que la Search Console remonte en erreur. /result.html est en
-     noindex + Disallow dans robots.txt. -->
+     noindex + Disallow dans robots.txt.
+
+     LASTMOD : la date d'un changement de CONTENU, pas celle du dernier commit qui a
+     touche le fichier. Un bump de ?v=, une icone, un theme-color ne changent rien pour
+     un moteur : les declarer ferait demander un recrawl pour rien, et userait la
+     credibilite du signal. Les quatre dates etaient perimees au 03/09/2026, relevees
+     depuis l'historique git page par page.
+       /        et /en/        au 02/09 (design system v0.3 : titres deux tons, FAQ,
+                              donnees structurees ; le 03/09 n'a change que theme-color)
+       /presse/ et /en/presse/ au 03/09 (synthese technique et note technique proposees
+                              au telechargement)
+
+     LES PDF NE SONT PAS DECLARES ICI, volontairement. Ils sont crawlables et seront
+     indexes via les liens de la page, mais GitHub Pages ne permet pas de poser un
+     en-tete "Link: rel=canonical" sur un PDF : impossible donc de dire a un moteur que
+     la page HTML est la version de reference. Les declarer mettrait en concurrence un
+     PDF francais sans navigation avec une page bilingue plus riche, sur les memes
+     requetes. Si le choix inverse est retenu un jour, noter qu'un sitemap ne porte pas
+     de hreflang pour un PDF et que les trois PDF sont en francais seulement. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
@@ -10,7 +28,7 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://balinaisa.ai/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://balinaisa.ai/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://balinaisa.ai/"/>
-    <lastmod>2026-08-10</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -19,7 +37,7 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://balinaisa.ai/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://balinaisa.ai/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://balinaisa.ai/"/>
-    <lastmod>2026-08-25</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -28,7 +46,7 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://balinaisa.ai/presse/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://balinaisa.ai/en/presse/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://balinaisa.ai/presse/"/>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -37,7 +55,7 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://balinaisa.ai/presse/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://balinaisa.ai/en/presse/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://balinaisa.ai/presse/"/>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
