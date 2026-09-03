@@ -21,6 +21,14 @@ Push sur `main` = mise en ligne (Pages, source `main` / root). Les liens `styles
 
 Garde-fou : `node tools/check-i18n.js` liste les clés qui ne correspondent à aucun texte rendu. Il tourne en CI sur chaque PR. Les absences légitimes (catégories du catalogue, UI retirée) se déclarent dans `tools/i18n-allowlist.json`, raison obligatoire.
 
+## `/en/` est généré, ne jamais l'éditer à la main
+`node tools/build-en.js` fabrique les pages anglaises depuis les pages françaises et le dico. `build-en.js --check` échoue si le contenu de `/en/` ne correspond plus à ce que la génération produirait : c'est le second garde-fou de CI. Modifier un fichier sous `/en/` directement, c'est se faire écraser au build suivant.
+
+Le générateur porte aussi `liensMorts()`, qui échoue le build quand une page générée pointe vers un fichier local absent. Il existe parce que `/en/index.html` a servi `i18n.js` et `simulator.js` en 404 pendant sept semaines, du 17/07 au 02/09 : le sélecteur de langue avait disparu et le CTA était inerte, sans la moindre erreur visible côté CI. Un test de non-régression ne couvrait pas cette classe de panne, seul un garde-fou générique la couvre.
+
+## `/marque/` est une bibliothèque, pas la source des icônes
+`/marque/` réunit les déclinaisons du logo et la page qui les présente, pour partage à des tiers. **Les icônes réellement servies** (`favicon.svg`, `favicon.png`, `apple-touch-icon.png`, les deux maskables, `site.webmanifest`) vivent **à la racine** et sont référencées par les pages. Modifier un fichier de `/marque/` ne change rien au site.
+
 ## Notes techniques
 - Le front **POST le lead en `application/json`** au webhook n8n (voir `simulator.js`). Ne pas utiliser `mode:'no-cors'` : ça force `text/plain` et le backend ne parse plus le body.
 - La photo est **redimensionnée côté client** (~1200px, JPEG 0.85) avant envoi.
