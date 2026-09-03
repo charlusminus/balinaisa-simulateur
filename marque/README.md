@@ -1,4 +1,4 @@
-# Balinaisa, repères de marque · design system v0.3
+# Balinaisa, repères de marque · design system v0.4
 
 Bibliothèque de marque, présentée sur une page :
 
@@ -8,7 +8,7 @@ La page montre chaque déclinaison, la palette et les quatre polices en
 spécimens, avec un lien de téléchargement par fichier. C'est l'adresse à
 transmettre : elle s'ouvre sans compte ni permission.
 
-`planche_reperes-de-marque_v0.3.png` reprend le tout sur une image, à joindre
+`planche_reperes-de-marque_v0.4.png` reprend le tout sur une image, à joindre
 à un message pour qui préfère une pièce jointe à un lien.
 
 Ce README est la note technique. Les raisons des choix y sont détaillées ; la
@@ -22,12 +22,13 @@ monogramme carré et la signature horizontale, conservés au Drive dans
 
 | rôle | valeur |
 |---|---|
-| teck doré (accent) | `#9A6A33` |
-| teck survol | `#7C5325` |
+| doré (accent, mesuré sur balinaisa.com) | `#C3875E` |
+| doré survol | `#A96E47` |
 | encre | `#242424` |
-| gris | `#6C6C6C` |
+| taupe | `#807869` |
 | greige | `#9C9084` |
-| gris 2 | `#8A8A85` |
+| sauge | `#959880` |
+| sauge clair | `#D6D7CE` |
 | sable | `#D9C19E` |
 | sable clair | `#F0E4CC` |
 | ivoire (fond) | `#FAF9F5` |

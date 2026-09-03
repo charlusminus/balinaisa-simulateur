@@ -4,11 +4,12 @@
 
 :root {
   /* ============================================================
-     Design system Balinaisa v0.3 « Catalogue doré » (02/09/2026).
+     Design system Balinaisa v0.4 « Doré sauge » (03/09/2026).
      Source : balinaisa-assets/site/design-system/DESIGN-SYSTEM.md,
      couleurs mesurees sur le Catalogue Collection 2027.
-     L accent est le teck dore #9A6A33, arbitrage v0.3 qui remplace
-     l ardoise #3C4854 de tokens.css, restee en v0.1.
+     L accent est le dore #C3875E, mesure sur balinaisa.com (v0.4,
+     eclaircit le teck #9A6A33 de la v0.3) ; les gris neutres sont
+     remplaces par le taupe #807869 et le sauge #959880 du site.
      Les anciens noms de variables sont CONSERVES : ils sont utilises
      dans 1200 lignes de CSS et dans les pages. Seules leurs valeurs
      changent, ce qui evite une reecriture a risque de chaque regle.
@@ -20,12 +21,12 @@
   --bali-blanc:       #FDFDFD;
   --bali-encre:       #242424;
   --bali-greige:      #9C9084;   /* premier mot des titres deux tons */
-  --bali-gris:        #6C6C6C;
-  --bali-gris-2:      #8A8A85;
+  --bali-gris:        #807869;   /* taupe balinaisa.com : on evite les gris neutres (v0.4) */
+  --bali-gris-2:      #959880;   /* vert sauge balinaisa.com, mentions discretes (v0.4) */
   --bali-sable:       #D9C19E;   /* filet dore */
   --bali-sable-clair: #F0E4CC;
-  --bali-teck:        #9A6A33;   /* accent v0.3 */
-  --bali-teck-hover:  #7C5325;
+  --bali-teck:        #C3875E;   /* dore, accent v0.4 */
+  --bali-teck-hover:  #A96E47;
 
   /* ---- Correspondance avec les noms deja en place ---- */
   --bg:            var(--bali-ivoire);
