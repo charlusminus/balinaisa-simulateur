@@ -76,8 +76,10 @@ const { EN, metaEN } = readDict(path.join(ROOT, 'i18n.js'));
 /* Garde-fou : une page anglaise qui contient encore du francais est un echec silencieux. */
 /* Mots choisis pour n'avoir AUCUN homographe anglais : « photo », « de », « en » ou « son »
    en feraient un controle bruyant, qui finirait desactive. Les seconds ajoutes le 25/08 sont
-   le vocabulaire du bloc de donnees structurees (une FAQ produit), la ou il manquait. */
-const FR = /\b(votre|vos|une|des|avec|pour|dans|gratuit|gratuite|sans|photographiez|imagine|aménagement|espace|pièce|chaque|nous|vous|les|est|sont|aucun|aucune|cette|conserv|combien|coûte|mobilier|meubles|simulateur|devis|fonctionne|proposé|propose|quel|quelle|prix|selon|façonné|haut de gamme|estimatif)\b/i;
+   le vocabulaire du bloc de donnees structurees (une FAQ produit), la ou il manquait. Les
+   verbes de boutons (continuer, retour, envoyer...) ajoutes le 03/09 : « Continuer » est reste
+   en francais sur les trois etapes de /en/ pendant des semaines sans que rien ne le signale. */
+const FR = /\b(continuer|retour|envoyer|valider|suivant|précédent|recommencer|annuler|commencer|votre|vos|une|des|avec|pour|dans|gratuit|gratuite|sans|photographiez|imagine|aménagement|espace|pièce|chaque|nous|vous|les|est|sont|aucun|aucune|cette|conserv|combien|coûte|mobilier|meubles|simulateur|devis|fonctionne|proposé|propose|quel|quelle|prix|selon|façonné|haut de gamme|estimatif)\b/i;
 
 /* Noms propres et marques : ils s'ecrivent pareil dans les deux langues, leur presence ne dit
    rien de la langue de la phrase. On les RETIRE avant de tester, au lieu d'exempter la phrase

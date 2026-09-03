@@ -59,6 +59,7 @@
     "Votre espace": "Your space",
     "← Retour": "← Back",
     "Retour": "Back",
+    "Continuer": "Continue",
     "Vous êtes...": "You are...",
     "Vous êtes *": "You are *",
     "Un particulier": "An individual",
