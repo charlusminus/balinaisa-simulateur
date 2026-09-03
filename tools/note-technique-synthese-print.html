@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Balinaisa.ai, synthèse technique</title>
+
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="print-charte-v04.css">
+
+<style>
+/* ===========================================================================
+   Propre a la synthese de 2 pages.
+   Meme charte, meme voix, meme titre que la note complete : c est le meme
+   document resserre, pas un autre. L echelle descend d un cran et les blocs
+   discursifs deviennent des tableaux de faits, parce que 2 pages ne tiennent
+   pas la prose de 6.
+   =========================================================================== */
+html { font-size: 8.7pt; }
+
+h1 { font-size: 24pt; }
+h2 { font-size: 13.5pt; margin-top: 4.5mm; }
+h2 + .rule { margin: 2.5mm 0 3mm; }
+.rule { margin: 4mm 0 3.5mm; }
+h3 { margin: 4mm 0 2mm; }
+.standfirst { font-size: 11.4pt; max-width: 116mm; margin-bottom: 5mm; }
+.marque img { height: 11mm; }
+.marque { margin-bottom: 7mm; }
+
+/* La legende repasse en pleine laisse : bridee a la largeur des photos elle
+   tombait sur quatre lignes et laissait une colonne vide a droite. Une
+   troisieme colonne absorbe le reste sur la rangee des images, la legende
+   garde son grid-column 1 / -1 de la charte et donc les 174 mm. */
+.paire { max-width: none; grid-template-columns: 54mm 54mm 1fr; }
+figure { margin: 4.5mm 0; }
+
+.exergue { margin: 4mm 0; padding: 3.5mm 4.5mm; font-size: 10.2pt; }
+.chiffre { margin: 4.5mm 0; padding: 4mm 0; }
+.chiffre .val { font-size: 26pt; }
+
+/* Tableau de faits : le libelle en capitales Josefin, la valeur en Inter.
+   Remplace les sous-sections de la note complete, qui ne tiendraient pas. */
+.faits {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2.5mm 0 3mm;
+  break-inside: avoid;
+}
+.faits th {
+  width: 34mm;
+  text-align: left;
+  vertical-align: top;
+  padding: 1.7mm 5mm 1.7mm 0;
+  border-top: 1px solid var(--sable-clair);
+  font-family: var(--caps);
+  font-weight: 600;
+  font-size: 8pt;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--taupe-aa);
+}
+.faits td {
+  vertical-align: top;
+  padding: 1.7mm 0;
+  border-top: 1px solid var(--sable-clair);
+  font-size: 9pt;
+  line-height: 1.5;
+}
+.faits tr:last-child th, .faits tr:last-child td { border-bottom: 1px solid var(--sable-clair); }
+.faits td b { font-weight: 600; }
+
+.citation { margin: 4.5mm 0; padding: 4mm 0 0; }
+.citation p { font-size: 10.8pt; }
+.contact { margin-top: 4mm; padding: 3.5mm 4.5mm 3mm; }
+.contact p { font-size: 9pt; }
+.mentions { margin-top: 3.5mm; padding-top: 2.5mm; font-size: 7.8pt; }
+</style>
+</head>
+<body>
+
+<!-- ======================= PAGE 1 ======================= -->
+<header>
+  <div class="marque">
+    <img src="../marque/signature_encre_transparent.png" alt="Balinaisa">
+  </div>
+
+  <p class="eyebrow">Balinaisa.ai · Synthèse technique · Septembre 2026</p>
+
+  <h1><span class="mut">Ce que Balinaisa.ai</span><br>ne peut pas inventer.</h1>
+  <hr class="rule">
+
+  <p class="standfirst">Comment nous obligeons un générateur d'images à ne placer chez vous que
+    des meubles qui existent, au prix auquel nous les vendons.</p>
+
+  <figure class="paire">
+    <div class="vue"><img src="../presse/medias/balinaisa-ai_avant_salle-a-manger-01.jpg"
+         alt="Salle à manger sous charpente, photo d'origine"><span class="etiq">Avant</span></div>
+    <div class="vue"><img src="../presse/medias/balinaisa-ai_apres_salle-a-manger-01.jpg"
+         alt="La même salle à manger meublée par le simulateur"><span class="etiq">Après</span></div>
+    <figcaption><b>Rendu brut, non retouché.</b> Table Adika, six chaises Lisa, buffet Cocon 3,
+      bibliothèque Cocon 1 et miroir Mentari, cinq références de notre catalogue. Charpente,
+      poutres, puits de lumière et sol sont ceux de la photo d'origine.</figcaption>
+  </figure>
+
+  <div class="exergue">Un générateur d'images produira toujours quelque chose de joli, et
+    commercialement inutilisable : une table qui n'existe dans aucun catalogue, à un prix qu'il
+    ne connaît pas. C'est cette contrainte qui a dicté toute l'architecture de Balinaisa.ai,
+    construite avec Paktiz, notre partenaire technique.</div>
+</header>
+
+<section>
+  <h2><span class="num">01</span><span class="mut">Notre catalogue est</span> le garde-fou.</h2>
+  <hr class="rule">
+
+  <p>Le modèle ne choisit jamais un meuble, il reçoit ceux qu'il doit reproduire : la requête ne
+    dit pas « ajoute un fauteuil », elle transmet la photo du fauteuil retenu et son descriptif.
+    Il ne compose plus, il transpose. Cela ne tient que parce que nos <strong>97 références en
+    17 familles</strong>, du tabouret à 74 euros à la table à 4&#8239;407 euros hors taxes,
+    portent toutes les trois mêmes choses : prix hors taxes réel, photo de référence, descriptif.
+    <strong>97 sur 97</strong>. Une seule sans photo, et le modèle redevient libre d'inventer sur
+    celle-là.</p>
+
+  <p>Le devis additionne les prix des références retenues, sans estimation par catégorie ni
+    arrondi. Ce que l'outil ajoute pour la mise en scène, tapis, plantes, objets, vous est
+    signalé et ne vous est pas facturé.</p>
+</section>
+
+<!-- ======================= PAGE 2 ======================= -->
+<section>
+  <h2><span class="num">02</span><span class="mut">La minute</span> d'attente.</h2>
+  <hr class="rule">
+
+  <p>Une photo, un horizon d'achat si vous en avez un, une adresse email. Une minute plus tard,
+    le rendu et le devis arrivent. Entre les deux, une chaîne de <strong>79 nœuds et
+    65 liaisons</strong> orchestrée sous n8n.</p>
+
+  <table class="faits">
+    <tr><th>Filtrage</th><td>Captcha en mode fail-closed, quota par email et par adresse.</td></tr>
+    <tr><th>Lecture</th><td>Un premier modèle analyse la photo : volume, lumière, style, surfaces libres.</td></tr>
+    <tr><th>Sélection</th><td>Le savoir-faire de la maison : quelles familles vont ensemble, dans quel volume.</td></tr>
+    <tr><th>Génération</th><td>Les photos de référence des produits retenus. Cadrage, angle et bâti conservés.</td></tr>
+    <tr><th>Chiffrage</th><td>La scène complète, et la sélection qui tient dans le budget annoncé.</td></tr>
+    <tr><th>Livraison</th><td>Email au client, email à Dominique, écriture de la demande dans notre CRM.</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="num">03</span><span class="mut">Tenir le coût et l'abus,</span> qui sont le même problème.</h2>
+  <hr class="rule">
+
+  <p>Chaque simulation consomme deux appels de modèle payants : un robot qui boucle sur le
+    formulaire consomme un budget réel. Les garde-fous sont les conditions économiques d'un
+    service gratuit.</p>
+
+  <table class="faits">
+    <tr><th>Trois plafonds</th><td><b>8 par heure</b> et par adresse, <b>3 par email</b>, <b>200 par jour</b>. Évalués <b>avant</b> l'appel de modèle, jamais après : une demande refusée ne coûte rien.</td></tr>
+    <tr><th>Deux modèles</th><td>Un modèle de raisonnement lit et sélectionne, un modèle d'image compose. Un seul pour les deux paierait le meilleur des deux tarifs sur tout le travail.</td></tr>
+    <tr><th>Une cascade</th><td>Quatre étages, trois tentatives chacun. Le troisième bascule sur un modèle plus léger : un rendu un peu moins fin plutôt qu'un échec.</td></tr>
+    <tr><th>Un cache</th><td>Le bloc catalogue est identique d'une requête à l'autre. Une lecture en cache coûte le dixième du prix d'entrée : rentable dès la deuxième requête.</td></tr>
+  </table>
+
+  <h3>Ce que l'outil ne fait pas</h3>
+
+  <p>Le devis est estimatif et n'engage pas commercialement. L'outil ne redessine pas le bâti :
+    charpente, poteaux, sol et ouvertures restent ceux de votre photo. Le rendu est une
+    projection, pas une photographie du résultat. La photo importée et le rendu ne servent qu'à
+    la simulation et au suivi du projet, ne sont cédés à aucun tiers et sont supprimés à
+    trente-six mois.</p>
+
+  <div class="contact">
+    <p class="lab">Aller plus loin, et nous joindre</p>
+    <p>La <b>note technique complète</b>, 6 pages, détaille les schémas de la chaîne et la cascade
+      de replis : <b>balinaisa.ai/presse</b>. Le simulateur est public et gratuit, sans création
+      de compte : <b>balinaisa.ai</b>.</p>
+    <p>contact@balinaisa.com · 07&#160;45&#160;06&#160;52&#160;16 · Balinaisa,
+      370 avenue de l'Aérodrome, 33260&#160;La&#160;Teste-de-Buch</p>
+  </div>
+
+  <p class="mentions">Balinaisa est une maison française de mobilier et décoration spécialisée
+    dans une gamme premium en teck, entre la France et l'Indonésie. Balinaisa.ai a été conçu et
+    intégré par Paktiz, partenaire technique de la maison. Éléments libres de reproduction dans un
+    cadre rédactionnel, avec la mention « Balinaisa ». Chiffres relevés sur le catalogue et la
+    chaîne en production au 3 septembre 2026.</p>
+</section>
+
+</body>
+</html>

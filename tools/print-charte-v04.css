@@ -1,0 +1,272 @@
+/* ===========================================================================
+   Balinaisa · charte d impression v0.4 « Dore sauge »
+   Partagee par les masters de tools/, rendus par build-pdf-presse.js.
+   Palette qui fait foi : ../styles.css et ../marque/README.md, PAS le
+   tokens.css du dossier design-system de balinaisa-assets.
+   Chaque master surcharge ensuite son echelle et ses blocs propres.
+   =========================================================================== */
+
+:root {
+  --ivoire:      #FAF9F5;
+  --ivoire-2:    #F5F3EC;
+  --blanc:       #FDFDFD;
+  --encre:       #242424;
+  --greige:      #9C9084;
+  --taupe:       #807869;
+  --sauge:       #959880;
+  --sauge-clair: #D6D7CE;
+  --sable:       #D9C19E;
+  --sable-clair: #F0E4CC;
+  --dore:        #C3875E;
+  --dore-survol: #A96E47;
+
+  /* Variantes AA, memes valeurs que les gabarits d email n8n. Mesures sur
+     ivoire, seuil AA 4.5 : taupe plein 4.15 et dore plein 2.87 echouent tous
+     les deux. Le papier ne rattrape pas un texte trop clair, donc tout ce qui
+     porte du sens ici prend l encre ou l une de ces deux variantes. */
+  --taupe-aa:    #6F685B;   /* 5.24 sur ivoire */
+  --dore-aa:     #A5673C;   /* 4.33 sur ivoire, 4.56 sur blanc */
+
+  --display: 'Cormorant Garamond', Georgia, serif;
+  --serif:   'Lora', Georgia, serif;
+  --caps:    'Josefin Sans', 'Century Gothic', sans-serif;
+  --sans:    'Inter', system-ui, sans-serif;
+}
+
+/* Sans ceci, Chromium retire les aplats a l impression et le document sort
+   blanc sur blanc : plus de panneaux ivoire, plus de filets dores. */
+*, *::before, *::after {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  box-sizing: border-box;
+}
+
+@page {
+  size: A4;
+  margin: 19mm 18mm 17mm;
+}
+
+/* L ECHELLE appartient a chaque master : une note de 6 pages et une synthese
+   de 2 pages ne se composent pas au meme corps. Ce fichier ne pose donc PAS de
+   html { font-size }, il est obligatoire cote master. Les largeurs de figures
+   plus bas sont des valeurs par defaut, qu un master surcharge librement. */
+
+body {
+  margin: 0;
+  background: #FFFFFF;
+  color: var(--encre);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.52;
+  -webkit-font-smoothing: antialiased;
+}
+
+p { margin: 0 0 .72em; orphans: 3; widows: 3; }
+strong, b { font-weight: 600; }
+a { color: var(--dore-aa); text-decoration: none; }
+
+/* ---- Chrome de couverture ------------------------------------------------ */
+.marque { margin: 0 0 13mm; }
+.marque img { height: 13mm; width: auto; display: block; }
+
+.eyebrow {
+  font-family: var(--caps);
+  font-weight: 400;
+  font-size: 8pt;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--taupe-aa);
+  margin: 0 0 5mm;
+}
+
+h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 27pt;
+  line-height: 1.14;
+  margin: 0;
+  letter-spacing: -.005em;
+}
+h1 .mut { color: var(--greige); }
+
+/* Filet dore de 88 px, signature de la charte. */
+.rule {
+  border: 0;
+  width: 88px;
+  height: 1px;
+  margin: 5mm 0 4.5mm;
+  background: linear-gradient(90deg, var(--sable), var(--sable-clair));
+}
+
+.standfirst {
+  font-family: var(--caps);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 12.4pt;
+  line-height: 1.55;
+  color: var(--taupe-aa);
+  max-width: 108mm;
+  margin: 0 0 8mm;
+}
+
+/* ---- Sections ------------------------------------------------------------ */
+section { break-inside: auto; }
+
+h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 16pt;
+  line-height: 1.24;
+  margin: 7mm 0 0;
+  break-after: avoid;
+  break-inside: avoid;
+}
+h2 .mut { color: var(--greige); }
+h2 .num {
+  display: block;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 13pt;
+  color: var(--dore-aa);
+  font-variant-numeric: lining-nums;
+  letter-spacing: .1em;
+  margin: 0 0 1.5mm;
+}
+h2 + .rule { margin: 3.5mm 0 4mm; }
+
+h3 {
+  font-family: var(--caps);
+  font-weight: 600;
+  font-size: 9pt;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--encre);
+  margin: 5mm 0 2.2mm;
+  break-after: avoid;
+}
+
+ol, ul { margin: 0 0 .85em; padding-left: 5.5mm; }
+li { margin: 0 0 .35em; padding-left: 1mm; }
+ol { list-style: decimal; }
+ol::marker, li::marker { color: var(--dore-aa); }
+
+/* ---- Encadre de mise en exergue ------------------------------------------ */
+.exergue {
+  background: var(--ivoire-2);
+  border-left: 2px solid var(--dore);
+  padding: 4.5mm 6mm;
+  margin: 5mm 0;
+  font-family: var(--serif);
+  font-size: 11.6pt;
+  line-height: 1.55;
+  break-inside: avoid;
+}
+
+/* ---- Bloc chiffre --------------------------------------------------------- */
+.chiffre {
+  border-top: 1px solid var(--sable);
+  border-bottom: 1px solid var(--sable);
+  padding: 4.5mm 0;
+  margin: 5mm 0;
+  text-align: center;
+  break-inside: avoid;
+}
+.chiffre .val {
+  display: block;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 29pt;
+  line-height: 1;
+  color: var(--dore-aa);
+}
+.chiffre .lab {
+  display: block;
+  font-family: var(--caps);
+  font-size: 8.4pt;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--taupe-aa);
+  margin-top: 3mm;
+  line-height: 1.7;
+}
+
+/* ---- Figures -------------------------------------------------------------- */
+figure { margin: 5.5mm 0; break-inside: avoid; }
+figure img, figure svg { display: block; width: 100%; height: auto; }
+.paire { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; max-width: 158mm; }
+.paire figcaption { grid-column: 1 / -1; }
+.vue { position: relative; }
+.vue img { border: 1px solid var(--sable-clair); }
+.etiq {
+  position: absolute;
+  top: 2.5mm; left: 2.5mm;
+  background: var(--encre);
+  color: var(--ivoire);
+  font-family: var(--caps);
+  font-size: 7.2pt;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  padding: 1mm 2.5mm;
+}
+figcaption {
+  margin-top: 2.5mm;
+  font-size: 8.6pt;
+  line-height: 1.5;
+  color: var(--taupe-aa);
+}
+figcaption b { color: var(--encre); font-weight: 600; }
+.cadre svg { border: 1px solid var(--sable-clair); max-width: 162mm; }
+.cadre img { max-width: 168mm; }
+
+/* ---- Citation de Dominique ------------------------------------------------ */
+.citation {
+  break-inside: avoid;
+  margin: 5mm 0;
+  padding: 5mm 0 0;
+  border-top: 1px solid var(--sable-clair);
+}
+.citation p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 12pt;
+  line-height: 1.62;
+  color: var(--encre);
+  margin: 0 0 3mm;
+}
+.citation .qui {
+  font-family: var(--caps);
+  font-size: 8.2pt;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--taupe-aa);
+}
+
+/* ---- Pied de document ----------------------------------------------------- */
+.contact {
+  break-inside: avoid;
+  margin: 6mm 0 0;
+  padding: 5mm 6mm 4.5mm;
+  background: var(--ivoire-2);
+}
+.contact .lab {
+  font-family: var(--caps);
+  font-size: 8pt;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--taupe-aa);
+  margin: 0 0 2.5mm;
+}
+.contact p { font-size: 9.6pt; line-height: 1.62; margin: 0 0 .45em; }
+.contact p:last-child { margin-bottom: 0; }
+
+.mentions {
+  margin: 5mm 0 0;
+  padding-top: 3.5mm;
+  border-top: 1px solid var(--sable-clair);
+  font-size: 8.2pt;
+  line-height: 1.55;
+  color: var(--taupe-aa);
+}
+
+.saut { break-before: page; }
