@@ -32,8 +32,13 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20260903">
   <link rel="manifest" href="/site.en.webmanifest">
   <meta name="theme-color" content="#C3875E">
-  <link rel="stylesheet" href="/styles.css?v=20260903b">
-  <link href="/fonts/fonts.css?v=20260902" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=20260903c">
+  <!-- Hors du chemin critique : la feuille ne porte que des @font-face en font-display: swap,
+       le texte s'affiche en police de secours puis bascule, avec ou sans blocage. Bloquer
+       n'ajoutait qu'une requete devant le premier rendu (470 ms mesures par PSI le 03/09).
+       media=print puis onload : chargee sans bloquer, noscript en secours. -->
+  <link href="/fonts/fonts.css?v=20260902" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="/fonts/fonts.css?v=20260902" rel="stylesheet"></noscript>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->

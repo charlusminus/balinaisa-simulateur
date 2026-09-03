@@ -164,6 +164,11 @@ input, textarea, select { font-family: var(--font-sans); }
   color: #fff;
 }
 
+/* L'image de fond est un <img> et non le poster de la video : poster n'a pas de srcset,
+   donc un seul fichier pour tous les ecrans (PSI, 03/09). L'img porte deux largeurs ; la
+   video, sans poster ni source, est transparente tant qu'elle ne joue pas (spec HTML :
+   « transparent black ») et la recouvre quand elle joue (bureau seulement). */
+.hero-bg-img,
 .hero-bg-video {
   position: absolute;
   inset: 0;

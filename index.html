@@ -73,12 +73,24 @@
   <meta name="twitter:image:alt" content="Salle à manger en teck massif Balinaisa, suspensions et grande table face à la pinède">
 
   <link rel="preconnect" href="https://balinaisa.com">
-  <!-- Poster du hero : c'est le LCP mobile (la video n'y est jamais chargee). Il etait servi
-       en JPEG de 262 Ko depuis jsDelivr, decouvert tard (attribut poster) sur une origine
-       tierce. Copie locale en WebP (136 Ko), prechargee en priorite haute des le head. -->
-  <link rel="preload" as="image" href="/hero-balinaisa.webp?v=20260903" fetchpriority="high">
-  <link rel="stylesheet" href="styles.css?v=20260903b">
-  <link href="fonts/fonts.css?v=20260902" rel="stylesheet">
+  <!-- Image du hero : c'est le LCP mobile (la video n'y est jamais chargee). Elle etait servie
+       en JPEG de 262 Ko depuis jsDelivr, decouverte tard (attribut poster) sur une origine
+       tierce. Copies locales en WebP, deux largeurs (840 et 1080), prechargees en priorite
+       haute des le head avec le meme srcset/sizes que l'img : le navigateur choisit le meme
+       fichier aux deux endroits, une seule requete. sizes = largeur rendue d'une image 9:16
+       en object-fit: cover dans 100vw x 100vh, soit max(100vw, 56.25vh). 840 et non 810 :
+       l'ecran de reference de PSI (412 x 823, x1.75) demande 810,25 px, et le navigateur
+       prend le premier candidat au moins aussi large. -->
+  <link rel="preload" as="image" href="/hero-balinaisa.webp?v=20260903"
+        imagesrcset="/hero-balinaisa-840.webp?v=20260903 840w, /hero-balinaisa.webp?v=20260903 1080w"
+        imagesizes="max(100vw, 56.25vh)" fetchpriority="high">
+  <link rel="stylesheet" href="styles.css?v=20260903c">
+  <!-- Hors du chemin critique : la feuille ne porte que des @font-face en font-display: swap,
+       le texte s'affiche en police de secours puis bascule, avec ou sans blocage. Bloquer
+       n'ajoutait qu'une requete devant le premier rendu (470 ms mesures par PSI le 03/09).
+       media=print puis onload : chargee sans bloquer, noscript en secours. -->
+  <link href="fonts/fonts.css?v=20260902" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="fonts/fonts.css?v=20260902" rel="stylesheet"></noscript>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad" async defer></script>
 
   <!-- Données structurées (SEO / GEO) -->
@@ -190,10 +202,17 @@
        plein ecran (le hero fait 100vh, une image paysage en object-fit:cover n'en montrerait
        qu'une bande centrale). Suspensions en haut, la ou le degrade est le plus clair.
        Source HD : hero-balinaisa.jpg du repo balinaisa-visuels ; servi ici en WebP local,
-       precharge dans le head (cf commentaire du preload). -->
+       precharge dans le head (cf commentaire du preload).
+       C'est un <img> derriere la video, et non son poster : l'attribut poster n'a pas de
+       srcset, donc un seul fichier pour tous les ecrans (PSI, 03/09 : 137 Ko pour 463 x 823
+       px CSS). Sans poster ni source, la video est transparente tant qu'elle ne joue pas
+       (spec HTML : « transparent black ») et recouvre l'image quand elle joue, sur bureau. -->
   <section class="hero" id="hero">
-    <video class="hero-bg-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"
-           poster="/hero-balinaisa.webp?v=20260903">
+    <img class="hero-bg-img" src="/hero-balinaisa.webp?v=20260903"
+         srcset="/hero-balinaisa-840.webp?v=20260903 840w, /hero-balinaisa.webp?v=20260903 1080w"
+         sizes="max(100vw, 56.25vh)" width="1080" height="1920"
+         fetchpriority="high" decoding="async" alt="" aria-hidden="true">
+    <video class="hero-bg-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
       <source data-src="https://balinaisa.com/wp-content/uploads/2025/11/New-Balinaisa-Hero-Header.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay" aria-hidden="true"></div>
@@ -677,7 +696,7 @@
   </div>
   -->
 
-  <script src="simulator.js?v=20260902" defer></script>
+  <script src="simulator.js?v=20260903" defer></script>
   <script>
     function widgetClick() {
       const hero = document.getElementById('hero');
