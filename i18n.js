@@ -397,7 +397,7 @@
       a.href = pair[1];
       a.setAttribute('hreflang', l);
       if (on) a.setAttribute('aria-current', 'true');
-      a.style.cssText = 'text-decoration:none;cursor:pointer;background:' + (on ? '#9A6A33' : 'transparent') + ';color:' + (on ? '#fff' : '#8A8A85') + ';padding:5px 10px;border-radius:0;letter-spacing:.12em;line-height:1;transition:background .15s';
+      a.style.cssText = 'text-decoration:none;cursor:pointer;background:' + (on ? '#C3875E' : 'transparent') + ';color:' + (on ? '#fff' : '#8A8A85') + ';padding:5px 10px;border-radius:0;letter-spacing:.12em;line-height:1;transition:background .15s';
       wrap.appendChild(a);
     });
     var cta = header.querySelector('#header-cta, .header-cta');
