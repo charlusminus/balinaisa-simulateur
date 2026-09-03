@@ -18,7 +18,9 @@ function renderTurnstile() {
   // iOS Safari : rendre le widget dans un conteneur encore masque (display:none)
   // produit une iframe a dimensions nulles qui ne s'affiche jamais. On attend donc
   // que la boite soit reellement visible (etape 4 affichee) avant de rendre.
-  if (!box || box.offsetParent === null) return;
+  // closest('.hidden') d'abord : lire offsetParent force une mise en page (reflow force
+  // releve par PSI le 03/09 au DOMContentLoaded, simulateur encore masque).
+  if (!box || box.closest('.hidden') || box.offsetParent === null) return;
   try { _turnstileId = turnstile.render('#turnstile-box', { sitekey: TURNSTILE_SITEKEY, theme: 'light' }); } catch (e) {}
 }
 window.onTurnstileLoad = renderTurnstile;
