@@ -388,15 +388,29 @@
   // Le switch est fait de vrais LIENS, pas de boutons JS. Deux raisons : la langue EST le
   // chemin, donc changer de langue = changer de page ; et un <a href> entre les deux versions
   // est crawlable, ce qui est precisement ce qu'un couple hreflang attend.
+  // La cible du switch et du bandeau vient des <link rel=alternate hreflang> de la page :
+  // c'est la source de verite du couple FR/EN (build-en.js les ecrit), et une page sans
+  // couple (merci.html, /marque/) n'a pas de switch, plutot qu'un switch qui renvoie a
+  // l'accueil. Avant le 03/09 les cibles etaient / et /en/ en dur : depuis /presse/, le
+  // switch aurait ramene a l'accueil, et de toute facon la page ne chargeait pas ce script.
+  function alternate(lang) {
+    var el = document.querySelector('link[rel="alternate"][hreflang="' + lang + '"]');
+    if (!el) return null;
+    var href = el.getAttribute('href');
+    try { return new URL(href, location.href).pathname; } catch (e) { return href; }
+  }
+
   function buildSwitch() {
     var header = document.querySelector('.header');
     if (!header || document.getElementById('lang-switch')) return;
+    var fr = alternate('fr'), en = alternate('en');
+    if (!fr || !en) return;
     var wrap = document.createElement('div');
     wrap.id = 'lang-switch';
     wrap.setAttribute('role', 'group');
     wrap.setAttribute('aria-label', 'Language / Langue');
     wrap.style.cssText = 'display:inline-flex;gap:2px;align-items:center;margin-left:auto;margin-right:12px;font-family:Helvetica,Arial,sans-serif;font-size:12px;font-weight:600;letter-spacing:.04em';
-    [['fr', '/'], ['en', '/en/']].forEach(function (pair) {
+    [['fr', fr], ['en', en]].forEach(function (pair) {
       var l = pair[0], on = (LANG === l);
       var a = document.createElement('a');
       a.textContent = l.toUpperCase();
@@ -416,6 +430,8 @@
   // On propose, on n'impose pas.
   function offerEnglish() {
     if (LANG !== 'fr') return;
+    var en = alternate('en');
+    if (!en) return;
     var nav = ((navigator.languages && navigator.languages[0]) || navigator.language || 'fr').toLowerCase();
     if (nav.indexOf('fr') === 0) return;
     try { if (localStorage.getItem('bal_en_offer') === 'off') return; } catch (e) {}
@@ -423,7 +439,7 @@
     bar.id = 'en-offer';
     bar.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:1000;background:#242424;color:#fff;padding:11px 16px;display:flex;align-items:center;justify-content:center;gap:14px;font-family:Helvetica,Arial,sans-serif;font-size:14px';
     var a = document.createElement('a');
-    a.href = '/en/'; a.textContent = 'Read this page in English \u2192';
+    a.href = en; a.textContent = 'Read this page in English \u2192';
     a.style.cssText = 'color:#D9C19E;text-decoration:none;font-weight:600';
     var x = document.createElement('button');
     x.type = 'button'; x.textContent = '\u2715'; x.setAttribute('aria-label', 'Dismiss');

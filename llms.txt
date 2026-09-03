@@ -42,8 +42,13 @@ Un positionnement haut de gamme : les prix varient selon la pièce, la taille et
 
 ## Liens
 
-- Simulateur Balinaisa.ai : https://balinaisa.ai/
-- Site Balinaisa : https://balinaisa.com
-- Instagram : https://www.instagram.com/balinaisa/
-- Confidentialité : https://balinaisa.ai/privacy-policy.html
-- Espace presse (communiqué, notes techniques, chiffres clés, visuels, contact) : https://balinaisa.ai/presse/
+- [Simulateur Balinaisa.ai](https://balinaisa.ai/) : la page d'accueil du simulateur, en français.
+- [Balinaisa.ai in English](https://balinaisa.ai/en/) : la même page en anglais.
+- [Espace presse](https://balinaisa.ai/presse/) : communiqué, notes techniques, chiffres clés, visuels en pleine définition, contact presse.
+- [Press room](https://balinaisa.ai/en/presse/) : l'espace presse en anglais.
+- [Communiqué de presse (PDF)](https://balinaisa.ai/presse/balinaisa-ai_communique-de-presse.pdf) : le communiqué de lancement, septembre 2026.
+- [Note technique (PDF, 6 pages)](https://balinaisa.ai/presse/balinaisa-ai_note-technique.pdf) : comment Balinaisa.ai transforme la photo d'une pièce en projet d'aménagement chiffré.
+- [Synthèse de la note technique (PDF, 2 pages)](https://balinaisa.ai/presse/balinaisa-ai_note-technique-synthese.pdf) : l'essentiel en deux pages.
+- [Site Balinaisa](https://balinaisa.com) : la marque, ses collections, son showroom au bassin d'Arcachon.
+- [Instagram Balinaisa](https://www.instagram.com/balinaisa/) : les pièces en situation.
+- [Politique de confidentialité](https://balinaisa.ai/privacy-policy.html) : traitement des photos et des coordonnées.
