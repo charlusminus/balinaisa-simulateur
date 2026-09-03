@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Balinaisa.ai, note technique</title>
+
+<!-- Polices auto-hebergees du depot : aucun appel reseau au rendu, donc un PDF
+     reproductible et des glyphes reellement embarques (RGPD, meme regle que le site). -->
+<link rel="stylesheet" href="../fonts/fonts.css">
+
+<style>
+/* ===========================================================================
+   Balinaisa.ai · note technique · master d impression
+   Charte v0.4 « Dore sauge ». Palette qui fait foi : ../styles.css et
+   ../marque/README.md, pas le tokens.css du dossier design-system.
+
+   Rendu : node tools/build-note-technique-pdf.js
+   =========================================================================== */
+
+:root {
+  --ivoire:      #FAF9F5;
+  --ivoire-2:    #F5F3EC;
+  --blanc:       #FDFDFD;
+  --encre:       #242424;
+  --greige:      #9C9084;
+  --taupe:       #807869;
+  --sauge:       #959880;
+  --sauge-clair: #D6D7CE;
+  --sable:       #D9C19E;
+  --sable-clair: #F0E4CC;
+  --dore:        #C3875E;
+  --dore-survol: #A96E47;
+
+  /* Variantes AA, memes valeurs que les gabarits d email n8n. Mesures sur
+     ivoire, seuil AA 4.5 : taupe plein 4.15 et dore plein 2.87 echouent tous
+     les deux. Le papier ne rattrape pas un texte trop clair, donc tout ce qui
+     porte du sens ici prend l encre ou l une de ces deux variantes. */
+  --taupe-aa:    #6F685B;   /* 5.24 sur ivoire */
+  --dore-aa:     #A5673C;   /* 4.33 sur ivoire, 4.56 sur blanc */
+
+  --display: 'Cormorant Garamond', Georgia, serif;
+  --serif:   'Lora', Georgia, serif;
+  --caps:    'Josefin Sans', 'Century Gothic', sans-serif;
+  --sans:    'Inter', system-ui, sans-serif;
+}
+
+/* Sans ceci, Chromium retire les aplats a l impression et le document sort
+   blanc sur blanc : plus de panneaux ivoire, plus de filets dores. */
+*, *::before, *::after {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  box-sizing: border-box;
+}
+
+@page {
+  size: A4;
+  margin: 19mm 18mm 17mm;
+}
+
+html { font-size: 10.1pt; }
+
+body {
+  margin: 0;
+  background: #FFFFFF;
+  color: var(--encre);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.52;
+  -webkit-font-smoothing: antialiased;
+}
+
+p { margin: 0 0 .72em; orphans: 3; widows: 3; }
+strong, b { font-weight: 600; }
+a { color: var(--dore-aa); text-decoration: none; }
+
+/* ---- Chrome de couverture ------------------------------------------------ */
+.marque { margin: 0 0 13mm; }
+.marque img { height: 13mm; width: auto; display: block; }
+
+.eyebrow {
+  font-family: var(--caps);
+  font-weight: 400;
+  font-size: 8pt;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--taupe-aa);
+  margin: 0 0 5mm;
+}
+
+h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 27pt;
+  line-height: 1.14;
+  margin: 0;
+  letter-spacing: -.005em;
+}
+h1 .mut { color: var(--greige); }
+
+/* Filet dore de 88 px, signature de la charte. */
+.rule {
+  border: 0;
+  width: 88px;
+  height: 1px;
+  margin: 5mm 0 4.5mm;
+  background: linear-gradient(90deg, var(--sable), var(--sable-clair));
+}
+
+.standfirst {
+  font-family: var(--caps);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 12.4pt;
+  line-height: 1.55;
+  color: var(--taupe-aa);
+  max-width: 108mm;
+  margin: 0 0 8mm;
+}
+
+/* ---- Sections ------------------------------------------------------------ */
+section { break-inside: auto; }
+
+h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 16pt;
+  line-height: 1.24;
+  margin: 7mm 0 0;
+  break-after: avoid;
+  break-inside: avoid;
+}
+h2 .mut { color: var(--greige); }
+h2 .num {
+  display: block;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 13pt;
+  color: var(--dore-aa);
+  font-variant-numeric: lining-nums;
+  letter-spacing: .1em;
+  margin: 0 0 1.5mm;
+}
+h2 + .rule { margin: 3.5mm 0 4mm; }
+
+h3 {
+  font-family: var(--caps);
+  font-weight: 600;
+  font-size: 9pt;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--encre);
+  margin: 5mm 0 2.2mm;
+  break-after: avoid;
+}
+
+ol, ul { margin: 0 0 .85em; padding-left: 5.5mm; }
+li { margin: 0 0 .35em; padding-left: 1mm; }
+ol { list-style: decimal; }
+ol::marker, li::marker { color: var(--dore-aa); }
+
+/* ---- Encadre de mise en exergue ------------------------------------------ */
+.exergue {
+  background: var(--ivoire-2);
+  border-left: 2px solid var(--dore);
+  padding: 4.5mm 6mm;
+  margin: 5mm 0;
+  font-family: var(--serif);
+  font-size: 11.6pt;
+  line-height: 1.55;
+  break-inside: avoid;
+}
+
+/* ---- Bloc chiffre --------------------------------------------------------- */
+.chiffre {
+  border-top: 1px solid var(--sable);
+  border-bottom: 1px solid var(--sable);
+  padding: 4.5mm 0;
+  margin: 5mm 0;
+  text-align: center;
+  break-inside: avoid;
+}
+.chiffre .val {
+  display: block;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 29pt;
+  line-height: 1;
+  color: var(--dore-aa);
+}
+.chiffre .lab {
+  display: block;
+  font-family: var(--caps);
+  font-size: 8.4pt;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--taupe-aa);
+  margin-top: 3mm;
+  line-height: 1.7;
+}
+
+/* ---- Figures -------------------------------------------------------------- */
+figure { margin: 5.5mm 0; break-inside: avoid; }
+figure img, figure svg { display: block; width: 100%; height: auto; }
+.paire { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; max-width: 158mm; }
+.paire figcaption { grid-column: 1 / -1; }
+.vue { position: relative; }
+.vue img { border: 1px solid var(--sable-clair); }
+.etiq {
+  position: absolute;
+  top: 2.5mm; left: 2.5mm;
+  background: var(--encre);
+  color: var(--ivoire);
+  font-family: var(--caps);
+  font-size: 7.2pt;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  padding: 1mm 2.5mm;
+}
+figcaption {
+  margin-top: 2.5mm;
+  font-size: 8.6pt;
+  line-height: 1.5;
+  color: var(--taupe-aa);
+}
+figcaption b { color: var(--encre); font-weight: 600; }
+.cadre svg { border: 1px solid var(--sable-clair); max-width: 162mm; }
+.cadre img { max-width: 168mm; }
+
+/* ---- Citation de Dominique ------------------------------------------------ */
+.citation {
+  break-inside: avoid;
+  margin: 5mm 0;
+  padding: 5mm 0 0;
+  border-top: 1px solid var(--sable-clair);
+}
+.citation p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 12pt;
+  line-height: 1.62;
+  color: var(--encre);
+  margin: 0 0 3mm;
+}
+.citation .qui {
+  font-family: var(--caps);
+  font-size: 8.2pt;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--taupe-aa);
+}
+
+/* ---- Pied de document ----------------------------------------------------- */
+.contact {
+  break-inside: avoid;
+  margin: 6mm 0 0;
+  padding: 5mm 6mm 4.5mm;
+  background: var(--ivoire-2);
+}
+.contact .lab {
+  font-family: var(--caps);
+  font-size: 8pt;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--taupe-aa);
+  margin: 0 0 2.5mm;
+}
+.contact p { font-size: 9.6pt; line-height: 1.62; margin: 0 0 .45em; }
+.contact p:last-child { margin-bottom: 0; }
+
+.mentions {
+  margin: 5mm 0 0;
+  padding-top: 3.5mm;
+  border-top: 1px solid var(--sable-clair);
+  font-size: 8.2pt;
+  line-height: 1.55;
+  color: var(--taupe-aa);
+}
+
+.saut { break-before: page; }
+</style>
+</head>
+<body>
+
+<!-- ======================= COUVERTURE ======================= -->
+<header>
+  <div class="marque">
+    <img src="../marque/signature_encre_transparent.png" alt="Balinaisa">
+  </div>
+
+  <p class="eyebrow">Balinaisa.ai · Note technique · Septembre 2026</p>
+
+  <h1><span class="mut">Ce que Balinaisa.ai</span><br>ne peut pas inventer.</h1>
+  <hr class="rule">
+
+  <p class="standfirst">Annexe technique au communiqué de presse. Comment nous obligeons un
+    générateur d'images à ne placer chez vous que des meubles qui existent, au prix auquel
+    nous les vendons.</p>
+
+  <figure class="paire">
+    <div class="vue"><img src="../presse/medias/balinaisa-ai_avant_salle-a-manger-01.jpg"
+         alt="Salle à manger sous charpente, photo d'origine"><span class="etiq">Avant</span></div>
+    <div class="vue"><img src="../presse/medias/balinaisa-ai_apres_salle-a-manger-01.jpg"
+         alt="La même salle à manger meublée par le simulateur"><span class="etiq">Après</span></div>
+    <figcaption><b>Rendu brut, non retouché.</b> Table Adika, six chaises Lisa, buffet Cocon 3,
+      bibliothèque Cocon 1 et miroir Mentari, cinq références de notre catalogue. La charpente,
+      les poutres, le puits de lumière et le sol sont ceux de la photo d'origine : le modèle
+      meuble, il ne redessine pas le bâti.</figcaption>
+  </figure>
+</header>
+
+<section>
+  <p>Un générateur d'images produira toujours quelque chose de joli. C'est précisément le
+    problème. Demandez-lui de meubler un salon, il dessinera une table élégante qui n'existe
+    dans aucun catalogue, à un prix qu'il ne connaît pas. L'image est séduisante et
+    commercialement inutilisable : personne ne peut vendre ce meuble, et nous ne saurions pas
+    vous le livrer.</p>
+
+  <p>Balinaisa fabrique du mobilier en teck massif entre la France et l'Indonésie. Nos clients
+    butaient sur la projection : il est difficile d'acheter une table à deux mille euros sans
+    se figurer ce qu'elle donne chez soi. Le besoin était clair. La contrainte l'était tout
+    autant.</p>
+
+  <div class="exergue">Chaque meuble visible sur l'image doit être une référence de notre
+    catalogue, au prix auquel elle se vend. Sinon l'outil fabrique de la déception à la place
+    d'un projet.</div>
+
+  <p>C'est cette contrainte, et non la génération d'image, qui a dicté toute l'architecture de
+    Balinaisa.ai. Nous l'avons construite avec Paktiz, notre partenaire technique, qui en a
+    assuré la conception et l'intégration.</p>
+
+</section>
+
+<!-- ======================= 1 ======================= -->
+<section>
+  <h2><span class="num">01</span><span class="mut">Notre catalogue est</span> le garde-fou.</h2>
+  <hr class="rule">
+
+  <p>La tentation naturelle est de décrire le style souhaité au générateur et d'espérer. Nous
+    avons pris le problème dans l'autre sens : le modèle ne choisit jamais un meuble, il reçoit
+    ceux qu'il doit reproduire.</p>
+
+  <p>Le catalogue compte <strong>97 références réparties en 17 familles</strong>, du tabouret à
+    74 euros à la table à 4 407 euros hors taxes. Chaque référence porte trois choses, et c'est
+    le point qui fait tout basculer :</p>
+
+  <ol>
+    <li>son <strong>prix hors taxes réel</strong>, celui de notre tarif commercial ;</li>
+    <li>sa <strong>photo de référence</strong>, le meuble tel que nous le fabriquons ;</li>
+    <li>son <strong>descriptif</strong>, la matière, le piètement, les proportions.</li>
+  </ol>
+
+  <p>Ces trois champs sont renseignés sur <strong>97 références sur 97</strong>. Ce n'est pas un
+    détail de complétude : une seule référence sans photo, et le modèle redevient libre
+    d'inventer sur celle-là.</p>
+
+  <div class="chiffre">
+    <span class="val">97 / 97</span>
+    <span class="lab">références du catalogue portant photo, descriptif et prix réel<br>
+      c'est la condition pour que le modèle ne puisse rien inventer</span>
+  </div>
+
+  <p>Au moment de la génération, la requête ne dit pas « ajoute un fauteuil ». Elle transmet la
+    photo du fauteuil retenu et son descriptif, et demande de le placer dans votre pièce. Le
+    modèle ne compose plus, il transpose. C'est une contrainte beaucoup plus forte qu'une
+    consigne écrite, et beaucoup plus fiable qu'un contrôle après coup.</p>
+
+  <p>Le devis suit mécaniquement : il additionne les prix des références effectivement retenues.
+    Il n'est pas estimé par catégorie, il n'est pas arrondi. Ce que l'outil ajoute pour la mise
+    en scène, tapis, plantes, objets, vous est signalé et ne vous est pas facturé.</p>
+
+  <figure class="cadre">
+    <img src="../presse/medias/balinaisa-ai_devis_salle-a-manger-01.jpg"
+         alt="Le devis reçu par email, cinq lignes et un total"
+         style="border:1px solid var(--sable-clair)">
+    <figcaption><b>Le devis reçu par email, pour l'image ci-dessus.</b> Cinq références, leur
+      quantité, leur catégorie, leur prix TTC et le total. Chaque ligne est un produit qui
+      existe, au prix auquel il se vend. Rien n'est arrondi ni interpolé.</figcaption>
+  </figure>
+
+</section>
+
+<!-- ======================= 2 ======================= -->
+<section>
+  <h2><span class="num">02</span><span class="mut">La minute</span> d'attente.</h2>
+  <hr class="rule">
+
+  <p>Vous envoyez une photo, un horizon d'achat si vous en avez un, une adresse email. Une
+    minute plus tard, vous recevez le rendu et le devis. Entre les deux, une chaîne
+    d'automatisation orchestrée sous n8n.</p>
+
+  <p>Le workflow principal compte <strong>79 nœuds et 65 liaisons</strong> : 19 nœuds de code,
+    8 appels HTTP, 7 branchements conditionnels, 6 accès à Google Sheets, 6 à Drive. Deux
+    workflows secondaires gèrent l'ingestion des demandes venues d'autres canaux et le
+    récapitulatif quotidien envoyé à Dominique Raynal.</p>
+
+  <p>Les étapes qui comptent, dans l'ordre :</p>
+
+  <ol>
+    <li><strong>Filtrage à l'entrée.</strong> Un captcha en mode fail-closed : en cas de doute,
+      on refuse. Un quota par email et par adresse évite qu'un curieux consomme le budget de
+      génération.</li>
+    <li><strong>Lecture de la pièce.</strong> Un premier modèle analyse la photo, identifie le
+      volume, la lumière, le style et les surfaces disponibles.</li>
+    <li><strong>Sélection dans le catalogue.</strong> C'est ici qu'est encodé le savoir-faire de
+      la maison : quelles familles vont ensemble, quelles proportions dans quel volume, ce qu'on
+      ne met pas dans une véranda.</li>
+    <li><strong>Génération contrainte.</strong> La requête embarque les photos de référence des
+      produits retenus. Le cadrage, l'angle et le bâti de la photo d'origine sont conservés :
+      l'outil ne redessine pas la charpente, il meuble.</li>
+    <li><strong>Chiffrage.</strong> Deux propositions partent ensemble, la scène complète telle
+      qu'elle apparaît, et la sélection qui tient dans le budget annoncé, avec l'écart entre les
+      deux.</li>
+    <li><strong>Livraison et suivi.</strong> Email au client, email à Dominique, écriture de la
+      demande dans notre CRM.</li>
+  </ol>
+</section>
+
+<!-- ======================= 3 ======================= -->
+<section>
+  <h2><span class="num">03</span><span class="mut">Tenir le coût et l'abus,</span> qui sont le même problème.</h2>
+  <hr class="rule">
+
+  <p>Chaque simulation consomme deux appels de modèle payants. Un robot qui boucle sur le
+    formulaire ne fait donc pas que polluer notre base de demandes, il consomme un budget réel.
+    Les garde-fous ci-dessous ne sont pas de la sécurité d'apparat, ce sont les conditions
+    économiques d'un service gratuit.</p>
+
+  <h3>Trois plafonds plutôt qu'un</h3>
+
+  <p>Un seul compteur se contourne toujours. Trois compteurs indépendants se contournent
+    beaucoup moins, parce qu'ils ne mesurent pas la même chose : un visiteur légitime qui refait
+    une simulation, un script qui martèle depuis une adresse, et le budget de la journée.</p>
+
+  <figure class="cadre">
+    <svg viewBox="0 0 900 250" xmlns="http://www.w3.org/2000/svg" role="img"
+         aria-label="Trois plafonds successifs filtrent une demande avant qu elle ne consomme un appel modele">
+      <style>
+        /* Geometrie inchangee, seules les couleurs passent en charte v0.4.
+           Inter et non Josefin pour les libelles : a 11 px, la hauteur d x de
+           Josefin est trop faible pour tenir a l impression. */
+        .t  { font-family: Inter, system-ui, sans-serif; fill: #242424; }
+        .lb { font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; fill: #6F685B; }
+        .vl { font-size: 26px; font-weight: 700; fill: #A5673C; }
+        .sb { font-size: 12.5px; fill: #6F685B; }
+        .bx { fill: #FDFDFD; stroke: #D6D7CE; }
+        .fl { stroke: #9C9084; stroke-width: 1.5; fill: none; }
+      </style>
+      <rect x="0" y="0" width="900" height="250" fill="#F5F3EC"/>
+
+      <rect class="bx" x="16" y="72" width="112" height="66"/>
+      <text class="t lb" x="72" y="99" text-anchor="middle">Demande</text>
+      <text class="t sb" x="72" y="120" text-anchor="middle">photo + email</text>
+
+      <path class="fl" d="M132 105 H168" marker-end="url(#fa)"/>
+      <defs><marker id="fa" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+        <path d="M0 0 L7 3.5 L0 7 z" fill="#9C9084"/></marker></defs>
+
+      <rect class="bx" x="172" y="56" width="168" height="98"/>
+      <text class="t lb" x="256" y="80" text-anchor="middle">Par adresse IP</text>
+      <text class="t vl" x="256" y="112" text-anchor="middle">8 / heure</text>
+      <text class="t sb" x="256" y="134" text-anchor="middle">fenêtre glissante</text>
+
+      <path class="fl" d="M344 105 H380" marker-end="url(#fa)"/>
+
+      <rect class="bx" x="384" y="56" width="168" height="98"/>
+      <text class="t lb" x="468" y="80" text-anchor="middle">Par email</text>
+      <text class="t vl" x="468" y="112" text-anchor="middle">3 au total</text>
+      <text class="t sb" x="468" y="134" text-anchor="middle">simulations abouties</text>
+
+      <path class="fl" d="M556 105 H592" marker-end="url(#fa)"/>
+
+      <rect class="bx" x="596" y="56" width="168" height="98"/>
+      <text class="t lb" x="680" y="80" text-anchor="middle">Global</text>
+      <text class="t vl" x="680" y="112" text-anchor="middle">200 / jour</text>
+      <text class="t sb" x="680" y="134" text-anchor="middle">toutes tentatives</text>
+
+      <path class="fl" d="M768 105 H804" marker-end="url(#fa)"/>
+      <rect x="808" y="72" width="80" height="66" fill="#A5673C"/>
+      <text class="t lb" x="848" y="99" text-anchor="middle" style="fill:#FDFDFD">Appel</text>
+      <text class="t lb" x="848" y="117" text-anchor="middle" style="fill:#FDFDFD">modèle</text>
+
+      <text class="t sb" x="16" y="196">Contrôlé avant les plafonds : la photo doit peser entre 100 caractères et 3,5 Mo une fois encodée.</text>
+      <text class="t sb" x="16" y="216">Une absence de photo et une photo trop lourde sont deux refus distincts, avec deux messages distincts.</text>
+      <text class="t sb" x="16" y="236">Chaque plafond franchi coûte deux appels de modèle. Le filtrage se fait donc avant, jamais après.</text>
+    </svg>
+    <figcaption><b>Les trois plafonds sont évalués avant l'appel de modèle</b>, pas après. Une
+      demande refusée ne coûte rien d'autre qu'une lecture de la feuille de suivi.</figcaption>
+  </figure>
+
+  <p>Le détail qui compte : le plafond par email ne compte que les <strong>simulations
+    abouties</strong>, alors que le plafond journalier compte toutes les tentatives valides. Un
+    visiteur dont la génération a échoué ne consomme pas son quota, et le budget de la journée
+    reste protégé.</p>
+
+  <h3>Deux modèles, deux métiers</h3>
+
+  <p>Lire une pièce et choisir un mobilier cohérent est un travail de raisonnement. Produire
+    l'image en est un autre. Vouloir qu'un seul modèle fasse les deux revient à payer le
+    meilleur des deux tarifs sur la totalité du travail, pour un résultat moins bon sur chaque
+    moitié.</p>
+
+  <p>La chaîne alterne donc. Un modèle de raisonnement lit la photo, identifie le volume, la
+    lumière et le style, puis sélectionne dans les 97 références. Un modèle d'image reçoit
+    ensuite cette sélection, avec la photo de référence de chaque produit, et compose la scène.
+    Chacun sur son métier.</p>
+
+  <figure class="cadre">
+    <svg viewBox="0 0 900 366" xmlns="http://www.w3.org/2000/svg" role="img"
+         aria-label="Deux modeles specialises, un pour la lecture et la selection, un pour le rendu, avec une cascade de replis sur le rendu">
+      <style>
+        .t  { font-family: Inter, system-ui, sans-serif; fill: #242424; }
+        .h  { font-size: 13.5px; font-weight: 700; }
+        .lb { font-size: 11px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; fill: #6F685B; }
+        .sb { font-size: 12px; fill: #6F685B; }
+        .mo { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11.5px; fill: #A5673C; }
+        .bx { fill: #FDFDFD; stroke: #D6D7CE; }
+        .fl { stroke: #9C9084; stroke-width: 1.5; fill: none; }
+        .fd { stroke: #9C9084; stroke-width: 1.5; fill: none; stroke-dasharray: 4 4; }
+      </style>
+      <defs><marker id="a2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+        <path d="M0 0 L7 3.5 L0 7 z" fill="#9C9084"/></marker></defs>
+      <rect x="0" y="0" width="900" height="366" fill="#F5F3EC"/>
+
+      <text class="t lb" x="16" y="26">Deux modèles, deux métiers</text>
+
+      <rect class="bx" x="16" y="44" width="104" height="76"/>
+      <text class="t sb" x="68" y="78" text-anchor="middle">Photo de</text>
+      <text class="t sb" x="68" y="96" text-anchor="middle">la pièce</text>
+
+      <path class="fl" d="M124 82 H160" marker-end="url(#a2)"/>
+
+      <rect class="bx" x="164" y="36" width="256" height="92"/>
+      <text class="t h" x="180" y="62">Lecture et sélection</text>
+      <text class="t sb" x="180" y="82">volume, lumière, style, puis les</text>
+      <text class="t sb" x="180" y="99">références qui vont ensemble</text>
+      <text class="t mo" x="180" y="118">modèle de raisonnement</text>
+
+      <path class="fl" d="M424 82 H460" marker-end="url(#a2)"/>
+
+      <rect class="bx" x="464" y="36" width="256" height="92"/>
+      <text class="t h" x="480" y="62">Rendu de l'image</text>
+      <text class="t sb" x="480" y="82">reçoit la photo de référence de</text>
+      <text class="t sb" x="480" y="99">chaque produit retenu</text>
+      <text class="t mo" x="480" y="118">modèle d'image</text>
+
+      <path class="fl" d="M724 82 H760" marker-end="url(#a2)"/>
+      <rect class="bx" x="764" y="44" width="120" height="76"/>
+      <text class="t sb" x="824" y="72" text-anchor="middle">Rendu</text>
+      <text class="t sb" x="824" y="90" text-anchor="middle">+ devis</text>
+      <text class="t sb" x="824" y="108" text-anchor="middle">par email</text>
+
+      <text class="t lb" x="16" y="188">La cascade de replis sur le rendu</text>
+
+      <rect class="bx" x="16" y="206" width="196" height="80"/>
+      <text class="t h" x="32" y="232">1. Rendu nominal</text>
+      <text class="t sb" x="32" y="252">modèle d'image de qualité</text>
+      <text class="t sb" x="32" y="272">3 tentatives, 3 s d'écart</text>
+
+      <path class="fd" d="M216 246 H252" marker-end="url(#a2)"/>
+
+      <rect class="bx" x="256" y="206" width="196" height="80"/>
+      <text class="t h" x="272" y="232">2. Même modèle</text>
+      <text class="t sb" x="272" y="252">requête reconstruite</text>
+      <text class="t sb" x="272" y="272">3 tentatives, 3 s d'écart</text>
+
+      <path class="fd" d="M456 246 H492" marker-end="url(#a2)"/>
+
+      <rect class="bx" x="496" y="206" width="196" height="80"/>
+      <text class="t h" x="512" y="232">3. Modèle rapide</text>
+      <text class="t sb" x="512" y="252">plus léger, plus tolérant</text>
+      <text class="t sb" x="512" y="272">et moins coûteux</text>
+
+      <path class="fd" d="M696 246 H732" marker-end="url(#a2)"/>
+
+      <rect class="bx" x="736" y="206" width="148" height="80"/>
+      <text class="t h" x="752" y="232">4. Dernier essai</text>
+      <text class="t sb" x="752" y="252">retour au modèle</text>
+      <text class="t sb" x="752" y="272">de qualité</text>
+
+      <text class="t sb" x="16" y="326">Un dépassement de délai ne remonte jamais au visiteur tant qu'un maillon de la cascade peut répondre.</text>
+      <text class="t sb" x="16" y="346">L'étape 3 accepte volontairement un rendu un peu moins fin plutôt qu'un échec, et coûte moins cher.</text>
+    </svg>
+    <figcaption><b>La spécialisation en haut, la résilience en bas.</b> Le rendu est l'étape qui
+      échoue, parce que c'est la plus lourde. Elle est donc la seule à porter une cascade.</figcaption>
+  </figure>
+
+  <h3>Une cascade de replis plutôt qu'une erreur</h3>
+
+  <p>Un générateur d'images met plusieurs dizaines de secondes à répondre et dépasse parfois le
+    délai. Vous renvoyer une erreur pour cette raison serait perdre un projet sur un incident
+    passager.</p>
+
+  <p>Quatre étages se relaient sur le rendu, chacun avec trois tentatives espacées de trois
+    secondes. Le troisième étage est celui qui mérite l'attention : il bascule sur un
+    <strong>modèle plus léger et plus rapide</strong>. Nous y acceptons sciemment un rendu un
+    peu moins fin plutôt qu'un échec, et il coûte moins cher que le modèle de qualité. Le
+    quatrième revient au modèle nominal, au cas où l'incident serait passé.</p>
+
+  <p>Autrement dit, la dégradation est un choix de conception et non un accident. Vous recevez
+    toujours quelque chose.</p>
+
+  <h3>Le catalogue est mis en cache, pas repayé à chaque fois</h3>
+
+  <p>Le modèle de lecture reçoit les 97 références avec leurs descriptifs à chaque simulation.
+    C'est un bloc volumineux, identique d'une requête à l'autre, et c'est exactement ce qu'un
+    cache de requête sait absorber.</p>
+
+  <p>Le bloc catalogue est donc marqué comme cacheable. L'économie n'est pas anecdotique et elle
+    est arithmétique : <strong>une lecture depuis le cache coûte environ un dixième du prix
+    d'entrée normal, l'écriture coûte 1,25 fois ce prix</strong>. Le seuil de rentabilité est
+    atteint dès la deuxième requête qui partage le même début.</p>
+
+  <p>La nuance à connaître, et elle est structurante : la durée de vie par défaut d'une entrée
+    est de cinq minutes, et chaque lecture relance le compteur. Le cache travaille donc à plein
+    pendant les pics, quand les simulations s'enchaînent, et ne sert à rien la nuit. C'est le
+    bon comportement pour ce service : il réduit la facture au moment précis où elle
+    grimperait.</p>
+
+  <p>Ce raisonnement impose une discipline dans la construction de la requête. Le catalogue
+    vient en premier, votre photo et votre demande viennent après. L'inverse invaliderait le
+    cache à chaque appel sans qu'aucune erreur ne le signale.</p>
+</section>
+
+<!-- ======================= 4 ======================= -->
+<section>
+  <h2><span class="num">04</span><span class="mut">Ce que l'outil</span> ne fait pas.</h2>
+  <hr class="rule">
+
+  <p>Le devis est estimatif et n'engage pas commercialement. L'outil ne redessine pas le bâti :
+    la charpente, les poteaux, le sol et les ouvertures restent ceux de votre photo, ce qui est
+    une contrainte assumée et non une limite technique. Et le rendu reste une projection, pas
+    une photographie du résultat final.</p>
+
+  <p>Côté données, la photo importée et le rendu ne servent qu'à produire la simulation et à
+    suivre le projet. Ils ne sont cédés à aucun tiers, sont supprimés au-delà de trente-six
+    mois, et le simulateur n'emploie ni cookie publicitaire ni traceur intersites. Politique
+    complète sur balinaisa.ai/privacy-policy.html, suppression sur simple demande à
+    contact@balinaisa.com.</p>
+</section>
+
+<!-- ======================= 5 ======================= -->
+<section>
+  <h2><span class="num">05</span><span class="mut">Le regard</span> de Dominique Raynal.</h2>
+  <hr class="rule">
+
+  <p>Tout ce qui précède décrit une mécanique. Elle n'a d'intérêt que par ce qu'elle transporte.
+    Ce que le modèle applique, ce sont des règles d'assemblage, de proportion et de matière que
+    Dominique Raynal pratique depuis des années : quelles familles vont ensemble, ce qu'un
+    volume supporte, ce qu'on ne met pas dans une véranda. Le catalogue contraint les meubles,
+    ces règles contraignent la composition.</p>
+
+  <div class="citation">
+    <p>« J'ai souhaité associer mon expertise à l'Intelligence Artificielle afin de proposer une
+      expérience plus immédiate, visuelle et personnalisée de l'aménagement. J'ai ainsi façonné
+      Balinaisa.ai comme une extension de mon savoir-faire. Aujourd'hui, il compose pour vous,
+      chez vous, comme si je poussais votre porte à vos côtés. »</p>
+    <p class="qui">Dominique Raynal, président-directeur général de Balinaisa</p>
+  </div>
+
+  <p>La question que nous nous sommes posée n'a donc jamais été « quel modèle utiliser ». Elle
+    a été : <strong>de quoi notre catalogue doit-il être capable pour que le modèle n'ait plus
+    le droit d'inventer</strong>. Une photo de référence et un descriptif par produit valent
+    mieux que n'importe quel réglage de formulation.</p>
+
+  <div class="contact">
+    <p class="lab">Essayer l'outil</p>
+    <p>Le simulateur est public et gratuit, sans création de compte : <b>balinaisa.ai</b>. Nous
+      proposons également une démonstration en direct ou un accompagnement sur un cas de votre
+      choix.</p>
+    <p class="lab" style="margin-top:4mm">Contact presse</p>
+    <p>contact@balinaisa.com · 07 45 06 52 16<br>
+      Balinaisa, 370 avenue de l'Aérodrome, 33260 La Teste-de-Buch</p>
+  </div>
+
+  <p class="mentions">Balinaisa est une maison française de mobilier et décoration spécialisée
+    dans une gamme premium en teck, entre la France et l'Indonésie. Balinaisa.ai a été conçu et
+    intégré par Paktiz, partenaire technique de la maison. Les éléments de ce document sont
+    libres de reproduction dans un cadre rédactionnel, avec la mention « Balinaisa ». Les
+    chiffres cités sont relevés sur le catalogue et la chaîne d'automatisation en production au
+    3 septembre 2026.</p>
+</section>
+
+</body>
+</html>
