@@ -27,6 +27,11 @@
   --bali-sable-clair: #F0E4CC;
   --bali-teck:        #C3875E;   /* dore, accent v0.4 */
   --bali-teck-hover:  #A96E47;
+  /* Variante AA du taupe, la meme que les gabarits d email n8n. Le taupe plein
+     donne 4.15 sur ivoire et le sauge 2.82, tous deux sous le seuil AA de 4.5
+     du texte courant : tout le PETIT texte du site passe par cette valeur,
+     a 5.24. Regle du 03/09/2026, cf balinaisa-assets/site/design-system. */
+  --bali-taupe-aa:    #6F685B;
 
   /* ---- Correspondance avec les noms deja en place ---- */
   --bg:            var(--bali-ivoire);
@@ -36,7 +41,7 @@
   --border-strong: var(--bali-sable);
   --text:          var(--bali-encre);
   --text-sub:      var(--bali-gris);
-  --text-muted:    var(--bali-gris-2);
+  --text-muted:    var(--bali-taupe-aa);   /* etait le sauge, 2.82 : jamais un texte a lire */
   --primary:       var(--bali-teck);
   --primary-dark:  var(--bali-teck-hover);
   --primary-light: var(--bali-sable-clair);
@@ -73,13 +78,30 @@
   --font-sans:    'Inter', system-ui, sans-serif;
   --font-caps:    'Josefin Sans', 'Century Gothic', 'Avenir', sans-serif;
 
-  --tracking-caps: 0.18em;   /* interlettrage des capitales, signature */
+  /* ---- Petits textes : la regle du 03/09/2026 ----
+     Les libelles, legendes, dates, sources et autres petits textes sont en
+     UNE SEULE police, Inter, en graisse normale. Un libelle peut rester en
+     capitales, avec un interlettrage discret. Josefin et sa chasse de .18em,
+     signatures du catalogue, sont reservees aux BOUTONS et aux STANDFIRSTS
+     (arbitrage du 02/09 conserve) : sa hauteur d x est faible (le design
+     system le mesure) et en petit texte courant, chassee, elle devient
+     illisible. Un bouton a son aplat et son air, un libelle n a rien.
+     Posee par Charles sur la page presse, puis etendue a tout le site.
+     Et AUCUNE graisse non servie : fonts.css ne sert Lora qu en 400-500 et
+     Inter qu en 300/400/500/600, tout 600 sur Lora ou 700 sur Inter est un
+     faux gras fabrique par le navigateur (42 cas mesures le 03/09). */
+  --tracking-caps:  0.18em;   /* grandes capitales seulement : boutons, 14 px et plus */
+  --tracking-small: 0.06em;   /* capitales d un libelle sous 14 px */
   --rule-w: 88px;            /* longueur du filet dore sous les titres */
 
   --transition:  0.18s ease;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* <b> et <strong> demandent 700 par defaut, qu Inter ne sert pas. 600 est la
+   graisse forte reellement servie : le navigateur n a plus rien a fabriquer. */
+b, strong { font-weight: 600; }
 
 html { font-size: 16px; scroll-behavior: smooth; }
 
@@ -275,9 +297,9 @@ input, textarea, select { font-family: var(--font-sans); }
   align-items: center;
   gap: 6px;
   color: rgba(255,255,255,.40);
-  font-family: var(--font-caps);
+  font-family: var(--font-sans);
   font-size: 10px;
-  letter-spacing: var(--tracking-caps);
+  letter-spacing: var(--tracking-small);
   text-transform: uppercase;
   animation: hint-bounce 2.2s ease-in-out infinite;
 }
@@ -483,10 +505,10 @@ input, textarea, select { font-family: var(--font-sans); }
 }
 
 .steps-counter {
-  font-family: var(--font-caps);
+  font-family: var(--font-sans);
   font-size: 12.5px;
   font-weight: 600;
-  letter-spacing: var(--tracking-caps);
+  letter-spacing: var(--tracking-small);
   text-transform: uppercase;
   color: var(--text-muted);
 }
@@ -1004,6 +1026,14 @@ input, textarea, select { font-family: var(--font-sans); }
   margin-bottom: 0.5rem;
 }
 
+/* Un h3 sans classe herite du gras par defaut du navigateur, 700, qu Inter ne
+   sert pas : c etait le dernier faux gras du site, sur la page de
+   confidentialite. Meme traitement que les h2 de ces pages, Lora 500. */
+.legal-section h3, .legal-page h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+}
+
 .legal-section p, .legal-section li {
   font-size: 14px;
   color: var(--text-sub);
@@ -1052,7 +1082,7 @@ input, textarea, select { font-family: var(--font-sans); }
 .balinaisa-ai-quote { font-family: var(--font-display); font-size: 31px; line-height: 1.38; color: var(--text); font-style: italic; font-weight: 500; margin: 0 0 20px; }
 /* La signature est passee SOUS la photo (figcaption) : centree, marge en haut et non en
    bas. En mobile le conteneur est en colonne, elle tombe donc entre la photo et la citation. */
-.balinaisa-ai-sign { font-family: var(--font-caps); font-size: 13px; color: var(--text-sub); letter-spacing: var(--tracking-caps); text-transform: uppercase; text-align: center; margin: 16px 0 0; }
+.balinaisa-ai-sign { font-family: var(--font-sans); font-size: 13px; color: var(--text-muted); letter-spacing: var(--tracking-small); text-transform: uppercase; text-align: center; margin: 16px 0 0; }
 .balinaisa-ai-explain { font-size: 15px; line-height: 1.8; color: var(--text-sub); margin: 0; max-width: 48ch; }
 @media (max-width: 760px) {
   .balinaisa-ai-intro { padding: 52px 24px; }
@@ -1121,7 +1151,7 @@ input, textarea, select { font-family: var(--font-sans); }
 .brand-intro { background: var(--bg-card); padding: 74px 0 78px; }
 .brand-inner { max-width: 1000px; margin: 0 auto; padding: 0 24px; display: flex; gap: 50px; align-items: center; }
 .brand-lead { flex: 1; min-width: 0; }
-.brand-eyebrow { font-family: var(--font-caps); font-size: 12px; text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--primary); font-weight: 600; margin: 0 0 18px; }
+.brand-eyebrow { font-family: var(--font-sans); font-size: 12px; text-transform: uppercase; letter-spacing: var(--tracking-small); color: var(--primary); font-weight: 600; margin: 0 0 18px; }
 .brand-title { font-family: var(--font-serif); font-size: 34px; line-height: 1.2; font-weight: 500; color: var(--text); margin: 0 0 20px; }
 .brand-text { font-size: 15px; line-height: 1.8; color: var(--text-sub); margin: 0 0 22px; max-width: 46ch; }
 .brand-points { list-style: none; margin: 0 0 20px; padding: 0; display: flex; flex-direction: column; gap: 10px; }
@@ -1133,14 +1163,14 @@ input, textarea, select { font-family: var(--font-sans); }
 
 .brand-slider-head { max-width: 1000px; margin: 48px auto 16px; padding: 0 24px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .brand-slider-title { font-family: var(--font-serif); font-size: 21px; font-weight: 500; color: var(--text); margin: 0; }
-.brand-slider-sub { font-family: var(--font-caps); font-size: 12px; text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-muted); margin: 0; }
+.brand-slider-sub { font-family: var(--font-sans); font-size: 12px; text-transform: uppercase; letter-spacing: var(--tracking-small); color: var(--text-muted); margin: 0; }
 .brand-slider { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; max-width: 1000px; margin: 0 auto; padding: 4px 24px 10px; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
 .brand-slider::-webkit-scrollbar { height: 6px; }
 .brand-slider::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 0; }
 .prod-card { scroll-snap-align: start; flex: 0 0 190px; background: var(--bg-muted); border-radius: 0; padding: 14px 16px 18px; }
 .prod-media { height: 150px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
 .prod-media img { max-width: 100%; max-height: 150px; object-fit: contain; }
-.prod-cat { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); }
+.prod-cat { font-size: 11px; text-transform: uppercase; letter-spacing: var(--tracking-small); color: var(--text-muted); }
 .prod-name { font-family: var(--font-serif); font-size: 21px; font-weight: 500; color: var(--text); margin: 4px 0 12px; }
 .prod-price { font-size: 19px; font-weight: 600; color: var(--primary); margin: 0; }
 .prod-price span { font-size: 12px; font-weight: 500; color: var(--text-muted); }
@@ -1205,13 +1235,13 @@ select:focus-visible,
 .press-ref { display: inline-flex; flex-direction: column; gap: 5px; text-decoration: none;
   border-left: 3px solid var(--primary); padding: 6px 0 6px 16px; margin: 2px 0 0; max-width: 44ch; transition: border-color .18s ease; }
 .press-ref:hover { border-left-color: var(--primary-dark); }
-.press-ref-label { font-size: 10px; text-transform: uppercase; letter-spacing: .18em; color: var(--primary); font-weight: 600; }
+.press-ref-label { font-size: 10px; text-transform: uppercase; letter-spacing: var(--tracking-small); color: var(--primary); font-weight: 600; }
 .press-ref-head { display: flex; align-items: center; gap: 10px; }
 /* Le cercle est fait ici, pas dans l'image : l'asset reste le logo brut de Marie Claire,
    et le masque est du style. Meme parti pris que la vignette des resultats Google. */
 .press-ref-logo { width: 34px; height: 34px; border-radius: 50%;   /* contient un logo rond */ flex-shrink: 0; background: #fff;
   border: 1px solid var(--border); }
-.press-ref-pub { font-family: var(--font-serif); font-size: 21px; font-weight: 600; color: var(--text); line-height: 1.1; }
+.press-ref-pub { font-family: var(--font-serif); font-size: 21px; font-weight: 500; color: var(--text); line-height: 1.1; }
 .press-ref-quote { font-size: 14px; font-style: italic; color: var(--text-sub); line-height: 1.55; }
 .press-ref-cta { font-size: 13px; font-weight: 500; color: var(--primary); }
 .press-ref:hover .press-ref-cta { color: var(--primary-dark); }
@@ -1221,16 +1251,16 @@ select:focus-visible,
 .reviews { background: var(--bg-muted); padding: 66px 0 72px; }
 .reviews-inner { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
 .reviews-head { text-align: center; margin-bottom: 34px; }
-.reviews-eyebrow { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .22em; color: var(--primary); font-weight: 600; margin-bottom: 14px; }
+.reviews-eyebrow { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: var(--tracking-small); color: var(--primary); font-weight: 600; margin-bottom: 14px; }
 .reviews-rating { display: inline-flex; align-items: baseline; gap: 12px; flex-wrap: wrap; justify-content: center; }
-.reviews-score { font-family: var(--font-serif); font-size: 44px; font-weight: 600; color: var(--text); line-height: 1; }
+.reviews-score { font-family: var(--font-serif); font-size: 44px; font-weight: 500; color: var(--text); line-height: 1; }
 .reviews-stars { color: #E3A008; font-size: 22px; letter-spacing: 2px; }
 .reviews-count { font-size: 14px; color: var(--text-sub); }
 .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .review-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 0; padding: 22px 20px; margin: 0; display: flex; flex-direction: column; gap: 12px; }
 .review-stars { color: #E3A008; font-size: 15px; letter-spacing: 2px; }
 .review-card blockquote { margin: 0; font-family: var(--font-serif); font-size: 17px; line-height: 1.55; color: var(--text); font-style: italic; flex: 1 1 auto; }
-.review-card figcaption { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .1em; }
+.review-card figcaption { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: var(--tracking-small); }
 .reviews-cta { display: block; text-align: center; margin-top: 28px; font-size: 14px; font-weight: 500; color: var(--primary); text-decoration: none; }
 .reviews-cta:hover { color: var(--primary-dark); }
 .reviews-cta:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 0; }
@@ -1260,7 +1290,7 @@ select:focus-visible,
 .cc-item:hover { border-color: var(--primary); background: var(--bg-muted); }
 .cc-item svg { color: var(--primary); flex: 0 0 auto; }
 .cc-item > span { display: flex; flex-direction: column; font-size: 15px; line-height: 1.3; }
-.cc-label { font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: var(--text-muted); margin-bottom: 2px; font-weight: 500; }
+.cc-label { font-size: 11px; text-transform: uppercase; letter-spacing: var(--tracking-small); color: var(--text-muted); margin-bottom: 2px; font-weight: 500; }
 
 /* Disclaimer budget (simulation inspirationnelle, RDV3) */
 .field-hint { font-size: 12.5px; line-height: 1.5; color: var(--text-muted); margin: 6px 0 0; }
@@ -1287,14 +1317,15 @@ select:focus-visible,
    « La collection Cocon. » Le point fait partie du motif, il s ecrit dans le HTML. */
 .bali-muted { color: var(--bali-greige); }
 
-/* Libelle capitales : Josefin, interlettrage 0.18em, gris. */
+/* Libelle capitales. Etait Josefin chassee a .18em, la signature du catalogue :
+   sous 14 px c est illisible, regle du 03/09. Inter, chasse discrete. */
 .bali-label {
-  font-family: var(--font-caps);
+  font-family: var(--font-sans);
   font-weight: 400;
   font-size: 0.72rem;
-  letter-spacing: var(--tracking-caps);
+  letter-spacing: var(--tracking-small);
   text-transform: uppercase;
-  color: var(--text-sub);
+  color: var(--text-muted);
 }
 
 /* Standfirst italique light sous les titres de section. */

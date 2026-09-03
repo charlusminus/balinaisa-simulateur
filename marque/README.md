@@ -41,7 +41,7 @@ monogramme carré et la signature horizontale, conservés au Drive dans
 |---|---|
 | titres | Cormorant Garamond, repli Georgia |
 | textes longs | Lora, repli Georgia |
-| capitales | Josefin Sans, chassées à 0.18em, repli Century Gothic |
+| boutons et standfirsts | Josefin Sans, capitales chassées à 0.18em, repli Century Gothic. Réservée aux boutons et aux standfirsts depuis le 03/09/2026 : les libellés et petits textes sont en Inter |
 | corps | Inter, repli system-ui |
 
 Angles droits, aucun arrondi. Filet doré de 88 px pour ouvrir une section.
