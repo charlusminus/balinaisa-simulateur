@@ -1,4 +1,4 @@
-/* Balinaisa.ai — i18n FR/EN.
+/* Balinaisa.ai, i18n FR/EN.
    UNE PAGE = UNE LANGUE = UN CANONICAL. La langue vient du CHEMIN, jamais du navigateur :
      /     -> FR, toujours, pour tout le monde, Googlebot compris.
      /en/  -> EN, page generee au build par tools/build-en.js depuis ce dictionnaire.
@@ -32,14 +32,14 @@
 
   // Dictionnaire FR -> EN (cle = texte FR exact, tel qu'affiche).
   var EN = {
-    // — SEO / meta —
+    // ---- SEO / meta ----
     "Simulateur déco et aménagement à partir d'une photo | Balinaisa": "Interior design and layout simulator from a photo | Balinaisa",
     // Donnees structurees (bloc ld+json). Ces trois textes ne sont jamais affiches : ils ne
     // vivent que dans le balisage lu par les moteurs. Ils sont ici parce que /en/ le sert aussi.
     "Spécialiste du mobilier en teck massif d'Indonésie, pour l'intérieur comme pour l'extérieur, dans le bassin d'Arcachon.": "Specialists in solid Indonesian teak furniture, indoors and out, in the Arcachon basin.",
     "Balinaisa.ai, simulateur d'aménagement Balinaisa": "Balinaisa.ai, the Balinaisa layout simulator",
     "Balinaisa.ai, entraîné comme l'œil de Dominique Raynal : photographiez votre terrasse, votre jardin ou votre intérieur, Balinaisa.ai y projette le mobilier en teck massif Balinaisa et vous adresse un devis estimatif.": "Balinaisa.ai, trained as Dominique Raynal's eye: photograph your terrace, garden or interior, and Balinaisa.ai places Balinaisa solid teak furniture in it and sends you an estimated quote.",
-    // — Header / hero —
+    // ---- Header / hero ----
     "Commencer": "Get started",
     "Votre espace": "Your space",
     "sublimé par le teck": "elevated by teak",
@@ -51,7 +51,7 @@
     "JPG, PNG, WEBP · max 8 Mo": "JPG, PNG, WEBP · max 8 MB",
     "Façonnées à la main": "Handcrafted",
     "Teck massif d'Indonésie": "Solid Indonesian teak",
-    // — Wizard steps —
+    // ---- Wizard steps ----
     "Étape 1 / 4": "Step 1 / 4",
     "Étape": "Step",
     "Votre espace est prêt": "Your space is ready",
@@ -100,8 +100,8 @@
     ", suppression sur simple demande à": ", deletion on request from",
     "Après": "After",
     "Espace presse | Balinaisa.ai": "Press room | Balinaisa.ai",
-    "Communiqué de presse Balinaisa.ai : un outil d'IA qui transforme une photo de pièce en projet d'aménagement chiffré. Visuels avant/après, chiffres clés et contact.": "Balinaisa.ai press release: an AI tool that turns a photo of a room into a costed interior plan. Before and after images, key figures and press contact.",
-    "Un outil d'IA qui transforme une photo de pièce en projet d'aménagement chiffré. Visuels avant/après, chiffres clés et contact presse.": "An AI tool that turns a photo of a room into a costed interior plan. Before and after images, key figures and press contact.",
+    "Espace presse Balinaisa.ai : l'outil qui transforme la photo d'une pièce en projet d'aménagement chiffré. Visuels avant/après, notes techniques, chiffres clés et contact.": "Balinaisa.ai press room: the tool that turns a photo of a room into a costed interior plan. Before and after images, technical notes, key figures and press contact.",
+    "L'outil qui transforme la photo d'une pièce en projet d'aménagement chiffré. Visuels avant/après, notes techniques, chiffres clés et contact presse.": "The tool that turns a photo of a room into a costed interior plan. Before and after images, technical notes, key figures and press contact.",
     "Envoi en cours…": "Sending…",
     "5,0": "5.0",
     "5,0 / 5": "5.0 / 5",
@@ -220,7 +220,7 @@
     "Télécharger la photo d'origine": "Download the original photo",
     "Télécharger le rendu": "Download the rendering",
     "Télécharger le devis": "Download the quote",
-    // — Confirmation (step 5) —
+    // ---- Confirmation (step 5) ----
     "Votre simulation se prépare": "Your simulation is on its way",
     "Vous recevrez votre rendu personnalisé par email": "You will receive your personalised rendering by email",
     "d'ici quelques minutes": "within a few minutes",
@@ -235,13 +235,13 @@
     "Partager Balinaisa.ai": "Share Balinaisa.ai",
     "Refaire une simulation": "Run another simulation",
     "Showroom · itinéraire": "Showroom · directions",
-    // — Blocked / curious screen —
+    // ---- Blocked / curious screen ----
     "Merci pour votre intérêt": "Thank you for your interest",
     "Chaque simulation composée par Balinaisa.ai a un coût réel. Pour cette raison, elle est aujourd'hui réservée aux personnes ayant une intention d'achat confirmée.": "Each simulation composed by Balinaisa.ai has a real cost. For this reason, it is currently reserved for people with a confirmed purchase intent.",
     "Revenez à l'étape précédente et indiquez votre horizon d'achat réel pour lancer votre simulation gratuite.": "Go back to the previous step and enter your real purchase horizon to start your free simulation.",
     "Modifier mon horizon d'achat": "Change my purchase horizon",
     "Retour à l'accueil": "Back to home",
-    // — Sections marketing —
+    // ---- Sections marketing ----
     "Vous avez un projet en tête ?": "Have a project in mind?",
     "Quelques pièces de la collection": "A few pieces from the collection",
     "Chaise": "Chair",
@@ -265,7 +265,7 @@
     "Dominique Raynal, Balinaisa": "Dominique Raynal, Balinaisa",
     "Intérieur ou extérieur, photographiez votre salon, votre véranda, votre terrasse ou votre jardin : Balinaisa.ai y projette les pièces en teck massif qui subliment le lieu, et vous adresse un devis. Le regard d'un artisan, à portée de tous.": "Indoors or outdoors, photograph your living room, veranda, terrace or garden: Balinaisa.ai places the solid teak pieces that elevate the space and sends you a quote. A craftsman's eye, within everyone's reach.",
     "Simulation propulsée par": "Simulation powered by",
-    // — Trust / reviews / press —
+    // ---- Trust / reviews / press ----
     "Ils nous font confiance": "They trust us",
     "Voir les avis sur Google": "See the reviews on Google",
     "8 avis Google": "8 Google reviews",
@@ -277,7 +277,7 @@
     "Vu dans la presse": "As seen in the press",
     "« Balinaisa, la maison qui fait voyager sans quitter votre salon »": "“Balinaisa, the house that takes you travelling without leaving your living room”",
     "Lire l'article": "Read the article",
-    // — FAQ —
+    // ---- FAQ ----
     "Questions": "Frequently asked",
     "fréquentes.": "questions.",
     "Qu'est-ce que Balinaisa.ai ?": "What is Balinaisa.ai?",
@@ -290,11 +290,11 @@
     "Du mobilier en teck massif d'Indonésie de la collection Balinaisa, pour l'intérieur comme pour l'extérieur : chaises, fauteuils et tables, façonnés à la main.": "Solid Indonesian teak furniture from the Balinaisa collection, for indoors and outdoors: chairs, armchairs and tables, handcrafted.",
     "Combien coûte le mobilier Balinaisa ?": "How much does Balinaisa furniture cost?",
     "Un positionnement haut de gamme, du mobilier façonné à la main en teck massif. Les prix varient selon la pièce, la taille et la collection. Chaque simulation s'accompagne d'un devis estimatif.": "A premium positioning, furniture handcrafted in solid teak. Prices vary by piece, size and collection. Each simulation comes with an estimated quote.",
-    // — Alt / aria —
+    // ---- Alt / aria ----
     "Espace visible pour placer un meuble": "Visible space to place furniture",
     "Bonne luminosité naturelle": "Good natural light",
     "Salon, terrasse, jardin, véranda": "Living room, terrace, garden, veranda",
-    // — JS messages (simulator.js) —
+    // ---- JS messages (simulator.js) ----
     "Indiquez un numéro de téléphone valide (8 à 15 chiffres, indicatif international accepté, ex. +33 6 12 34 56 78).": "Please enter a valid phone number (8 to 15 digits, international prefix accepted, e.g. +33 6 12 34 56 78).",
     "Le simulateur reçoit un grand nombre de demandes en ce moment. Merci de réessayer un peu plus tard dans la journée.": "The simulator is receiving a high volume of requests right now. Please try again a little later today.",
     "Un souci est survenu lors de la validation. Merci de réessayer, ou écrivez-nous à contact@balinaisa.com.": "Something went wrong during validation. Please try again, or write to us at contact@balinaisa.com.",
@@ -303,14 +303,14 @@
     "Vous avez déjà composé plusieurs ambiances avec Balinaisa.ai, et votre enthousiasme nous touche. Pour imaginer la suite sur mesure et donner vie à votre projet, l'équipe Balinaisa se fera une joie d'échanger avec vous :": "You have already composed several looks with Balinaisa.ai, and your enthusiasm touches us. To imagine the next steps, tailor-made, and bring your project to life, the Balinaisa team will be delighted to talk with you:",
     "Simulateur très sollicité": "Simulator in high demand",
     "Nous n'avons pas pu traiter votre demande": "We couldn't process your request",
-    // — message de partage (bloc par bloc : l'API Web Share ne prend que du texte brut) —
+    // ---- message de partage (bloc par bloc : l'API Web Share ne prend que du texte brut) ----
     "Salut,": "Hi,",
     "J'ai découvert Balinaisa.ai, le simulateur d'aménagement (intérieur et extérieur), proposé par Dominique, le fondateur de la société Balinaisa.": "I discovered Balinaisa.ai, the interior and outdoor design simulator, offered by Dominique, the founder of Balinaisa.",
     "Une photo de ton espace suffit.": "A photo of your space is all it takes.",
     "Essaye, c'est surprenant.": "Try it, you'll be surprised.",
     "Hâte d'avoir ton retour,": "Looking forward to hearing what you think,",
     "À très vite,": "Talk soon,",
-    // — boutons / labels / placeholders / aria / alt manquants —
+    // ---- boutons / labels / placeholders / aria / alt manquants ----
     "Prendre une photo": "Take a photo",
     "Importer une photo": "Upload a photo",
     "Retirer la photo": "Remove photo",
@@ -324,12 +324,12 @@
     "Mobilier en teck massif Balinaisa dans le showroom": "Balinaisa solid teak furniture in the showroom",
     "Aperçu de votre pièce": "Preview of your room",
     "Indiquez un numéro de téléphone valide (indicatif international accepté).": "Enter a valid phone number (international prefix accepted).",
-    // — merci.html —
+    // ---- merci.html ----
     "Intérêt confirmé · Balinaisa": "Interest confirmed · Balinaisa",
     "Votre intérêt est confirmé": "Your interest is confirmed",
     "Merci. Un conseiller Balinaisa va vous recontacter pour affiner votre projet et répondre à vos questions.": "Thank you. A Balinaisa advisor will get back to you to refine your project and answer your questions.",
     "Découvrir la collection Balinaisa": "Discover the Balinaisa collection",
-    // — privacy-policy.html —
+    // ---- privacy-policy.html ----
     // Texte legal : les fragments sont decoupes par le balisage inline (<strong>, <a>), donc
     // une phrase peut valoir plusieurs cles. L'ordre des propositions est le meme en FR et en
     // EN sur toute la page, sinon ce decoupage produirait des phrases anglaises inversees.
@@ -402,7 +402,7 @@
       a.href = pair[1];
       a.setAttribute('hreflang', l);
       if (on) a.setAttribute('aria-current', 'true');
-      a.style.cssText = 'text-decoration:none;cursor:pointer;background:' + (on ? '#C3875E' : 'transparent') + ';color:' + (on ? '#fff' : '#8A8A85') + ';padding:5px 10px;border-radius:0;letter-spacing:.12em;line-height:1;transition:background .15s';
+      a.style.cssText = 'text-decoration:none;cursor:pointer;background:' + (on ? '#C3875E' : 'transparent') + ';color:' + (on ? '#fff' : '#6F685B') + ';padding:5px 10px;border-radius:0;letter-spacing:.06em;line-height:1;transition:background .15s';
       wrap.appendChild(a);
     });
     var cta = header.querySelector('#header-cta, .header-cta');
