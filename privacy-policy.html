@@ -18,6 +18,11 @@
   </script>
   <title>Politique de confidentialité & Protection des données | Balinaisa</title>
   <meta name="robots" content="noindex, follow">
+  <!-- Page en noindex, donc les hreflang ne servent pas au referencement : ils servent au
+       switch de langue, que i18n.js construit a partir de ce couple. -->
+  <link rel="alternate" hreflang="fr" href="https://balinaisa.ai/privacy-policy.html">
+  <link rel="alternate" hreflang="en" href="https://balinaisa.ai/en/privacy-policy.html">
+  <script src="i18n.js?v=20260903d" defer></script>
   <!-- Icones : un seul bloc, identique sur toutes les pages. Elles divergeaient page par page
        (SVG seul ici, PNG seul la, trois ?v= differents, chemins tantot relatifs tantot absolus).
        Chemins ABSOLUS : une page rangee dans un sous-repertoire resoudrait un chemin relatif
