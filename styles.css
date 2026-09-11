@@ -241,13 +241,6 @@ input, textarea, select { font-family: var(--font-sans); }
   gap: 1.1rem;
 }
 
-.hero-brand-logo {
-  width: 110px;
-  height: auto;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,.45));
-  margin-bottom: 0.25rem;
-}
-
 .hero-title {
   font-family: var(--font-display);   /* Cormorant : hero et grands displays (charte §2) */
   font-size: clamp(2.4rem, 5vw, 3.8rem);
@@ -322,7 +315,6 @@ input, textarea, select { font-family: var(--font-sans); }
 .hero-cta-pulse:hover { background: var(--primary-surface-hover); transform: translateY(-2px); }
 .hero-cta-pulse:active { transform: translateY(0) scale(.98); }
 .hero-cta-pulse svg { flex-shrink: 0; }
-.hero-cta-pulse .cta-widget-star { font-size: 15px; }
 
 .hero-note {
   font-size: 12px;
@@ -427,10 +419,6 @@ input, textarea, select { font-family: var(--font-sans); }
   65%, 100% { transform: translateX(291%) skewX(-15deg); }
 }
 
-.cta-widget-star {
-  font-size: 13px;
-  opacity: .80;
-}
 
 /* =============================================
    BUTTONS
@@ -454,7 +442,18 @@ input, textarea, select { font-family: var(--font-sans); }
 
 .btn-primary:hover { background: var(--primary-surface-hover); transform: translateY(-1px); }
 .btn-primary:active { transform: translateY(0); }
-.btn-primary:disabled { background: var(--border-strong); color: var(--text-muted); cursor: not-allowed; transform: none; }
+/* Etat inactif : un aplat de sable, SANS contour. Le bouton gardait la bordure doree de son
+   etat actif, qui dessinait un cadre d une autre couleur autour d un aplat pale, exactement ce
+   qu on a supprime partout ailleurs. Le texte reste au taupe, qui signale l inactivite : a 3.17
+   sur le sable il est sous le seuil AA, mais un composant desactive en est explicitement
+   exempte (WCAG 1.4.3), et l encre a 8.92 le ferait lire comme actif. */
+.btn-primary:disabled {
+  background: var(--border-strong);
+  color: var(--text-muted);
+  border-color: var(--border-strong);
+  cursor: not-allowed;
+  transform: none;
+}
 
 .btn-lg { padding: 16px 30px; font-size: 15.5px; border-radius: 0; }
 .btn-full { width: 100%; justify-content: center; }

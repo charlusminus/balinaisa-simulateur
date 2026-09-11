@@ -83,22 +83,24 @@
     '#balinaisa-ai-widget::before{content:"";position:absolute;inset:-4px;border-radius: 0;',
       'border:2px solid rgba(36,36,36,.4);pointer-events:none;',   /* l anneau etait en teck v0.3, invisible sur l aplat dore clair */
       'animation:bdw-ring 2.8s ease-in-out infinite;}',
-    // SEULE EXCEPTION a la signature des CTA de la maison (Josefin en capitales chassees a
-    // .14em) : ce bouton s affiche sur des sites tiers, ou Josefin n est pas chargee. Des
-    // capitales chassees dans une pile systeme, en 13-14 px, tombent sous la regle du 03/09
-    // qui les proscrit en petit corps. On garde donc Inter en bas de casse. La couleur, elle,
-    // suit la charte : aplat dore de marque, texte encre (5.14), survol qui eclaire l aplat.
+    // Josefin est chargee depuis balinaisa.ai, qui la sert avec un en-tete CORS ouvert : le
+    // bouton porte donc la vraie signature des CTA de la maison, capitales chassees a .14em,
+    // meme sur un site tiers. Nom de famille prive pour ne pas heurter une Josefin que la page
+    // hote aurait deja declaree. Si une CSP bloque la fonte, la pile de repli geometrique prend
+    // le relais : c est celle des emails, ou @font-face n existe pas non plus.
+    '@font-face{font-family:"Balinaisa Caps";font-style:normal;font-weight:400;font-display:swap;',
+      'src:url(https://balinaisa.ai/fonts/josefin-sans-normal-latin.woff2) format("woff2");}',
     '#balinaisa-ai-widget a{position:relative;display:flex;align-items:center;gap:9px;',
-      'background:#C3875E;color:#242424;border:none;border-radius: 0;padding:13px 20px 13px 16px;',
-      'font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-size:14px;',
-      'font-weight:500;line-height:1;letter-spacing:-.01em;text-decoration:none;cursor:pointer;',
+      'background:#C3875E;color:#242424;border:none;border-radius: 0;padding:14px 22px;',
+      'font-family:"Balinaisa Caps","Century Gothic","Questrial",Avenir,"Trebuchet MS",Helvetica,Arial,sans-serif;',
+      'font-size:13px;text-transform:uppercase;',
+      'font-weight:400;line-height:1;letter-spacing:.14em;text-decoration:none;cursor:pointer;',
       'overflow:hidden;white-space:nowrap;-webkit-tap-highlight-color:transparent;',
       'transition:transform .2s ease,background .2s ease,box-shadow .2s ease;}',
     '#balinaisa-ai-widget a:hover{background:#CE9469;transform:scale(1.04);}',
     '#balinaisa-ai-widget a:active{transform:scale(.97);}',
     '#balinaisa-ai-widget a:focus-visible{outline:3px solid #A85A20;outline-offset:3px;}',   /* le dore AA, 4.81 sur ivoire : un anneau de focus doit se voir */
     '#balinaisa-ai-widget svg{flex-shrink:0;}',
-    '#balinaisa-ai-widget .bdw-star{font-size:13px;opacity:.8;}',
     '#balinaisa-ai-widget .bdw-shimmer{position:absolute;top:0;left:-80%;width:55%;height:100%;',
       'background:linear-gradient(90deg,transparent,rgba(255,255,255,.38),transparent);',
       'transform:skewX(-15deg);pointer-events:none;animation:bdw-shimmer 2.8s ease-in-out infinite;}',
@@ -107,11 +109,10 @@
     // Tablette / petit écran
     '@media(max-width:860px){#balinaisa-ai-widget{bottom:20px;', side, ':16px;}}',
     // Mobile
-    '@media(max-width:480px){#balinaisa-ai-widget a{font-size:13px;padding:12px 16px 12px 14px;gap:7px;}',
-      '#balinaisa-ai-widget .bdw-star{font-size:12px;}}',
+    '@media(max-width:480px){#balinaisa-ai-widget a{font-size:12px;padding:13px 18px;gap:7px;}',
     // Très petit écran
     '@media(max-width:360px){#balinaisa-ai-widget{', side, ':12px;bottom:16px;}',
-      '#balinaisa-ai-widget a{font-size:12.5px;padding:11px 14px;}}',
+      '#balinaisa-ai-widget a{font-size:11.5px;padding:12px 15px;letter-spacing:.12em;}}',
     // Accessibilité : pas d'animation si l'utilisateur le demande
     '@media(prefers-reduced-motion:reduce){#balinaisa-ai-widget::before,',
       '#balinaisa-ai-widget .bdw-shimmer{animation:none;}',
@@ -128,12 +129,8 @@
     '<a href="' + buildUrl() + '" target="_blank" rel="noopener" ' +
       'aria-label="Ouvrir le simulateur d\'aménagement Balinaisa">' +
       '<span class="bdw-shimmer" aria-hidden="true"></span>' +
-      '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
-        'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-        '<path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>' +
-      '</svg>' +
+      // Ni picto ni etoile : un CTA de la maison ne porte que ses mots (regle du 11/09).
       '<span class="bdw-label">' + label + '</span>' +
-      '<span class="bdw-star" aria-hidden="true">✦</span>' +
     '</a>';
 
   wrap.querySelector('a').addEventListener('click', track);
