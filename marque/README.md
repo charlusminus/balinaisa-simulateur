@@ -21,23 +21,23 @@ monogramme carré et la signature horizontale, conservés au Drive dans
 ## Palette
 
 Deux rôles pour le doré depuis la v0.5 : le **doré de marque** pour le logo, les aplats de CTA et
-les filets, sous un texte blanc et jamais en petit corps ; et le **doré AA**, plus cuivré, pour
-tout ce qui porte des mots hors bouton. Contrastes mesurés sur l'ivoire 2 `#F5F3EC`, le fond le
-plus sombre de la maison, donc le pire cas.
+les filets, écrit en encre et jamais en petit corps ; et le **doré AA**, plus cuivré, pour tout ce
+qui porte des mots hors bouton. Le **sauge** tient les actions secondaires et les fonds doux, et
+se lit à l'envers du doré : blanc sur le foncé, encre sur le clair, la clarté du fond décide.
+Contrastes mesurés sur l'ivoire 2 `#F5F3EC`, le fond le plus sombre de la maison, donc le pire cas.
 
 | rôle | valeur | sur ivoire 2 |
 |---|---|---|
-| **doré de marque**, logo, aplat des CTA (blanc dessus à 3.02) et filets | `#C3875E` | 2.72 |
-| doré sombre, survol d'un CTA (blanc à 4.19 dessus) | `#A96E47` | 3.78 |
-| doré clair, décor | `#CE9469` | 2.35 |
+| **doré de marque**, logo, aplat des CTA (encre dessus à 5.14) et filets | `#C3875E` | 2.72 |
+| doré clair, survol d'un aplat de CTA (encre à 5.96 dessus) | `#CE9469` | 2.35 |
 | **doré AA** (liens, prix, libellés, bordures, focus) | `#A85A20` | 4.56 |
 | doré AA survol | `#8A4818` | 6.26 |
+| **sauge foncé**, le filet de la maison, les aplats de navigation et l'état actif d'une action secondaire (blanc à 9.77 dessus) | `#444535` | 8.80 |
+| sauge, action secondaire au repos (encre à 5.23 ; jamais de blanc, 2.97) | `#959880` | 2.67 |
+| sauge clair, fonds doux (encre à 10.70) | `#D6D7CE` | 1.31 |
 | encre | `#242424` | 13.98 |
 | **taupe AA** (petit texte) | `#6F685B` | 4.97 |
-| taupe, décor | `#807869` | 3.93 |
-| greige | `#9C9084` |
-| sauge | `#959880` |
-| sauge clair | `#D6D7CE` |
+| greige, premier mot des titres deux tons | `#9C9084` | 2.80 |
 | sable | `#D9C19E` |
 | sable clair | `#F0E4CC` |
 | ivoire (fond) | `#FAF9F5` |
@@ -67,9 +67,9 @@ navigateur par `getBBox()`.
 
 | fichier | usage |
 |---|---|
-| `monogramme_carre_ivoire-sur-teck` | icône d'application et favicon. C'est la déclinaison en production. |
+| `monogramme_carre_encre-sur-teck` | icône d'application et favicon. C'est la déclinaison en production. L'encre a remplacé l'ivoire le 11/09 : sur la plaque dorée, l'ivoire donne 2.87 et l'encre 5.14, et le rendu comparé de 16 à 128 px confirme le gain à toutes les tailles. |
 | `monogramme_carre_encre-sur-ivoire` | variante claire, pour un support où le doré jure. Voir la réserve ci-dessous. |
-| `monogramme_maskable_ivoire-sur-teck` | Android. Tracé à 62 % de large, demi-diagonale 0.372 sous la limite de 0.400 de la zone sûre : recadrage en cercle ou en squircle sans rognage. |
+| `monogramme_maskable_encre-sur-teck` | Android. Tracé à 62 % de large, demi-diagonale 0.372 sous la limite de 0.400 de la zone sûre : recadrage en cercle ou en squircle sans rognage. |
 | `monogramme_libre_encre_transparent` | tracé seul, sur fond clair maîtrisé. |
 | `monogramme_libre_ivoire_transparent` | tracé seul, sur fond sombre ou photo. |
 
@@ -95,4 +95,5 @@ couvre l'écran comme l'impression courante.
 Les icônes effectivement servies par le site (favicon, apple-touch-icon, icônes
 maskables) vivent à la RACINE du dépôt, pas ici : elles sont référencées par les
 pages et versionnées avec elles. Ce dossier est la bibliothèque de marque, à
-partager. Modifier un fichier ici ne change rien au site.
+partager. Modifier un fichier ici ne change rien au site : les deux jeux se
+régénèrent ensemble, comme le 11/09 lors du passage à l'encre.

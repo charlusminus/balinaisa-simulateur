@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<!-- Page de confirmation. DEUX entrees, et c est voulu :
+     1. la redirection du workflow n8n apres le webhook hotlead, avec ?name et ?email, qui
+        personnalisent le titre ;
+     2. GitHub Pages sert ce fichier sur /merci, donc un acces direct ou un rafraichissement
+        apres une simulation tombe ici plutot que sur l ecran de fin du simulateur (#step-5
+        dans index.html), qui vit a la meme URL via l historique.
+     Les deux ecrans montrent donc les MEMES actions, partage compris : c est la seule facon
+     de ne pas donner deux confirmations differentes selon la porte d entree. -->
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -37,9 +45,10 @@
   <style>
     :root {
       --bg: #F5F3EC; --bg-card: #FDFDFD; --primary: #A85A20; --primary-dark: #8A4818;
-      /* Le CTA garde le dore de marque sous un texte blanc, comme le logo. Sa bordure vaut
-         son fond : aucun filet d une autre couleur autour d un bouton. 11/09. */
-      --primary-surface: #C3875E; --primary-surface-hover: #A96E47; --on-primary: #FFFFFF;
+      /* Le CTA garde le dore de marque, avec l ENCRE dessus (5.14). Sa bordure vaut son fond :
+         aucun filet d une autre couleur autour d un bouton. 11/09. */
+      --primary-surface: #C3875E; --primary-surface-hover: #CE9469; --on-primary: #242424;
+      --sauge-fonce: #444535; --sauge-clair: #D6D7CE;
       --text: #242424; --text-sub: #807869; --text-muted: #6F685B; --border: #F0E4CC;
       --font-serif: 'Cormorant Garamond', Georgia, serif; --font-sans: 'Inter', system-ui, sans-serif;
       --font-caps: 'Josefin Sans', 'Century Gothic', 'Avenir', sans-serif;
@@ -68,8 +77,16 @@
       text-decoration: none; transition: .18s; }
     .btn-primary { background: var(--primary-surface); color: var(--on-primary); border-color: var(--primary-surface); }
     .btn-primary:hover { background: var(--primary-surface-hover); border-color: var(--primary-surface-hover); }
-    .btn-ghost { background: transparent; color: var(--text-muted); border-color: var(--text-muted); }
-    .btn-ghost:hover { color: var(--text); border-color: var(--text); }
+    /* Actions secondaires en sauge, comme l ecran de fin du simulateur. L aplat clair porte
+       l encre (10.70), l etat actif bascule sur le sauge fonce avec du blanc (9.77) : c est la
+       clarte du fond qui decide du texte. Le filet est le meme partout, y compris pour la
+       navigation : il n y a plus de filet encre depuis le 11/09. */
+    .btn-secondaire { background: var(--sauge-clair); color: var(--text); border-color: var(--sauge-clair); }
+    .btn-ghost { background: transparent; color: var(--sauge-fonce); border-color: var(--sauge-fonce); }
+    .btn-secondaire:hover, .btn-secondaire:focus-visible,
+    .btn-ghost:hover, .btn-ghost:focus-visible {
+      background: var(--sauge-fonce); color: #fff; border-color: var(--sauge-fonce);
+    }
     .foot { font-size: 12px; color: var(--text-muted); margin-top: 26px; font-style: italic; }
     a:focus-visible, .btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
   </style>
@@ -88,11 +105,34 @@
     <div class="email" id="email-box" hidden></div>
     <div class="actions">
       <a class="btn btn-primary" href="https://balinaisa.com" target="_blank" rel="noopener">Découvrir la collection Balinaisa</a>
+      <button type="button" class="btn btn-secondaire" onclick="partager()">Partager Balinaisa.ai</button>
       <a class="btn btn-ghost" href="https://balinaisa.ai/">Refaire une simulation</a>
     </div>
     <p class="foot">Chaque pièce est façonnée à la main en teck massif, en Indonésie.</p>
   </main>
   <script>
+    /* Meme partage que l ecran de fin du simulateur : un seul bloc de texte, car
+       navigator.share concatene text+url dans un ordre non garanti, et une url courte
+       parce que les clients de messagerie n affichent que du texte brut. */
+    function partager() {
+      var T = function (fr) { return (window.i18n && window.i18n.t) ? window.i18n.t(fr) : fr; };
+      var url = 'https://balinaisa.ai/?utm_source=partage';
+      var message = [
+        T('Salut,'), '',
+        T("J'ai découvert Balinaisa.ai, le simulateur d'aménagement (intérieur et extérieur), proposé par Dominique, le fondateur de la société Balinaisa."), '',
+        T('Une photo de ton espace suffit.'), '',
+        url, '',
+        T("Essaye, c'est surprenant."), '',
+        T("Hâte d'avoir ton retour,"),
+        T('À très vite,')
+      ].join('\n');
+      if (navigator.share) {
+        navigator.share({ title: 'Balinaisa.ai · Balinaisa', text: message }).catch(function () {});
+      } else {
+        window.open('https://wa.me/?text=' + encodeURIComponent(message), '_blank', 'noopener');
+      }
+    }
+
     (function () {
       var q = new URLSearchParams(window.location.search);
       var name = (q.get('name') || '').trim();

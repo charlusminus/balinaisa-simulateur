@@ -417,8 +417,10 @@
       a.href = pair[1];
       a.setAttribute('hreflang', l);
       if (on) a.setAttribute('aria-current', 'true');
-      // Langue active en encre sur ivoire (14.7) : le blanc sur dore faisait 3.0 a 12 px (axe, 03/09).
-      a.style.cssText = 'text-decoration:none;cursor:pointer;background:' + (on ? '#242424' : 'transparent') + ';color:' + (on ? '#FAF9F5' : '#6F685B') + ';padding:5px 10px;border-radius:0;letter-spacing:.06em;line-height:1;transition:background .15s';
+      // Langue active sur un aplat sauge fonce, l ivoire y donne 9.28 (le blanc sur dore faisait
+      // 3.0 a 12 px, axe du 03/09 ; l aplat encre est passe au sauge le 11/09, comme les autres
+      // elements de navigation, pour que la maison n ait qu une couleur d etat actif).
+      a.style.cssText = 'text-decoration:none;cursor:pointer;background:' + (on ? '#444535' : 'transparent') + ';color:' + (on ? '#FAF9F5' : '#6F685B') + ';padding:5px 10px;border-radius:0;letter-spacing:.06em;line-height:1;transition:background .15s';
       wrap.appendChild(a);
     });
     var cta = header.querySelector('#header-cta, .header-cta');
@@ -437,7 +439,8 @@
     try { if (localStorage.getItem('bal_en_offer') === 'off') return; } catch (e) {}
     var bar = document.createElement('div');
     bar.id = 'en-offer';
-    bar.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:1000;background:#242424;color:#fff;padding:11px 16px;display:flex;align-items:center;justify-content:center;gap:14px;font-family:Helvetica,Arial,sans-serif;font-size:14px';
+    // Aplat sauge fonce comme le reste de la navigation : blanc a 9.77, sable a 5.62.
+    bar.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:1000;background:#444535;color:#fff;padding:11px 16px;display:flex;align-items:center;justify-content:center;gap:14px;font-family:Helvetica,Arial,sans-serif;font-size:14px';
     var a = document.createElement('a');
     a.href = en; a.textContent = 'Read this page in English \u2192';
     a.style.cssText = 'color:#D9C19E;text-decoration:none;font-weight:600';
