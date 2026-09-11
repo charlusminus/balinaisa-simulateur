@@ -17,7 +17,8 @@
   --sauge-clair: #D6D7CE;
   --sable:       #D9C19E;
   --sable-clair: #F0E4CC;
-  --dore:        #C3875E;
+  --dore:        #C3875E;   /* decor seul */
+  --dore-aa:     #986039;   /* texte, v0.5 */
   --dore-survol: #A96E47;
 
   /* Variantes AA, memes valeurs que les gabarits d email n8n. Mesures sur

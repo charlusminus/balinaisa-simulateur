@@ -4,7 +4,7 @@
 
 :root {
   /* ============================================================
-     Design system Balinaisa v0.4 « Doré sauge » (03/09/2026).
+     Design system Balinaisa v0.5 « Doré sauge, contraste » (11/09/2026).
      Source : balinaisa-assets/site/design-system/DESIGN-SYSTEM.md,
      couleurs mesurees sur le Catalogue Collection 2027.
      L accent est le dore #C3875E, mesure sur balinaisa.com (v0.4,
@@ -25,8 +25,18 @@
   --bali-gris-2:      #959880;   /* vert sauge balinaisa.com, mentions discretes (v0.4) */
   --bali-sable:       #D9C19E;   /* filet dore */
   --bali-sable-clair: #F0E4CC;
-  --bali-teck:        #C3875E;   /* dore, accent v0.4 */
-  --bali-teck-hover:  #A96E47;
+  --bali-teck:        #C3875E;   /* dore de marque : DECOR SEUL depuis la v0.5 (filets, aplats
+                                    sans texte). 2.87 sur ivoire : sous le seuil AA du texte (4.5)
+                                    ET sous celui des elements non textuels (3.0), donc jamais une
+                                    bordure, un anneau de focus ni un fond qui porte du blanc. */
+  --bali-teck-hover:  #A96E47;   /* idem, decor */
+  /* Variante AA du dore, v0.5 du 11/09/2026 : meme teinte (24.4 deg) et meme saturation que le
+     dore de marque, assombrie jusqu a passer le seuil AA sur le PIRE fond de la marque, l ivoire 2.
+     C est elle qui porte tout ce qui est fonctionnel : liens, libelles, prix, fonds de bouton,
+     bordures et anneaux de focus. Mesures : ivoire 4.90, ivoire 2 4.65, blanc 5.08, et 5.16 pour
+     du blanc pose dessus. */
+  --bali-dore-aa:       #986039;
+  --bali-dore-aa-hover: #7B4D2E;   /* survol : 6.77 sur ivoire, 7.14 avec du blanc dessus */
   /* Variante AA du taupe, la meme que les gabarits d email n8n. Le taupe plein
      donne 4.15 sur ivoire et le sauge 2.82, tous deux sous le seuil AA de 4.5
      du texte courant : tout le PETIT texte du site passe par cette valeur,
@@ -42,8 +52,10 @@
   --text:          var(--bali-encre);
   --text-sub:      var(--bali-taupe-aa);   /* etait le taupe plein : 3.93 sur ivoire 2 a 15 px (Lighthouse, 03/09) */
   --text-muted:    var(--bali-taupe-aa);   /* etait le sauge, 2.82 : jamais un texte a lire */
-  --primary:       var(--bali-teck);
-  --primary-dark:  var(--bali-teck-hover);
+  --primary:       var(--bali-dore-aa);        /* etait le dore plein : liens a 2.87 et blanc sur
+                                                  bouton a 3.02 (Lighthouse, 11/09). Un seul jeton
+                                                  a change, les 39 usages suivent. */
+  --primary-dark:  var(--bali-dore-aa-hover);
   --primary-light: var(--bali-sable-clair);
   --accent:        var(--bali-sable);
   --accent-light:  var(--bali-ivoire-2);

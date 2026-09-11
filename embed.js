@@ -84,7 +84,7 @@
       'border:2px solid rgba(154,106,51,.50);pointer-events:none;',
       'animation:bdw-ring 2.8s ease-in-out infinite;}',
     '#balinaisa-ai-widget a{position:relative;display:flex;align-items:center;gap:9px;',
-      'background:#C3875E;color:#fff;border:none;border-radius: 0;padding:13px 20px 13px 16px;',
+      'background:#986039;color:#fff;border:none;border-radius: 0;padding:13px 20px 13px 16px;',
       'font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-size:14px;',
       'font-weight:500;line-height:1;letter-spacing:-.01em;text-decoration:none;cursor:pointer;',
       'overflow:hidden;white-space:nowrap;-webkit-tap-highlight-color:transparent;',
