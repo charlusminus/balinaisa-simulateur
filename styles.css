@@ -27,12 +27,10 @@
   --bali-sable-clair: #F0E4CC;
   --bali-teck:        #C3875E;   /* dore de marque : aplats des CTA, filets, logo. A 2.87 sur
                                     ivoire il ne porte ni petit texte, ni bordure, ni anneau de
-                                    focus : ceux-la prennent la variante AA. Le blanc des CTA
-                                    poses dessus donne 3.02, sous le seuil AA du texte : ecart
-                                    assume par Charles le 11/09, l alternative etait l encre a
-                                    5.14, jugee trop sombre. */
-  --bali-teck-clair:  #CE9469;   /* dore clair, decor (2.47 sur ivoire) */
-  --bali-teck-hover:  #A96E47;   /* survol des aplats : le blanc y remonte a 4.19 */
+                                    focus : ceux-la prennent la variante AA. Ce qu on ecrit
+                                    DESSUS est l encre, a 5.14 ; le blanc n y tenait qu a 3.02. */
+  --bali-teck-clair:  #CE9469;   /* survol d un aplat de CTA : il s eclaire, l encre y monte a 5.96 */
+  --bali-teck-hover:  #A96E47;   /* dore sombre, DECOR seul : l encre n y tient qu a 3.70 */
   /* Variante AA du dore, v0.5 du 11/09/2026 : meme teinte que le dore de marque (25 deg contre
      24), mais un tiers de chroma en plus, ce qui la tient cuivree la ou un simple assombrissement
      vire au brun (essai #986039, ecarte le 11/09). C est elle qui porte le texte dore, les
@@ -60,14 +58,13 @@
                                                   texte, bordure et focus suivent. */
   --primary-dark:  var(--bali-dore-aa-hover);
   --primary-light: var(--bali-sable-clair);
-  /* Les APLATS de CTA gardent le dore de marque, sous un texte BLANC : c est la combinaison
-     validee par Charles, la meme que le logo. Elle donne 3.02, sous le seuil AA du texte (4.5),
-     ecart assume apres avoir essaye l encre (5.14) et un dore plus clair. Leur bordure vaut leur
-     fond : aucun filet d une autre couleur autour d un bouton. Le TEXTE dore hors bouton, lui,
-     garde la variante AA. */
+  /* Les APLATS de CTA gardent le dore de marque, sous un texte ENCRE : 5.14, conforme, la ou le
+     blanc ne tenait qu a 3.02. Arbitrage de Charles du 11/09, apres comparaison des deux rendus.
+     Leur bordure vaut leur fond : aucun filet d une autre couleur autour d un bouton. Le TEXTE
+     dore hors bouton, lui, garde la variante AA. */
   --primary-surface:       var(--bali-teck);
-  --primary-surface-hover: var(--bali-teck-hover);
-  --on-primary:            #FFFFFF;
+  --primary-surface-hover: var(--bali-teck-clair);   /* l aplat s eclaire : assombri, l encre tomberait a 3.70 */
+  --on-primary:            var(--bali-encre);
   --accent:        var(--bali-sable);
   --accent-light:  var(--bali-ivoire-2);
 
@@ -301,7 +298,7 @@ input, textarea, select { font-family: var(--font-sans); }
   position: absolute;
   inset: -4px;
   border-radius: 0;
-  border: 2px solid rgba(255,255,255,.55);
+  border: 2px solid rgba(36,36,36,.4);   /* etait blanc : invisible sur l aplat dore */
   pointer-events: none;
   animation: widget-ring 2.8s ease-in-out infinite;
 }

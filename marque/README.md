@@ -67,9 +67,9 @@ navigateur par `getBBox()`.
 
 | fichier | usage |
 |---|---|
-| `monogramme_carre_ivoire-sur-teck` | icône d'application et favicon. C'est la déclinaison en production. |
+| `monogramme_carre_encre-sur-teck` | icône d'application et favicon. C'est la déclinaison en production. L'encre a remplacé l'ivoire le 11/09 : sur la plaque dorée, l'ivoire donne 2.87 et l'encre 5.14, et le rendu comparé de 16 à 128 px confirme le gain à toutes les tailles. |
 | `monogramme_carre_encre-sur-ivoire` | variante claire, pour un support où le doré jure. Voir la réserve ci-dessous. |
-| `monogramme_maskable_ivoire-sur-teck` | Android. Tracé à 62 % de large, demi-diagonale 0.372 sous la limite de 0.400 de la zone sûre : recadrage en cercle ou en squircle sans rognage. |
+| `monogramme_maskable_encre-sur-teck` | Android. Tracé à 62 % de large, demi-diagonale 0.372 sous la limite de 0.400 de la zone sûre : recadrage en cercle ou en squircle sans rognage. |
 | `monogramme_libre_encre_transparent` | tracé seul, sur fond clair maîtrisé. |
 | `monogramme_libre_ivoire_transparent` | tracé seul, sur fond sombre ou photo. |
 
@@ -95,4 +95,5 @@ couvre l'écran comme l'impression courante.
 Les icônes effectivement servies par le site (favicon, apple-touch-icon, icônes
 maskables) vivent à la RACINE du dépôt, pas ici : elles sont référencées par les
 pages et versionnées avec elles. Ce dossier est la bibliothèque de marque, à
-partager. Modifier un fichier ici ne change rien au site.
+partager. Modifier un fichier ici ne change rien au site : les deux jeux se
+régénèrent ensemble, comme le 11/09 lors du passage à l'encre.
