@@ -241,13 +241,6 @@ input, textarea, select { font-family: var(--font-sans); }
   gap: 1.1rem;
 }
 
-.hero-brand-logo {
-  width: 110px;
-  height: auto;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,.45));
-  margin-bottom: 0.25rem;
-}
-
 .hero-title {
   font-family: var(--font-display);   /* Cormorant : hero et grands displays (charte §2) */
   font-size: clamp(2.4rem, 5vw, 3.8rem);
@@ -322,7 +315,6 @@ input, textarea, select { font-family: var(--font-sans); }
 .hero-cta-pulse:hover { background: var(--primary-surface-hover); transform: translateY(-2px); }
 .hero-cta-pulse:active { transform: translateY(0) scale(.98); }
 .hero-cta-pulse svg { flex-shrink: 0; }
-.hero-cta-pulse .cta-widget-star { font-size: 15px; }
 
 .hero-note {
   font-size: 12px;
@@ -427,10 +419,6 @@ input, textarea, select { font-family: var(--font-sans); }
   65%, 100% { transform: translateX(291%) skewX(-15deg); }
 }
 
-.cta-widget-star {
-  font-size: 13px;
-  opacity: .80;
-}
 
 /* =============================================
    BUTTONS
