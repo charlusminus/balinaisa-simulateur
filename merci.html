@@ -37,10 +37,13 @@
   <style>
     :root {
       --bg: #F5F3EC; --bg-card: #FDFDFD; --primary: #A85A20; --primary-dark: #8A4818;
-      /* Les aplats gardent le dore de marque, avec l encre dessus (5.14). v0.5. */
-      --primary-surface: #C3875E; --primary-surface-hover: #CE9469; --on-primary: #242424;
+      /* Le CTA garde le dore de marque sous un texte blanc, comme le logo. Sa bordure vaut
+         son fond : aucun filet d une autre couleur autour d un bouton. 11/09. */
+      --primary-surface: #C3875E; --primary-surface-hover: #A96E47; --on-primary: #FFFFFF;
       --text: #242424; --text-sub: #807869; --text-muted: #6F685B; --border: #F0E4CC;
       --font-serif: 'Cormorant Garamond', Georgia, serif; --font-sans: 'Inter', system-ui, sans-serif;
+      --font-caps: 'Josefin Sans', 'Century Gothic', 'Avenir', sans-serif;
+      --tracking-caps: 0.14em;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: var(--font-sans); background: var(--bg); color: var(--text); min-height: 100vh;
@@ -55,12 +58,18 @@
     .email { display: inline-block; background: #F5EDE0; color: var(--primary-dark); font-weight: 500;
       padding: 6px 14px; border-radius: 0; font-size: 14px; margin: 4px 0 22px; word-break: break-all; }
     .actions { display: flex; flex-direction: column; gap: 10px; margin-top: 26px; }
+    /* Meme signature que les CTA du simulateur : Josefin en capitales, graisse 400, chasse au
+       jeton, angles droits, et une bordure d un pixel qui vaut le fond du bouton, ou la couleur
+       de son texte quand il est au filet. Ces deux boutons etaient en Inter 500 bas de casse. */
     .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      padding: 13px 24px; border-radius: 0; font-size: 14.5px; font-weight: 500; text-decoration: none; transition: .18s; }
-    .btn-primary { background: var(--primary-surface); color: var(--on-primary); border-color: var(--primary); }
-    .btn-primary:hover { background: var(--primary-surface-hover); }
-    .btn-ghost { background: transparent; color: var(--text-sub); border: 1px solid var(--border); }
-    .btn-ghost:hover { color: var(--text); border-color: var(--text-muted); }
+      padding: 13px 24px; border: 1px solid transparent; border-radius: 0;
+      font-family: var(--font-caps); font-size: 13px; font-weight: 400;
+      letter-spacing: var(--tracking-caps); text-transform: uppercase;
+      text-decoration: none; transition: .18s; }
+    .btn-primary { background: var(--primary-surface); color: var(--on-primary); border-color: var(--primary-surface); }
+    .btn-primary:hover { background: var(--primary-surface-hover); border-color: var(--primary-surface-hover); }
+    .btn-ghost { background: transparent; color: var(--text-muted); border-color: var(--text-muted); }
+    .btn-ghost:hover { color: var(--text); border-color: var(--text); }
     .foot { font-size: 12px; color: var(--text-muted); margin-top: 26px; font-style: italic; }
     a:focus-visible, .btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
   </style>
