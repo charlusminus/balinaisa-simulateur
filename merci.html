@@ -79,11 +79,12 @@
     .btn-primary:hover { background: var(--primary-surface-hover); border-color: var(--primary-surface-hover); }
     /* Actions secondaires en sauge, comme l ecran de fin du simulateur. L aplat clair porte
        l encre (10.70), l etat actif bascule sur le sauge fonce avec du blanc (9.77) : c est la
-       clarte du fond qui decide du texte. */
+       clarte du fond qui decide du texte. Le filet est le meme partout, y compris pour la
+       navigation : il n y a plus de filet encre depuis le 11/09. */
     .btn-secondaire { background: var(--sauge-clair); color: var(--text); border-color: var(--sauge-clair); }
-    .btn-tertiaire { background: transparent; color: var(--sauge-fonce); border-color: var(--sauge-fonce); }
+    .btn-ghost { background: transparent; color: var(--sauge-fonce); border-color: var(--sauge-fonce); }
     .btn-secondaire:hover, .btn-secondaire:focus-visible,
-    .btn-tertiaire:hover, .btn-tertiaire:focus-visible {
+    .btn-ghost:hover, .btn-ghost:focus-visible {
       background: var(--sauge-fonce); color: #fff; border-color: var(--sauge-fonce);
     }
     .foot { font-size: 12px; color: var(--text-muted); margin-top: 26px; font-style: italic; }
@@ -105,7 +106,7 @@
     <div class="actions">
       <a class="btn btn-primary" href="https://balinaisa.com" target="_blank" rel="noopener">Découvrir la collection Balinaisa</a>
       <button type="button" class="btn btn-secondaire" onclick="partager()">Partager Balinaisa.ai</button>
-      <a class="btn btn-tertiaire" href="https://balinaisa.ai/">Refaire une simulation</a>
+      <a class="btn btn-ghost" href="https://balinaisa.ai/">Refaire une simulation</a>
     </div>
     <p class="foot">Chaque pièce est façonnée à la main en teck massif, en Indonésie.</p>
   </main>

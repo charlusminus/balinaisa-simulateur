@@ -462,12 +462,14 @@ input, textarea, select { font-family: var(--font-sans); }
 .btn-ghost {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   background: transparent;
-  color: var(--text);
-  border: 1px solid var(--bali-encre);   /* CTA secondaire : filet encre (charte §4) */
+  /* Un seul filet dans la maison depuis le 11/09 : le sauge fonce. Il y avait un filet encre
+     pour la navigation et un filet sauge pour l action tertiaire, indiscernables de loin. */
+  color: var(--secondaire-active);
+  border: 1px solid var(--secondaire-active);
   border-radius: 0;
-  padding: 13px 22px;
+  padding: 13px 23px;
   font-family: var(--font-caps);
   font-size: 13px;
   font-weight: 400;
@@ -476,7 +478,7 @@ input, textarea, select { font-family: var(--font-sans); }
   transition: background var(--transition), color var(--transition);
 }
 
-.btn-ghost:hover { background: var(--bali-encre); color: var(--bali-ivoire); }
+.btn-ghost:hover, .btn-ghost:focus-visible { background: var(--secondaire-active); color: var(--on-secondaire-active); }
 
 /* =============================================
    SIMULATOR TOP BAR (back button)
@@ -1178,11 +1180,11 @@ input, textarea, select { font-family: var(--font-sans); }
 }
 .btn-outline:hover { background: var(--primary-light); }
 
-/* ── Actions secondaires, en sauge ──
-   Meme signature que les autres CTA. La secondaire est un aplat sauge clair qui porte
-   l encre ; la tertiaire n est qu un filet. Les deux basculent sur le sauge fonce a l etat
-   actif, avec du blanc dessus : c est la clarte du fond qui decide du texte. */
-.btn-secondaire, .btn-tertiaire {
+/* ── Action secondaire, en sauge ──
+   Meme signature que les autres CTA : un aplat sauge clair qui porte l encre, et qui bascule
+   sur le sauge fonce a l etat actif, avec du blanc dessus. C est la clarte du fond qui decide
+   du texte. L action tertiaire, elle, est le filet de la maison, .btn-ghost. */
+.btn-secondaire {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1203,13 +1205,7 @@ input, textarea, select { font-family: var(--font-sans); }
   color: var(--on-secondaire);
   border-color: var(--secondaire);
 }
-.btn-tertiaire {
-  background: transparent;
-  color: var(--secondaire-active);
-  border-color: var(--secondaire-active);
-}
-.btn-secondaire:hover, .btn-secondaire:focus-visible,
-.btn-tertiaire:hover, .btn-tertiaire:focus-visible {
+.btn-secondaire:hover, .btn-secondaire:focus-visible {
   background: var(--secondaire-active);
   color: var(--on-secondaire-active);
   border-color: var(--secondaire-active);

@@ -32,7 +32,7 @@ Contrastes mesurés sur l'ivoire 2 `#F5F3EC`, le fond le plus sombre de la maiso
 | doré clair, survol d'un aplat de CTA (encre à 5.96 dessus) | `#CE9469` | 2.35 |
 | **doré AA** (liens, prix, libellés, bordures, focus) | `#A85A20` | 4.56 |
 | doré AA survol | `#8A4818` | 6.26 |
-| **sauge foncé**, état actif d'une action secondaire (blanc à 9.77 dessus) | `#444535` | 8.80 |
+| **sauge foncé**, le filet de la maison, les aplats de navigation et l'état actif d'une action secondaire (blanc à 9.77 dessus) | `#444535` | 8.80 |
 | sauge, action secondaire au repos (encre à 5.23 ; jamais de blanc, 2.97) | `#959880` | 2.67 |
 | sauge clair, fonds doux (encre à 10.70) | `#D6D7CE` | 1.31 |
 | encre | `#242424` | 13.98 |
