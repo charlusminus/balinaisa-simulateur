@@ -79,10 +79,15 @@
 
   var CSS = [
     '#balinaisa-ai-widget{position:fixed;z-index:2147483000;bottom:28px;', side, ':28px;',
-      'filter:drop-shadow(0 8px 28px rgba(154,106,51,.50));}',
+      'filter:drop-shadow(0 8px 28px rgba(195,135,94,.50));}',   /* etait le teck v0.3 #9A6A33 */
     '#balinaisa-ai-widget::before{content:"";position:absolute;inset:-4px;border-radius: 0;',
-      'border:2px solid rgba(154,106,51,.50);pointer-events:none;',
+      'border:2px solid rgba(36,36,36,.4);pointer-events:none;',   /* l anneau etait en teck v0.3, invisible sur l aplat dore clair */
       'animation:bdw-ring 2.8s ease-in-out infinite;}',
+    // SEULE EXCEPTION a la signature des CTA de la maison (Josefin en capitales chassees a
+    // .14em) : ce bouton s affiche sur des sites tiers, ou Josefin n est pas chargee. Des
+    // capitales chassees dans une pile systeme, en 13-14 px, tombent sous la regle du 03/09
+    // qui les proscrit en petit corps. On garde donc Inter en bas de casse. La couleur, elle,
+    // suit la charte : aplat dore de marque, texte encre (5.14), survol qui eclaire l aplat.
     '#balinaisa-ai-widget a{position:relative;display:flex;align-items:center;gap:9px;',
       'background:#C3875E;color:#242424;border:none;border-radius: 0;padding:13px 20px 13px 16px;',
       'font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-size:14px;',
@@ -91,7 +96,7 @@
       'transition:transform .2s ease,background .2s ease,box-shadow .2s ease;}',
     '#balinaisa-ai-widget a:hover{background:#CE9469;transform:scale(1.04);}',
     '#balinaisa-ai-widget a:active{transform:scale(.97);}',
-    '#balinaisa-ai-widget a:focus-visible{outline:3px solid rgba(154,106,51,.55);outline-offset:3px;}',
+    '#balinaisa-ai-widget a:focus-visible{outline:3px solid #A85A20;outline-offset:3px;}',   /* le dore AA, 4.81 sur ivoire : un anneau de focus doit se voir */
     '#balinaisa-ai-widget svg{flex-shrink:0;}',
     '#balinaisa-ai-widget .bdw-star{font-size:13px;opacity:.8;}',
     '#balinaisa-ai-widget .bdw-shimmer{position:absolute;top:0;left:-80%;width:55%;height:100%;',
