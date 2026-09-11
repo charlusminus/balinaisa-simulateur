@@ -203,10 +203,11 @@
       <h2>La palette</h2>
       <hr class="bali-rule">
       <div class="ds-couleurs">
-        <div class="ds-c"><span class="ds-chip" style="background:#986039;"></span><span class="ds-meta"><b>Doré AA</b><code>#986039</code><button type="button" data-hex="#986039">Copier</button></span></div>
-        <div class="ds-c"><span class="ds-chip" style="background:#7B4D2E;"></span><span class="ds-meta"><b>Doré AA survol</b><code>#7B4D2E</code><button type="button" data-hex="#7B4D2E">Copier</button></span></div>
-        <div class="ds-c"><span class="ds-chip" style="background:#C3875E;"></span><span class="ds-meta"><b>Doré, décor</b><code>#C3875E</code><button type="button" data-hex="#C3875E">Copier</button></span></div>
-        <div class="ds-c"><span class="ds-chip" style="background:#A96E47;"></span><span class="ds-meta"><b>Doré survol, décor</b><code>#A96E47</code><button type="button" data-hex="#A96E47">Copier</button></span></div>
+        <div class="ds-c"><span class="ds-chip" style="background:#C3875E;"></span><span class="ds-meta"><b>Doré, aplats</b><code>#C3875E</code><button type="button" data-hex="#C3875E">Copier</button></span></div>
+        <div class="ds-c"><span class="ds-chip" style="background:#CE9469;"></span><span class="ds-meta"><b>Doré clair, survol d'aplat</b><code>#CE9469</code><button type="button" data-hex="#CE9469">Copier</button></span></div>
+        <div class="ds-c"><span class="ds-chip" style="background:#A85A20;"></span><span class="ds-meta"><b>Doré AA, texte</b><code>#A85A20</code><button type="button" data-hex="#A85A20">Copier</button></span></div>
+        <div class="ds-c"><span class="ds-chip" style="background:#8A4818;"></span><span class="ds-meta"><b>Doré AA survol</b><code>#8A4818</code><button type="button" data-hex="#8A4818">Copier</button></span></div>
+        <div class="ds-c"><span class="ds-chip" style="background:#A96E47;"></span><span class="ds-meta"><b>Doré sombre, décor</b><code>#A96E47</code><button type="button" data-hex="#A96E47">Copier</button></span></div>
         <div class="ds-c"><span class="ds-chip" style="background:#242424;"></span><span class="ds-meta"><b>Encre</b><code>#242424</code><button type="button" data-hex="#242424">Copier</button></span></div>
         <div class="ds-c"><span class="ds-chip" style="background:#6F685B;"></span><span class="ds-meta"><b>Taupe AA</b><code>#6F685B</code><button type="button" data-hex="#6F685B">Copier</button></span></div>
         <div class="ds-c"><span class="ds-chip" style="background:#807869;"></span><span class="ds-meta"><b>Taupe, décor</b><code>#807869</code><button type="button" data-hex="#807869">Copier</button></span></div>
@@ -222,11 +223,16 @@
       <p class="ds-note"><b>Deux valeurs par teinte, et la raison tient en une mesure.</b> Le doré de la
         marque donne <b>2.87:1</b> sur l'ivoire : sous le seuil AA du texte (4.5), et même sous celui des
         bordures et des anneaux de focus (3.0). Le taupe plein est à 4.15, le sauge à 2.82, le greige à 2.96.
-        Ces quatre-là sont des couleurs de <b>filet, d'aplat et de décor</b>. Tout ce qui porte de
-        l'information, un lien, un libellé, un prix, un fond de bouton, une bordure, un anneau de focus,
-        prend l'encre ou une <b>variante AA</b> : doré AA <code>#986039</code> et taupe AA
-        <code>#6F685B</code>, même teinte que leur couleur de marque, assombries juste assez pour passer sur
-        le pire fond de la maison, l'ivoire 2 (4.65 et 4.97). Réglage du 11/09/2026, après Lighthouse.</p>
+        Ces quatre-là sont des couleurs de <b>filet, d'aplat et de décor</b> : elles ne portent pas de mots.
+        Un lien, un libellé, un prix, une bordure, un anneau de focus prennent l'encre ou une
+        <b>variante AA</b> : doré AA <code>#A85A20</code> et taupe AA <code>#6F685B</code>, même teinte que
+        leur couleur de marque et calées sur le pire fond de la maison, l'ivoire 2 (4.56 et 4.97).</p>
+      <p class="ds-note"><b>Le bouton, lui, garde l'aplat doré de la marque.</b> C'est ce qu'on écrit dessus
+        qui a changé : le blanc n'y tenait qu'à <b>3.02:1</b>, l'encre donne <b>5.14</b>. Le bouton prend son
+        arête du doré AA en bordure (4.81) et <b>s'éclaire</b> au survol vers <code>#CE9469</code> (encre à
+        5.96), au lieu de s'assombrir : c'est le seul sens qui garde l'encre confortable. Le doré AA, enfin,
+        gagne <b>un tiers de chroma</b> plutôt que de s'assombrir, sans quoi il vire au brun à contraste égal.
+        Réglage du 11/09/2026, après Lighthouse.</p>
     </section>
 
     <section class="legal-section">

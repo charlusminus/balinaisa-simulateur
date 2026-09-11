@@ -20,16 +20,17 @@ monogramme carré et la signature horizontale, conservés au Drive dans
 
 ## Palette
 
-Deux valeurs par teinte depuis la v0.5 : la couleur de marque pour le décor, une variante AA
-de même teinte pour tout ce qui porte de l'information. Contrastes mesurés sur l'ivoire 2
+Deux valeurs par teinte depuis la v0.5 : la couleur de marque pour les aplats et le décor, une
+variante AA de même teinte pour tout ce qui porte des mots. Contrastes mesurés sur l'ivoire 2
 `#F5F3EC`, le fond le plus sombre de la maison, donc le pire cas.
 
 | rôle | valeur | sur ivoire 2 |
 |---|---|---|
-| **doré AA** (liens, prix, libellés, fonds de bouton, bordures, focus) | `#986039` | 4.65 |
-| doré AA survol | `#7B4D2E` | 6.42 |
-| doré de marque, **décor seul** (filets, aplats sans texte) | `#C3875E` | 2.72 |
-| doré survol, décor | `#A96E47` | 3.78 |
+| doré de marque, **aplats et boutons**, avec l'encre dessus (5.14 sur le doré) | `#C3875E` | 2.72 |
+| doré clair, survol d'un aplat (encre à 5.96 dessus) | `#CE9469` | 2.35 |
+| **doré AA** (liens, prix, libellés, bordures, focus) | `#A85A20` | 4.56 |
+| doré AA survol | `#8A4818` | 6.26 |
+| doré sombre, décor | `#A96E47` | 3.78 |
 | encre | `#242424` | 13.98 |
 | **taupe AA** (petit texte) | `#6F685B` | 4.97 |
 | taupe, décor | `#807869` | 3.93 |

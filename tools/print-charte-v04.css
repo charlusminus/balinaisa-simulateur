@@ -17,16 +17,16 @@
   --sauge-clair: #D6D7CE;
   --sable:       #D9C19E;
   --sable-clair: #F0E4CC;
-  --dore:        #C3875E;   /* decor seul */
-  --dore-aa:     #986039;   /* texte, v0.5 */
-  --dore-survol: #A96E47;
+  --dore:        #C3875E;   /* aplats et boutons, avec l encre dessus */
+  --dore-survol: #A96E47;   /* decor sombre */
 
   /* Variantes AA, memes valeurs que les gabarits d email n8n. Mesures sur
      ivoire, seuil AA 4.5 : taupe plein 4.15 et dore plein 2.87 echouent tous
      les deux. Le papier ne rattrape pas un texte trop clair, donc tout ce qui
      porte du sens ici prend l encre ou l une de ces deux variantes. */
   --taupe-aa:    #6F685B;   /* 5.24 sur ivoire */
-  --dore-aa:     #A5673C;   /* 4.33 sur ivoire, 4.56 sur blanc */
+  --dore-aa:     #A85A20;   /* v0.5 : 4.81 sur ivoire, 4.98 sur blanc. Etait #A5673C,
+                               a 4.33, sous le seuil sur les fonds de la marque. */
 
   --display: 'Cormorant Garamond', Georgia, serif;
   --serif:   'Lora', Georgia, serif;
