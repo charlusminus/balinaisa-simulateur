@@ -29,7 +29,10 @@
   <style>
     :root {
       --bg: #FAF9F5;
-      --primary: #C3875E;
+      --primary: #A85A20;
+      /* Les aplats gardent le dore de marque, avec l encre dessus (5.14). v0.5. */
+      --primary-surface: #C3875E;
+      --on-primary: #242424;
       --accent: #D9C19E;
       --text: #242424;
       --muted: #6F685B;   /* taupe AA, 5.24 sur ivoire ; le gris v0.2 #6C6C6C est retire de la charte */
@@ -41,7 +44,7 @@
     b, strong { font-weight: 600; }   /* 600 est la graisse forte servie par Inter */
     .header { background: var(--primary); padding: 20px 32px; display: flex; align-items: center; justify-content: space-between; }
     .header-brand { font-size: 18px; font-weight: 600; color: #fff; letter-spacing: -.02em; }
-    .header-sub { font-size: 12px; color: rgba(255,255,255,.65); margin-top: 2px; }
+    .header-sub { font-size: 12px; color: #fff; margin-top: 2px; }   /* etait a .65 d opacite, soit 2.6 sur le bandeau dore ; meme a .88 il reste a 3.39, seul le blanc plein passe (5.06) */
 
     .main { max-width: 1000px; margin: 0 auto; padding: 52px 24px 80px; }
     .greeting { font-family: 'Lora', Georgia, serif; font-size: 30px; font-weight: 400; margin-bottom: 6px; }
@@ -99,7 +102,7 @@
     }
 
     .devis-actions { padding: 16px 22px 22px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px; }
-    .btn-cta { display: block; background: var(--primary); color: #fff; padding: 14px 20px; border-radius: 0; text-decoration: none; font-size: 14px; font-weight: 600; text-align: center; }
+    .btn-cta { display: block; background: var(--primary-surface); color: var(--on-primary); padding: 14px 20px; border-radius: 0; text-decoration: none; font-size: 14px; font-weight: 600; text-align: center; }
     .btn-outline { display: block; color: var(--primary); padding: 11px 20px; border-radius: 0; border: 1.5px solid var(--accent); text-decoration: none; font-size: 14px; font-weight: 500; text-align: center; }
 
     .footer { padding: 22px 24px; text-align: center; border-top: 1px solid var(--border); font-size: 12px; color: var(--muted); margin-top: 48px; }

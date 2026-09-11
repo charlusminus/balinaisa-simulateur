@@ -1,4 +1,4 @@
-# Balinaisa, repères de marque · design system v0.4
+# Balinaisa, repères de marque · design system v0.5
 
 Bibliothèque de marque, présentée sur une page :
 
@@ -8,7 +8,7 @@ La page montre chaque déclinaison, la palette et les quatre polices en
 spécimens, avec un lien de téléchargement par fichier. C'est l'adresse à
 transmettre : elle s'ouvre sans compte ni permission.
 
-`planche_reperes-de-marque_v0.4.png` reprend le tout sur une image, à joindre
+`planche_reperes-de-marque_v0.5.png` reprend le tout sur une image, à joindre
 à un message pour qui préfère une pièce jointe à un lien.
 
 Ce README est la note technique. Les raisons des choix y sont détaillées ; la
@@ -20,12 +20,20 @@ monogramme carré et la signature horizontale, conservés au Drive dans
 
 ## Palette
 
-| rôle | valeur |
-|---|---|
-| doré (accent, mesuré sur balinaisa.com) | `#C3875E` |
-| doré survol | `#A96E47` |
-| encre | `#242424` |
-| taupe | `#807869` |
+Deux valeurs par teinte depuis la v0.5 : la couleur de marque pour les aplats et le décor, une
+variante AA de même teinte pour tout ce qui porte des mots. Contrastes mesurés sur l'ivoire 2
+`#F5F3EC`, le fond le plus sombre de la maison, donc le pire cas.
+
+| rôle | valeur | sur ivoire 2 |
+|---|---|---|
+| doré de marque, **aplats et boutons**, avec l'encre dessus (5.14 sur le doré) | `#C3875E` | 2.72 |
+| doré clair, survol d'un aplat (encre à 5.96 dessus) | `#CE9469` | 2.35 |
+| **doré AA** (liens, prix, libellés, bordures, focus) | `#A85A20` | 4.56 |
+| doré AA survol | `#8A4818` | 6.26 |
+| doré sombre, décor | `#A96E47` | 3.78 |
+| encre | `#242424` | 13.98 |
+| **taupe AA** (petit texte) | `#6F685B` | 4.97 |
+| taupe, décor | `#807869` | 3.93 |
 | greige | `#9C9084` |
 | sauge | `#959880` |
 | sauge clair | `#D6D7CE` |
