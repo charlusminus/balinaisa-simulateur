@@ -30,9 +30,9 @@
     :root {
       --bg: #FAF9F5;
       --primary: #A85A20;
-      /* Les aplats gardent le dore de marque, avec l encre dessus (5.14). v0.5. */
+      /* Le CTA garde le dore de marque sous un texte blanc, comme le logo. 11/09. */
       --primary-surface: #C3875E;
-      --on-primary: #242424;
+      --on-primary: #FFFFFF;
       --accent: #D9C19E;
       --text: #242424;
       --muted: #6F685B;   /* taupe AA, 5.24 sur ivoire ; le gris v0.2 #6C6C6C est retire de la charte */
@@ -102,8 +102,15 @@
     }
 
     .devis-actions { padding: 16px 22px 22px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px; }
-    .btn-cta { display: block; background: var(--primary-surface); color: var(--on-primary); padding: 14px 20px; border-radius: 0; text-decoration: none; font-size: 14px; font-weight: 600; text-align: center; }
-    .btn-outline { display: block; color: var(--primary); padding: 11px 20px; border-radius: 0; border: 1.5px solid var(--accent); text-decoration: none; font-size: 14px; font-weight: 500; text-align: center; }
+    /* Meme signature que les CTA du simulateur : Josefin en capitales, graisse 400, chasse
+       0.14em, et une bordure d un pixel qui vaut le fond du bouton, ou la couleur de son texte
+       quand il est au filet. Le filet etait en sable, a 1.65 sur ivoire, donc invisible. */
+    .btn-cta, .btn-outline { display: block; padding: 13px 19px; border: 1px solid; border-radius: 0;
+      font-family: 'Josefin Sans', 'Century Gothic', 'Avenir', sans-serif; font-size: 13px;
+      font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase;
+      text-decoration: none; text-align: center; }
+    .btn-cta { background: var(--primary-surface); color: var(--on-primary); border-color: var(--primary-surface); }
+    .btn-outline { color: var(--primary); border-color: var(--primary); }
 
     .footer { padding: 22px 24px; text-align: center; border-top: 1px solid var(--border); font-size: 12px; color: var(--muted); margin-top: 48px; }
     .footer a { color: var(--primary); text-decoration: none; }

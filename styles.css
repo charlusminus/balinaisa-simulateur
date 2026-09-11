@@ -25,12 +25,14 @@
   --bali-gris-2:      #959880;   /* vert sauge balinaisa.com, mentions discretes (v0.4) */
   --bali-sable:       #D9C19E;   /* filet dore */
   --bali-sable-clair: #F0E4CC;
-  --bali-teck:        #C3875E;   /* dore de marque : aplats, filets et BOUTONS, mais avec l ENCRE
-                                    dessus (5.14) et jamais du blanc (3.02). A 2.87 sur ivoire il
-                                    est aussi sous le seuil des elements non textuels (3.0) : ni
-                                    bordure, ni anneau de focus, ni petit texte. */
-  --bali-teck-clair:  #CE9469;   /* survol des aplats : le dore s eclaire, l encre y reste a 5.96 */
-  --bali-teck-hover:  #A96E47;   /* dore sombre, decor seul (3.98 sur ivoire) */
+  --bali-teck:        #C3875E;   /* dore de marque : aplats des CTA, filets, logo. A 2.87 sur
+                                    ivoire il ne porte ni petit texte, ni bordure, ni anneau de
+                                    focus : ceux-la prennent la variante AA. Le blanc des CTA
+                                    poses dessus donne 3.02, sous le seuil AA du texte : ecart
+                                    assume par Charles le 11/09, l alternative etait l encre a
+                                    5.14, jugee trop sombre. */
+  --bali-teck-clair:  #CE9469;   /* dore clair, decor (2.47 sur ivoire) */
+  --bali-teck-hover:  #A96E47;   /* survol des aplats : le blanc y remonte a 4.19 */
   /* Variante AA du dore, v0.5 du 11/09/2026 : meme teinte que le dore de marque (25 deg contre
      24), mais un tiers de chroma en plus, ce qui la tient cuivree la ou un simple assombrissement
      vire au brun (essai #986039, ecarte le 11/09). C est elle qui porte le texte dore, les
@@ -58,12 +60,14 @@
                                                   texte, bordure et focus suivent. */
   --primary-dark:  var(--bali-dore-aa-hover);
   --primary-light: var(--bali-sable-clair);
-  /* Les APLATS, eux, gardent le dore de marque : c est le texte qu on a change, pas le bouton.
-     Blanc sur dore ne tenait qu a 3.02, l encre donne 5.14. Le bouton prend son arete du dore AA
-     (4.81) et s eclaire au survol, seul sens qui garde l encre confortable. */
+  /* Les APLATS de CTA gardent le dore de marque, sous un texte BLANC : c est la combinaison
+     validee par Charles, la meme que le logo. Elle donne 3.02, sous le seuil AA du texte (4.5),
+     ecart assume apres avoir essaye l encre (5.14) et un dore plus clair. Leur bordure vaut leur
+     fond : aucun filet d une autre couleur autour d un bouton. Le TEXTE dore hors bouton, lui,
+     garde la variante AA. */
   --primary-surface:       var(--bali-teck);
-  --primary-surface-hover: var(--bali-teck-clair);
-  --on-primary:            var(--bali-encre);
+  --primary-surface-hover: var(--bali-teck-hover);
+  --on-primary:            #FFFFFF;
   --accent:        var(--bali-sable);
   --accent-light:  var(--bali-ivoire-2);
 
@@ -109,7 +113,10 @@
      Et AUCUNE graisse non servie : fonts.css ne sert Lora qu en 400-500 et
      Inter qu en 300/400/500/600, tout 600 sur Lora ou 700 sur Inter est un
      faux gras fabrique par le navigateur (42 cas mesures le 03/09). */
-  --tracking-caps:  0.18em;   /* grandes capitales seulement : boutons, 14 px et plus */
+  /* 0.14em : la chasse reellement servie par tous les CTA. Le jeton annoncait 0.18em mais
+     n etait appele nulle part, chaque bouton codant sa valeur en dur ; les boutons passent
+     par le jeton depuis le 11/09, la valeur retenue etant celle qui est en production. */
+  --tracking-caps:  0.14em;
   --tracking-small: 0.06em;   /* capitales d un libelle sous 14 px */
   --rule-w: 88px;            /* longueur du filet dore sous les titres */
 
@@ -274,13 +281,13 @@ input, textarea, select { font-family: var(--font-sans); }
   margin-top: 0.5rem;
   background: var(--primary-surface);
   color: var(--on-primary);
-  border: none;
+  border: 1px solid var(--primary-surface);
   border-radius: 0;
-  padding: 17px 30px 17px 26px;
+  padding: 16px 29px 16px 25px;
   font-family: var(--font-caps);
   font-size: 14px;
   font-weight: 400;
-  letter-spacing: 0.14em;
+  letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
   white-space: nowrap;
   cursor: pointer;
@@ -294,7 +301,7 @@ input, textarea, select { font-family: var(--font-sans); }
   position: absolute;
   inset: -4px;
   border-radius: 0;
-  border: 2px solid rgba(36,36,36,.4);   /* etait blanc : invisible sur l aplat dore clair (v0.5) */
+  border: 2px solid rgba(255,255,255,.55);
   pointer-events: none;
   animation: widget-ring 2.8s ease-in-out infinite;
 }
@@ -366,15 +373,17 @@ input, textarea, select { font-family: var(--font-sans); }
   gap: 9px;
   background: var(--primary-surface);
   color: var(--on-primary);
-  border: none;
+  border: 1px solid var(--primary-surface);
   border-radius: 0;
-  padding: 13px 20px 13px 16px;
-  font-size: 14px;
-  font-weight: 500;
+  padding: 12px 19px 12px 15px;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
   cursor: pointer;
   overflow: hidden;
   transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
-  font-family: var(--font-sans);
+  font-family: var(--font-caps);
   white-space: nowrap;
 }
 
@@ -419,13 +428,13 @@ input, textarea, select { font-family: var(--font-sans); }
   gap: 8px;
   background: var(--primary-surface);
   color: var(--on-primary);
-  border: none;
+  border: 1px solid var(--primary-surface);
   border-radius: 0;
-  padding: 14px 28px;
+  padding: 13px 27px;
   font-family: var(--font-caps);
   font-size: 13px;
   font-weight: 400;
-  letter-spacing: 0.14em;
+  letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
   transition: background var(--transition), transform var(--transition);
 }
@@ -449,7 +458,7 @@ input, textarea, select { font-family: var(--font-sans); }
   font-family: var(--font-caps);
   font-size: 13px;
   font-weight: 400;
-  letter-spacing: 0.14em;
+  letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
   transition: background var(--transition), color var(--transition);
 }
@@ -684,8 +693,11 @@ input, textarea, select { font-family: var(--font-sans); }
   gap: 8px;
   border-radius: 0;
   padding: 11px 18px;
-  font-size: 14px;
-  font-weight: 500;
+  font-family: var(--font-caps);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
   cursor: pointer;
   transition: background var(--transition), color var(--transition), border-color var(--transition);
 }
@@ -693,14 +705,14 @@ input, textarea, select { font-family: var(--font-sans); }
 .btn-upload {
   background: transparent;
   color: var(--text-sub);
-  border: 1px solid var(--border-strong);
+  border: 1px solid var(--text-sub);   /* etait le sable, a 1.65 sur ivoire : un filet invisible */
 }
 .btn-upload:hover { background: var(--bg-muted); color: var(--text); }
 
 .btn-camera {
   background: var(--primary-surface);
   color: var(--on-primary);
-  border: 1px solid var(--primary);
+  border: 1px solid var(--primary-surface);
 }
 .btn-camera:hover { background: var(--primary-surface-hover); }
 
@@ -829,7 +841,7 @@ input, textarea, select { font-family: var(--font-sans); }
 .profile-btn.active {
   background: var(--primary-surface);
   color: var(--on-primary);
-  border-color: var(--primary);
+  border-color: var(--primary-surface);
 }
 
 .profile-error {
@@ -1129,7 +1141,7 @@ input, textarea, select { font-family: var(--font-sans); }
 .upload-zone:not(.has-file) { display: none; }
 .upload-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; flex-wrap: nowrap; }
 .upload-zone.has-file { margin-bottom: 4px; }
-.upload-actions .btn-camera, .upload-actions .btn-upload { width: 100%; justify-content: center; padding: 14px 18px; font-size: 15px; }
+.upload-actions .btn-camera, .upload-actions .btn-upload { width: 100%; justify-content: center; padding: 14px 18px; font-size: 14px; }
 @media (min-width: 768px) {
   .upload-zone:not(.has-file) { display: flex; }
   .upload-actions { flex-direction: row; justify-content: center; }
@@ -1142,9 +1154,12 @@ input, textarea, select { font-family: var(--font-sans); }
   color: var(--primary);
   border: 1px solid var(--primary);
   border-radius: 0;
-  padding: 12px 20px;
-  font-size: 14px;
-  font-weight: 500;
+  padding: 11px 19px;
+  font-family: var(--font-caps);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
   cursor: pointer;
   transition: background var(--transition), color var(--transition);
 }
@@ -1157,13 +1172,13 @@ input, textarea, select { font-family: var(--font-sans); }
   gap: 7px;
   background: var(--primary-surface);
   color: var(--on-primary);
-  border: none;
+  border: 1px solid var(--primary-surface);
   border-radius: 0;
-  padding: 9px 16px;
+  padding: 8px 15px;
   font-family: var(--font-caps);
   font-size: 12px;
   font-weight: 400;
-  letter-spacing: 0.14em;
+  letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
   white-space: nowrap;
   cursor: pointer;
