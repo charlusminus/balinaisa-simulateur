@@ -37,7 +37,7 @@ Options (data-attributes sur la balise `<script>`) :
 - `data-position="bottom-right"` (défaut) / `"bottom-left"`
 - `data-label="Simuler avec Balinaisa.ai"`
 - `data-target="https://simulateur.balinaisa.com/"` (URL du simulateur)
-- `data-skip-intro="true"` (défaut) : arrive **directement sur l'import photo** (ajoute `?start=1`, saute l'écran d'accueil pour éviter le doublon quand on vient du site) ; `"false"` pour ouvrir l'accueil
+- `data-skip-intro="true"` : arrive **directement sur l'import photo** (ajoute `?start=1`). **Par défaut le widget ouvre l'écran d'accueil du simulateur** (changé le 14/09/2026 : le visiteur arrivait devant un sélecteur de fichier sans savoir ce qu'il allait obtenir)
 - `data-utm-source` / `data-utm-medium` / `data-utm-campaign` (défauts : `site-balinaisa` / `widget-sticky` / `balinaisa-ai`)
 
 Le simulateur reconnaît `?start=1` (ou `#simuler`) et démarre alors sur l'import photo.
