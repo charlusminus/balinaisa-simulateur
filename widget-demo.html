@@ -24,7 +24,6 @@
     var _push = window.dataLayer.push.bind(window.dataLayer);
     window.dataLayer.push = function (o) { console.log('[dataLayer]', JSON.stringify(o)); return _push(o); };
     window.gtag = function () { console.log('[gtag]', JSON.stringify([].slice.call(arguments))); };
-    window.plausible = function (n) { console.log('[plausible]', n); };
   </script>
 </head>
 <body>

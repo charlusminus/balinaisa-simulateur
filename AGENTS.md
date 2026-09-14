@@ -14,10 +14,12 @@ result.html    page de rendu
 ```
 
 ## Déploiement
-Push sur `main` = mise en ligne (Pages, source `main` / root). Les liens `styles.css` / `simulator.js` sont versionnés (`?v=...`) : bumper le numéro à chaque changement pour forcer le rechargement chez les visiteurs (évite le cache navigateur).
+Push sur `main` = mise en ligne (Pages, source `main` / root). Les liens `styles.css`, `simulator.js`, `i18n.js` et `fonts/fonts.css` sont versionnés (`?v=...`) : bumper le numéro à chaque changement pour forcer le rechargement chez les visiteurs (évite le cache navigateur).
 
 ## i18n : la clé, c'est la phrase FR
-`i18n.js` traduit en cherchant le **texte FR entier comme clé** du dico EN. Changer un texte FR dans un `.html` sans reporter le nouveau texte **à l'identique** en clé suffit à casser la traduction : `tr()` ne trouve plus rien et **renvoie le français aux anglophones, sans aucune erreur console**. C'est arrivé au `<title>` (PR #11).
+Le dictionnaire vit dans **`i18n-en.js`**, `i18n.js` n'est que le runtime (switch de langue, bandeau, `tr()`). Seules les pages de `/en/` chargent le dictionnaire, et c'est `tools/build-en.js` qui pose la balise : rien à écrire à la main. Une page FR n'a aucune raison de le charger, il y pesait 47 Ko pour rien.
+
+`i18n-en.js` traduit en cherchant le **texte FR entier comme clé** du dico EN. Changer un texte FR dans un `.html` sans reporter le nouveau texte **à l'identique** en clé suffit à casser la traduction : `tr()` ne trouve plus rien et **renvoie le français aux anglophones, sans aucune erreur console**. C'est arrivé au `<title>` (PR #11).
 
 Garde-fou : `node tools/check-i18n.js` liste les clés qui ne correspondent à aucun texte rendu. Il tourne en CI sur chaque PR. Les absences légitimes (catégories du catalogue, UI retirée) se déclarent dans `tools/i18n-allowlist.json`, raison obligatoire.
 

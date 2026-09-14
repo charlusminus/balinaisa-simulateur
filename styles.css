@@ -20,7 +20,13 @@
   --bali-ivoire-2:    #F5F3EC;
   --bali-blanc:       #FDFDFD;
   --bali-encre:       #242424;
-  --bali-greige:      #9C9084;   /* premier mot des titres deux tons */
+  /* Premier mot des titres deux tons. Etait #9C9084, qui donnait 2.81 sur l ivoire 2 : sous
+     le seuil AA de 3 du GRAND texte, et c est le seul seuil qui s applique ici puisque
+     .bali-muted ne sert que dans des h1/h2 d affichage (Lighthouse mobile, 14/09). Assombri
+     a teinte constante, les trois canaux gardent leur rapport : 3.30 sur l ivoire 2, 3.48
+     sur l ivoire, 3.60 sur le blanc. Il reste plus clair que le taupe, a 3.93, donc le
+     contraste des titres deux tons tient. */
+  --bali-greige:      #8F8477;
   --bali-gris:        #807869;   /* taupe balinaisa.com : on evite les gris neutres (v0.4) */
   --bali-gris-2:      #959880;   /* vert sauge balinaisa.com, mentions discretes (v0.4) */
   --bali-sable:       #D9C19E;   /* filet dore */
