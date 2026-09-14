@@ -2,9 +2,14 @@
    BALINAISA, widget « Imaginez chez vous »
    Bouton flottant (sticky CTA) à déposer sur balinaisa.com.
 
-   Défauts arrêtés le 27/08 : libellé « Imaginez chez vous », cible https://balinaisa.ai/
-   et arrivée DIRECTE sur l'étape 1 (import de la photo) via ?start=1, jamais sur
-   l'écran d'accueil : le site porte déjà l'accroche, la redoubler fait perdre le clic.
+   Défauts arrêtés le 27/08 : libellé « Imaginez chez vous », cible https://balinaisa.ai/.
+
+   ⚠️ Le saut de l'écran d'accueil a été RETIRÉ des défauts le 14/09/2026 (arbitrage Charles).
+   Le widget ouvre désormais la HOME du simulateur, plus l'import photo. Le raisonnement du
+   27/08 (« le site porte déjà l'accroche, la redoubler fait perdre le clic ») supposait que le
+   visiteur arrivait décidé ; en pratique on le déposait devant un sélecteur de fichier sans lui
+   avoir dit ce qu'il allait obtenir. Le deep-link existe toujours, il est juste devenu opt-in :
+   data-skip-intro="true".
 
    Le libellé dit le BÉNÉFICE, pas la fonction : « Imaginez chez vous » plutôt que
    « Simulateur ». « Imaginer » est le verbe retenu au point d'étape du 17/07 pour son
@@ -24,8 +29,8 @@
      data-utm-medium="widget-sticky"      (défaut)
      data-utm-campaign="balinaisa-ai"            (défaut)
      data-target="https://balinaisa.ai/"  (défaut)
-     data-skip-intro="true"  (défaut) : arrive direct sur l'import photo (ajoute ?start=1),
-                              "false" pour ouvrir l'écran d'accueil du simulateur
+     data-skip-intro="true"  : arrive direct sur l'import photo (ajoute ?start=1).
+                              Par DÉFAUT le widget ouvre l'écran d'accueil du simulateur.
 
    Tracking : UTM ajoutés à l'URL + événement de clic envoyé, si présents,
    à Google Analytics (gtag / dataLayer) et Plausible. Sans analytics, no-op.
@@ -41,8 +46,9 @@
   var position = ds.position === 'bottom-left' ? 'bottom-left' : 'bottom-right';
   var label    = ds.label || 'Imaginez chez vous';
   var base     = ds.target || 'https://balinaisa.ai/';
-  // Venant du site, on saute l'ecran d'accueil et on arrive direct sur l'import photo.
-  var skipIntro = ds.skipIntro !== 'false';
+  // Par defaut on ouvre la HOME du simulateur (arbitrage du 14/09). Le saut direct vers
+  // l'import photo reste possible, mais il faut le demander : data-skip-intro="true".
+  var skipIntro = ds.skipIntro === 'true';
   var utm = {
     source:   ds.utmSource   || 'site-balinaisa',
     medium:   ds.utmMedium   || 'widget-sticky',
