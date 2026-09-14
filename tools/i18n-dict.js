@@ -1,4 +1,4 @@
-/* Lecteur unique du dictionnaire de i18n.js.
+/* Lecteur unique du dictionnaire de i18n-en.js (il vivait dans i18n.js jusqu'au 14/09).
  *
  * Deux consommateurs : tools/check-i18n.js (cles orphelines) et tools/build-en.js
  * (generation de /en/). Ils DOIVENT lire le dico de la meme facon, sinon le controle

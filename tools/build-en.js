@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-/* Genere les pages de /en/ depuis leur source FR + le dictionnaire de i18n.js.
+/* Genere les pages de /en/ depuis leur source FR + le dictionnaire de i18n-en.js.
  *
  * POURQUOI GENERER PLUTOT QUE DUPLIQUER
  * Une page anglaise ecrite a la main, c'est deux fichiers a tenir en parallele. La premiere
  * fois qu'on change une phrase FR sans toucher l'autre, les deux divergent en silence : c'est
  * exactement le bug que check-i18n.js existe pour empecher, mais en pire (il serait cuit dans
- * une page indexee par Google). Ici i18n.js reste la SOURCE DE VERITE unique des traductions.
+ * une page indexee par Google). Ici i18n-en.js reste la SOURCE DE VERITE des traductions.
  *
  * POURQUOI /en/ EXISTE
  * L'i18n etait client-side : Googlebot ne voyait qu'une page, en francais. Aucun anglophone
@@ -71,7 +71,7 @@ const EN_LINKS_ABS = {
 const norm = (s) => String(s).replace(/\s+/g, ' ').trim();
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-const { EN, metaEN } = readDict(path.join(ROOT, 'i18n.js'));
+const { EN, metaEN } = readDict(path.join(ROOT, 'i18n-en.js'));   /* le dico a quitte i18n.js le 14/09 */
 
 /* Garde-fou : une page anglaise qui contient encore du francais est un echec silencieux. */
 /* Mots choisis pour n'avoir AUCUN homographe anglais : « photo », « de », « en » ou « son »
@@ -85,7 +85,7 @@ const FR = /\b(continuer|retour|envoyer|valider|suivant|précédent|recommencer|
    rien de la langue de la phrase. On les RETIRE avant de tester, au lieu d'exempter la phrase
    entiere : « Combien coûte le mobilier Balinaisa ? » contient « Balinaisa », donc l'ancienne
    version l'exemptait en bloc et laissait passer une question de FAQ restee francaise. */
-const EXEMPT = /Balinaisa|Dominique|Raynal|Marie Claire|Hanoi|Reza|Jaya|Nara|Lyodra|Kumala|Uma|Siti|Timor|Atalya|Paktiz|Plausible|CNIL|cnil\.fr|Cloudflare|Turnstile|Google|Indonesian|Arcachon/gi;
+const EXEMPT = /Balinaisa|Dominique|Raynal|Marie Claire|Hanoi|Reza|Jaya|Nara|Lyodra|Kumala|Uma|Siti|Timor|Atalya|Paktiz|CNIL|cnil\.fr|Cloudflare|Turnstile|Google|Indonesian|Arcachon/gi;
 
 /* Ce qui reste d'une phrase une fois les noms propres retires. C'est la-dessus qu'on juge. */
 const stripNames = (v) => v.replace(EXEMPT, ' ').replace(/\s+/g, ' ').trim();
@@ -200,9 +200,33 @@ function liensMorts(html) {
   return [...new Set(morts)];
 }
 
+/* Le dictionnaire ne part QUE sur /en/ : c'est la seule langue ou il serve (window.i18n.t()
+   pour les chaines que simulator.js fabrique a l'execution, et le filet de applyDOM). Les pages
+   FR le chargeaient pour rien, 47 Ko a chaque visite, jusqu'au 14/09.
+
+   Sa balise est posee JUSTE AVANT celle de i18n.js, qui le lit. Les deux sont en defer, et les
+   scripts en defer s'executent dans l'ordre du document : window.__I18N_EN existe donc quand
+   i18n.js demarre. On reprend le `?v=` de i18n.js plutot que d'en ecrire un ici : les deux
+   fichiers changent ensemble, un seul numero a bouger dans les pages source. On reprend aussi
+   sa forme de chemin (relative ou absolue) : l'etape 4 absolutise les relatifs, et liensMorts()
+   verifie ensuite que le fichier existe vraiment. */
+const TAG_I18N = /([ \t]*)<script\s+src="(\/?)i18n\.js(\?[^"]*)?"([^>]*)><\/script>/i;
+
+function injecteDico(html, stats) {
+  return html.replace(TAG_I18N, (m, marge, racine, requete, reste) => {
+    stats.dico++;
+    return marge + '<script src="' + racine + 'i18n-en.js' + (requete || '') + '" defer></script>\n'
+         + marge + '<script src="' + racine + 'i18n.js' + (requete || '') + '"' + reste + '></script>';
+  });
+}
+
 function build(page) {
   let html = fs.readFileSync(path.join(ROOT, page.src), 'utf8');
-  const stats = { texts: 0, attrs: 0, metas: 0, paths: 0, links: 0, ld: 0 };
+  const stats = { texts: 0, attrs: 0, metas: 0, paths: 0, links: 0, ld: 0, dico: 0 };
+
+  /* 0 bis. La balise du dictionnaire, avant tout le reste : posee en relatif comme la source,
+     elle passe par l'absolutisation de l'etape 4 avec les autres chemins de la page. */
+  html = injecteDico(html, stats);
 
   /* 0. Donnees structurees. AVANT la mise en reserve : sinon SKIP emporte le bloc intact. */
   html = translateLd(html, page, stats);
@@ -283,7 +307,7 @@ function build(page) {
 
   holes.forEach((h, i) => { html = html.replace(' HOLE' + i + ' ', () => h); });
 
-  const banner = '<!-- GENERE par tools/build-en.js depuis ' + page.src + ' + i18n.js. NE PAS EDITER A LA MAIN :\n     toute correction se fait dans ' + page.src + ' (structure) ou i18n.js (traduction), puis\n     `node tools/build-en.js`. La CI regenere et compare. -->\n';
+  const banner = '<!-- GENERE par tools/build-en.js depuis ' + page.src + ' + i18n-en.js. NE PAS EDITER A LA MAIN :\n     toute correction se fait dans ' + page.src + ' (structure) ou i18n-en.js (traduction), puis\n     `node tools/build-en.js`. La CI regenere et compare. -->\n';
   html = html.replace(/^<!DOCTYPE html>\n/i, '<!DOCTYPE html>\n' + banner);
   html = typoAnglaise(html);
 
@@ -310,7 +334,7 @@ PAGES.forEach((page) => {
   if (CHECK) {
     const cur = fs.existsSync(outPath) ? fs.readFileSync(outPath, 'utf8') : '';
     if (cur !== html) {
-      console.error(label + ' n\'est PAS a jour. ' + page.src + ' ou i18n.js a change sans regeneration.');
+      console.error(label + ' n\'est PAS a jour. ' + page.src + ' ou i18n-en.js a change sans regeneration.');
       console.error('Lancer : node tools/build-en.js');
       failed = true;
     } else {
@@ -320,6 +344,16 @@ PAGES.forEach((page) => {
     fs.writeFileSync(outPath, html);
     console.log('%s ecrit : %d textes, %d attributs, %d metas, %d chemins absolutises, %d liens vers /en/, %d champs de donnees structurees.',
       label, stats.texts, stats.attrs, stats.metas, stats.paths, stats.links, stats.ld);
+  }
+
+  /* Une page de /en/ qui n'a pas charge le dictionnaire sert du francais aux anglophones des
+     que simulator.js fabrique une chaine, et rien ne le signale : window.i18n.t() rend son
+     argument tel quel, sans erreur. C'est exactement le mode de panne que ce fichier passe son
+     temps a fermer, donc on le ferme aussi. */
+  if (!stats.dico) {
+    console.error('\nDICTIONNAIRE ABSENT de ' + label + ' : aucune balise <script src="i18n.js"> dans ' + page.src + ',');
+    console.error('donc rien ou accrocher i18n-en.js. Les chaines fabriquees par simulator.js resteront en francais.');
+    failed = true;
   }
 
   if (morts.length) {
@@ -332,7 +366,7 @@ PAGES.forEach((page) => {
   if (leaks.length) {
     console.error('\nFUITE FR dans ' + label + ' : ' + leaks.length + ' texte(s) francais survivent :');
     leaks.forEach((l) => console.error('  - ' + l));
-    console.error('Chaque fuite = une phrase francaise servie a un anglophone. Ajouter la cle dans i18n.js.');
+    console.error('Chaque fuite = une phrase francaise servie a un anglophone. Ajouter la cle dans i18n-en.js.');
     failed = true;
   }
 });

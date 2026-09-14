@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 'use strict';
 
-/* Controle des cles orphelines du dictionnaire EN (i18n.js).
+/* Controle des cles orphelines du dictionnaire EN (i18n-en.js).
  *
- * Pourquoi : i18n.js utilise la phrase FR entiere comme cle. Si un texte FR change
+ * Pourquoi : le dictionnaire utilise la phrase FR entiere comme cle. Si un texte FR change
  * dans index.html sans que la cle soit changee a l'identique, tr() ne trouve plus
  * l'entree et renvoie le FR : les anglophones voient du francais, sans aucune erreur
  * console. C'est arrive avec le <title> (PR #11, corrige le 17/07).
@@ -24,7 +24,7 @@ const path = require('path');
 const vm = require('vm');
 
 const ROOT = path.resolve(process.argv[2] || path.join(__dirname, '..'));
-const DICT_FILE = path.join(ROOT, 'i18n.js');
+const DICT_FILE = path.join(ROOT, 'i18n-en.js');   /* le dico a quitte i18n.js le 14/09 */
 const ALLOW_FILE = path.join(__dirname, 'i18n-allowlist.json');
 const ALLOW_REL = 'tools/i18n-allowlist.json'; // pour les messages : ALLOW_FILE suit le script, pas la racine analysee
 
@@ -226,7 +226,7 @@ function sourceFiles() {
   const pick = (dir) => fs.existsSync(dir)
     ? fs.readdirSync(dir)
         .filter((f) => /\.(html|js)$/i.test(f))
-        .filter((f) => path.join(dir, f) !== path.join(ROOT, 'i18n.js')) // le dico se contient lui-meme : tout y matcherait
+        .filter((f) => path.join(dir, f) !== DICT_FILE) // le dico se contient lui-meme : tout y matcherait
         .sort()
         .map((f) => path.join(dir, f))
     : [];
@@ -324,9 +324,9 @@ function main() {
     for (const key of orphans) console.error(`  - ${JSON.stringify(key)}`);
     console.error('');
     console.error('Corriger selon le cas :');
-    console.error(`  - le texte FR a change : reporter le nouveau texte, a l'identique, en cle dans i18n.js ;`);
+    console.error(`  - le texte FR a change : reporter le nouveau texte, a l'identique, en cle dans i18n-en.js ;`);
     console.error(`  - le texte n'est plus affiche mais l'entree doit rester : l'ajouter a ${ALLOW_REL} avec sa raison ;`);
-    console.error(`  - l'entree ne sert plus : la retirer de i18n.js.`);
+    console.error(`  - l'entree ne sert plus : la retirer de i18n-en.js.`);
   }
 
   if (orphans.length || unreachable.length) process.exit(1);

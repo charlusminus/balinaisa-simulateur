@@ -11,13 +11,6 @@
   })(window,document,'script','dataLayer','GTM-KN42LDBT');</script>
   <!-- End Google Tag Manager -->
 
-  <!-- Analytics respectueux de la vie privée (Plausible) : sans cookie, sans donnée perso, exempté CNIL -->
-  <script async src="https://plausible.io/js/pa-LQmhy-Wx5R6u7vxz-r8EF.js"></script>
-  <script>
-    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-    plausible.init()
-  </script>
-
   <!-- i18n : la langue vient du CHEMIN (/ = FR, /en/ = EN, page generee). Le texte est deja
        dans la bonne langue dans le HTML servi, donc aucune traduction au chargement, donc plus
        d'anti-flash a poser : le script inline qui masquait le body (et lisait navigator.language)
@@ -27,7 +20,7 @@
        toujours ; seul le renvoi de compat ?lang=en part quelques ms plus tard. simulator.js
        passe en defer lui aussi : les scripts defer s'executent dans l'ordre du document,
        window.i18n existe donc avant que T() serve. -->
-  <script src="i18n.js?v=20260903d" defer></script>
+  <script src="i18n.js?v=20260914" defer></script>
 
   <!-- SEO -->
   <title>Simulateur déco et aménagement à partir d'une photo | Balinaisa</title>
@@ -72,7 +65,6 @@
   <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/charlusminus/balinaisa-visuels@main/og-balinaisa.jpg">
   <meta name="twitter:image:alt" content="Salle à manger en teck massif Balinaisa, suspensions et grande table face à la pinède">
 
-  <link rel="preconnect" href="https://balinaisa.com">
   <!-- Image du hero : c'est le LCP mobile (la video n'y est jamais chargee). Elle etait servie
        en JPEG de 262 Ko depuis jsDelivr, decouverte tard (attribut poster) sur une origine
        tierce. Copies locales en WebP, deux largeurs (840 et 1080), prechargees en priorite
@@ -84,13 +76,13 @@
   <link rel="preload" as="image" href="/hero-balinaisa.webp?v=20260903"
         imagesrcset="/hero-balinaisa-840.webp?v=20260903 840w, /hero-balinaisa.webp?v=20260903 1080w"
         imagesizes="max(100vw, 56.25vh)" fetchpriority="high">
-  <link rel="stylesheet" href="styles.css?v=20260903c">
+  <link rel="stylesheet" href="styles.css?v=20260914">
   <!-- Hors du chemin critique : la feuille ne porte que des @font-face en font-display: swap,
        le texte s'affiche en police de secours puis bascule, avec ou sans blocage. Bloquer
        n'ajoutait qu'une requete devant le premier rendu (470 ms mesures par PSI le 03/09).
        media=print puis onload : chargee sans bloquer, noscript en secours. -->
-  <link href="fonts/fonts.css?v=20260902" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="fonts/fonts.css?v=20260902" rel="stylesheet"></noscript>
+  <link href="fonts/fonts.css?v=20260914" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="fonts/fonts.css?v=20260914" rel="stylesheet"></noscript>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad" async defer></script>
 
   <!-- Données structurées (SEO / GEO) -->
@@ -186,7 +178,11 @@
   <!-- HEADER -->
   <header class="header">
     <a href="/" class="header-logo" aria-label="Balinaisa.ai, accueil du simulateur">
-      <img src="assets/balinaisa-logo-header.png?v=20260902" alt="Balinaisa" width="68" height="34">
+      <!-- 136 x 68, soit exactement deux fois la taille d affichage (68 x 34 CSS). Le fichier
+           faisait 241 x 120 : Lighthouse le comptait servi trois fois et demie trop grand pour
+           un logo de 34 px de haut. Encode en gris + alpha, pas en RGBA : la marque est une
+           encre pure, une seule couleur, seul le canal alpha porte le dessin. 7,0 Ko -> 2,9 Ko. -->
+      <img src="assets/balinaisa-logo-header.png?v=20260914" alt="Balinaisa" width="68" height="34">
     </a>
     <button class="header-cta" id="header-cta" onclick="startSimulator()" aria-label="Commencer">
       <span>Commencer</span>

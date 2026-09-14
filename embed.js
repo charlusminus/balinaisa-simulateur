@@ -32,8 +32,9 @@
      data-skip-intro="true"  : arrive direct sur l'import photo (ajoute ?start=1).
                               Par DÉFAUT le widget ouvre l'écran d'accueil du simulateur.
 
-   Tracking : UTM ajoutés à l'URL + événement de clic envoyé, si présents,
-   à Google Analytics (gtag / dataLayer) et Plausible. Sans analytics, no-op.
+   Tracking : UTM ajoutés à l'URL + événement de clic envoyé, si présent,
+   à Google Analytics (gtag / dataLayer). Sans analytics, no-op. La branche Plausible
+   a été retirée le 14/09 avec le tag lui-même : GA4 via GTM est la seule mesure.
    ============================================================ */
 (function () {
   if (window.__balinaisaWidgetLoaded) return;      // anti double-injection
@@ -77,8 +78,6 @@
     try { if (typeof window.gtag === 'function')
       window.gtag('event', 'widget_click', { event_category: 'simulateur_balinaisa_ia',
         event_label: 'sticky_cta', utm_campaign: utm.campaign }); } catch (e) {}
-    try { if (typeof window.plausible === 'function')
-      window.plausible('Widget Simulateur Balinaisa.ai'); } catch (e) {}
   }
 
   var side = position === 'bottom-left' ? 'left' : 'right';
