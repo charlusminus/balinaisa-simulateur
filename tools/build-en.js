@@ -90,6 +90,23 @@ const EXEMPT = /Balinaisa|Dominique|Raynal|Marie Claire|Hanoi|Reza|Jaya|Nara|Lyo
 /* Ce qui reste d'une phrase une fois les noms propres retires. C'est la-dessus qu'on juge. */
 const stripNames = (v) => v.replace(EXEMPT, ' ').replace(/\s+/g, ' ').trim();
 const looksFrench = (v) => { const rest = stripNames(v); return rest.length > 3 && FR.test(rest); };
+
+/* ATTRIBUTS ET METAS : UNE REGLE, PAS UNE HEURISTIQUE (24/09/2026).
+   Le scan ci-dessus ne lit que le texte visible du <body>. Les attributs et le <head> lui
+   echappaient : 14 valeurs sont restees en francais sur /en/ sans qu'aucun controle ne le voie,
+   les alt des photos de la vitrine (« Chaise Uma en teck massif »), deux aria-label, l'alt des
+   images de partage et keywords, plus l'exemple « marie@exemple.fr » du formulaire. Ce sont
+   eux que lisent les lecteurs d'ecran, Google Images et les apercus de partage.
+   Une liste de mots francais les aurait ratees (« Chaise Uma en teck massif » n'en contient
+   aucun), donc la regle est deterministe : tout attribut lisible d'une page source DOIT avoir sa
+   cle dans i18n-en.js, sauf les valeurs qui s'ecrivent pareil en anglais, listees ici. `value`
+   n'est pas controle : c'est souvent une valeur envoyee au backend, pas un texte lu. */
+const ATTRS_LISIBLES = ['placeholder', 'aria-label', 'alt', 'title'];
+const IDENTIQUES_EN = new Set(['Balinaisa', 'Marie Claire', '+33 6 12 34 56 78']);
+/* Les metas lues par une personne ou un robot. Une meta dont le contenu sort de la generation
+   identique a la source n'a pas ete traduite. */
+const METAS_LISIBLES = ['description', 'keywords', 'og:title', 'og:description', 'og:image:alt', 'twitter:title', 'twitter:description', 'twitter:image:alt'];
+const RE_META = /<meta\s+(?:name|property)="([^"]+)"\s+content="([^"]*)"/gi;
 /* On ne met en reserve que le CONTENU de script/style : la balise ouvrante reste exposee,
    sinon l'etape 4 ne voit jamais son src. Le 02/09, <script src="i18n.js"> partait dans le
    trou avec sa balise : /en/ servait un 404 sur i18n.js ET simulator.js. Aucune erreur
@@ -223,6 +240,7 @@ function injecteDico(html, stats) {
 function build(page) {
   let html = fs.readFileSync(path.join(ROOT, page.src), 'utf8');
   const stats = { texts: 0, attrs: 0, metas: 0, paths: 0, links: 0, ld: 0, dico: 0 };
+  const nonTraduits = [];   /* attributs et metas lisibles restes en francais */
 
   /* 0 bis. La balise du dictionnaire, avant tout le reste : posee en relatif comme la source,
      elle passe par l'absolutisation de l'etape 4 avec les autres chemins de la page. */
@@ -244,17 +262,29 @@ function build(page) {
     return '>' + text.replace(key, EN[key]) + '<';
   });
 
+  /* Un attribut dans du balisage mis en commentaire n'est lu par personne : on ne l'exige pas.
+     Meme convention que check-i18n (« UI commentee = UI non rendue »). Le widget CTA masque
+     depuis le 29/07 porte un aria-label francais : s'il est reactive, le garde-fou l'exigera. */
+  const horsCommentaires = html.replace(/<!--[\s\S]*?-->/g, ' ');
+
   /* 2. Attributs. Meme liste que applyDOM, a l'identique. Si elle diverge, /en/ et le
      filet runtime ne traduisent pas les memes choses. */
   ['placeholder', 'aria-label', 'alt', 'title', 'value'].forEach((attr) => {
     const re = new RegExp('(\\s' + attr + '=")([^"]*)(")', 'g');
     html = html.replace(re, (m, a, v, c) => {
       const key = norm(v);
-      if (!key || !Object.prototype.hasOwnProperty.call(EN, key)) return m;
+      if (!key) return m;
+      if (!Object.prototype.hasOwnProperty.call(EN, key)) {
+        if (ATTRS_LISIBLES.includes(attr) && !IDENTIQUES_EN.has(key) && horsCommentaires.includes(attr + '="' + v + '"')) nonTraduits.push(attr + '="' + key.slice(0, 70) + '"');
+        return m;
+      }
       stats.attrs++;
       return a + esc(EN[key]) + c;
     });
   });
+
+  const metaSource = {};
+  html.replace(RE_META, (m, k, v) => { metaSource[k.toLowerCase()] = v; return m; });
 
   /* 3. <title> et <meta> */
   html = html.replace(/<title>([\s\S]*?)<\/title>/i, (m, t) => {
@@ -277,6 +307,12 @@ function build(page) {
       if (re.test(html)) { html = html.replace(re, (m, a, v, c) => a + esc(metaEN[k]) + c); stats.metas++; }
     });
   }
+
+  html.replace(RE_META, (m, k, v) => {
+    const n = k.toLowerCase();
+    if (METAS_LISIBLES.includes(n) && v && v === metaSource[n] && !IDENTIQUES_EN.has(norm(v))) nonTraduits.push('<meta ' + n + '> « ' + norm(v).slice(0, 60) + ' »');
+    return m;
+  });
 
   /* 4. Liens internes vers une autre page traduite -> son equivalent /en/. A faire AVANT
      l'absolutisation, sinon "index.html" est deja devenu "/index.html" et ne matche plus. */
@@ -319,14 +355,14 @@ function build(page) {
     return m;
   });
 
-  return { html, stats, leaks: [...new Set(leaks)], morts: liensMorts(html) };   /* meme phrase vue dans le corps ET dans le bloc structure : un seul signalement */
+  return { html, stats, leaks: [...new Set(leaks)], morts: liensMorts(html), nonTraduits: [...new Set(nonTraduits)] };   /* meme phrase vue dans le corps ET dans le bloc structure : un seul signalement */
 }
 
 let failed = false;
 fs.mkdirSync(OUT_DIR, { recursive: true });
 
 PAGES.forEach((page) => {
-  const { html, stats, leaks, morts } = build(page);
+  const { html, stats, leaks, morts, nonTraduits } = build(page);
   const outPath = path.join(OUT_DIR, page.out);
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   const label = 'en/' + page.out;
@@ -360,6 +396,15 @@ PAGES.forEach((page) => {
     console.error('\nLIEN MORT dans ' + label + ' : ' + morts.length + ' chemin(s) local(aux) ne pointent sur rien :');
     morts.forEach((l) => console.error('  - ' + l));
     console.error('Un asset absent ne fait pas d\'erreur visible : la page s\'affiche, la fonction manque.');
+    failed = true;
+  }
+
+  if (nonTraduits.length) {
+    console.error('\nATTRIBUT OU META NON TRADUIT dans ' + label + ' : ' + nonTraduits.length + ' valeur(s) restent en francais :');
+    nonTraduits.forEach((l) => console.error('  - ' + l));
+    console.error('Invisibles a l\'oeil, lus par les lecteurs d\'ecran, Google Images et les apercus de partage.');
+    console.error('Ajouter la cle dans i18n-en.js (ou dans metaEN pour une meta), ou, si la valeur s\'ecrit');
+    console.error('pareil en anglais (nom propre, logo), l\'ajouter a IDENTIQUES_EN dans ce fichier.');
     failed = true;
   }
 
