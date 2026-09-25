@@ -23,15 +23,15 @@
        toujours ; seul le renvoi de compat ?lang=en part quelques ms plus tard. simulator.js
        passe en defer lui aussi : les scripts defer s'executent dans l'ordre du document,
        window.i18n existe donc avant que T() serve. -->
-  <script src="/i18n-en.js?v=20260914" defer></script>
-  <script src="/i18n.js?v=20260914" defer></script>
+  <script src="/i18n-en.js?v=20260924" defer></script>
+  <script src="/i18n.js?v=20260924" defer></script>
 
   <!-- SEO -->
   <title>Interior design and layout simulator from a photo | Balinaisa</title>
   <meta name="description" content="Interior design and layout simulator: upload a photo of your living room, terrace or garden and receive a solid teak rendering with a quote. Free.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="author" content="Balinaisa">
-  <meta name="keywords" content="mobilier teck, mobilier extérieur teck, mobilier teck intérieur, salon de jardin teck, table teck, aménagement terrasse, teck Indonésie, Balinaisa, simulateur aménagement">
+  <meta name="keywords" content="teak furniture, outdoor teak furniture, indoor teak furniture, teak outdoor lounge set, teak table, terrace design, Indonesian teak, Balinaisa, interior design simulator">
   <!-- Icones : un seul bloc, identique sur toutes les pages. Elles divergeaient page par page
        (SVG seul ici, PNG seul la, trois ?v= differents, chemins tantot relatifs tantot absolus).
        Chemins ABSOLUS : une page rangee dans un sous-repertoire resoudrait un chemin relatif
@@ -60,14 +60,14 @@
   <meta property="og:title" content="Your space, elevated by teak · Balinaisa">
   <meta property="og:description" content="One photo is enough: Balinaisa.ai places Balinaisa teak furniture in your space and sends you a quote. Free, no commitment.">
   <meta property="og:image" content="https://cdn.jsdelivr.net/gh/charlusminus/balinaisa-visuels@main/og-balinaisa.jpg">
-  <meta property="og:image:alt" content="Salle à manger en teck massif Balinaisa, suspensions et grande table face à la pinède">
+  <meta property="og:image:alt" content="Balinaisa solid teak dining room, pendant lights and a large table facing the pine forest">
 
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Your space, elevated by teak · Balinaisa">
   <meta name="twitter:description" content="One photo is enough: Balinaisa.ai places Balinaisa teak furniture in your space and sends you a quote. Free, no commitment.">
   <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/charlusminus/balinaisa-visuels@main/og-balinaisa.jpg">
-  <meta name="twitter:image:alt" content="Salle à manger en teck massif Balinaisa, suspensions et grande table face à la pinède">
+  <meta name="twitter:image:alt" content="Balinaisa solid teak dining room, pendant lights and a large table facing the pine forest">
 
   <!-- Image du hero : c'est le LCP mobile (la video n'y est jamais chargee). Elle etait servie
        en JPEG de 262 Ko depuis jsDelivr, decouverte tard (attribut poster) sur une origine
@@ -160,12 +160,12 @@
           {
             "@type": "Question",
             "name": "What furniture is offered?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Solid Indonesian teak furniture from the Balinaisa collection, for indoors and outdoors: chairs, armchairs and tables, handcrafted." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Solid Indonesian teak furniture from the Balinaisa collection, for indoors and outdoors: chairs, lounge chairs and tables, shaped by hand." }
           },
           {
             "@type": "Question",
             "name": "How much does Balinaisa furniture cost?",
-            "acceptedAnswer": { "@type": "Answer", "text": "A premium positioning, furniture handcrafted in solid teak. Prices vary by piece, size and collection. Each simulation comes with an estimated quote." }
+            "acceptedAnswer": { "@type": "Answer", "text": "A premium positioning, furniture shaped by hand in solid teak. Prices vary by piece, size and collection. Each simulation comes with an estimated quote." }
           }
         ]
       }
@@ -181,7 +181,7 @@
 
   <!-- HEADER -->
   <header class="header">
-    <a href="/en/" class="header-logo" aria-label="Balinaisa.ai, accueil du simulateur">
+    <a href="/en/" class="header-logo" aria-label="Balinaisa.ai, simulator home">
       <!-- 136 x 68, soit exactement deux fois la taille d affichage (68 x 34 CSS). Le fichier
            faisait 241 x 120 : Lighthouse le comptait servi trois fois et demie trop grand pour
            un logo de 34 px de haut. Encode en gris + alpha, pas en RGBA : la marque est une
@@ -256,10 +256,10 @@
   <section class="brand-intro" id="balinaisa">
     <div class="brand-inner">
       <div class="brand-lead">
-        <p class="brand-eyebrow">The Balinaisa house</p>
+        <p class="brand-eyebrow">The Balinaisa maison</p>
         <h2 class="brand-title"><span class="bali-muted">Indonesian teak,</span> direct from the source.</h2>
         <hr class="bali-rule">
-        <p class="brand-text">Each piece is handcrafted by our partner artisans in Indonesia, from carefully selected solid teak. A direct relationship, with no middlemen, for rare quality and durable finishes, designed for outdoors as well as indoors.</p>
+        <p class="brand-text">Our partner artisans in Indonesia shape each piece by hand, from carefully selected solid teak. A direct relationship, with no middlemen, for rare quality and durable finishes, designed for outdoors as well as indoors.</p>
         <ul class="brand-points">
           <li><span aria-hidden="true">✦</span> Solid Indonesian teak</li>
           <li><span aria-hidden="true">✦</span> Partner artisans, short supply chain</li>
@@ -277,7 +277,7 @@
                  alt="Marie Claire" width="128" height="128" loading="lazy" decoding="async">
             <span class="press-ref-pub">Marie Claire Maison</span>
           </span>
-          <span class="press-ref-quote">“Balinaisa, the house that takes you travelling without leaving your living room”</span>
+          <span class="press-ref-quote">“Balinaisa, the maison that takes you travelling without leaving your living room”</span>
           <span class="press-ref-cta">Read the article<span aria-hidden="true"> →</span></span>
         </a>
       </div>
@@ -295,20 +295,20 @@
 
     <div class="brand-slider-head">
       <p class="brand-slider-title">A few pieces from the collection</p>
-      <p class="brand-slider-sub">Handcrafted</p>
+      <p class="brand-slider-sub">Shaped by hand</p>
     </div>
     <div class="brand-slider">
       <!-- Uma en tete : c'est la premiere carte visible sans scroller, donc la premiere
            impression de gamme. Le reste suit l'ordre de la liste de Dom. -->
-      <article class="prod-card"><div class="prod-media"><img src="/produits/uma.jpg?v=20260717a" alt="Chaise Uma en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Chair</span><h3 class="prod-name">Uma</h3><p class="prod-price">199 € <span>incl. VAT</span></p></article>
-      <article class="prod-card"><div class="prod-media"><img src="/produits/hanoi.jpg?v=20260717a" alt="Table basse Hanoi en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Coffee table</span><h3 class="prod-name">Hanoi</h3><p class="prod-price">529 € <span>incl. VAT</span></p></article>
-      <article class="prod-card"><div class="prod-media"><img src="/produits/reza.jpg?v=20260717a" alt="Meuble TV Reza en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">TV unit</span><h3 class="prod-name">Reza</h3><p class="prod-price">759 € <span>incl. VAT</span></p></article>
-      <article class="prod-card"><div class="prod-media"><img src="/produits/jaya.jpg?v=20260717a" alt="Fauteuil de bar Jaya en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Bar chair</span><h3 class="prod-name">Jaya</h3><p class="prod-price">369 € <span>incl. VAT</span></p></article>
-      <article class="prod-card"><div class="prod-media"><img src="/produits/nara.jpg?v=20260717a" alt="Chaise avec accoudoirs Nara en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Chair</span><h3 class="prod-name">Nara</h3><p class="prod-price">319 € <span>incl. VAT</span></p></article>
-      <article class="prod-card"><div class="prod-media"><img src="/produits/lyodra.jpg?v=20260717a" alt="Table à manger Lyodra en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Dining table</span><h3 class="prod-name">Lyodra</h3><p class="prod-price">2 079 € <span>incl. VAT</span></p></article>
-      <article class="prod-card"><div class="prod-media"><img src="/produits/kumala.jpg?v=20260717a" alt="Fauteuil d'intérieur Kumala en teck massif" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Armchair</span><h3 class="prod-name">Kumala</h3><p class="prod-price">459 € <span>incl. VAT</span></p></article>
-      <article class="prod-card"><div class="prod-media"><img src="/produits/siti.jpg?v=20260717a" alt="Table Siti en teck massif" width="292" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Table</span><h3 class="prod-name">Siti</h3><p class="prod-price">2 129 € <span>incl. VAT</span></p></article>
-      <article class="prod-card"><div class="prod-media"><img src="/produits/timor.jpg?v=20260717a" alt="Table basse Timor en teck massif" width="300" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Coffee table</span><h3 class="prod-name">Timor</h3><p class="prod-price">1 329 € <span>incl. VAT</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="/produits/uma.jpg?v=20260717a" alt="Uma chair in solid teak" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Chair</span><h3 class="prod-name">Uma</h3><p class="prod-price">199 € <span>incl. VAT</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="/produits/hanoi.jpg?v=20260717a" alt="Hanoi coffee table in solid teak" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Coffee table</span><h3 class="prod-name">Hanoi</h3><p class="prod-price">529 € <span>incl. VAT</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="/produits/reza.jpg?v=20260717a" alt="Reza TV unit in solid teak" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">TV unit</span><h3 class="prod-name">Reza</h3><p class="prod-price">759 € <span>incl. VAT</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="/produits/jaya.jpg?v=20260717a" alt="Jaya bar stool in solid teak" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Bar stool</span><h3 class="prod-name">Jaya</h3><p class="prod-price">369 € <span>incl. VAT</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="/produits/nara.jpg?v=20260717a" alt="Nara armchair in solid teak" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Chair</span><h3 class="prod-name">Nara</h3><p class="prod-price">319 € <span>incl. VAT</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="/produits/lyodra.jpg?v=20260717a" alt="Lyodra dining table in solid teak" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Dining table</span><h3 class="prod-name">Lyodra</h3><p class="prod-price">2 079 € <span>incl. VAT</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="/produits/kumala.jpg?v=20260717a" alt="Kumala indoor lounge chair in solid teak" width="400" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Lounge chair</span><h3 class="prod-name">Kumala</h3><p class="prod-price">459 € <span>incl. VAT</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="/produits/siti.jpg?v=20260717a" alt="Siti table in solid teak" width="292" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Table</span><h3 class="prod-name">Siti</h3><p class="prod-price">2 129 € <span>incl. VAT</span></p></article>
+      <article class="prod-card"><div class="prod-media"><img src="/produits/timor.jpg?v=20260717a" alt="Timor coffee table in solid teak" width="300" height="400" loading="lazy" decoding="async"></div><span class="prod-cat">Coffee table</span><h3 class="prod-name">Timor</h3><p class="prod-price">1 329 € <span>incl. VAT</span></p></article>
     </div>
   </section>
 
@@ -364,11 +364,11 @@
         </details>
         <details class="faq-item">
           <summary>What furniture is offered?</summary>
-          <p>Solid Indonesian teak furniture from the Balinaisa collection, for indoors and outdoors: chairs, armchairs and tables, handcrafted.</p>
+          <p>Solid Indonesian teak furniture from the Balinaisa collection, for indoors and outdoors: chairs, lounge chairs and tables, shaped by hand.</p>
         </details>
         <details class="faq-item">
           <summary>How much does Balinaisa furniture cost?</summary>
-          <p>A premium positioning, furniture handcrafted in solid teak. Prices vary by piece, size and collection. Each simulation comes with an estimated quote.</p>
+          <p>A premium positioning, furniture shaped by hand in solid teak. Prices vary by piece, size and collection. Each simulation comes with an estimated quote.</p>
         </details>
       </div>
     </div>
@@ -504,17 +504,17 @@
           <div class="form-row">
             <div class="form-group">
               <label for="f-firstname">First name *</label>
-              <input type="text" id="f-firstname" name="given-name" autocomplete="given-name" placeholder="Marie" required>
+              <input type="text" id="f-firstname" name="given-name" autocomplete="given-name" placeholder="Jane" required>
             </div>
             <div class="form-group">
               <label for="f-lastname">Last name *</label>
-              <input type="text" id="f-lastname" name="family-name" autocomplete="family-name" placeholder="Dupont" required>
+              <input type="text" id="f-lastname" name="family-name" autocomplete="family-name" placeholder="Smith" required>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
               <label for="f-email">Email *</label>
-              <input type="email" id="f-email" name="email" autocomplete="email" placeholder="marie@exemple.fr" required>
+              <input type="email" id="f-email" name="email" autocomplete="email" placeholder="jane@example.com" required>
             </div>
             <div class="form-group">
               <label for="f-phone">Phone *</label>
