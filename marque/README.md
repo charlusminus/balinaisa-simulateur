@@ -37,7 +37,7 @@ Contrastes mesurés sur l'ivoire 2 `#F5F3EC`, le fond le plus sombre de la maiso
 | sauge clair, fonds doux (encre à 10.70) | `#D6D7CE` | 1.31 |
 | encre | `#242424` | 13.98 |
 | **taupe AA** (petit texte) | `#6F685B` | 4.97 |
-| greige, premier mot des titres deux tons | `#9C9084` | 2.80 |
+| greige, premier mot des titres deux tons, grand texte seulement (seuil 3). Était `#9C9084`, 2.81, assombri le 14/09 | `#8F8477` | 3.30 |
 | sable | `#D9C19E` |
 | sable clair | `#F0E4CC` |
 | ivoire (fond) | `#FAF9F5` |

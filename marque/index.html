@@ -50,16 +50,22 @@
         linear-gradient(45deg, transparent 75%, #EDEDEA 75%), linear-gradient(-45deg, transparent 75%, #EDEDEA 75%);
       background-size: 18px 18px; background-position: 0 0, 0 9px, 9px -9px, -9px 0;
     }
-    .ds-vue--sombre { background: #2B2B2B; }
+    .ds-vue--sombre { background: var(--bali-encre); }
     .ds-corps { padding: .85rem 1rem 1rem; border-top: 1px solid var(--bali-sable-clair); }
     .ds-nom { font-family: var(--font-sans); font-size: .78rem; letter-spacing: var(--tracking-small);
               text-transform: uppercase; color: var(--bali-encre); margin: 0 0 .4rem; }
-    .ds-usage { font-size: .82rem; line-height: 1.5; color: var(--bali-gris); margin: 0 0 .7rem; }
+    /* Tout texte de cette page passe par les jetons AA (--text-sub, --primary), jamais par les
+       couleurs de marque brutes : le taupe plein tombait a 4.29 sur le blanc des cartes, le sauge
+       a 2.82, et la page enfreignait la regle qu elle enonce (25/09). */
+    .ds-usage { font-size: .82rem; line-height: 1.5; color: var(--text-sub); margin: 0 0 .7rem; }
     .ds-dl { display: flex; gap: .5rem; }
+    /* Un telechargement est une action tertiaire : le filet sauge fonce de .btn-ghost, bordure de
+       la couleur du texte. Etait du dore plein sur un cadre sable (2.97) et du blanc sur le dore
+       au survol (3.02), les deux paires que la palette ci-dessous interdit. */
     .ds-dl a { font-family: var(--font-sans); font-size: .74rem; letter-spacing: var(--tracking-small); text-transform: uppercase;
-               color: var(--bali-teck); text-decoration: none; border: 1px solid var(--bali-sable);
+               color: var(--secondaire-active); text-decoration: none; border: 1px solid var(--secondaire-active);
                padding: .3rem .6rem; }
-    .ds-dl a:hover { background: var(--bali-teck); border-color: var(--bali-teck); color: #fff; }
+    .ds-dl a:hover, .ds-dl a:focus-visible { background: var(--secondaire-active); color: var(--on-secondaire-active); }
 
     .ds-couleurs { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 0; margin-bottom: 1.6rem; }
     .ds-groupe { font-family: var(--font-sans); font-size: .74rem; font-weight: 600; letter-spacing: var(--tracking-small);
@@ -82,12 +88,12 @@
 
     .ds-typo { border-top: 1px solid var(--bali-sable-clair); padding: 1.15rem 0; display: flex; gap: 1.6rem; flex-wrap: wrap; }
     .ds-typo-role { width: 150px; flex: none; font-family: var(--font-sans); font-size: .76rem;
-                    letter-spacing: var(--tracking-small); text-transform: uppercase; color: var(--bali-gris); padding-top: .35rem; }
+                    letter-spacing: var(--tracking-small); text-transform: uppercase; color: var(--text-sub); padding-top: .35rem; }
     .ds-typo-corps { flex: 1; min-width: 240px; }
-    .ds-typo-detail { font-size: .8rem; color: var(--bali-gris-2); margin: .35rem 0 0; }
+    .ds-typo-detail { font-size: .8rem; color: var(--text-sub); margin: .35rem 0 0; }
 
     .ds-note { border-left: 2px solid var(--bali-sable); padding: .1rem 0 .1rem .9rem; margin: 1rem 0 0;
-               font-size: .88rem; line-height: 1.65; color: var(--bali-gris); }
+               font-size: .88rem; line-height: 1.65; color: var(--text-sub); }
     .ds-note b { color: var(--bali-encre); font-weight: 600; }
 
     @media (max-width: 620px) {
@@ -234,7 +240,7 @@
       <div class="ds-couleurs">
         <div class="ds-c"><span class="ds-chip" style="background:#D9C19E;"></span><span class="ds-meta"><b>Sable</b><code>#D9C19E</code><span class="ds-role">Le filet de 88&nbsp;px sous les titres, les bordures appuyées</span><button type="button" data-hex="#D9C19E">Copier</button></span></div>
         <div class="ds-c"><span class="ds-chip" style="background:#F0E4CC;"></span><span class="ds-meta"><b>Sable clair</b><code>#F0E4CC</code><span class="ds-role">La fin du filet, les bordures discrètes</span><button type="button" data-hex="#F0E4CC">Copier</button></span></div>
-        <div class="ds-c"><span class="ds-chip" style="background:#9C9084;"></span><span class="ds-meta"><b>Greige</b><code>#9C9084</code><span class="ds-role">Le premier mot des titres deux tons, rien d'autre</span><button type="button" data-hex="#9C9084">Copier</button></span></div>
+        <div class="ds-c"><span class="ds-chip" style="background:#8F8477;"></span><span class="ds-meta"><b>Greige</b><code>#8F8477</code><span class="ds-role">Le premier mot des titres deux tons, en grand texte seulement (3.30)</span><button type="button" data-hex="#8F8477">Copier</button></span></div>
       </div>
       <p class="ds-note"><b>Treize couleurs, chacune avec un emploi.</b> Cette page en montrait seize sans
         dire à quoi elles servaient, et quatre n'étaient appelées nulle part dans le site. Le taupe plein
@@ -249,8 +255,12 @@
         notre charte, <code>#959880</code>, ne porte pas de blanc non plus (2.97) : il porte l'encre.</p>
       <p class="ds-note"><b>Deux valeurs par teinte, et la raison tient en une mesure.</b> Le doré de la
         marque donne <b>2.87:1</b> sur l'ivoire : sous le seuil AA du texte (4.5), et même sous celui des
-        bordures et des anneaux de focus (3.0). Le greige est à 2.96, le sable à 1.65. Ces couleurs-là sont
-        des couleurs de <b>filet, d'aplat et de décor</b> : elles ne portent pas de mots. Un lien, un
+        bordures et des anneaux de focus (3.0). Le sable est à 1.65. Ces couleurs-là sont
+        des couleurs de <b>filet, d'aplat et de décor</b> : elles ne portent pas de mots. Le
+        <b>greige</b> est la seule exception, et elle est bornée : il ne porte que le premier mot d'un
+        titre deux tons, donc du grand texte, dont le seuil est 3. Il était à <code>#9C9084</code>,
+        2.81 sur l'ivoire 2 ; assombri à teinte constante en <code>#8F8477</code> le 14/09, il y
+        tient à 3.30 et reste plus clair que le taupe AA, sans quoi le titre perdrait ses deux tons. Un lien, un
         libellé, un prix, une bordure, un anneau de focus prennent l'encre ou une <b>variante AA</b> :
         doré AA <code>#A85A20</code> et taupe AA <code>#6F685B</code>, même teinte que leur couleur de
         marque et calées sur le pire fond de la maison, l'ivoire 2 (4.56 et 4.97). Le doré AA gagne un
