@@ -60,6 +60,22 @@ function captureTracking() {
 }
 const TRACKING = captureTracking();
 
+/* Liens vers balinaisa.com, convention UTM du 25/09 (balinaisa-assets/docs/convention-utm-brevo.md) :
+   utm_source = la Source d'arrivee du visiteur, conservee de bout en bout (direct s'il n'en a pas),
+   utm_medium = le Support ou le lien mene (site), utm_campaign = parcours-simulateur, l'emplacement
+   en utm_content. Avant : utm_source=simulateur&utm_medium=balinaisa.ai, qui effacait l'origine. */
+function lienSite(contenu) {
+  const u = new URL('https://balinaisa.com/');
+  u.searchParams.set('utm_source', (TRACKING.utm_source || '').trim() || 'direct');
+  u.searchParams.set('utm_medium', 'site');
+  u.searchParams.set('utm_campaign', 'parcours-simulateur');
+  u.searchParams.set('utm_content', contenu);
+  return u.toString();
+}
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('a[data-lien-site]').forEach((a) => { a.href = lienSite(a.dataset.lienSite); });
+});
+
 // State
 let currentStep = 0;
 
