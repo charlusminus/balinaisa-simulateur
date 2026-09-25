@@ -25,9 +25,11 @@
    Options (data-attributes sur la balise <script>) :
      data-position="bottom-right" (défaut) | "bottom-left"
      data-label="Imaginez chez vous"
-     data-utm-source="site-balinaisa"     (défaut)
-     data-utm-medium="widget-sticky"      (défaut)
-     data-utm-campaign="balinaisa-ai"            (défaut)
+     data-utm-source="direct"             (défaut : la Source d'arrivée de la visite sur le site
+                                           hôte si elle est connue, sinon direct)
+     data-utm-medium="simulateur"         (défaut)
+     data-utm-campaign="parcours-site"    (défaut)
+     data-utm-content="widget"            (défaut)
      data-target="https://balinaisa.ai/"  (défaut)
      data-skip-intro="true"  : arrive direct sur l'import photo (ajoute ?start=1).
                               Par DÉFAUT le widget ouvre l'écran d'accueil du simulateur.
@@ -50,10 +52,18 @@
   // Par defaut on ouvre la HOME du simulateur (arbitrage du 14/09). Le saut direct vers
   // l'import photo reste possible, mais il faut le demander : data-skip-intro="true".
   var skipIntro = ds.skipIntro === 'true';
+  // Convention UTM du 25/09 (balinaisa-assets/docs/convention-utm-brevo.md) : utm_source = la
+  // Source d'arrivee du visiteur sur le site hote, lue dans l'attribution de sa visite
+  // (sessionStorage « bali-attribution » de balinaisa.com), direct sinon ; utm_medium = le Support
+  // ou le lien mene (simulateur) ; utm_campaign = parcours-site ; utm_content = widget.
+  // Avant : site-balinaisa / widget-sticky / balinaisa-ai, qui effacait l'origine du visiteur.
+  var sourceVisite = '';
+  try { sourceVisite = (JSON.parse(sessionStorage.getItem('bali-attribution') || '{}').utm_source || '').trim(); } catch (e) {}
   var utm = {
-    source:   ds.utmSource   || 'site-balinaisa',
-    medium:   ds.utmMedium   || 'widget-sticky',
-    campaign: ds.utmCampaign || 'balinaisa-ai'
+    source:   ds.utmSource   || sourceVisite || 'direct',
+    medium:   ds.utmMedium   || 'simulateur',
+    campaign: ds.utmCampaign || 'parcours-site',
+    content:  ds.utmContent  || 'widget'
   };
 
   // URL cible avec UTM (préserve les éventuels paramètres déjà présents)
@@ -63,6 +73,7 @@
       u.searchParams.set('utm_source', utm.source);
       u.searchParams.set('utm_medium', utm.medium);
       u.searchParams.set('utm_campaign', utm.campaign);
+      u.searchParams.set('utm_content', utm.content);
       if (skipIntro) u.searchParams.set('start', '1');   // deep-link direct sur l'import photo
       return u.toString();
     } catch (e) {
