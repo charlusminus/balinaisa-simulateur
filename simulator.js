@@ -590,7 +590,7 @@ function shareSimulator() {
 
 /* CTA "Simuler avec Balinaisa.ai" dans le header : apparaît dès que le CTA du hero
    sort de l'écran (et disparaît quand il revient). Toujours à portée de main. */
-/* Video de fond du hero : le MP4 est lourd (~50 Mo). Par defaut on affiche le
+/* Video de fond du hero : 2,5 a 3,7 Mo selon l'ecran. Par defaut on affiche le
    poster (leger), et on ne charge/joue la video QUE si ca vaut le coup :
    desktop, connexion correcte, sans Save-Data ni preference de mouvement reduit.
    Chargement apres l'evenement load pour ne pas concurrencer le rendu initial. */
@@ -603,10 +603,12 @@ function maybeLoadHeroVideo() {
   const conn = navigator.connection || {};
   const constrained = conn.saveData === true || /(^|-)2g$/.test(conn.effectiveType || '');
   if (reduced || small || constrained) return; // on garde le poster
-  const source = video.querySelector('source[data-src]');
-  if (!source || source.src) return;
-  source.src = source.getAttribute('data-src');
-  try { video.load(); const p = video.play(); if (p) p.catch(() => {}); } catch (e) {}
+  if (video.src) return;
+  // H.264 partout ou il est lu ; sinon le WebM (VP9). La 1080p pour les grands ecrans seulement.
+  const mp4 = video.canPlayType('video/mp4; codecs="avc1.640028"') !== '';
+  const d = video.dataset;
+  video.src = !mp4 ? d.srcWebm : (mm('(min-width: 1400px)').matches ? d.src1080 : d.src720);
+  try { const p = video.play(); if (p) p.catch(() => {}); } catch (e) {}
 }
 window.addEventListener('load', maybeLoadHeroVideo);
 
