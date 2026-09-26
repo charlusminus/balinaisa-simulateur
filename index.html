@@ -207,9 +207,12 @@
          srcset="/hero-balinaisa-840.webp?v=20260903 840w, /hero-balinaisa.webp?v=20260903 1080w"
          sizes="max(100vw, 56.25vh)" width="1080" height="1920"
          fetchpriority="high" decoding="async" alt="" aria-hidden="true">
-    <video class="hero-bg-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
-      <source data-src="https://balinaisa.com/wp-content/uploads/2025/11/New-Balinaisa-Hero-Header.mp4" type="video/mp4">
-    </video>
+    <!-- Video du 26/09, commune avec l'accueil de balinaisa.com et servie ici : elle ne depend
+         plus du WordPress, qui disparait a la bascule. Encodee par web/scripts/video-accueil.mjs
+         du repo balinaisa-site (boucle de 25 s fondue, sans son), fichier choisi dans
+         maybeLoadHeroVideo : 1080p au-dela de 1400px, 720p sinon, WebM sans H.264. -->
+    <video class="hero-bg-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"
+           data-src-1080="/videos/accueil-1080.mp4" data-src-720="/videos/accueil-720.mp4" data-src-webm="/videos/accueil-720.webm"></video>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
       <h1 class="hero-title">Votre espace<br><em>sublimé par le teck</em></h1>
@@ -682,7 +685,7 @@
   </div>
   -->
 
-  <script src="simulator.js?v=20260925" defer></script>
+  <script src="simulator.js?v=20260926" defer></script>
   <script>
     function widgetClick() {
       const hero = document.getElementById('hero');
