@@ -221,7 +221,12 @@ input, textarea, select { font-family: var(--font-sans); }
   height: 100%;
   object-fit: cover;
   z-index: 0;
+  /* Invisible tant qu'elle ne joue pas, puis fondu sur l'image du hero (classe posee par
+     maybeLoadHeroVideo). */
+  opacity: 0;
+  transition: opacity 600ms ease;
 }
+.hero-bg-video.joue { opacity: 1; }
 
 .hero-overlay {
   position: absolute;
