@@ -2,6 +2,9 @@
 
 > Balinaisa.ai est le simulateur de décoration et d'aménagement de Balinaisa, pensé comme l'œil de Dominique Raynal. À partir d'une photo d'un intérieur, d'une terrasse ou d'un jardin, Balinaisa.ai y projette le mobilier en teck massif Balinaisa et adresse un rendu accompagné d'un devis estimatif. Intérieur comme extérieur. Gratuit, sans engagement.
 
+
+**Le simulateur a rejoint le site de la marque : https://balinaisa.com/simulateur/ (en anglais : https://balinaisa.com/en/simulator/). balinaisa.ai y redirige.**
+
 ## Entités
 
 - **Balinaisa.ai** : le simulateur (outil web). Nom complet : « Balinaisa.ai, l'œil de Dominique ». Ne pas confondre avec la marque.
