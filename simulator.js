@@ -590,7 +590,7 @@ function shareSimulator() {
 
 /* CTA "Simuler avec Balinaisa.ai" dans le header : apparaît dès que le CTA du hero
    sort de l'écran (et disparaît quand il revient). Toujours à portée de main. */
-/* Video de fond du hero : 2 a 3,9 Mo selon l'ecran (version portrait recadree pour les
+/* Video de fond du hero : 2,3 a 4,1 Mo selon l'ecran (montage vertical pour les
    telephones). Par defaut on affiche le
    poster (leger), et on ne charge/joue la video QUE si ca vaut le coup :
    desktop, connexion correcte, sans Save-Data ni preference de mouvement reduit.
