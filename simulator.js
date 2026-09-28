@@ -590,7 +590,8 @@ function shareSimulator() {
 
 /* CTA "Simuler avec Balinaisa.ai" dans le header : apparaît dès que le CTA du hero
    sort de l'écran (et disparaît quand il revient). Toujours à portée de main. */
-/* Video de fond du hero : 2,8 a 3,9 Mo selon l'ecran. Par defaut on affiche le
+/* Video de fond du hero : 2 a 3,9 Mo selon l'ecran (version portrait recadree pour les
+   telephones). Par defaut on affiche le
    poster (leger), et on ne charge/joue la video QUE si ca vaut le coup :
    desktop, connexion correcte, sans Save-Data ni preference de mouvement reduit.
    Chargement apres l'evenement load pour ne pas concurrencer le rendu initial. */
@@ -599,15 +600,18 @@ function maybeLoadHeroVideo() {
   if (!video) return;
   const mm = window.matchMedia;
   const reduced = mm && mm('(prefers-reduced-motion: reduce)').matches;
-  const small = mm && mm('(max-width: 760px)').matches;
   const conn = navigator.connection || {};
   const constrained = conn.saveData === true || /(^|-)2g$/.test(conn.effectiveType || '');
-  if (reduced || small || constrained) return; // on garde le poster
+  if (reduced || constrained) return; // on garde le poster
   if (video.src) return;
   // H.264 partout ou il est lu ; sinon le WebM (VP9). La 1080p pour les grands ecrans seulement.
   const mp4 = video.canPlayType('video/mp4; codecs="avc1.640028"') !== '';
-  const d = video.dataset;
-  video.src = !mp4 ? d.srcWebm : (mm('(min-width: 1400px)').matches ? d.src1080 : d.src720);
+  // getAttribute et non dataset : « data-src-720 » n'y devient pas « src720 » (un tiret suivi
+  // d'un chiffre n'est pas converti).
+  const src = (nom) => video.getAttribute('data-src-' + nom) || '';
+  const portrait = mm('(max-aspect-ratio: 3/4) and (max-width: 600px)').matches;
+  video.src = src(!mp4 ? 'webm' : portrait ? 'mobile' : (mm('(min-width: 1400px)').matches ? '1080' : '720'));
+  video.addEventListener('playing', () => video.classList.add('joue'), { once: true });
   try { const p = video.play(); if (p) p.catch(() => {}); } catch (e) {}
 }
 window.addEventListener('load', maybeLoadHeroVideo);
