@@ -31,11 +31,13 @@
   --bali-gris-2:      #959880;   /* vert sauge balinaisa.com, mentions discretes (v0.4) */
   --bali-sable:       #D9C19E;   /* filet dore */
   --bali-sable-clair: #F0E4CC;
-  --bali-teck:        #C3875E;   /* dore de marque : aplats des CTA, filets, logo. A 2.87 sur
-                                    ivoire il ne porte ni petit texte, ni bordure, ni anneau de
-                                    focus : ceux-la prennent la variante AA. Ce qu on ecrit
-                                    DESSUS est l encre, a 5.14 ; le blanc n y tenait qu a 3.02. */
-  --bali-teck-clair:  #CE9469;   /* survol d un aplat de CTA : il s eclaire, l encre y monte a 5.96 */
+  --bali-teck:        #CE9469;   /* dore de marque depuis le 01/10 (decision de Charles, l ancien
+                                    dore clair) : aplats des CTA, filets, plaque du monogramme. A
+                                    2.47 sur ivoire il ne porte ni petit texte, ni bordure, ni
+                                    anneau de focus : ceux-la prennent la variante AA. Ce qu on
+                                    ecrit DESSUS est l encre, a 5.96 ; le blanc n y tient qu a 2.60. */
+  --bali-teck-survol: #C3875E;   /* l ancien dore de marque, devenu le survol d un aplat de CTA :
+                                    il fonce d un cran, l encre y tient encore a 5.14 */
   --bali-teck-hover:  #A96E47;   /* dore sombre, DECOR seul : l encre n y tient qu a 3.70 */
   /* Variante AA du dore, v0.5 du 11/09/2026 : meme teinte que le dore de marque (25 deg contre
      24), mais un tiers de chroma en plus, ce qui la tient cuivree la ou un simple assombrissement
@@ -85,7 +87,7 @@
   --on-secondaire-active: #FFFFFF;
 
   --primary-surface:       var(--bali-teck);
-  --primary-surface-hover: var(--bali-teck-clair);   /* l aplat s eclaire : assombri, l encre tomberait a 3.70 */
+  --primary-surface-hover: var(--bali-teck-survol);  /* l aplat fonce d un cran ; plus sombre (#A96E47), l encre tomberait a 3.70 */
   --on-primary:            var(--bali-encre);
   --accent:        var(--bali-sable);
   --accent-light:  var(--bali-ivoire-2);
