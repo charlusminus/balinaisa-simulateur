@@ -28,8 +28,8 @@ Contrastes mesurés sur l'ivoire 2 `#F5F3EC`, le fond le plus sombre de la maiso
 
 | rôle | valeur | sur ivoire 2 |
 |---|---|---|
-| **doré de marque**, logo, aplat des CTA (encre dessus à 5.14) et filets | `#C3875E` | 2.72 |
-| doré clair, survol d'un aplat de CTA (encre à 5.96 dessus) | `#CE9469` | 2.35 |
+| **doré de marque** depuis le 01/10, plaque du monogramme, aplat des CTA (encre dessus à 5.96) et filets | `#CE9469` | 2.35 |
+| survol d'un aplat de CTA (l'ancien doré de marque, encre à 5.14 dessus) | `#C3875E` | 2.72 |
 | **doré AA** (liens, prix, libellés, bordures, focus) | `#A85A20` | 4.56 |
 | doré AA survol | `#8A4818` | 6.26 |
 | **sauge foncé**, le filet de la maison, les aplats de navigation et l'état actif d'une action secondaire (blanc à 9.77 dessus) | `#444535` | 8.80 |
