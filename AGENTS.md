@@ -13,6 +13,9 @@ embed.js       snippet à coller sur balinaisa.com
 result.html    page de rendu
 ```
 
+## Redirection vers balinaisa.com (à partir de la mise en ligne du site)
+Le simulateur est devenu une page de balinaisa.com (`/simulateur/`, `/en/simulator/`). `redirection.js`, chargé en premier par l'accueil, `/en/`, la politique de confidentialité et la 404, y renvoie les visiteurs en gardant les paramètres de campagne. Restent servis ici : `merci.html` et `result.html` (liens des courriels n8n), `/presse/`, `/marque/`. Détail : `docs/SIMULATEUR.md` du dépôt `balinaisa-site`.
+
 ## Déploiement
 Push sur `main` = mise en ligne (Pages, source `main` / root). Les liens `styles.css`, `simulator.js`, `i18n.js` et `fonts/fonts.css` sont versionnés (`?v=...`) : bumper le numéro à chaque changement pour forcer le rechargement chez les visiteurs (évite le cache navigateur).
 
