@@ -16,9 +16,10 @@
 (function () {
   var SITE = 'https://balinaisa.com';
   var p = location.pathname;
-  var en = p.indexOf('/en/') === 0;
-  var cible = /privacy-policy/.test(p) ? (en ? '/en/privacy/' : '/confidentialite/') : (en ? '/en/simulator/' : '/simulateur/');
   var q = new URLSearchParams(location.search);
+  // Les anciens liens anglais passaient par ?lang=en sur l'accueil (06/10 : ils menaient au simulateur français).
+  var en = p.indexOf('/en/') === 0 || q.get('lang') === 'en';
+  var cible = /privacy-policy/.test(p) ? (en ? '/en/privacy/' : '/confidentialite/') : (en ? '/en/simulator/' : '/simulateur/');
   q.delete('start');
   q.delete('lang');
   if (/simula/.test(cible) && !q.get('utm_content') && !q.get('depuis')) q.set('depuis', 'balinaisa-ai');
