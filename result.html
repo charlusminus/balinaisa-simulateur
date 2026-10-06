@@ -18,11 +18,11 @@
        depuis son propre dossier. La marque est reversee en ivoire sur le teck dore : en encre
        sur ivoire, le trace filiforme ne laisse que 2 pixels sombres sur 256 a 16 px et
        disparait dans une barre d onglets claire. -->
-  <link rel="icon" href="/favicon.svg?v=20260903" type="image/svg+xml">
-  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png?v=20260903">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20260903">
+  <link rel="icon" href="/favicon.svg?v=20261001" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png?v=20261001">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20261001">
   <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#C3875E">
+  <meta name="theme-color" content="#CE9469">
   <!-- Polices de la charte, auto-hebergees : sans ce lien la page rendait Inter et
        Georgia en polices systeme, seule page du site dans ce cas (constat du 03/09). -->
   <link rel="stylesheet" href="/fonts/fonts.css?v=20260914">
@@ -30,8 +30,8 @@
     :root {
       --bg: #FAF9F5;
       --primary: #A85A20;
-      /* Le CTA garde le dore de marque, avec l ENCRE dessus (5.14). 11/09. */
-      --primary-surface: #C3875E;
+      /* Le CTA garde le dore de marque (#CE9469 depuis le 01/10), avec l ENCRE dessus (5.96). */
+      --primary-surface: #CE9469;
       --on-primary: #242424;
       --accent: #D9C19E;
       --text: #242424;
@@ -214,7 +214,7 @@ if (intentLabel) {
 
 // Simulation image
 const wrap = document.getElementById('sim-img-wrap');
-const col  = CATALOG_COLORS[productId] || '#C3875E';
+const col  = CATALOG_COLORS[productId] || '#CE9469';
 
 if (imgUrl) {
   wrap.innerHTML = `<img src="${imgUrl}" alt="Simulation ${productName}" class="sim-img">`;
